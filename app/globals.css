@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fcfcfb;
+  --foreground: #22211f;
+  --blue-mist: #f2f5f9;
+  --blue-soft: #e6edf6;
+  --border-soft: #e7e3dd;
+  --ink-soft: #6d665f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fcfcfb;
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.motion-rise {
+  animation: rise-in 0.8s ease-out both;
+}
+
+.font-display {
+  text-transform: uppercase;
+}
+
+.motion-delay-1 {
+  animation-delay: 0.08s;
+}
+
+.motion-delay-2 {
+  animation-delay: 0.16s;
+}
+
+.motion-delay-3 {
+  animation-delay: 0.24s;
+}
+
+.motion-float {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+.image-zoom > img {
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.group:hover .image-zoom > img {
+  transform: scale(1.03);
+  filter: saturate(1.04);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 26s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Mobile menu animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.mobile-menu-backdrop {
+  animation: fade-in 0.25s ease-out both;
+}
+
+.mobile-menu-drawer {
+  animation: slide-in-left 0.3s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-rise,
+  .motion-float,
+  .motion-delay-1,
+  .motion-delay-2,
+  .motion-delay-3 {
+    animation: none;
+  }
+
+  .image-zoom > img {
+    transition: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}
