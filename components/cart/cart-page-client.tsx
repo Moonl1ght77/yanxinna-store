@@ -17,14 +17,14 @@ export function CartPageClient() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
       <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
-        <Link href="/">Home</Link> / <Link href="/shop">Shop</Link> / Cart
+        <Link href="/">Главная</Link> / <Link href="/shop">Магазин</Link> / Корзина
       </div>
       <h1 className="font-display text-5xl tracking-[0.04em] text-[#231f1b]">{copy.cartTitle}</h1>
       {items.length === 0 ? (
         <div className="mt-8 border border-borderSoft bg-white p-10">
-          <p className="text-sm text-[#6b635d]">Your cart is empty.</p>
+          <p className="text-sm text-[#6b635d]">Ваша корзина пуста.</p>
           <Link href="/shop" className="mt-6 inline-block">
-            <Button>Continue Shopping</Button>
+            <Button>Продолжить покупки</Button>
           </Link>
         </div>
       ) : (
@@ -68,27 +68,27 @@ export function CartPageClient() {
             ))}
           </div>
           <div className="border border-borderSoft bg-[#f7f6f4] p-6 md:p-8">
-            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">Order Summary</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">Сумма заказа</p>
             <div className="mt-6 flex items-center justify-between text-sm text-[#524a43]">
-              <span>Subtotal</span>
+              <span>Товары</span>
               <span>{formatPrice(subtotal, currency, locale)}</span>
             </div>
             <div className="mt-4 flex items-center justify-between text-sm text-[#524a43]">
-              <span>Estimated Shipping</span>
+              <span>Доставка</span>
               <span>{formatPrice(estimatedShipping, currency, locale)}</span>
             </div>
             <div className="mt-4 flex items-center justify-between border-t border-[#d8d0c6] pt-4 text-base text-[#231f1b]">
-              <span>Estimated Total</span>
+              <span>Итого</span>
               <span>{formatPrice(total, currency, locale)}</span>
             </div>
             <p className="mt-5 text-sm leading-7 text-[#6b635d]">
-              Taxes and final shipping are confirmed in checkout. Your bag is saved locally in this mock storefront.
+              Налоги и итоговая стоимость доставки уточняются при оформлении. Корзина сохраняется в этом демо-магазине локально.
             </p>
             <Link href="/shop" className="mt-6 inline-block text-[11px] font-medium uppercase tracking-[0.18em] text-[#524a43]">
-              Continue Shopping
+              Продолжить покупки
             </Link>
             <Link href="/checkout" className="mt-8 block">
-              <Button className="w-full">Checkout</Button>
+              <Button className="w-full">Оформить заказ</Button>
             </Link>
           </div>
         </div>

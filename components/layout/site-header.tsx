@@ -41,7 +41,7 @@ export function SiteHeader() {
             isHome ? "text-[#231f1b]" : "text-[#231f1b]"
           }`}
         >
-          AURELLE BODY
+          YANXINNA
         </Link>
 
         {/* Desktop nav */}
@@ -51,7 +51,7 @@ export function SiteHeader() {
           }`}
         >
           {navigationItems.map((item) =>
-            item.label === "Shapewear" ? (
+            item.href.includes("category=shapewear") ? (
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
@@ -129,7 +129,7 @@ export function SiteHeader() {
                 className="font-display text-[26px] leading-none tracking-[0.08em] text-[#231f1b]"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                AURELLE BODY
+                YANXINNA
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
@@ -143,7 +143,7 @@ export function SiteHeader() {
             {/* Navigation items */}
             <nav className="overflow-y-auto px-4 pb-8 pt-4">
               {navigationItems.map((item) =>
-                item.label === "Shapewear" ? (
+                item.href.includes("category=shapewear") ? (
                   <div key={item.label} className="border-b border-borderSoft">
                     <button
                       onClick={() =>

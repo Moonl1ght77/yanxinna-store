@@ -1,9 +1,17 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Heart, RotateCcw, Smartphone, Sparkles, Truck } from "lucide-react";
-import { categoryEntries, products } from "@/lib/data/products";
+import { products } from "@/lib/data/products";
 import { formatPrice, sortProductsByMerchOrder } from "@/lib/utils";
 import { PlaceholderImage } from "@/components/ui/placeholder-image";
 import { Button } from "@/components/ui/button";
+import { SilkBackground } from "@/components/ui/silk-background";
+import { ShinyText } from "@/components/ui/shiny-text";
+import { GradientText } from "@/components/ui/gradient-text";
 
 type HomePageProps = {
   locale: string;
@@ -26,7 +34,69 @@ type HomePageProps = {
   };
 };
 
+const bestSellerCards = [
+  {
+    src: "/images/shapewear-scene-21-9.png",
+    href: "/shop?category=shapewear",
+    label: "Корректирующее белье",
+    className: "bestseller-card-a"
+  },
+  {
+    src: "/images/underwear-scene-bg.png",
+    href: "/shop?category=underwear",
+    label: "Трусы",
+    className: "bestseller-card-b"
+  },
+  {
+    src: "/images/bra-single-bg.png",
+    href: "/shop?category=bras",
+    label: "Бюстгальтеры",
+    className: "bestseller-card-c"
+  },
+  {
+    src: "/images/hero-bg.png",
+    href: "/shop?sort=best",
+    label: "Бестселлеры",
+    className: "bestseller-card-d"
+  },
+  {
+    src: "/generated-products/shapewear-top-nude.png",
+    href: "/shop?sort=new",
+    label: "Новинки",
+    className: "bestseller-card-e"
+  }
+];
+
 export function HomePage({ locale, currency, copy }: HomePageProps) {
+  const bestSellersRef = useRef<HTMLElement | null>(null);
+  const [bestSellersInView, setBestSellersInView] = useState(false);
+
+  useEffect(() => {
+    const section = bestSellersRef.current;
+
+    if (!section || typeof IntersectionObserver === "undefined") {
+      setBestSellersInView(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setBestSellersInView(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "-18% 0px -22% 0px",
+        threshold: 0.18
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const shapewear = sortProductsByMerchOrder(
     products.filter((product) => product.category === "shapewear")
   ).slice(0, 3);
@@ -36,181 +106,216 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
   const underwear = sortProductsByMerchOrder(
     products.filter((product) => product.category === "underwear")
   ).slice(0, 2);
-  const primaryCategoryEntries = categoryEntries.slice(0, 3);
-  const shapewearCategoryEntries = categoryEntries.slice(3);
   const trending = sortProductsByMerchOrder(products);
   const serviceItems = [
     {
       icon: Truck,
-      title: "Free Express Shipping",
-      body: "On orders over $120+"
+      title: "Быстрая доставка",
+      body: "По России от 12 000 ₽"
     },
     {
       icon: Smartphone,
-      title: "Early Access",
-      body: "Join the AURELLE list first"
+      title: "Ранний доступ",
+      body: "Подписка YANXINNA первой узнает о новинках"
     },
     {
       icon: BadgeCheck,
-      title: "Contour Assurance",
-      body: "Compression details across the range"
+      title: "Уверенный контур",
+      body: "Продуманная компрессия в каждой модели"
     },
     {
       icon: RotateCcw,
-      title: "Returns",
-      body: "Within 30 days"
+      title: "Возврат",
+      body: "В течение 30 дней"
     },
     {
       icon: Sparkles,
-      title: "Soft Sculpt",
-      body: "Refined support in every layer"
+      title: "Мягкая коррекция",
+      body: "Деликатная поддержка в каждом слое"
     }
   ];
 
   return (
     <div className="pb-8">
       <section className="w-full">
-        <Link href="/shop?category=shapewear" className="group block overflow-hidden bg-white motion-rise">
-          <div className="relative min-h-[100svh] overflow-hidden">
-            <PlaceholderImage
-              src="/placeholders/hero-main.svg"
-              alt="Hero placeholder"
-              className="absolute inset-0 min-h-[100svh] rounded-none motion-float"
+        <Link href="/shop?category=shapewear" className="group block overflow-hidden bg-white">
+          <div className="relative min-h-[100svh] overflow-hidden bg-[#edf2f8]">
+            <Image
+              src="/images/hero-bg.png"
+            alt="Главный баннер YANXINNA"
+              fill
+              priority
+              unoptimized
+              sizes="100vw"
+              className="object-cover contrast-[1.08] saturate-[1.04]"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/18 to-transparent px-6 py-10 text-white md:px-8 md:py-12">
-              <h1 className="max-w-4xl font-display text-5xl leading-[1.02] tracking-[0.05em] md:text-7xl">
-                {copy.heroTitle}
-              </h1>
-              <p className="mt-4 max-w-xl text-base leading-8 text-white/90">{copy.heroBody}</p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-white">
-                  {copy.heroCta} <ArrowRight className="h-4 w-4" />
-                </span>
-                <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-white/85">
-                  {copy.heroSecondary} <ArrowRight className="h-4 w-4" />
-                </span>
+            <div className="absolute inset-x-0 bottom-0 h-[36%] bg-gradient-to-t from-black/44 via-black/10 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 px-6 py-10 text-white md:px-8 md:py-12">
+              <div className="max-w-[860px]">
+                <h1 className="max-w-[340px] font-display text-[27px] leading-[1.12] tracking-[0.01em] sm:max-w-full sm:text-5xl md:max-w-5xl md:text-7xl md:leading-[0.98] md:tracking-[0.05em] xl:text-[6rem]">
+                  <GradientText>{copy.heroTitle}</GradientText>
+                </h1>
+                <p className="mt-4 max-w-[300px] text-sm leading-7 text-white/90 md:max-w-xl md:text-lg md:leading-8">{copy.heroBody}</p>
+                <div className="mt-7 flex max-w-[300px] flex-wrap gap-4 md:max-w-none md:gap-5">
+                  <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] md:text-sm">
+                    <ShinyText text={copy.heroCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+                    <ArrowRight className="h-4 w-4 text-white" />
+                  </span>
+                  <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] md:text-sm">
+                    <ShinyText text={copy.heroSecondary} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+                    <ArrowRight className="h-4 w-4 text-white" />
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </Link>
       </section>
 
-      <section className="relative min-h-[720px] w-full overflow-hidden">
+      <section id="shapewear-feature" className="relative min-h-[720px] w-full overflow-hidden">
         <Link href="/shop?category=shapewear" className="group block min-h-[720px]">
-          <PlaceholderImage src={shapewear[0].image} alt="Shapewear feature" className="min-h-[720px] rounded-none image-zoom" />
+          <Image
+            src="/images/shapewear-scene-21-9.png"
+            alt="Корректирующее белье"
+            fill
+            unoptimized
+            sizes="100vw"
+            className="object-cover contrast-[1.04] saturate-[1.02]"
+          />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-8 md:px-8 md:py-10">
-            <p className="font-display text-5xl tracking-[0.04em] text-white">Shapewear</p>
+            <p className="font-display text-5xl tracking-[0.04em]"><GradientText>Коррекция</GradientText></p>
             <p className="mt-3 max-w-xl text-sm leading-7 text-white/90">
-              Sculpting foundations designed to smooth, contour, and anchor the full collection.
+              Базовые силуэты, которые сглаживают линии, поддерживают контур и легко сочетаются с гардеробом.
             </p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-white">
-              Shop Now <ArrowRight className="h-4 w-4" />
+            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+              <ShinyText text="Смотреть" speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+              <ArrowRight className="h-4 w-4 text-white" />
             </span>
           </div>
         </Link>
       </section>
 
       <section className="grid w-full gap-0 md:grid-cols-2">
-        <Link href="/shop?category=underwear" className="group relative block min-h-[760px] overflow-hidden">
-          <PlaceholderImage src={underwear[0].image} alt="Underwear feature" className="min-h-[760px] rounded-none image-zoom" />
+        <Link id="underwear-feature" href="/shop?category=underwear" className="group relative block min-h-[760px] overflow-hidden">
+          <Image
+            src="/images/underwear-scene-bg.png"
+            alt="Трусы YANXINNA"
+            fill
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover contrast-[1.04] saturate-[1.02]"
+          />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-8 md:px-8 md:py-10">
-            <p className="font-display text-4xl tracking-[0.04em] text-white">Underwear</p>
-            <p className="mt-3 max-w-md text-sm leading-7 text-white/90">Breathable layers with a barely-there finish.</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-white">
-              Shop Now <ArrowRight className="h-4 w-4" />
+            <p className="font-display text-4xl tracking-[0.04em]"><GradientText>Трусы</GradientText></p>
+            <p className="mt-3 max-w-md text-sm leading-7 text-white/90">Дышащая база с почти невесомой посадкой.</p>
+            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+              <ShinyText text="Смотреть" speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+              <ArrowRight className="h-4 w-4 text-white" />
             </span>
           </div>
         </Link>
-        <Link href="/shop?category=bras" className="group relative block min-h-[760px] overflow-hidden border-l border-white/20">
-          <PlaceholderImage src={bras[0].image} alt="Bras feature" className="min-h-[760px] rounded-none image-zoom" />
+        <Link id="bras-feature" href="/shop?category=bras" className="group relative block min-h-[760px] overflow-hidden border-l border-white/20">
+          <Image
+            src="/images/bra-single-bg.png"
+            alt="Бюстгальтеры YANXINNA"
+            fill
+            unoptimized
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover contrast-[1.04] saturate-[1.02]"
+          />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-8 md:px-8 md:py-10">
-            <p className="font-display text-4xl tracking-[0.04em] text-white">Bras</p>
-            <p className="mt-3 max-w-md text-sm leading-7 text-white/90">Support that feels polished, never heavy.</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-white">
-              Shop Now <ArrowRight className="h-4 w-4" />
+            <p className="font-display text-4xl tracking-[0.04em]"><GradientText>Бюстгальтеры</GradientText></p>
+            <p className="mt-3 max-w-md text-sm leading-7 text-white/90">Мягкая поддержка без ощущения тяжести.</p>
+            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+              <ShinyText text="Смотреть" speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+              <ArrowRight className="h-4 w-4 text-white" />
             </span>
           </div>
         </Link>
       </section>
 
-      <section className="relative min-h-[620px] w-full overflow-hidden">
-        <PlaceholderImage src="/placeholders/brand-story.svg" alt="Best sellers feature" className="min-h-[620px] rounded-none" />
+      <section
+        id="best-sellers-feature"
+        ref={bestSellersRef}
+        className="relative min-h-[620px] w-full overflow-hidden bg-[#edf3f8]"
+      >
+        <div
+          className={`bestseller-scatter absolute inset-0 bg-[#edf3f8] ${
+            bestSellersInView ? "is-visible" : "is-hidden"
+          }`}
+          aria-label={copy.bestSellerTitle}
+        >
+          {bestSellerCards.map((card, index) => (
+            <Link
+              key={card.src}
+              href={card.href}
+              aria-label={card.label}
+              className={`bestseller-card ${card.className}`}
+              style={{ "--delay": `${index * 70}ms` } as CSSProperties}
+            >
+              <Image
+                src={card.src}
+                alt={card.label}
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 58vw, 24vw"
+                className="object-cover"
+              />
+            </Link>
+          ))}
+        </div>
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent px-6 py-10 md:px-8 md:py-12">
-          <p className="font-display text-5xl tracking-[0.04em] text-white">{copy.bestSellerTitle}</p>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-white/90">The styles everyone loves and keeps coming back to.</p>
-          <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-white">
-            Shop Now <ArrowRight className="h-4 w-4" />
+          <p className="font-display text-5xl tracking-[0.04em]"><GradientText>{copy.bestSellerTitle}</GradientText></p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-white/90">Модели, к которым возвращаются за посадкой, комфортом и уверенностью.</p>
+          <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+            <ShinyText text="Смотреть" speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+            <ArrowRight className="h-4 w-4 text-white" />
           </span>
         </div>
       </section>
 
-      <section className="w-full border-t border-borderSoft bg-white">
-        <div className="border-b border-borderSoft px-6 py-6 md:px-8">
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">Core Categories</p>
-        </div>
-        <div className="grid w-full gap-0 md:grid-cols-3">
-          {primaryCategoryEntries.map((tile, index) => (
-            <Link
-              key={tile.label}
-              href={tile.href}
-              className={`group block border-b border-borderSoft bg-white md:border-b-0 ${
-                index < primaryCategoryEntries.length - 1 ? "md:border-r md:border-borderSoft" : ""
-              }`}
-            >
-              <PlaceholderImage src={tile.image} alt={tile.label} className="min-h-[520px] rounded-none image-zoom" />
-              <div className="px-4 py-5">
-                <p className="font-display text-[28px] tracking-[0.05em] text-[#231f1b]">{tile.label}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="border-y border-borderSoft px-6 py-6 md:px-8">
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">Shop Shapewear</p>
-        </div>
-        <div className="grid w-full gap-0 md:grid-cols-3">
-          {shapewearCategoryEntries.map((tile, index) => (
-            <Link
-              key={tile.label}
-              href={tile.href}
-              className={`group block border-b border-borderSoft bg-white md:border-b-0 ${
-                index < shapewearCategoryEntries.length - 1 ? "md:border-r md:border-borderSoft" : ""
-              }`}
-            >
-              <PlaceholderImage src={tile.image} alt={tile.label} className="min-h-[460px] rounded-none image-zoom" />
-              <div className="px-4 py-5">
-                <p className="font-display text-[26px] tracking-[0.05em] text-[#231f1b]">{tile.label}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="relative min-h-[680px] w-full overflow-hidden">
-        <PlaceholderImage src="/placeholders/fabric-1.svg" alt="Campaign placeholder" className="min-h-[680px] rounded-none" />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-10 md:px-8 md:py-12">
-          <p className="font-display text-5xl tracking-[0.04em] text-white">AURELLE Studio</p>
+      <section className="relative min-h-[680px] w-full overflow-hidden bg-[#1e40af]">
+        <SilkBackground
+          speed={5}
+          scale={1}
+          color="#3B82F6"
+          noiseIntensity={1.5}
+          rotation={-10}
+          className="absolute inset-0 h-full w-full"
+        />
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent px-6 py-10 md:px-8 md:py-12">
+          <p className="font-display text-5xl tracking-[0.04em]"><GradientText>Студия YANXINNA</GradientText></p>
           <p className="mt-4 max-w-2xl text-base leading-8 text-white/90">
-            Built for sculpted lines in motion. Discover soft-compression silhouettes, smoothing separates, and tonal layers designed for all-day structure.
+            Создано для выразительных линий в движении: мягкая компрессия, гладкие слои и оттенки, которые работают весь день.
           </p>
-          <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] text-white">
-            Shop Now <ArrowRight className="h-4 w-4" />
-          </span>
+          <Link href="/shop" className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] hover:opacity-80 transition-opacity">
+            <ShinyText
+              text="Смотреть"
+              speed={2.5}
+              color="#ffffff"
+              shineColor="#93C5FD"
+              spread={120}
+              direction="left"
+              pauseOnHover
+            />
+            <ArrowRight className="h-4 w-4 text-white" />
+          </Link>
         </div>
       </section>
 
       <section className="w-full bg-white">
         <div className="flex items-center justify-between border-y border-borderSoft px-6 py-8 md:px-8">
           <div className="w-24" />
-          <p className="font-display text-[28px] tracking-[0.04em] text-[#231f1b]">Trending</p>
+          <p className="font-display text-[28px] tracking-[0.04em] text-[#231f1b]">Популярное</p>
           <p className="text-sm uppercase tracking-[0.12em] text-[#8a8077]">1 / 2</p>
         </div>
-        <div className="overflow-x-auto">
-          <div className="grid min-w-[1560px] grid-cols-6 border-b border-borderSoft">
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex min-w-max border-b border-borderSoft">
             {trending.slice(0, 6).map((product, index) => (
               <Link
                 key={product.id}
                 href={`/product/${product.slug}`}
-                className={`group border-r border-borderSoft bg-white p-6 motion-rise ${
+                className={`group w-[260px] min-w-[260px] border-r border-borderSoft bg-white p-6 motion-rise ${
                   index % 4 === 1
                     ? "motion-delay-1"
                     : index % 4 === 2
@@ -239,7 +344,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         <div className="w-full border-t border-borderSoft px-6 py-16 md:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="font-display text-4xl uppercase leading-[1.28] tracking-[0.09em] text-[#231f1b] md:text-[68px]">
-              AURELLE BODY IS A MODERN SHAPEWEAR HOUSE CREATING REFINED SUPPORT FOR EVERYDAY DRESSING.
+              YANXINNA — современный бренд белья, который создает деликатную поддержку для повседневных образов.
             </h2>
           </div>
           <div className="mt-14 overflow-hidden pt-6">

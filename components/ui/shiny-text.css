@@ -1,0 +1,44 @@
+.shiny-text {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    var(--shiny-spread),
+    var(--shiny-color) 0%,
+    var(--shiny-color) 40%,
+    var(--shiny-shine-color) 50%,
+    var(--shiny-color) 60%,
+    var(--shiny-color) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: var(--shiny-animation) var(--shiny-speed) ease-in-out var(--shiny-delay) var(--shiny-iteration);
+}
+
+.shiny-pause-on-hover:hover {
+  animation-play-state: paused;
+}
+
+.shiny-disabled {
+  animation: none;
+}
+
+@keyframes shine-left {
+  0% {
+    background-position: 150% center;
+  }
+  100% {
+    background-position: -150% center;
+  }
+}
+
+@keyframes shine-right {
+  0% {
+    background-position: -150% center;
+  }
+  100% {
+    background-position: 150% center;
+  }
+}

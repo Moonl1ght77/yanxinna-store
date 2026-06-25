@@ -15,10 +15,10 @@ type LocaleContextValue = {
 
 export const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-const storageKey = "aurelle-region";
+const storageKey = "yanxinna-region";
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [region, setRegionState] = useState("US");
+  const [region, setRegionState] = useState("RU");
 
   useEffect(() => {
     const saved = window.localStorage.getItem(storageKey);

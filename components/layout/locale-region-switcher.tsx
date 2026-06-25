@@ -14,7 +14,7 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
 
   return (
     <label className={cn("flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-[#6c645d]", className)}>
-      Region
+      Страна
       <select
         value={region}
         onChange={(event) => setRegion(event.target.value)}

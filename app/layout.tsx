@@ -18,13 +18,13 @@ const display = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "AURELLE BODY",
-  description: "Original shapewear storefront template inspired by premium ecommerce architecture."
+  title: "YANXINNA",
+  description: "Интернет-магазин корректирующего белья, бюстгальтеров и базового белья YANXINNA."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body className={`${sans.variable} ${display.variable}`}>
         <LocaleProvider>
           <CartProvider>

@@ -1,6 +1,7 @@
 import { RegionOption } from "@/types/locale";
 
 export const regionOptions: RegionOption[] = [
+  { region: "RU", label: "Russia", locale: "ru-RU", currency: "RUB" },
   { region: "US", label: "United States", locale: "en-US", currency: "USD" },
   { region: "GB", label: "United Kingdom", locale: "en-GB", currency: "GBP" },
   { region: "FR", label: "France", locale: "fr-FR", currency: "EUR" },
@@ -8,6 +9,34 @@ export const regionOptions: RegionOption[] = [
 ];
 
 export const copyByLocale = {
+  "ru-RU": {
+    promo: "Бесплатная доставка по России от 12 000 ₽",
+    heroTitle: "Силуэт, в котором спокойно и уверенно.",
+    heroBody:
+      "Современное корректирующее белье, бюстгальтеры и трусы для гладкой посадки, поддержки и красивого движения каждый день.",
+    heroCta: "К корректирующему белью",
+    heroSecondary: "Смотреть бестселлеры",
+    shapewearIntro: "Мягкая компрессия, чистые линии и комфорт на весь день.",
+    categoryLabel: "Категории",
+    bestSellerTitle: "Бестселлеры",
+    philosophyTitle: "Подчеркивает силуэт, не сковывая движения.",
+    philosophyBody:
+      "YANXINNA сочетает лаконичный крой и технологичные материалы, чтобы посадка была аккуратной, дышащей и уверенной.",
+    fabricTitle: "Материалы и эффект коррекции",
+    fabricItems: ["Дышащий эластичный трикотаж", "Зоны мягкого контура", "Минимум заметных швов", "Комфортная поддержка"],
+    newsletterTitle: "Подписаться на YANXINNA",
+    newsletterBody: "Ранний доступ к новым коллекциям, заметкам о посадке и сезонным дропам.",
+    newsletterCta: "Подписаться",
+    cartTitle: "Корзина",
+    checkoutTitle: "Оформление заказа",
+    completeLook: "Дополнить образ",
+    addToCart: "В корзину",
+    mockPayment: "Оплатить тестовым платежом",
+    stripePlaceholder: "Интеграция Stripe Checkout зарезервирована",
+    loadMore: "Показать еще",
+    reviews: "Отзывы скоро появятся",
+    sizeGuide: "Идет в размер. Если вы между размерами, выбирайте больший для более комфортной посадки."
+  },
   "en-US": {
     promo: "Free shipping on orders over $120",
     heroTitle: "Shape your silhouette with calm confidence.",
@@ -20,10 +49,10 @@ export const copyByLocale = {
     bestSellerTitle: "Best Sellers",
     philosophyTitle: "Made to feel sculpted, never restricted.",
     philosophyBody:
-      "AURELLE BODY blends clean tailoring with technical fabrics so the fit feels polished, breathable, and quietly powerful.",
+      "YANXINNA blends clean tailoring with technical fabrics so the fit feels polished, breathable, and quietly powerful.",
     fabricTitle: "Fabric and shaping benefits",
     fabricItems: ["Breathable stretch knit", "Targeted contour zones", "Seam-light finish", "Soft recovery support"],
-    newsletterTitle: "Join the AURELLE list",
+    newsletterTitle: "Join the YANXINNA list",
     newsletterBody: "Early access to launches, fit notes, and limited seasonal drops.",
     newsletterCta: "Subscribe",
     cartTitle: "Cart",
@@ -37,7 +66,7 @@ export const copyByLocale = {
     sizeGuide: "Fits true to size. If between sizes, size up for easier entry."
   },
   "en-GB": {
-    promo: "Complimentary shipping on orders over £120",
+    promo: "Complimentary shipping on orders over GBP 120",
     heroTitle: "Shape your silhouette with calm confidence.",
     heroBody:
       "Modern shapewear, bras, and underwear designed to smooth, support, and move beautifully through the day.",
@@ -48,10 +77,10 @@ export const copyByLocale = {
     bestSellerTitle: "Best Sellers",
     philosophyTitle: "Made to feel sculpted, never restricted.",
     philosophyBody:
-      "AURELLE BODY blends clean tailoring with technical fabrics so the fit feels polished, breathable, and quietly powerful.",
+      "YANXINNA blends clean tailoring with technical fabrics so the fit feels polished, breathable, and quietly powerful.",
     fabricTitle: "Fabric and shaping benefits",
     fabricItems: ["Breathable stretch knit", "Targeted contour zones", "Seam-light finish", "Soft recovery support"],
-    newsletterTitle: "Join the AURELLE list",
+    newsletterTitle: "Join the YANXINNA list",
     newsletterBody: "Early access to launches, fit notes, and limited seasonal drops.",
     newsletterCta: "Subscribe",
     cartTitle: "Bag",
@@ -65,59 +94,59 @@ export const copyByLocale = {
     sizeGuide: "Fits true to size. If between sizes, size up for easier entry."
   },
   "fr-FR": {
-    promo: "Livraison offerte des 120 € d'achat",
+    promo: "Livraison offerte des 120 EUR d'achat",
     heroTitle: "Sculptez votre silhouette avec assurance.",
     heroBody:
-      "Des pièces gainantes, soutiens-gorge et sous-vêtements pensés pour lisser, soutenir et accompagner chaque mouvement.",
-    heroCta: "Découvrir le shapewear",
+      "Des pieces gainantes, soutiens-gorge et sous-vetements penses pour lisser, soutenir et accompagner chaque mouvement.",
+    heroCta: "Decouvrir le shapewear",
     heroSecondary: "Voir les best-sellers",
-    shapewearIntro: "Conçus autour d'une compression douce, de lignes nettes et d'un confort durable.",
-    categoryLabel: "Acheter par catégorie",
+    shapewearIntro: "Concus autour d'une compression douce, de lignes nettes et d'un confort durable.",
+    categoryLabel: "Acheter par categorie",
     bestSellerTitle: "Best-sellers",
-    philosophyTitle: "Pensé pour sculpter, jamais contraindre.",
+    philosophyTitle: "Pense pour sculpter, jamais contraindre.",
     philosophyBody:
-      "AURELLE BODY associe lignes raffinées et matières techniques pour un tombé élégant, respirant et naturellement puissant.",
-    fabricTitle: "Matières et bénéfices",
-    fabricItems: ["Maille respirante", "Zones de contour ciblées", "Finition discrète", "Maintien souple"],
-    newsletterTitle: "Rejoignez la liste AURELLE",
-    newsletterBody: "Accès anticipé aux lancements, conseils de taille et capsules saisonnières.",
+      "YANXINNA associe lignes raffinees et matieres techniques pour un tombe elegant, respirant et naturellement puissant.",
+    fabricTitle: "Matieres et benefices",
+    fabricItems: ["Maille respirante", "Zones de contour ciblees", "Finition discrete", "Maintien souple"],
+    newsletterTitle: "Rejoignez la liste YANXINNA",
+    newsletterBody: "Acces anticipe aux lancements, conseils de taille et capsules saisonnieres.",
     newsletterCta: "S'inscrire",
     cartTitle: "Panier",
     checkoutTitle: "Paiement",
-    completeLook: "Compléter le look",
+    completeLook: "Completer le look",
     addToCart: "Ajouter au panier",
     mockPayment: "Payer avec Mock Payment",
-    stripePlaceholder: "Point d'entrée Stripe Checkout réservé",
+    stripePlaceholder: "Point d'entree Stripe Checkout reserve",
     loadMore: "Voir plus",
-    reviews: "Avis à venir",
+    reviews: "Avis a venir",
     sizeGuide: "Taille normalement. Entre deux tailles, prenez la taille au-dessus."
   },
   "de-DE": {
-    promo: "Kostenloser Versand ab 120 €",
+    promo: "Kostenloser Versand ab 120 EUR",
     heroTitle: "Forme deine Silhouette mit ruhiger Sicherheit.",
     heroBody:
-      "Moderne Shapewear, Bras und Underwear, entwickelt für sanftes Glätten, Halt und angenehme Beweglichkeit.",
+      "Moderne Shapewear, Bras und Underwear, entwickelt fuer sanftes Glaetten, Halt und angenehme Beweglichkeit.",
     heroCta: "Shapewear entdecken",
     heroSecondary: "Best Seller ansehen",
-    shapewearIntro: "Entwickelt für weiche Kompression, klare Linien und ganztägigen Komfort.",
+    shapewearIntro: "Entwickelt fuer weiche Kompression, klare Linien und ganztaegigen Komfort.",
     categoryLabel: "Nach Kategorie shoppen",
     bestSellerTitle: "Best Seller",
     philosophyTitle: "Formend, nie einengend.",
     philosophyBody:
-      "AURELLE BODY verbindet klare Linien mit technischen Stoffen für eine elegante, atmungsaktive und starke Passform.",
+      "YANXINNA verbindet klare Linien mit technischen Stoffen fuer eine elegante, atmungsaktive und starke Passform.",
     fabricTitle: "Material und Formvorteile",
-    fabricItems: ["Atmungsaktiver Stretch", "Gezielte Formzonen", "Nahtarmes Finish", "Sanfte Rückstellkraft"],
-    newsletterTitle: "Zur AURELLE Liste anmelden",
-    newsletterBody: "Früher Zugang zu Launches, Fit Notes und limitierten Drops.",
+    fabricItems: ["Atmungsaktiver Stretch", "Gezielte Formzonen", "Nahtarmes Finish", "Sanfte Rueckstellkraft"],
+    newsletterTitle: "Zur YANXINNA Liste anmelden",
+    newsletterBody: "Frueher Zugang zu Launches, Fit Notes und limitierten Drops.",
     newsletterCta: "Abonnieren",
     cartTitle: "Warenkorb",
     checkoutTitle: "Checkout",
-    completeLook: "Look ergänzen",
+    completeLook: "Look ergaenzen",
     addToCart: "In den Warenkorb",
     mockPayment: "Mit Mock Payment bezahlen",
     stripePlaceholder: "Stripe Checkout Schnittstelle reserviert",
     loadMore: "Mehr laden",
     reviews: "Bewertungen folgen",
-    sizeGuide: "Fällt regulär aus. Zwischen zwei Größen bitte größer wählen."
+    sizeGuide: "Faellt regulaer aus. Zwischen zwei Groessen bitte groesser waehlen."
   }
 } as const;

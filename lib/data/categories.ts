@@ -1,20 +1,20 @@
 export const navigationItems = [
-  { label: "Shapewear", href: "/shop?category=shapewear" },
-  { label: "Underwear", href: "/shop?category=underwear" },
-  { label: "Bras", href: "/shop?category=bras" },
-  { label: "New In", href: "/shop?sort=new" },
-  { label: "Best Sellers", href: "/shop?sort=best" }
+  { label: "Коррекция", href: "/shop?category=shapewear" },
+  { label: "Трусы", href: "/shop?category=underwear" },
+  { label: "Бюстгальтеры", href: "/shop?category=bras" },
+  { label: "Новинки", href: "/shop?sort=new" },
+  { label: "Бестселлеры", href: "/shop?sort=best" }
 ];
 
 export const shapewearDropdownItems = [
-  { label: "All Shapewear", href: "/shop?category=shapewear" },
-  { label: "Bodysuits", href: "/shop?category=shapewear&subcategory=bodysuits" },
-  { label: "Tops", href: "/shop?category=shapewear&subcategory=tops" },
-  { label: "Bottoms", href: "/shop?category=shapewear&subcategory=bottoms" }
+  { label: "Все корректирующее белье", href: "/shop?category=shapewear" },
+  { label: "Боди", href: "/shop?category=shapewear&subcategory=bodysuits" },
+  { label: "Топы", href: "/shop?category=shapewear&subcategory=tops" },
+  { label: "Шорты и низ", href: "/shop?category=shapewear&subcategory=bottoms" }
 ];
 
 export const categoryDescriptions = {
-  shapewear: "Refined sculpting essentials designed to smooth, contour, and layer beautifully.",
-  bras: "Soft support and clean lines for everyday structure.",
-  underwear: "Foundation pieces with a barely-there finish."
+  shapewear: "Элегантное корректирующее белье для гладкого силуэта и выразительного контура.",
+  bras: "Мягкая поддержка и чистые линии на каждый день.",
+  underwear: "Базовое белье с почти невесомой посадкой."
 };
