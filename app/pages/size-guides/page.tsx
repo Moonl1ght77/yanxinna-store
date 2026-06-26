@@ -99,7 +99,7 @@ export default function SizeGuidePage() {
               <li>If you&apos;re between sizes, we recommend sizing up for a more comfortable fit.</li>
               <li>Shapewear should feel snug but not restrictive.</li>
               <li>Measure yourself while wearing lightweight undergarments for the most accurate results.</li>
-              <li>For personalized advice, contact our styling team at support@yanxinna.com</li>
+              <li>For personalized advice, contact our styling team at 13719947765@139.com</li>
             </ul>
           </div>
         </section>

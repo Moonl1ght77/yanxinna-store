@@ -92,7 +92,7 @@ export function ContactFab() {
 
             {/* Email */}
             <a
-              href="mailto:support@yanxinna.com"
+              href="mailto:13719947765@139.com"
               className="group flex items-center gap-3 rounded-md border border-borderSoft p-3 transition hover:border-[#231f1b] hover:bg-[#f7f6f4]"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#231f1b]/10">
@@ -100,7 +100,7 @@ export function ContactFab() {
               </div>
               <div>
                 <p className="text-xs font-medium text-[#231f1b]">Email</p>
-                <p className="text-[11px] text-[#8a8077]">support@yanxinna.com</p>
+                <p className="text-[11px] text-[#8a8077]">13719947765@139.com</p>
               </div>
             </a>
           </div>

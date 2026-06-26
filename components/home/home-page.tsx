@@ -52,25 +52,25 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
 
   const bestSellerCards = [
     {
-      src: "/images/shapewear-scene-21-9.png",
+      src: "/images/shapewear-scene-21-9.webp",
       href: "/shop?category=shapewear",
       label: copy.shapewearCategory,
       className: "bestseller-card-a"
     },
     {
-      src: "/images/underwear-scene-bg.png",
+      src: "/images/underwear-scene-bg.webp",
       href: "/shop?category=underwear",
       label: copy.underwearCategory,
       className: "bestseller-card-b"
     },
     {
-      src: "/images/bra-single-bg.png",
+      src: "/images/bra-single-bg.webp",
       href: "/shop?category=bras",
       label: copy.brasCategory,
       className: "bestseller-card-c"
     },
     {
-      src: "/images/hero-bg.png",
+      src: "/images/hero-bg.webp",
       href: "/shop?sort=best",
       label: copy.bestsellersCategory,
       className: "bestseller-card-d"
@@ -128,7 +128,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         <Link href="/shop?category=shapewear" className="group block overflow-hidden bg-white">
           <div
             className="relative min-h-[500px] overflow-hidden bg-[#edf2f8] bg-cover bg-[center_top_30%] bg-no-repeat contrast-[1.08] saturate-[1.04] sm:min-h-[600px] md:min-h-[100svh] md:bg-center"
-            style={{ backgroundImage: "url(/images/hero-bg.png)" }}
+            style={{ backgroundImage: "url(/images/hero-bg.webp)" }}
           >
             <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/50 via-black/15 to-transparent sm:h-[36%]" />
             <div className="absolute inset-x-0 bottom-0 px-5 py-10 text-white sm:px-6 sm:py-12 md:px-8 md:py-16">
@@ -157,7 +157,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         <Link href="/shop?category=shapewear" className="group block min-h-[450px] sm:min-h-[500px] md:min-h-[720px]">
           <div
             className="absolute inset-0 bg-cover bg-[center_30%] bg-no-repeat contrast-[1.04] saturate-[1.02] md:bg-center"
-            style={{ backgroundImage: "url(/images/shapewear-scene-21-9.png)" }}
+            style={{ backgroundImage: "url(/images/shapewear-scene-21-9.webp)" }}
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12">
             <p className="font-display text-2xl tracking-[0.04em] sm:text-3xl md:text-5xl"><GradientText>{copy.shapewearCategory}</GradientText></p>
@@ -176,7 +176,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         <Link id="underwear-feature" href="/shop?category=underwear" className="group relative block min-h-[350px] overflow-hidden sm:min-h-[400px] md:min-h-[760px]">
           <div
             className="absolute inset-0 bg-cover bg-[center_25%] bg-no-repeat contrast-[1.04] saturate-[1.02] md:bg-center"
-            style={{ backgroundImage: "url(/images/underwear-scene-bg.png)" }}
+            style={{ backgroundImage: "url(/images/underwear-scene-bg.webp)" }}
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
             <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.underwearCategory}</GradientText></p>
@@ -190,7 +190,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         <Link id="bras-feature" href="/shop?category=bras" className="group relative block min-h-[350px] overflow-hidden border-l-0 border-white/20 sm:min-h-[400px] sm:border-l md:min-h-[760px]">
           <div
             className="absolute inset-0 bg-cover bg-[center_25%] bg-no-repeat contrast-[1.04] saturate-[1.02] md:bg-center"
-            style={{ backgroundImage: "url(/images/bra-single-bg.png)" }}
+            style={{ backgroundImage: "url(/images/bra-single-bg.webp)" }}
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
             <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.brasCategory}</GradientText></p>

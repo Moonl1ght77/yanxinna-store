@@ -26,8 +26,8 @@ export default function ContactUsPage() {
             <div className="mt-4 space-y-4 text-sm leading-7 text-[#6b635d]">
               <div>
                 <p className="font-medium text-[#231f1b]">Email</p>
-                <a href="mailto:support@yanxinna.com" className="underline hover:text-[#231f1b]">
-                  support@yanxinna.com
+                <a href="mailto:13719947765@139.com" className="underline hover:text-[#231f1b]">
+                  13719947765@139.com
                 </a>
               </div>
               <div>

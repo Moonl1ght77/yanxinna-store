@@ -84,8 +84,8 @@ export default function ShippingPage() {
           <p className="text-sm leading-7 text-[#6b635d]">
             <strong className="text-[#231f1b]">Questions about shipping?</strong>{" "}
             Contact our support team at{" "}
-            <a href="mailto:support@yanxinna.com" className="underline hover:text-[#231f1b]">
-              support@yanxinna.com
+            <a href="mailto:13719947765@139.com" className="underline hover:text-[#231f1b]">
+              13719947765@139.com
             </a>
           </p>
         </section>

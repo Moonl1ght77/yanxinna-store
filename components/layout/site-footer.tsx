@@ -148,12 +148,12 @@ export function SiteFooter() {
 
             {/* Email */}
             <a
-              href="mailto:support@yanxinna.com"
+              href="mailto:13719947765@139.com"
               className="group flex items-center gap-2 text-xs text-[#524b45] transition hover:text-[#231f1b] sm:text-sm"
               title="Email"
             >
               <Mail className="h-5 w-5 sm:h-6 sm:w-6" />
-              <span className="hidden sm:inline">support@yanxinna.com</span>
+              <span className="hidden sm:inline">13719947765@139.com</span>
             </a>
           </div>
         </div>
