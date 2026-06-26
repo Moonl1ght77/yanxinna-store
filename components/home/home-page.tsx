@@ -127,17 +127,17 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <section className="w-full">
         <Link href="/shop?category=shapewear" className="group block overflow-hidden bg-white">
           <div
-            className="relative min-h-[600px] overflow-hidden bg-[#edf2f8] bg-cover bg-center bg-no-repeat contrast-[1.08] saturate-[1.04] md:min-h-[100svh]"
+            className="relative min-h-[500px] overflow-hidden bg-[#edf2f8] bg-cover bg-[center_top_30%] bg-no-repeat contrast-[1.08] saturate-[1.04] sm:min-h-[600px] md:min-h-[100svh] md:bg-center"
             style={{ backgroundImage: "url(/images/hero-bg.png)" }}
           >
-            <div className="absolute inset-x-0 bottom-0 h-[36%] bg-gradient-to-t from-black/44 via-black/10 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 px-5 py-8 text-white sm:px-6 sm:py-10 md:px-8 md:py-12">
+            <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/50 via-black/15 to-transparent sm:h-[36%]" />
+            <div className="absolute inset-x-0 bottom-0 px-5 py-10 text-white sm:px-6 sm:py-12 md:px-8 md:py-16">
               <div className="max-w-[860px]">
-                <h1 className="max-w-[280px] font-display text-[24px] leading-[1.12] tracking-[0.01em] sm:max-w-[340px] sm:text-[27px] md:max-w-5xl md:text-7xl md:leading-[0.98] md:tracking-[0.05em] xl:text-[6rem]">
+                <h1 className="max-w-[260px] font-display text-[22px] leading-[1.12] tracking-[0.01em] sm:max-w-[340px] sm:text-[27px] md:max-w-5xl md:text-7xl md:leading-[0.98] md:tracking-[0.05em] xl:text-[6rem]">
                   <GradientText>{copy.heroTitle}</GradientText>
                 </h1>
-                <p className="mt-3 max-w-[260px] text-xs leading-6 text-white/90 sm:mt-4 sm:max-w-[300px] sm:text-sm sm:leading-7 md:max-w-xl md:text-lg md:leading-8">{copy.heroBody}</p>
-                <div className="mt-5 flex max-w-[280px] flex-wrap gap-3 sm:mt-7 sm:max-w-[300px] sm:gap-4 md:max-w-none md:gap-5">
+                <p className="mt-3 max-w-[240px] text-[11px] leading-5 text-white/90 sm:mt-4 sm:max-w-[300px] sm:text-sm sm:leading-7 md:max-w-xl md:text-lg md:leading-8">{copy.heroBody}</p>
+                <div className="mt-5 flex max-w-[260px] flex-wrap gap-3 sm:mt-7 sm:max-w-[300px] sm:gap-4 md:max-w-none md:gap-5">
                   <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:text-xs md:text-sm">
                     <ShinyText text={copy.heroCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
                     <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
@@ -153,18 +153,18 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         </Link>
       </section>
 
-      <section id="shapewear-feature" className="relative min-h-[500px] w-full overflow-hidden md:min-h-[720px]">
-        <Link href="/shop?category=shapewear" className="group block min-h-[500px] md:min-h-[720px]">
+      <section id="shapewear-feature" className="relative min-h-[450px] w-full overflow-hidden sm:min-h-[500px] md:min-h-[720px]">
+        <Link href="/shop?category=shapewear" className="group block min-h-[450px] sm:min-h-[500px] md:min-h-[720px]">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.04] saturate-[1.02]"
+            className="absolute inset-0 bg-cover bg-[center_30%] bg-no-repeat contrast-[1.04] saturate-[1.02] md:bg-center"
             style={{ backgroundImage: "url(/images/shapewear-scene-21-9.png)" }}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
-            <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.shapewearCategory}</GradientText></p>
-            <p className="mt-2 max-w-xl text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12">
+            <p className="font-display text-2xl tracking-[0.04em] sm:text-3xl md:text-5xl"><GradientText>{copy.shapewearCategory}</GradientText></p>
+            <p className="mt-2 max-w-xl text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">
               {copy.shapewearDescription}
             </p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
+            <span className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-xs md:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
               <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
@@ -173,29 +173,29 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       </section>
 
       <section className="grid w-full gap-0 md:grid-cols-2">
-        <Link id="underwear-feature" href="/shop?category=underwear" className="group relative block min-h-[400px] overflow-hidden sm:min-h-[500px] md:min-h-[760px]">
+        <Link id="underwear-feature" href="/shop?category=underwear" className="group relative block min-h-[350px] overflow-hidden sm:min-h-[400px] md:min-h-[760px]">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.04] saturate-[1.02]"
+            className="absolute inset-0 bg-cover bg-[center_25%] bg-no-repeat contrast-[1.04] saturate-[1.02] md:bg-center"
             style={{ backgroundImage: "url(/images/underwear-scene-bg.png)" }}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
-            <p className="font-display text-2xl tracking-[0.04em] sm:text-4xl"><GradientText>{copy.underwearCategory}</GradientText></p>
-            <p className="mt-2 max-w-md text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">{copy.underwearDescription}</p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+            <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.underwearCategory}</GradientText></p>
+            <p className="mt-2 max-w-md text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">{copy.underwearDescription}</p>
+            <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:text-xs md:mt-6 md:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
               <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
           </div>
         </Link>
-        <Link id="bras-feature" href="/shop?category=bras" className="group relative block min-h-[400px] overflow-hidden border-l-0 border-white/20 sm:min-h-[500px] sm:border-l md:min-h-[760px]">
+        <Link id="bras-feature" href="/shop?category=bras" className="group relative block min-h-[350px] overflow-hidden border-l-0 border-white/20 sm:min-h-[400px] sm:border-l md:min-h-[760px]">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.04] saturate-[1.02]"
+            className="absolute inset-0 bg-cover bg-[center_25%] bg-no-repeat contrast-[1.04] saturate-[1.02] md:bg-center"
             style={{ backgroundImage: "url(/images/bra-single-bg.png)" }}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
-            <p className="font-display text-2xl tracking-[0.04em] sm:text-4xl"><GradientText>{copy.brasCategory}</GradientText></p>
-            <p className="mt-2 max-w-md text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">{copy.brasDescription}</p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+            <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.brasCategory}</GradientText></p>
+            <p className="mt-2 max-w-md text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">{copy.brasDescription}</p>
+            <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:text-xs md:mt-6 md:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
               <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
