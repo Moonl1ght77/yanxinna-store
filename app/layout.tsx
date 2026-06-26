@@ -7,6 +7,7 @@ import { PayPalProvider } from "@/providers/paypal-provider";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { ContactFab } from "@/components/ui/contact-fab";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <SiteHeader />
               <main>{children}</main>
               <SiteFooter />
+              <ContactFab />
             </PayPalProvider>
           </CartProvider>
         </LocaleProvider>

@@ -311,7 +311,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <section className="w-full bg-white">
         <div className="w-full border-t border-borderSoft px-5 py-10 sm:px-6 sm:py-16 md:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="font-display text-xl uppercase leading-[1.28] tracking-[0.09em] text-[#231f1b] sm:text-4xl md:text-[68px]">
+            <h2 className="text-base uppercase leading-[1.28] tracking-[0.06em] text-[#231f1b] sm:text-2xl sm:tracking-[0.08em] md:text-[48px] md:leading-[1.2] md:tracking-[0.04em]">
               {copy.brandStatement}
             </h2>
           </div>
