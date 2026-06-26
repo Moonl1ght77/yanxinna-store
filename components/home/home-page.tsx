@@ -127,24 +127,24 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <section className="w-full">
         <Link href="/shop?category=shapewear" className="group block overflow-hidden bg-white">
           <div
-            className="relative min-h-[100svh] overflow-hidden bg-[#edf2f8] bg-cover bg-center bg-no-repeat contrast-[1.08] saturate-[1.04]"
+            className="relative min-h-[600px] overflow-hidden bg-[#edf2f8] bg-cover bg-center bg-no-repeat contrast-[1.08] saturate-[1.04] md:min-h-[100svh]"
             style={{ backgroundImage: "url(/images/hero-bg.png)" }}
           >
             <div className="absolute inset-x-0 bottom-0 h-[36%] bg-gradient-to-t from-black/44 via-black/10 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 px-6 py-10 text-white md:px-8 md:py-12">
+            <div className="absolute inset-x-0 bottom-0 px-5 py-8 text-white sm:px-6 sm:py-10 md:px-8 md:py-12">
               <div className="max-w-[860px]">
-                <h1 className="max-w-[340px] font-display text-[27px] leading-[1.12] tracking-[0.01em] sm:max-w-full sm:text-5xl md:max-w-5xl md:text-7xl md:leading-[0.98] md:tracking-[0.05em] xl:text-[6rem]">
+                <h1 className="max-w-[280px] font-display text-[24px] leading-[1.12] tracking-[0.01em] sm:max-w-[340px] sm:text-[27px] md:max-w-5xl md:text-7xl md:leading-[0.98] md:tracking-[0.05em] xl:text-[6rem]">
                   <GradientText>{copy.heroTitle}</GradientText>
                 </h1>
-                <p className="mt-4 max-w-[300px] text-sm leading-7 text-white/90 md:max-w-xl md:text-lg md:leading-8">{copy.heroBody}</p>
-                <div className="mt-7 flex max-w-[300px] flex-wrap gap-4 md:max-w-none md:gap-5">
-                  <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] md:text-sm">
+                <p className="mt-3 max-w-[260px] text-xs leading-6 text-white/90 sm:mt-4 sm:max-w-[300px] sm:text-sm sm:leading-7 md:max-w-xl md:text-lg md:leading-8">{copy.heroBody}</p>
+                <div className="mt-5 flex max-w-[280px] flex-wrap gap-3 sm:mt-7 sm:max-w-[300px] sm:gap-4 md:max-w-none md:gap-5">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:text-xs md:text-sm">
                     <ShinyText text={copy.heroCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-                    <ArrowRight className="h-4 w-4 text-white" />
+                    <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
                   </span>
-                  <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] md:text-sm">
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:text-xs md:text-sm">
                     <ShinyText text={copy.heroSecondary} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-                    <ArrowRight className="h-4 w-4 text-white" />
+                    <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
                   </span>
                 </div>
               </div>
@@ -153,51 +153,51 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         </Link>
       </section>
 
-      <section id="shapewear-feature" className="relative min-h-[720px] w-full overflow-hidden">
-        <Link href="/shop?category=shapewear" className="group block min-h-[720px]">
+      <section id="shapewear-feature" className="relative min-h-[500px] w-full overflow-hidden md:min-h-[720px]">
+        <Link href="/shop?category=shapewear" className="group block min-h-[500px] md:min-h-[720px]">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.04] saturate-[1.02]"
             style={{ backgroundImage: "url(/images/shapewear-scene-21-9.png)" }}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-8 md:px-8 md:py-10">
-            <p className="font-display text-5xl tracking-[0.04em]"><GradientText>{copy.shapewearCategory}</GradientText></p>
-            <p className="mt-3 max-w-xl text-sm leading-7 text-white/90">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+            <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.shapewearCategory}</GradientText></p>
+            <p className="mt-2 max-w-xl text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">
               {copy.shapewearDescription}
             </p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-              <ArrowRight className="h-4 w-4 text-white" />
+              <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
           </div>
         </Link>
       </section>
 
       <section className="grid w-full gap-0 md:grid-cols-2">
-        <Link id="underwear-feature" href="/shop?category=underwear" className="group relative block min-h-[760px] overflow-hidden">
+        <Link id="underwear-feature" href="/shop?category=underwear" className="group relative block min-h-[400px] overflow-hidden sm:min-h-[500px] md:min-h-[760px]">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.04] saturate-[1.02]"
             style={{ backgroundImage: "url(/images/underwear-scene-bg.png)" }}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-8 md:px-8 md:py-10">
-            <p className="font-display text-4xl tracking-[0.04em]"><GradientText>{copy.underwearCategory}</GradientText></p>
-            <p className="mt-3 max-w-md text-sm leading-7 text-white/90">{copy.underwearDescription}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+            <p className="font-display text-2xl tracking-[0.04em] sm:text-4xl"><GradientText>{copy.underwearCategory}</GradientText></p>
+            <p className="mt-2 max-w-md text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">{copy.underwearDescription}</p>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-              <ArrowRight className="h-4 w-4 text-white" />
+              <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
           </div>
         </Link>
-        <Link id="bras-feature" href="/shop?category=bras" className="group relative block min-h-[760px] overflow-hidden border-l border-white/20">
+        <Link id="bras-feature" href="/shop?category=bras" className="group relative block min-h-[400px] overflow-hidden border-l-0 border-white/20 sm:min-h-[500px] sm:border-l md:min-h-[760px]">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat contrast-[1.04] saturate-[1.02]"
             style={{ backgroundImage: "url(/images/bra-single-bg.png)" }}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-6 py-8 md:px-8 md:py-10">
-            <p className="font-display text-4xl tracking-[0.04em]"><GradientText>{copy.brasCategory}</GradientText></p>
-            <p className="mt-3 max-w-md text-sm leading-7 text-white/90">{copy.brasDescription}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+            <p className="font-display text-2xl tracking-[0.04em] sm:text-4xl"><GradientText>{copy.brasCategory}</GradientText></p>
+            <p className="mt-2 max-w-md text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">{copy.brasDescription}</p>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-              <ArrowRight className="h-4 w-4 text-white" />
+              <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
           </div>
         </Link>
@@ -206,7 +206,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <section
         id="best-sellers-feature"
         ref={bestSellersRef}
-        className="relative min-h-[620px] w-full overflow-hidden bg-[#edf3f8]"
+        className="relative min-h-[400px] w-full overflow-hidden bg-[#edf3f8] sm:min-h-[500px] md:min-h-[620px]"
       >
         <div
           className={`bestseller-scatter absolute inset-0 bg-[#edf3f8] ${
@@ -226,23 +226,23 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
                 src={card.src}
                 alt={card.label}
                 fill
-                sizes="(max-width: 768px) 58vw, 24vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 58vw, 24vw"
                 className="object-cover"
               />
             </Link>
           ))}
         </div>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent px-6 py-10 md:px-8 md:py-12">
-          <p className="font-display text-5xl tracking-[0.04em]"><GradientText>{copy.bestSellerTitle}</GradientText></p>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-white/90">{copy.bestsellersDescription}</p>
-          <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em]">
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent px-5 py-6 sm:px-6 sm:py-10 md:px-8 md:py-12">
+          <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.bestSellerTitle}</GradientText></p>
+          <p className="mt-2 max-w-2xl text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">{copy.bestsellersDescription}</p>
+          <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
             <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-            <ArrowRight className="h-4 w-4 text-white" />
+            <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
           </span>
         </div>
       </section>
 
-      <section className="relative min-h-[680px] w-full overflow-hidden bg-[#1e40af]">
+      <section className="relative min-h-[400px] w-full overflow-hidden bg-[#1e40af] sm:min-h-[500px] md:min-h-[680px]">
         <SilkBackground
           speed={5}
           scale={1}
@@ -251,12 +251,12 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
           rotation={-10}
           className="absolute inset-0 h-full w-full"
         />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent px-6 py-10 md:px-8 md:py-12">
-          <p className="font-display text-5xl tracking-[0.04em]"><GradientText>{copy.studioTitle}</GradientText></p>
-          <p className="mt-4 max-w-2xl text-base leading-8 text-white/90">
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent px-5 py-6 sm:px-6 sm:py-10 md:px-8 md:py-12">
+          <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.studioTitle}</GradientText></p>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-white/90 sm:mt-4 sm:text-base sm:leading-8">
             {copy.studioDescription}
           </p>
-          <Link href="/shop" className="mt-6 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.12em] hover:opacity-80 transition-opacity">
+          <Link href="/shop" className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm hover:opacity-80 transition-opacity">
             <ShinyText
               text={copy.watchCta}
               speed={2.5}
@@ -266,16 +266,16 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
               direction="left"
               pauseOnHover
             />
-            <ArrowRight className="h-4 w-4 text-white" />
+            <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
           </Link>
         </div>
       </section>
 
       <section className="w-full bg-white">
-        <div className="flex items-center justify-between border-y border-borderSoft px-6 py-8 md:px-8">
-          <div className="w-24" />
-          <p className="font-display text-[28px] tracking-[0.04em] text-[#231f1b]">{copy.trendingTitle}</p>
-          <p className="text-sm uppercase tracking-[0.12em] text-[#8a8077]">1 / 2</p>
+        <div className="flex items-center justify-between border-y border-borderSoft px-5 py-6 sm:px-6 sm:py-8 md:px-8">
+          <div className="w-16 sm:w-24" />
+          <p className="font-display text-xl tracking-[0.04em] text-[#231f1b] sm:text-[28px]">{copy.trendingTitle}</p>
+          <p className="text-xs uppercase tracking-[0.12em] text-[#8a8077] sm:text-sm">1 / 2</p>
         </div>
         <div className="overflow-x-auto scrollbar-hide">
           <div className="flex min-w-max border-b border-borderSoft">
@@ -283,7 +283,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
               <Link
                 key={product.id}
                 href={`/product/${product.slug}`}
-                className={`group w-[260px] min-w-[260px] border-r border-borderSoft bg-white p-6 motion-rise ${
+                className={`group w-[200px] min-w-[200px] border-r border-borderSoft bg-white p-4 motion-rise sm:w-[260px] sm:min-w-[260px] sm:p-6 ${
                   index % 4 === 1
                     ? "motion-delay-1"
                     : index % 4 === 2
@@ -293,14 +293,14 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
                         : ""
                 }`}
               >
-                <PlaceholderImage src={product.image} alt={product.name} className="min-h-[250px] rounded-none image-zoom bg-white" />
-                <div className="mt-6 flex items-start justify-between gap-4">
+                <PlaceholderImage src={product.image} alt={product.name} className="min-h-[180px] rounded-none image-zoom bg-white sm:min-h-[250px]" />
+                <div className="mt-4 flex items-start justify-between gap-3 sm:mt-6 sm:gap-4">
                   <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{product.category}</p>
-                    <p className="mt-2 text-lg font-medium uppercase leading-6 tracking-[0.04em] text-[#231f1b]">{product.name}</p>
-                    <p className="mt-2 text-sm font-medium text-[#524a43]">{formatPrice(product.price, currency, locale)}</p>
+                    <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#8a8077] sm:text-[11px]">{product.category}</p>
+                    <p className="mt-1.5 text-sm font-medium uppercase leading-5 tracking-[0.04em] text-[#231f1b] sm:mt-2 sm:text-lg sm:leading-6">{product.name}</p>
+                    <p className="mt-1.5 text-xs font-medium text-[#524a43] sm:mt-2 sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
                   </div>
-                  <Heart className="mt-1 h-5 w-5 text-[#6f665f]" strokeWidth={1.7} />
+                  <Heart className="mt-0.5 h-4 w-4 text-[#6f665f] sm:mt-1 sm:h-5 sm:w-5" strokeWidth={1.7} />
                 </div>
               </Link>
             ))}
@@ -309,13 +309,13 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       </section>
 
       <section className="w-full bg-white">
-        <div className="w-full border-t border-borderSoft px-6 py-16 md:px-8">
+        <div className="w-full border-t border-borderSoft px-5 py-10 sm:px-6 sm:py-16 md:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="font-display text-4xl uppercase leading-[1.28] tracking-[0.09em] text-[#231f1b] md:text-[68px]">
+            <h2 className="font-display text-xl uppercase leading-[1.28] tracking-[0.09em] text-[#231f1b] sm:text-4xl md:text-[68px]">
               {copy.brandStatement}
             </h2>
           </div>
-          <div className="mt-14 overflow-hidden pt-6">
+          <div className="mt-8 overflow-hidden pt-4 sm:mt-14 sm:pt-6">
             <div className="marquee-track">
               {[...serviceItems, ...serviceItems].map((item, index) => {
                 const Icon = item.icon;

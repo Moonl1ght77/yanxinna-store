@@ -16,9 +16,28 @@ export async function detectRegionFromIp(): Promise<{
   locale: string;
   currency: string;
 }> {
+  // 如果在客户端，尝试使用浏览器语言作为快速检测
+  if (typeof window !== "undefined") {
+    const browserLang = navigator.language || navigator.languages?.[0] || "";
+
+    if (browserLang.startsWith("ru")) {
+      return { mode: "detected", region: "RU", locale: "ru-RU", currency: "RUB" };
+    }
+    if (browserLang.startsWith("fr")) {
+      return { mode: "detected", region: "FR", locale: "fr-FR", currency: "EUR" };
+    }
+    if (browserLang.startsWith("de")) {
+      return { mode: "detected", region: "DE", locale: "de-DE", currency: "EUR" };
+    }
+    if (browserLang.startsWith("en")) {
+      // 英语用户默认美国
+      return { mode: "detected", region: "US", locale: "en-US", currency: "USD" };
+    }
+  }
+
   try {
     const response = await fetch("http://ip-api.com/json/?fields=countryCode,status", {
-      signal: AbortSignal.timeout(3000) // 3秒超时
+      signal: AbortSignal.timeout(2000) // 2秒超时
     });
 
     if (!response.ok) {
@@ -31,7 +50,6 @@ export async function detectRegionFromIp(): Promise<{
       throw new Error("IP detection failed");
     }
 
-    // 将国家代码映射到我们的 region
     const countryCode = data.countryCode.toUpperCase();
     const matchedRegion = regionOptions.find((r) => r.region === countryCode);
 
@@ -44,40 +62,21 @@ export async function detectRegionFromIp(): Promise<{
       };
     }
 
-    // 国家代码不在支持列表中，尝试语言匹配
     // 英语国家默认 US，欧洲国家根据语言判断
     const englishCountries = ["US", "CA", "AU", "NZ", "IE", "ZA"];
     const frenchCountries = ["FR", "BE", "CH", "CA", "LU"];
     const germanCountries = ["DE", "AT", "CH", "LI", "LU"];
 
     if (englishCountries.includes(countryCode)) {
-      return {
-        mode: "detected",
-        region: "US",
-        locale: "en-US",
-        currency: "USD"
-      };
+      return { mode: "detected", region: "US", locale: "en-US", currency: "USD" };
     }
-
     if (frenchCountries.includes(countryCode)) {
-      return {
-        mode: "detected",
-        region: "FR",
-        locale: "fr-FR",
-        currency: "EUR"
-      };
+      return { mode: "detected", region: "FR", locale: "fr-FR", currency: "EUR" };
     }
-
     if (germanCountries.includes(countryCode)) {
-      return {
-        mode: "detected",
-        region: "DE",
-        locale: "de-DE",
-        currency: "EUR"
-      };
+      return { mode: "detected", region: "DE", locale: "de-DE", currency: "EUR" };
     }
 
-    // 默认返回俄罗斯（品牌主要市场）
     return {
       mode: "detected",
       region: fallbackRegion.region,
@@ -85,7 +84,6 @@ export async function detectRegionFromIp(): Promise<{
       currency: fallbackRegion.currency
     };
   } catch (error) {
-    // 网络错误或超时，使用默认值
     console.warn("IP detection failed, using fallback:", error);
     return {
       mode: "fallback",

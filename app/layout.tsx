@@ -10,12 +10,14 @@ import { SiteFooter } from "@/components/layout/site-footer";
 
 const sans = Inter({
   subsets: ["latin"],
-  variable: "--font-sans"
+  variable: "--font-sans",
+  display: "swap"
 });
 
 const display = Oswald({
   subsets: ["latin"],
-  variable: "--font-display"
+  variable: "--font-display",
+  display: "swap"
 });
 
 export const metadata: Metadata = {

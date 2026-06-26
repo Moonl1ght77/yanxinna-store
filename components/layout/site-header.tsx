@@ -137,12 +137,12 @@ export function SiteHeader() {
           />
 
           {/* Drawer */}
-          <div className="absolute inset-y-0 left-0 w-full max-w-sm bg-white mobile-menu-drawer">
+          <div className="absolute inset-y-0 left-0 w-[85%] max-w-sm bg-white mobile-menu-drawer">
             {/* Drawer header */}
             <div className="flex items-center justify-between border-b border-borderSoft px-4 py-4">
               <Link
                 href="/"
-                className="font-display text-[26px] leading-none tracking-[0.08em] text-[#231f1b]"
+                className="font-display text-xl leading-none tracking-[0.08em] text-[#231f1b] sm:text-[26px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 YANXINNA
@@ -157,7 +157,7 @@ export function SiteHeader() {
             </div>
 
             {/* Navigation items */}
-            <nav className="overflow-y-auto px-4 pb-8 pt-4">
+            <nav className="overflow-y-auto px-4 pb-8 pt-2">
               {navigationItems.map((item) =>
                 item.href.includes("category=shapewear") ? (
                   <div key={item.label} className="border-b border-borderSoft">
@@ -167,7 +167,7 @@ export function SiteHeader() {
                           mobileExpandedItem === item.label ? null : item.label
                         )
                       }
-                      className="flex w-full items-center justify-between py-4 text-[13px] font-medium uppercase tracking-[0.18em] text-[#231f1b]"
+                      className="flex w-full items-center justify-between py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#231f1b] sm:py-4 sm:text-[13px]"
                     >
                       {item.label}
                       <ChevronDown
@@ -184,7 +184,7 @@ export function SiteHeader() {
                             key={entry.label}
                             href={entry.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block py-2.5 text-[12px] uppercase tracking-[0.16em] text-[#5f5852] transition hover:text-[#231f1b]"
+                            className="block py-2.5 text-[11px] uppercase tracking-[0.16em] text-[#5f5852] transition hover:text-[#231f1b] sm:text-[12px]"
                           >
                             {entry.label}
                           </Link>
@@ -197,7 +197,7 @@ export function SiteHeader() {
                     key={item.label}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block border-b border-borderSoft py-4 text-[13px] font-medium uppercase tracking-[0.18em] text-[#231f1b] transition hover:text-[#5f5852]"
+                    className="block border-b border-borderSoft py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#231f1b] transition hover:text-[#5f5852] sm:py-4 sm:text-[13px]"
                   >
                     {item.label}
                   </Link>
@@ -205,11 +205,11 @@ export function SiteHeader() {
               )}
 
               {/* Extra links */}
-              <div className="mt-6 border-t border-borderSoft pt-4">
+              <div className="mt-4 border-t border-borderSoft pt-4 sm:mt-6">
                 <Link
                   href="/cart"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 py-3 text-[13px] font-medium uppercase tracking-[0.18em] text-[#231f1b]"
+                  className="flex items-center gap-2 py-3 text-[12px] font-medium uppercase tracking-[0.18em] text-[#231f1b] sm:text-[13px]"
                 >
                   <ShoppingBag className="h-4 w-4" strokeWidth={1.7} />
                   {copy.cartTitle} {itemCount > 0 ? `(${itemCount})` : ""}

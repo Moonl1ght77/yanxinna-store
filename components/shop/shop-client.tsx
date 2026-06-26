@@ -101,14 +101,14 @@ export function ShopClient({
   const showShapewearSubcategories = category === "shapewear" || category === "all";
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
-      <div className="border border-borderSoft bg-white px-6 py-10 md:px-10">
-        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">{copy.shopTitle}</p>
-        <h1 className="mt-4 font-display text-5xl tracking-[0.04em] text-[#231f1b]">
+    <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8 md:px-8">
+      <div className="border border-borderSoft bg-white px-4 py-6 sm:px-6 sm:py-10 md:px-10">
+        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#8a8077] sm:text-[11px]">{copy.shopTitle}</p>
+        <h1 className="mt-3 font-display text-3xl tracking-[0.04em] text-[#231f1b] sm:mt-4 sm:text-5xl">
           {categoryLabels[category] ?? categoryLabels.shapewear}
         </h1>
-        <p className="mt-4 max-w-2xl text-sm leading-7 text-[#6b635d]">{activeCategoryDescription}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <p className="mt-3 max-w-2xl text-xs leading-6 text-[#6b635d] sm:mt-4 sm:text-sm sm:leading-7">{activeCategoryDescription}</p>
+        <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
           {[
             { label: copy.categoryShapewear, value: "shapewear" },
             { label: copy.categoryUnderwear, value: "underwear" },
@@ -118,7 +118,7 @@ export function ShopClient({
             <button
               key={entry.value}
               onClick={() => setCategory(entry.value)}
-              className={`border px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] ${
+              className={`border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:px-4 sm:py-2 sm:text-[11px] ${
                 category === entry.value
                   ? "border-[#231f1b] bg-[#231f1b] text-white"
                   : "border-borderSoft bg-white text-[#6a625c]"
@@ -129,10 +129,10 @@ export function ShopClient({
           ))}
         </div>
         {showShapewearSubcategories ? (
-          <div className="mt-6 flex flex-wrap gap-3 border-t border-borderSoft pt-6">
+          <div className="mt-4 flex flex-wrap gap-2 border-t border-borderSoft pt-4 sm:mt-6 sm:gap-3 sm:pt-6">
             <button
               onClick={() => setSubcategory("all")}
-              className={`border px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] ${
+              className={`border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:px-4 sm:py-2 sm:text-[11px] ${
                 subcategory === "all"
                   ? "border-[#231f1b] bg-[#231f1b] text-white"
                   : "border-borderSoft bg-white text-[#6a625c]"
@@ -151,7 +151,7 @@ export function ShopClient({
                   setCategory("shapewear");
                   setSubcategory(entry.value);
                 }}
-                className={`border px-4 py-2 text-[11px] font-medium uppercase tracking-[0.2em] ${
+                className={`border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:px-4 sm:py-2 sm:text-[11px] ${
                   subcategory === entry.value
                     ? "border-[#231f1b] bg-[#231f1b] text-white"
                     : "border-borderSoft bg-white text-[#6a625c]"
@@ -164,8 +164,8 @@ export function ShopClient({
         ) : null}
       </div>
 
-      <div className="mt-8 flex flex-col gap-5 border-b border-borderSoft pb-5 md:flex-row md:items-center md:justify-between">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+      <div className="mt-6 flex flex-col gap-4 border-b border-borderSoft pb-4 sm:mt-8 sm:gap-5 sm:pb-5 md:flex-row md:items-center md:justify-between">
+        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#8a8077] sm:text-[11px]">
           {copy.breadcrumbHome} / {copy.breadcrumbShop} / {categoryLabels[category] ?? category}
           {subcategory !== "all" ? ` / ${subcategoryLabels[subcategory] ?? subcategory}` : ""}
         </p>
@@ -173,7 +173,7 @@ export function ShopClient({
           <select
             value={sort}
             onChange={(event) => setSort(event.target.value)}
-            className="border border-borderSoft bg-white px-4 py-3 text-[11px] font-medium uppercase tracking-[0.18em] text-[#231f1b] outline-none"
+            className="w-full border border-borderSoft bg-white px-3 py-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#231f1b] outline-none sm:px-4 sm:py-3 sm:text-[11px] md:w-auto"
           >
             <option value="featured">{copy.sortFeatured}</option>
             <option value="best">{copy.sortBest}</option>
@@ -184,18 +184,18 @@ export function ShopClient({
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+      <div className="mt-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-[#8a8077] sm:mt-4 sm:text-[11px]">
         <span>{filteredProducts.length} {copy.itemsCount}</span>
         {subcategory !== "all" ? <span>{subcategoryLabels[subcategory]}</span> : <span>{categoryLabels[category]}</span>}
       </div>
 
       {visibleProducts.length === 0 ? (
-        <div className="mt-8 border border-borderSoft bg-white p-10 text-center">
-          <p className="font-display text-3xl tracking-[0.04em] text-[#231f1b]">{copy.noProducts}</p>
-          <p className="mt-3 text-sm leading-7 text-[#6b635d]">
+        <div className="mt-6 border border-borderSoft bg-white p-6 text-center sm:mt-8 sm:p-10">
+          <p className="font-display text-2xl tracking-[0.04em] text-[#231f1b] sm:text-3xl">{copy.noProducts}</p>
+          <p className="mt-2 text-xs leading-6 text-[#6b635d] sm:mt-3 sm:text-sm sm:leading-7">
             {copy.noProductsHint}
           </p>
-          <div className="mt-6 flex justify-center">
+          <div className="mt-4 flex justify-center sm:mt-6">
             <Button
               variant="ghost"
               onClick={() => {
@@ -208,21 +208,21 @@ export function ShopClient({
           </div>
         </div>
       ) : (
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-6 md:grid-cols-3">
           {visibleProducts.map((product) => (
-            <Link key={product.id} href={`/product/${product.slug}`} className="border border-borderSoft bg-white p-4 transition duration-300 hover:-translate-y-1">
-              <PlaceholderImage src={product.image} alt={product.name} className="min-h-[360px] rounded-none image-zoom" />
-              <div className="mt-4">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">
+            <Link key={product.id} href={`/product/${product.slug}`} className="border border-borderSoft bg-white p-3 transition duration-300 hover:-translate-y-1 sm:p-4">
+              <PlaceholderImage src={product.image} alt={product.name} className="min-h-[180px] rounded-none image-zoom sm:min-h-[280px] md:min-h-[360px]" />
+              <div className="mt-3 sm:mt-4">
+                <div className="flex items-start justify-between gap-2">
+                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#8a8077] sm:text-[11px]">
                     {product.subcategory
                       ? `${categoryLabels[product.category]} / ${subcategoryLabels[product.subcategory]}`
                       : categoryLabels[product.category]}
                   </p>
-                  <p className="text-sm text-[#524a43]">{formatPrice(product.price, currency, locale)}</p>
+                  <p className="text-xs text-[#524a43] sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
                 </div>
-                <p className="mt-2 text-lg text-[#231f1b]">{product.name}</p>
-                <p className="mt-2 text-sm leading-6 text-[#6b635d]">{product.shortDescription}</p>
+                <p className="mt-1.5 text-sm font-medium text-[#231f1b] sm:mt-2 sm:text-lg">{product.name}</p>
+                <p className="mt-1 text-[11px] leading-5 text-[#6b635d] sm:mt-2 sm:text-sm sm:leading-6">{product.shortDescription}</p>
               </div>
             </Link>
           ))}
@@ -230,7 +230,7 @@ export function ShopClient({
       )}
 
       {visibleCount < filteredProducts.length ? (
-        <div className="mt-10 flex justify-center">
+        <div className="mt-8 flex justify-center sm:mt-10">
           <Button variant="ghost" onClick={() => setVisibleCount((count) => count + itemsPerPage)}>
             {copy.loadMore}
           </Button>

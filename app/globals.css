@@ -262,38 +262,75 @@ a {
 @media (max-width: 768px) {
   .bestseller-card {
     top: 43%;
-    width: clamp(120px, 44vw, 190px);
+    width: clamp(100px, 40vw, 160px);
   }
 
   .bestseller-card-a {
-    --x: -31vw;
-    --y: -14%;
+    --x: -28vw;
+    --y: -10%;
     --r: -8deg;
+    --s: 0.9;
   }
 
   .bestseller-card-b {
-    --x: -8vw;
-    --y: 13%;
+    --x: -5vw;
+    --y: 15%;
     --r: 5deg;
+    --s: 0.85;
   }
 
   .bestseller-card-c {
-    --x: 26vw;
-    --y: -5%;
+    --x: 18vw;
+    --y: -8%;
     --r: -5deg;
+    --s: 0.9;
   }
 
   .bestseller-card-d {
-    --x: 10vw;
-    --y: -28%;
+    --x: 5vw;
+    --y: -25%;
     --r: 6deg;
+    --s: 0.85;
   }
 
   .bestseller-card-e {
-    --x: -23vw;
-    --y: 30%;
+    --x: -15vw;
+    --y: 25%;
     --r: 4deg;
-    width: clamp(104px, 34vw, 150px);
+    width: clamp(90px, 32vw, 130px);
+    --s: 0.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .bestseller-card {
+    width: clamp(80px, 38vw, 140px);
+  }
+
+  .bestseller-card-a {
+    --x: -25vw;
+    --y: -8%;
+  }
+
+  .bestseller-card-b {
+    --x: -3vw;
+    --y: 12%;
+  }
+
+  .bestseller-card-c {
+    --x: 15vw;
+    --y: -5%;
+  }
+
+  .bestseller-card-d {
+    --x: 3vw;
+    --y: -22%;
+  }
+
+  .bestseller-card-e {
+    --x: -12vw;
+    --y: 22%;
+    width: clamp(70px, 30vw, 110px);
   }
 }
 
