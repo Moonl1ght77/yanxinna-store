@@ -32,20 +32,12 @@ export function SiteHeader() {
   ];
 
   return (
-    <header
-      className={`z-30 ${
-        isHome
-          ? "absolute inset-x-0 top-[43px]"
-          : "sticky top-0 border-b border-borderSoft bg-white/95 backdrop-blur"
-      }`}
-    >
+    <header className="sticky top-0 z-30 border-b border-[#2563EB] bg-[#3B82F6]">
       <div className="grid w-full grid-cols-[auto,1fr,auto] items-center gap-4 px-4 py-4 md:px-8">
         {/* Hamburger button - mobile only */}
         <button
           onClick={() => setMobileMenuOpen(true)}
-          className={`flex h-10 w-10 items-center justify-center md:hidden ${
-            isHome ? "text-[#231f1b]" : "text-[#231f1b]"
-          }`}
+          className="flex h-10 w-10 items-center justify-center text-white md:hidden"
           aria-label="Open menu"
         >
           <Menu className="h-5 w-5" strokeWidth={1.7} />
@@ -53,27 +45,20 @@ export function SiteHeader() {
 
         <Link
           href="/"
-          className={`font-display text-[30px] leading-none tracking-[0.08em] ${
-            isHome ? "text-[#231f1b]" : "text-[#231f1b]"
-          }`}
+          className="font-display text-[30px] leading-none tracking-[0.08em] text-white"
         >
           YANXINNA
         </Link>
 
         {/* Desktop nav */}
-        <nav
-          className={`hidden items-center justify-center gap-8 text-[11px] font-medium uppercase tracking-[0.22em] md:flex ${
-            isHome ? "text-[#231f1b]" : "text-[#5f5852]"
-          }`}
+        <nav className="hidden items-center justify-center gap-8 text-[11px] font-medium uppercase tracking-[0.22em] text-white md:flex"
         >
           {navigationItems.map((item) =>
             item.href.includes("category=shapewear") ? (
               <div key={item.label} className="group relative">
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1 transition-all duration-200 hover:text-black ${
-                    isHome ? "" : ""
-                  }`}
+                  className="flex items-center gap-1 transition-all duration-200 hover:text-white/80"
                 >
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5" strokeWidth={1.7} />
@@ -84,7 +69,7 @@ export function SiteHeader() {
                       <Link
                         key={entry.label}
                         href={entry.href}
-                        className={`block px-4 py-3 text-[11px] uppercase tracking-[0.2em] text-[#231f1b] transition hover:bg-[#f7f6f4] hover:text-black ${
+                        className={`block px-4 py-3 text-[11px] uppercase tracking-[0.2em] text-[#231f1b] transition hover:bg-[#f7f6f4] ${
                           index < shapewearDropdownItems.length - 1 ? "border-b border-borderSoft" : ""
                         }`}
                       >
@@ -98,7 +83,7 @@ export function SiteHeader() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="transition-all duration-200 hover:text-black"
+                className="transition-all duration-200 hover:text-white/80"
               >
                 {item.label}
               </Link>
@@ -108,18 +93,16 @@ export function SiteHeader() {
 
         <div className="flex items-center justify-end gap-3">
           <LocaleRegionSwitcher
-            className={isHome ? "text-[#231f1b]" : undefined}
-            selectClassName={isHome ? "border-black/15 bg-white/70 text-[#231f1b]" : undefined}
+            className="text-white"
+            selectClassName="border-white/30 bg-white/20 text-white"
           />
           <Link
             href="/cart"
-            className={`relative rounded-none p-3 ${
-              isHome ? "border border-black/15 bg-white/70 text-[#231f1b]" : "border border-borderSoft text-[#231f1b]"
-            }`}
+            className="relative rounded-none border border-white/30 bg-white/20 p-3 text-white transition hover:bg-white/30"
           >
             <ShoppingBag className="h-4 w-4" />
             {itemCount > 0 ? (
-              <span className="absolute -right-1 -top-1 bg-[#231f1b] px-1.5 py-0.5 text-[10px] text-white">
+              <span className="absolute -right-1 -top-1 bg-white px-1.5 py-0.5 text-[10px] text-[#3B82F6]">
                 {itemCount}
               </span>
             ) : null}

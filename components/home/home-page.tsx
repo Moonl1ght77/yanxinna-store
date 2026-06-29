@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button";
 import { SilkBackground } from "@/components/ui/silk-background";
 import { ShinyText } from "@/components/ui/shiny-text";
 import { GradientText } from "@/components/ui/gradient-text";
+import { SampleRequestModal } from "@/components/ui/sample-request-modal";
+import { FactoryStrengths } from "@/components/home/factory-strengths";
 import { CopyKeys } from "@/types/locale";
 
 type HomePageProps = {
@@ -23,6 +25,7 @@ type HomePageProps = {
 export function HomePage({ locale, currency, copy }: HomePageProps) {
   const bestSellersRef = useRef<HTMLElement | null>(null);
   const [bestSellersInView, setBestSellersInView] = useState(false);
+  const [showSampleModal, setShowSampleModal] = useState(false);
 
   useEffect(() => {
     const section = bestSellersRef.current;
@@ -124,33 +127,67 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
 
   return (
     <div className="pb-8">
-      <section className="w-full">
-        <Link href="/shop?category=shapewear" className="group block overflow-hidden bg-white">
-          <div
-            className="relative min-h-[500px] overflow-hidden bg-[#edf2f8] bg-cover bg-[center_top_30%] bg-no-repeat contrast-[1.08] saturate-[1.04] sm:min-h-[600px] md:min-h-[100svh] md:bg-center"
-            style={{ backgroundImage: "url(/images/hero-bg.webp)" }}
-          >
-            <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/50 via-black/15 to-transparent sm:h-[36%]" />
-            <div className="absolute inset-x-0 bottom-0 px-5 py-10 text-white sm:px-6 sm:py-12 md:px-8 md:py-16">
-              <div className="max-w-[860px]">
-                <h1 className="max-w-[260px] font-display text-[22px] leading-[1.12] tracking-[0.01em] sm:max-w-[340px] sm:text-[27px] md:max-w-5xl md:text-7xl md:leading-[0.98] md:tracking-[0.05em] xl:text-[6rem]">
-                  <GradientText>{copy.heroTitle}</GradientText>
-                </h1>
-                <p className="mt-3 max-w-[240px] text-[11px] leading-5 text-white/90 sm:mt-4 sm:max-w-[300px] sm:text-sm sm:leading-7 md:max-w-xl md:text-lg md:leading-8">{copy.heroBody}</p>
-                <div className="mt-5 flex max-w-[260px] flex-wrap gap-3 sm:mt-7 sm:max-w-[300px] sm:gap-4 md:max-w-none md:gap-5">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:text-xs md:text-sm">
-                    <ShinyText text={copy.heroCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-                    <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:text-xs md:text-sm">
-                    <ShinyText text={copy.heroSecondary} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
-                    <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
-                  </span>
-                </div>
+      {/* Sample Request Modal */}
+      <SampleRequestModal isOpen={showSampleModal} onClose={() => setShowSampleModal(false)} />
+
+      {/* Hero Section - Factory Introduction */}
+      <section className="w-full bg-[#f8f8f8]">
+        <div className="mx-auto max-w-7xl px-6 py-12 md:px-8 md:py-20">
+          <div className="grid gap-8 md:grid-cols-[1fr,1fr] md:items-center">
+            {/* Left - Text */}
+            <div className="space-y-6">
+              <h1 className="text-3xl font-bold leading-[1.2] tracking-[0.01em] text-[#231f1b] sm:text-4xl md:text-5xl lg:text-[56px]">
+                {copy.factoryHeroTitle}
+              </h1>
+              <p className="max-w-[500px] text-sm leading-7 text-[#6b635d] sm:text-base sm:leading-8">
+                {copy.factoryHeroDesc}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => setShowSampleModal(true)}
+                  className="bg-[#3B82F6] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] sm:px-8 sm:py-3.5"
+                >
+                  {copy.factoryRequestSample}
+                </button>
+                <Link
+                  href="/pages/brand-story"
+                  className="inline-flex items-center gap-2 border border-[#231f1b] px-6 py-3 text-sm font-medium text-[#231f1b] transition hover:bg-[#231f1b] hover:text-white sm:px-8 sm:py-3.5"
+                >
+                  {copy.factoryHowWeWork}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
             </div>
+
+            {/* Right - Image */}
+            <div className="relative min-h-[300px] md:min-h-[400px]">
+              <Image
+                src="/images/hero-bg.webp"
+                alt="YANXINNA Shapewear"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
-        </Link>
+        </div>
+
+        {/* Stats Bar */}
+        <div className="border-t border-[#e5e5e5] bg-white">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-6 py-8 md:grid-cols-4 md:px-8">
+            {[
+              { number: "11+", label: "Years Experience" },
+              { number: "100+", label: "Design Patents" },
+              { number: "1M+", label: "Pieces/Year" },
+              { number: "30+", label: "Countries" }
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-2xl font-bold text-[#3B82F6] sm:text-3xl md:text-4xl">{stat.number}</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-[#6b635d] sm:text-xs">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section id="shapewear-feature" className="relative min-h-[450px] w-full overflow-hidden sm:min-h-[500px] md:min-h-[720px]">
@@ -242,37 +279,10 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         </div>
       </section>
 
-      <section className="relative min-h-[400px] w-full overflow-hidden bg-[#1e40af] sm:min-h-[500px] md:min-h-[680px]">
-        <Link href="/pages/brand-story" className="group block min-h-[400px] sm:min-h-[500px] md:min-h-[680px]">
-          <SilkBackground
-            speed={5}
-            scale={1}
-            color="#3B82F6"
-            noiseIntensity={1.5}
-            rotation={-10}
-            className="absolute inset-0 h-full w-full"
-          />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent px-5 py-6 sm:px-6 sm:py-10 md:px-8 md:py-12">
-            <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.brandStoryTitle}</GradientText></p>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-white/90 sm:mt-4 sm:text-base sm:leading-8">
-              {copy.brandStorySubtitle}
-            </p>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
-              <ShinyText
-                text={copy.brandStoryCta}
-                speed={2.5}
-                color="#ffffff"
-                shineColor="#93C5FD"
-                spread={120}
-                direction="left"
-                pauseOnHover
-              />
-              <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
-            </span>
-          </div>
-        </Link>
-      </section>
+      {/* Factory Strengths */}
+      <FactoryStrengths />
 
+      {/* Trending Products */}
       <section className="w-full bg-white">
         <div className="flex items-center justify-between border-y border-borderSoft px-5 py-6 sm:px-6 sm:py-8 md:px-8">
           <div className="w-16 sm:w-24" />
@@ -310,6 +320,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         </div>
       </section>
 
+      {/* Brand Statement + Service Marquee */}
       <section className="w-full bg-white">
         <div className="w-full border-t border-borderSoft px-5 py-10 sm:px-6 sm:py-16 md:px-8">
           <div className="mx-auto max-w-4xl text-center">
