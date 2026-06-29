@@ -150,4 +150,15 @@ export type CopyKeys = {
 
   // Meta
   metaDescription: string;
+
+  // 品牌故事
+  brandStoryTitle: string;
+  brandStorySubtitle: string;
+  brandStoryCta: string;
+  brandStoryFactoryTitle: string;
+  brandStoryFactoryDesc: string;
+  brandStoryPhilosophyTitle: string;
+  brandStoryPhilosophyDesc: string;
+  brandStoryQualityTitle: string;
+  brandStoryQualityDesc: string;
 };

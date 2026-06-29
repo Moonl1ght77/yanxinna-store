@@ -151,7 +151,18 @@ export const copyByLocale: Record<string, CopyKeys> = {
     materialCare: "Материал / Уход",
 
     // Meta
-    metaDescription: "Интернет-магазин корректирующего белья, бюстгальтеров и базового белья YANXINNA."
+    metaDescription: "Интернет-магазин корректирующего белья, бюстгальтеров и базового белья YANXINNA.",
+
+    // 品牌故事
+    brandStoryTitle: "История бренда",
+    brandStorySubtitle: "Создано для выразительных линий в движении: мягкая компрессия, гладкие слои и оттенки, которые работают весь день.",
+    brandStoryCta: "Узнать больше",
+    brandStoryFactoryTitle: "Производство",
+    brandStoryFactoryDesc: "Собственное производство с контролем качества на каждом этапе. Мы используем только сертифицированные материалы.",
+    brandStoryPhilosophyTitle: "Философия",
+    brandStoryPhilosophyDesc: "Мы верим, что каждая женщина заслуживает уверенности. Наше белье подчеркивает естественную красоту.",
+    brandStoryQualityTitle: "Качество",
+    brandStoryQualityDesc: "Каждая модель проходит строгий контроль качества. Мы гарантируем долговечность и комфорт."
   },
 
   "en-US": {
@@ -296,7 +307,18 @@ export const copyByLocale: Record<string, CopyKeys> = {
     materialCare: "Material / Care",
 
     // Meta
-    metaDescription: "YANXINNA — modern shapewear, bras, and underwear for everyday support and confidence."
+    metaDescription: "YANXINNA — modern shapewear, bras, and underwear for everyday support and confidence.",
+
+    // Brand Story
+    brandStoryTitle: "Our Story",
+    brandStorySubtitle: "Created for expressive lines in motion: soft compression, smooth layers, and shades that work all day.",
+    brandStoryCta: "Learn More",
+    brandStoryFactoryTitle: "Manufacturing",
+    brandStoryFactoryDesc: "Our own production facility with quality control at every stage. We use only certified materials.",
+    brandStoryPhilosophyTitle: "Philosophy",
+    brandStoryPhilosophyDesc: "We believe every woman deserves confidence. Our garments enhance natural beauty.",
+    brandStoryQualityTitle: "Quality",
+    brandStoryQualityDesc: "Every model undergoes strict quality control. We guarantee durability and comfort."
   },
 
   "en-GB": {
@@ -441,7 +463,18 @@ export const copyByLocale: Record<string, CopyKeys> = {
     materialCare: "Material / Care",
 
     // Meta
-    metaDescription: "YANXINNA — modern shapewear, bras, and underwear for everyday support and confidence."
+    metaDescription: "YANXINNA — modern shapewear, bras, and underwear for everyday support and confidence.",
+
+    // Brand Story
+    brandStoryTitle: "Our Story",
+    brandStorySubtitle: "Created for expressive lines in motion: soft compression, smooth layers, and shades that work all day.",
+    brandStoryCta: "Learn More",
+    brandStoryFactoryTitle: "Manufacturing",
+    brandStoryFactoryDesc: "Our own production facility with quality control at every stage. We use only certified materials.",
+    brandStoryPhilosophyTitle: "Philosophy",
+    brandStoryPhilosophyDesc: "We believe every woman deserves confidence. Our garments enhance natural beauty.",
+    brandStoryQualityTitle: "Quality",
+    brandStoryQualityDesc: "Every model undergoes strict quality control. We guarantee durability and comfort."
   },
 
   "fr-FR": {
@@ -586,7 +619,18 @@ export const copyByLocale: Record<string, CopyKeys> = {
     materialCare: "Matière / Entretien",
 
     // Meta
-    metaDescription: "YANXINNA — gainant, soutiens-gorge et sous-vêtements modernes pour un soutien quotidien."
+    metaDescription: "YANXINNA — gainant, soutiens-gorge et sous-vêtements modernes pour un soutien quotidien.",
+
+    // Brand Story
+    brandStoryTitle: "Notre Histoire",
+    brandStorySubtitle: "Créé pour des lignes expressives en mouvement : compression douce, couches lisses et teintes qui travaillent toute la journée.",
+    brandStoryCta: "En savoir plus",
+    brandStoryFactoryTitle: "Fabrication",
+    brandStoryFactoryDesc: "Notre propre production avec contrôle qualité à chaque étape. Nous utilisons uniquement des matériaux certifiés.",
+    brandStoryPhilosophyTitle: "Philosophie",
+    brandStoryPhilosophyDesc: "Nous croyons que chaque femme mérite confiance. Nos vêtements subliment la beauté naturelle.",
+    brandStoryQualityTitle: "Qualité",
+    brandStoryQualityDesc: "Chaque modèle passe un contrôle qualité strict. Nous garantissons durabilité et confort."
   },
 
   "de-DE": {
@@ -731,6 +775,17 @@ export const copyByLocale: Record<string, CopyKeys> = {
     materialCare: "Material / Pflege",
 
     // Meta
-    metaDescription: "YANXINNA — moderne Shapewear, Bras und Unterwäsche für täglich halt und Komfort."
+    metaDescription: "YANXINNA — moderne Shapewear, Bras und Unterwäsche für täglich halt und Komfort.",
+
+    // Brand Story
+    brandStoryTitle: "Unsere Geschichte",
+    brandStorySubtitle: "Erschaffen für ausdruckstarke Linien in Bewegung: weiche Kompression, glatte Schichten und Farbtöne, die den ganzen Tag funktionieren.",
+    brandStoryCta: "Mehr erfahren",
+    brandStoryFactoryTitle: "Produktion",
+    brandStoryFactoryDesc: "Eigene Produktionsstätte mit Qualitätskontrolle auf jeder Stufe. Wir verwenden nur zertifizierte Materialien.",
+    brandStoryPhilosophyTitle: "Philosophie",
+    brandStoryPhilosophyDesc: "Wir glauben, dass jede Frau Selbstvertrauen verdient. Unsere Kleidung betont die natürliche Schönheit.",
+    brandStoryQualityTitle: "Qualität",
+    brandStoryQualityDesc: "Jedes Modell durchläuft eine strenge Qualitätskontrolle. Wir garantieren Langlebigkeit und Komfort."
   }
 } as const;

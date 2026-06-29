@@ -243,32 +243,34 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       </section>
 
       <section className="relative min-h-[400px] w-full overflow-hidden bg-[#1e40af] sm:min-h-[500px] md:min-h-[680px]">
-        <SilkBackground
-          speed={5}
-          scale={1}
-          color="#3B82F6"
-          noiseIntensity={1.5}
-          rotation={-10}
-          className="absolute inset-0 h-full w-full"
-        />
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent px-5 py-6 sm:px-6 sm:py-10 md:px-8 md:py-12">
-          <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.studioTitle}</GradientText></p>
-          <p className="mt-3 max-w-2xl text-sm leading-7 text-white/90 sm:mt-4 sm:text-base sm:leading-8">
-            {copy.studioDescription}
-          </p>
-          <Link href="/shop" className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm hover:opacity-80 transition-opacity">
-            <ShinyText
-              text={copy.watchCta}
-              speed={2.5}
-              color="#ffffff"
-              shineColor="#93C5FD"
-              spread={120}
-              direction="left"
-              pauseOnHover
-            />
-            <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
-          </Link>
-        </div>
+        <Link href="/pages/brand-story" className="group block min-h-[400px] sm:min-h-[500px] md:min-h-[680px]">
+          <SilkBackground
+            speed={5}
+            scale={1}
+            color="#3B82F6"
+            noiseIntensity={1.5}
+            rotation={-10}
+            className="absolute inset-0 h-full w-full"
+          />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 via-black/15 to-transparent px-5 py-6 sm:px-6 sm:py-10 md:px-8 md:py-12">
+            <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.brandStoryTitle}</GradientText></p>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-white/90 sm:mt-4 sm:text-base sm:leading-8">
+              {copy.brandStorySubtitle}
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
+              <ShinyText
+                text={copy.brandStoryCta}
+                speed={2.5}
+                color="#ffffff"
+                shineColor="#93C5FD"
+                spread={120}
+                direction="left"
+                pauseOnHover
+              />
+              <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
+            </span>
+          </div>
+        </Link>
       </section>
 
       <section className="w-full bg-white">
