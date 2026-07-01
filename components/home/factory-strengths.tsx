@@ -371,9 +371,9 @@ export function FactoryStrengths() {
                   </div>
 
                   <BorderGlow backgroundColor="#ffffff" borderRadius={16} glowRadius={30} className="mt-6 md:mt-8">
-                    <div className="relative overflow-hidden p-6 transition-all duration-500">
+                    <div className="relative p-6 transition-all duration-500">
                       {/* Hover Background */}
-                      <div className="absolute inset-0 bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                      <div className="absolute inset-0 rounded-[inherit] bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                       <div className="relative z-10">
                         <h3 className="text-base font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
@@ -492,7 +492,7 @@ export function FactoryStrengths() {
 
                   <div className="relative mt-4 overflow-hidden rounded-xl border border-[#e5e5e5] bg-white p-4 transition-all duration-500 group-hover:-translate-y-3 group-hover:border-[#A89B8C] group-hover:shadow-2xl">
                     {/* Hover Background */}
-                    <div className="absolute inset-0 bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    <div className="absolute inset-0 rounded-[inherit] bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                     <div className="relative z-10">
                       <div className="mx-auto mb-3 h-16 w-full rounded-lg bg-[#F0EBE5] transition-all duration-500 group-hover:bg-[#C9B99A]/20" />
