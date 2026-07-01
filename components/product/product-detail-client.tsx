@@ -34,7 +34,7 @@ export function ProductDetailClient({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
-      <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
+      <div className="mb-6 overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
         <Link href="/">{copy.breadcrumbHome}</Link> / <Link href="/shop">{copy.breadcrumbShop}</Link> /{" "}
         <Link href={`/shop?category=${product.category}`}>{titleCase(product.category)}</Link>
         {product.subcategory ? (
@@ -47,11 +47,11 @@ export function ProductDetailClient({
       </div>
       <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr]">
         <div className="space-y-4">
-          <PlaceholderImage src={selectedImage} alt={product.name} className="min-h-[680px] rounded-none" />
+          <PlaceholderImage src={selectedImage} alt={product.name} className="min-h-[400px] rounded-none md:min-h-[680px]" />
           <div className="grid grid-cols-3 gap-4">
             {product.gallery.map((image) => (
               <button key={image} onClick={() => setSelectedImage(image)} className="text-left">
-                <PlaceholderImage src={image} alt={`${product.name} view`} className="min-h-[170px] rounded-none" />
+                <PlaceholderImage src={image} alt={`${product.name} view`} className="min-h-[100px] rounded-none md:min-h-[170px]" />
               </button>
             ))}
           </div>
@@ -69,7 +69,7 @@ export function ProductDetailClient({
               </span>
             ) : null}
           </div>
-          <h1 className="mt-3 font-display text-5xl leading-tight tracking-[0.04em] text-[#2C2825]">{product.name}</h1>
+          <h1 className="mt-3 font-display text-3xl leading-tight tracking-[0.04em] text-[#2C2825] sm:text-4xl md:text-5xl">{product.name}</h1>
           <div className="mt-5 flex items-center gap-3">
             <p className="text-xl text-[#2C2825]">{formatPrice(product.price, currency, locale)}</p>
             {product.compareAtPrice ? (
@@ -209,7 +209,7 @@ export function ProductDetailClient({
 
       <section className="mt-14">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="font-display text-4xl tracking-[0.04em] text-[#2C2825]">{copy.completeLook}</h2>
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825] sm:text-3xl md:text-4xl">{copy.completeLook}</h2>
           <Link href="/shop" className="text-sm uppercase tracking-[0.12em] text-[#6B5E52]">
             {copy.continueShopping}
           </Link>

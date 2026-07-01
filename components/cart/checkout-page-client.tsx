@@ -37,7 +37,7 @@ export function CheckoutPageClient() {
       <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
         <Link href="/">{copy.breadcrumbHome}</Link> / <Link href="/cart">{copy.breadcrumbCart}</Link> / {copy.checkoutTitle}
       </div>
-      <h1 className="font-display text-5xl tracking-[0.04em] text-[#2C2825]">{copy.checkoutTitle}</h1>
+      <h1 className="font-display text-3xl tracking-[0.04em] text-[#2C2825] sm:text-4xl md:text-5xl">{copy.checkoutTitle}</h1>
       {items.length === 0 ? (
         <div className="mt-8 border border-borderSoft bg-white p-10">
           <p className="font-display text-3xl tracking-[0.04em] text-[#2C2825]">{copy.cartEmpty}</p>

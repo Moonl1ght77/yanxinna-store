@@ -93,9 +93,9 @@ export function SiteHeader() {
           )}
         </nav>
 
-        <div className="flex items-center justify-end gap-3">
+        <div className="flex items-center justify-end gap-2 sm:gap-3">
           <LocaleRegionSwitcher
-            className="text-white"
+            className="hidden text-white sm:inline-flex"
             selectClassName="border-white/30 bg-white/20 text-white"
           />
           <button
@@ -107,7 +107,7 @@ export function SiteHeader() {
           </button>
           <Link
             href="/cart"
-            className="relative rounded-none border border-white/30 bg-white/20 p-3 text-white transition hover:bg-white/30"
+            className="relative flex h-10 w-10 items-center justify-center border border-white/30 bg-white/20 text-white transition hover:bg-white/30"
           >
             <ShoppingBag className="h-4 w-4" />
             {itemCount > 0 ? (
@@ -129,19 +129,19 @@ export function SiteHeader() {
           />
 
           {/* Drawer */}
-          <div className="absolute inset-y-0 left-0 w-[85%] max-w-sm bg-white mobile-menu-drawer">
+          <div className="absolute inset-y-0 left-0 w-[85%] max-w-sm bg-white dark:bg-[#1E1B18] mobile-menu-drawer">
             {/* Drawer header */}
             <div className="flex items-center justify-between border-b border-borderSoft px-4 py-4">
               <Link
                 href="/"
-                className="font-display text-xl leading-none tracking-[0.08em] text-[#2C2825] sm:text-[26px]"
+                className="font-display text-xl leading-none tracking-[0.08em] text-[#2C2825] dark:text-[#E8E2DA] sm:text-[26px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 YANXINNA
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex h-10 w-10 items-center justify-center text-[#2C2825]"
+                className="flex h-10 w-10 items-center justify-center text-[#2C2825] dark:text-[#E8E2DA]"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" strokeWidth={1.7} />
@@ -159,7 +159,7 @@ export function SiteHeader() {
                           mobileExpandedItem === item.label ? null : item.label
                         )
                       }
-                      className="flex w-full items-center justify-between py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#2C2825] sm:py-4 sm:text-[13px]"
+                      className="flex w-full items-center justify-between py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#2C2825] dark:text-[#E8E2DA] sm:py-4 sm:text-[13px]"
                     >
                       {item.label}
                       <ChevronDown

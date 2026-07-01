@@ -18,7 +18,7 @@ export function CheckoutSuccessClient({ order }: { order: string }) {
     <div className="mx-auto max-w-3xl px-4 py-16 text-center md:px-8">
       <div className="border border-borderSoft bg-white px-6 py-14 md:px-10">
         <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">{copy.orderConfirmed}</p>
-        <h1 className="mt-4 font-display text-5xl tracking-[0.04em] text-[#2C2825]">{copy.orderThankYou}</h1>
+        <h1 className="mt-4 font-display text-3xl tracking-[0.04em] text-[#2C2825] sm:text-4xl md:text-5xl">{copy.orderThankYou}</h1>
         <p className="mt-5 text-base leading-8 text-[#8A7F73]">
           {copy.orderReference}: <span className="font-medium text-[#2C2825]">{order}</span>.
         </p>
