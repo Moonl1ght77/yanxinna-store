@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { products } from "@/lib/data/products";
 import { categoryDescriptions } from "@/lib/data/categories";
 import { formatPrice, sortProductsByMerchOrder } from "@/lib/utils";
-import { PlaceholderImage } from "@/components/ui/placeholder-image";
+import { ProductCardImage } from "@/components/ui/product-card-image";
 import { Button } from "@/components/ui/button";
 import { Category } from "@/types/product";
 import { useLocale } from "@/hooks/use-locale";
@@ -210,8 +210,13 @@ export function ShopClient({
       ) : (
         <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-6 md:grid-cols-3">
           {visibleProducts.map((product) => (
-            <Link key={product.id} href={`/product/${product.slug}`} className="border border-borderSoft bg-white p-3 transition duration-300 hover:-translate-y-1 sm:p-4">
-              <PlaceholderImage src={product.image} alt={product.name} className="min-h-[180px] rounded-none image-zoom sm:min-h-[280px] md:min-h-[360px]" />
+            <Link key={product.id} href={`/product/${product.slug}`} className="group border border-borderSoft bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-lg p-3 sm:p-4">
+              <ProductCardImage
+                src={product.image}
+                hoverSrc={product.hoverImage}
+                alt={product.name}
+                className="min-h-[180px] sm:min-h-[280px] md:min-h-[360px]"
+              />
               <div className="mt-3 sm:mt-4">
                 <div className="flex items-start justify-between gap-2">
                   <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#A89B8C] sm:text-[11px]">

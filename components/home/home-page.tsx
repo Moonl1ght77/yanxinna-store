@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, Heart, RotateCcw, Smartphone, Sparkles, Truck } from "lucide-react";
 import { products } from "@/lib/data/products";
 import { formatPrice, sortProductsByMerchOrder } from "@/lib/utils";
-import { PlaceholderImage } from "@/components/ui/placeholder-image";
+import { ProductCardImage } from "@/components/ui/product-card-image";
 import { Button } from "@/components/ui/button";
 import { SilkBackground } from "@/components/ui/silk-background";
 import { ShinyText } from "@/components/ui/shiny-text";
@@ -305,7 +305,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
                         : ""
                 }`}
               >
-                <PlaceholderImage src={product.image} alt={product.name} className="min-h-[180px] rounded-none image-zoom bg-white sm:min-h-[250px]" />
+                <ProductCardImage src={product.image} hoverSrc={product.hoverImage} alt={product.name} className="min-h-[180px] bg-white sm:min-h-[250px]" />
                 <div className="mt-4 flex items-start justify-between gap-3 sm:mt-6 sm:gap-4">
                   <div>
                     <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#A89B8C] sm:text-[11px]">{product.category}</p>
