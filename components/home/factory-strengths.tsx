@@ -154,46 +154,56 @@ export function FactoryStrengths() {
             ].map((item, index) => (
               <div
                 key={item.num}
-                className="group relative overflow-hidden rounded-2xl bg-[#2C2825] p-7 text-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                className="group relative"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                {/* Glow Effect on Hover */}
-                <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[#C9B99A]/10 opacity-0 blur-3xl transition-all duration-700 group-hover:opacity-100 group-hover:scale-150" />
+                <BorderGlow
+                  backgroundColor="#2C2825"
+                  borderRadius={20}
+                  glowRadius={40}
+                  glowIntensity={1.2}
+                  colors={["#C9B99A", "#A89B8C", "#8B7B6B"]}
+                >
+                  <div className="relative overflow-hidden p-7 text-white">
+                    {/* Subtle Glow on Hover */}
+                    <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-[#C9B99A]/10 opacity-0 blur-3xl transition-all duration-700 group-hover:opacity-100 group-hover:scale-150" />
 
-                {/* Number with animated line */}
-                <div className="relative flex items-center gap-3">
-                  <span className="text-5xl font-bold text-[#C9B99A] transition-transform duration-500 group-hover:scale-110">
-                    {item.num}
-                  </span>
-                  <div className="h-px flex-1 bg-white/20 transition-all duration-500 group-hover:bg-[#C9B99A]/50 group-hover:w-full" />
-                </div>
+                    {/* Number with animated line */}
+                    <div className="relative flex items-center gap-3">
+                      <span className="text-5xl font-bold text-[#C9B99A] transition-transform duration-500 group-hover:scale-110">
+                        {item.num}
+                      </span>
+                      <div className="h-px flex-1 bg-white/20 transition-all duration-500 group-hover:bg-[#C9B99A]/50" />
+                    </div>
 
-                <h3 className="mt-5 text-xl font-semibold text-white transition-colors duration-300 group-hover:text-[#C9B99A]">
-                  {item.title}
-                </h3>
-                <p className="mt-1 text-xs font-medium text-[#C9B99A]">
-                  {item.subtitle}
-                </p>
+                    <h3 className="mt-5 text-xl font-semibold text-white transition-colors duration-300 group-hover:text-[#C9B99A]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-xs font-medium text-[#C9B99A]">
+                      {item.subtitle}
+                    </p>
 
-                <p className="mt-4 text-sm leading-6 text-white/80">
-                  {item.desc}
-                </p>
+                    <p className="mt-4 text-sm leading-6 text-white/80">
+                      {item.desc}
+                    </p>
 
-                <ul className="mt-5 space-y-2.5">
-                  {item.features.map((feature, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2.5 text-sm text-white/90 transition-all duration-500 hover:translate-x-1"
-                      style={{ transitionDelay: `${i * 50}ms` }}
-                    >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9B99A] transition-transform duration-300 group-hover:scale-150" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                    <ul className="mt-5 space-y-2.5">
+                      {item.features.map((feature, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2.5 text-sm text-white/90 transition-all duration-500 hover:translate-x-1"
+                          style={{ transitionDelay: `${i * 50}ms` }}
+                        >
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9B99A] transition-transform duration-300 group-hover:scale-150" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
 
-                {/* Bottom Accent Line */}
-                <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-[#C9B99A] to-[#A89B8C] transition-all duration-500 group-hover:w-full" />
+                    {/* Bottom Accent Line */}
+                    <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-[#C9B99A] to-[#A89B8C] transition-all duration-500 group-hover:w-full" />
+                  </div>
+                </BorderGlow>
               </div>
             ))}
           </div>
