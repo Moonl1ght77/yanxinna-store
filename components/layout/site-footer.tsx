@@ -11,19 +11,19 @@ export function SiteFooter() {
   const [showWechat, setShowWechat] = useState(false);
 
   return (
-    <footer className="border-t border-borderSoft bg-white">
+    <footer className="border-t border-borderSoft bg-white dark:bg-[#1A1816]">
       {/* WeChat QR Modal */}
       {showWechat && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowWechat(false)}>
-          <div className="relative mx-4 w-[300px] rounded-lg bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+          <div className="relative mx-4 w-[300px] rounded-lg bg-white dark:bg-[#2C2825] p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowWechat(false)}
-              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center text-[#A89B8C] transition hover:text-[#2C2825]"
+              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center text-accent transition hover:text-foreground"
             >
               <X className="h-5 w-5" />
             </button>
             <div className="text-center">
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-[#2C2825]">Scan WeChat QR</p>
+              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-foreground">Scan WeChat QR</p>
               <div className="relative mx-auto h-[250px] w-[250px]">
                 <Image
                   src="/wechat-qr.jpg"

@@ -8,6 +8,7 @@ const config: Config = {
     "./hooks/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}"
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -16,7 +17,11 @@ const config: Config = {
         blueMist: "var(--blue-mist)",
         blueSoft: "var(--blue-soft)",
         borderSoft: "var(--border-soft)",
-        inkSoft: "var(--ink-soft)"
+        inkSoft: "var(--ink-soft)",
+        cardBg: "var(--card-bg)",
+        cardBorder: "var(--card-border)",
+        accent: "var(--accent)",
+        accentLight: "var(--accent-light)"
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
