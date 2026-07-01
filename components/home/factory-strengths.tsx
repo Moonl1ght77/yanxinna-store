@@ -148,41 +148,41 @@ export function FactoryStrengths() {
           {/* Cards - Horizontal Scroll on Mobile, Grid on Desktop */}
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {[
-              { num: "01", title: copy.partnership01Title, subtitle: copy.partnership01Subtitle, desc: copy.partnership01Desc, features: copy.partnership01Features, highlight: true },
-              { num: "02", title: copy.partnership02Title, subtitle: copy.partnership02Subtitle, desc: copy.partnership02Desc, features: copy.partnership02Features, highlight: false },
-              { num: "03", title: copy.partnership03Title, subtitle: copy.partnership03Subtitle, desc: copy.partnership03Desc, features: copy.partnership03Features, highlight: false }
+              { num: "01", title: copy.partnership01Title, subtitle: copy.partnership01Subtitle, desc: copy.partnership01Desc, features: copy.partnership01Features },
+              { num: "02", title: copy.partnership02Title, subtitle: copy.partnership02Subtitle, desc: copy.partnership02Desc, features: copy.partnership02Features },
+              { num: "03", title: copy.partnership03Title, subtitle: copy.partnership03Subtitle, desc: copy.partnership03Desc, features: copy.partnership03Features }
             ].map((item) => (
               <BorderGlow
                 key={item.num}
-                backgroundColor={item.highlight ? "#2C2825" : "#ffffff"}
+                backgroundColor="#2C2825"
                 borderRadius={20}
                 glowRadius={40}
-                glowIntensity={item.highlight ? 1.2 : 0.8}
+                glowIntensity={1}
               >
-                <div className={`p-7 ${item.highlight ? "text-white" : ""}`}>
+                <div className="p-7 text-white">
                   {/* Number with decorative line */}
                   <div className="flex items-center gap-3">
-                    <span className={`text-5xl font-bold ${item.highlight ? "text-[#C9B99A]" : "text-[#A89B8C]"}`}>
+                    <span className="text-5xl font-bold text-[#C9B99A]">
                       {item.num}
                     </span>
-                    <div className={`h-px flex-1 ${item.highlight ? "bg-white/20" : "bg-[#e5e5e5]"}`} />
+                    <div className="h-px flex-1 bg-white/20" />
                   </div>
 
-                  <h3 className={`mt-5 text-xl font-semibold ${item.highlight ? "text-white" : "text-[#2C2825]"}`}>
+                  <h3 className="mt-5 text-xl font-semibold text-white">
                     {item.title}
                   </h3>
-                  <p className={`mt-1 text-xs font-medium ${item.highlight ? "text-[#C9B99A]" : "text-[#A89B8C]"}`}>
+                  <p className="mt-1 text-xs font-medium text-[#C9B99A]">
                     {item.subtitle}
                   </p>
 
-                  <p className={`mt-4 text-sm leading-6 ${item.highlight ? "text-white/80" : "text-[#8A7F73]"}`}>
+                  <p className="mt-4 text-sm leading-6 text-white/80">
                     {item.desc}
                   </p>
 
                   <ul className="mt-5 space-y-2.5">
                     {item.features.map((feature, i) => (
-                      <li key={i} className={`flex items-start gap-2.5 text-sm ${item.highlight ? "text-white/90" : "text-[#8A7F73]"}`}>
-                        <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${item.highlight ? "bg-[#C9B99A]" : "bg-[#A89B8C]"}`} />
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-white/90">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9B99A]" />
                         {feature}
                       </li>
                     ))}
