@@ -370,18 +370,13 @@ export function FactoryStrengths() {
                     {item.num}
                   </div>
 
-                  <BorderGlow backgroundColor="#ffffff" borderRadius={16} glowRadius={30} className="mt-6 md:mt-8">
-                    <div className="relative p-6 transition-all duration-500">
-                      {/* Hover Background */}
-                      <div className="absolute inset-0 rounded-[inherit] bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-                      <div className="relative z-10">
-                        <h3 className="text-base font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
-                        <p className="mt-3 text-sm leading-6 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
-                        <span className="mt-4 inline-block rounded-full bg-[#F0EBE5] px-3 py-1.5 text-[10px] font-medium text-[#A89B8C] transition-all duration-500 group-hover:bg-[#C9B99A]/20 group-hover:text-[#C9B99A]">
-                          {item.tag}
-                        </span>
-                      </div>
+                  <BorderGlow backgroundColor="#ffffff" borderRadius={16} glowRadius={30} className="mt-6 md:mt-8 transition-all duration-500 group-hover:bg-[#2C2825]">
+                    <div className="p-6">
+                      <h3 className="text-base font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
+                      <span className="mt-4 inline-block rounded-full bg-[#F0EBE5] px-3 py-1.5 text-[10px] font-medium text-[#A89B8C] transition-all duration-500 group-hover:bg-[#C9B99A]/20 group-hover:text-[#C9B99A]">
+                        {item.tag}
+                      </span>
                     </div>
                   </BorderGlow>
                 </div>
