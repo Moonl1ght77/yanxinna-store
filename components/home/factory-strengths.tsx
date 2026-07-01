@@ -126,7 +126,7 @@ export function FactoryStrengths() {
       </section>
 
       {/* 2. Partnership Models - Light Blue Gradient */}
-      <section className="bg-gradient-to-b from-[#e0edff] to-[#f8faff] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
+      <section className="bg-gradient-to-b from-[#F0EBE5] to-[#FDFBF8] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#A89B8C]">Partnership Models</p>
           <h2 className="mt-4 max-w-4xl text-2xl font-bold leading-tight tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
@@ -225,7 +225,7 @@ export function FactoryStrengths() {
       </section>
 
       {/* 4. High-Performance Fabrics - Light Blue Gradient */}
-      <section className="bg-gradient-to-b from-[#e0edff] to-[#f8faff] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
+      <section className="bg-gradient-to-b from-[#F0EBE5] to-[#FDFBF8] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#A89B8C]">High-Performance Fabrics</p>
           <h2 className="mt-4 max-w-4xl text-2xl font-bold leading-tight tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
@@ -303,7 +303,7 @@ export function FactoryStrengths() {
       </section>
 
       {/* 6. Quality Assurance - Light Blue Gradient */}
-      <section className="bg-gradient-to-b from-[#e0edff] to-[#f8faff] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
+      <section className="bg-gradient-to-b from-[#F0EBE5] to-[#FDFBF8] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#A89B8C]">Quality Assurance</p>
           <h2 className="mt-4 max-w-4xl text-2xl font-bold leading-tight tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
@@ -405,7 +405,7 @@ export function FactoryStrengths() {
       </section>
 
       {/* 9. FAQ + Contact - Light Gray */}
-      <section className="bg-[#f8f9fa] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
+      <section className="bg-[#FDFBF8] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-2">
             {/* FAQ */}
