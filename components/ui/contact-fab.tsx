@@ -13,15 +13,15 @@ export function ContactFab() {
       {/* WeChat QR Modal */}
       {showWechat && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowWechat(false)}>
-          <div className="relative mx-4 w-[300px] rounded-lg bg-white dark:bg-[#2C2825] p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+          <div className="relative mx-4 w-[300px] rounded-lg bg-card p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowWechat(false)}
-              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center text-accent transition hover:text-foreground"
+              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center text-accent transition hover:text-fg"
             >
               <X className="h-5 w-5" />
             </button>
             <div className="text-center">
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-foreground">Scan WeChat QR</p>
+              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-fg">Scan WeChat QR</p>
               <div className="relative mx-auto h-[250px] w-[250px]">
                 <Image
                   src="/wechat-qr.jpg"

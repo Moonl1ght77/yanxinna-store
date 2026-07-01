@@ -34,7 +34,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-borderSoft bg-accent dark:bg-[#2C2825]">
+    <header className="sticky top-0 z-30 border-b border-headerBorder bg-headerBg">
       <div className="grid w-full grid-cols-[auto,1fr,auto] items-center gap-4 px-4 py-4 md:px-8">
         {/* Hamburger button - mobile only */}
         <button
@@ -66,12 +66,12 @@ export function SiteHeader() {
                   <ChevronDown className="h-3.5 w-3.5" strokeWidth={1.7} />
                 </Link>
                 <div className="pointer-events-none absolute left-1/2 top-full z-40 w-[240px] -translate-x-1/2 pt-4 opacity-0 transition duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
-                  <div className="border border-borderSoft bg-white dark:bg-[#2C2825] p-2 shadow-[0_18px_40px_rgba(35,31,27,0.08)]">
+                  <div className="border border-borderSoft bg-card p-2 shadow-[0_18px_40px_rgba(35,31,27,0.08)]">
                     {shapewearDropdownItems.map((entry, index) => (
                       <Link
                         key={entry.label}
                         href={entry.href}
-                        className={`block px-4 py-3 text-[11px] uppercase tracking-[0.2em] text-foreground transition hover:bg-blueMist dark:hover:bg-[#3D3530] ${
+                        className={`block px-4 py-3 text-[11px] uppercase tracking-[0.2em] text-fg transition hover:bg-surface ${
                           index < shapewearDropdownItems.length - 1 ? "border-b border-borderSoft" : ""
                         }`}
                       >
