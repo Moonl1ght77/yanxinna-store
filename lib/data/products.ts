@@ -10,12 +10,12 @@ export const products: Product[] = [
     badge: "New",
     price: 98,
     colors: [
-      { name: "Black", hex: "#1a1a1a" },
-      { name: "Nude", hex: "#d4b896" },
-      { name: "Brown", hex: "#8b6f47" },
-      { name: "Grey", hex: "#9a9a9a" },
-      { name: "White", hex: "#f5f5f5" },
-      { name: "Pink", hex: "#e8c4c4" }
+      { name: "Black", hex: "#1a1a1a", image: "/products/shapewear-1/黑色白底.png", hoverImage: "/products/shapewear-1/黑色模特正面.png" },
+      { name: "Nude", hex: "#d4b896", image: "/products/shapewear-1/肤色白底.png", hoverImage: "/products/shapewear-1/肤色模特正面.png" },
+      { name: "Brown", hex: "#8b6f47", image: "/products/shapewear-1/棕色白底.png", hoverImage: "/products/shapewear-1/棕色模特正面.png" },
+      { name: "Grey", hex: "#9a9a9a", image: "/products/shapewear-1/灰色白底.png", hoverImage: "/products/shapewear-1/灰色模特正面.png" },
+      { name: "White", hex: "#f5f5f5", image: "/products/shapewear-1/白色白底.png", hoverImage: "/products/shapewear-1/白色模特正面.png" },
+      { name: "Pink", hex: "#e8c4c4", image: "/products/shapewear-1/粉色白底.png", hoverImage: "/products/shapewear-1/粉色模特正面.png" }
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     image: "/products/shapewear-1/黑色白底.png",
@@ -45,10 +45,10 @@ export const products: Product[] = [
     subcategory: "bodysuits",
     price: 85,
     colors: [
-      { name: "Black", hex: "#1a1a1a" },
-      { name: "Nude", hex: "#d4b896" },
-      { name: "Brown", hex: "#8b6f47" },
-      { name: "White", hex: "#f5f5f5" }
+      { name: "Black", hex: "#1a1a1a", image: "/products/shapewear-2/黑色白底.png", hoverImage: "/products/shapewear-2/黑色模特正面.png" },
+      { name: "Nude", hex: "#d4b896", image: "/products/shapewear-2/肤色白底.png", hoverImage: "/products/shapewear-2/肤色模特正面.png" },
+      { name: "Brown", hex: "#8b6f47", image: "/products/shapewear-2/棕色白底.png", hoverImage: "/products/shapewear-2/棕色模特正面.png" },
+      { name: "White", hex: "#f5f5f5", image: "/products/shapewear-2/白色白底.png", hoverImage: "/products/shapewear-2/白色模特正面.png" }
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     image: "/products/shapewear-2/黑色白底.png",
@@ -78,12 +78,12 @@ export const products: Product[] = [
     badge: "Best Seller",
     price: 108,
     colors: [
-      { name: "Black", hex: "#1a1a1a" },
-      { name: "Nude", hex: "#d4b896" },
-      { name: "Brown", hex: "#8b6f47" },
-      { name: "Grey", hex: "#9a9a9a" },
-      { name: "White", hex: "#f5f5f5" },
-      { name: "Pink", hex: "#e8c4c4" }
+      { name: "Black", hex: "#1a1a1a", image: "/products/shapewear-3/黑色白底.png", hoverImage: "/products/shapewear-3/黑色模特正面.png" },
+      { name: "Nude", hex: "#d4b896", image: "/products/shapewear-3/肤色白底.png", hoverImage: "/products/shapewear-3/肤色模特正面.png" },
+      { name: "Brown", hex: "#8b6f47", image: "/products/shapewear-3/棕色白底.png", hoverImage: "/products/shapewear-3/棕色模特正面.png" },
+      { name: "Grey", hex: "#9a9a9a", image: "/products/shapewear-3/灰色白底.png", hoverImage: "/products/shapewear-3/灰色模特正面.png" },
+      { name: "White", hex: "#f5f5f5", image: "/products/shapewear-3/白色白底.png", hoverImage: "/products/shapewear-3/白色模特正面.png" },
+      { name: "Pink", hex: "#e8c4c4", image: "/products/shapewear-3/粉色白底.png", hoverImage: "/products/shapewear-3/粉色模特正面.png" }
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     image: "/products/shapewear-3/黑色白底.png",
@@ -113,12 +113,12 @@ export const products: Product[] = [
     subcategory: "bodysuits",
     price: 78,
     colors: [
-      { name: "Black", hex: "#1a1a1a" },
-      { name: "Nude", hex: "#d4b896" },
-      { name: "Brown", hex: "#8b6f47" },
-      { name: "Grey", hex: "#9a9a9a" },
-      { name: "White", hex: "#f5f5f5" },
-      { name: "Pink", hex: "#e8c4c4" }
+      { name: "Black", hex: "#1a1a1a", image: "/products/shapewear-4/黑色白底.png", hoverImage: "/products/shapewear-4/黑色模特正面.png" },
+      { name: "Nude", hex: "#d4b896", image: "/products/shapewear-4/肤色白底.png", hoverImage: "/products/shapewear-4/肤色模特正面.png" },
+      { name: "Brown", hex: "#8b6f47", image: "/products/shapewear-4/棕色白底.png", hoverImage: "/products/shapewear-4/棕色模特正面.png" },
+      { name: "Grey", hex: "#9a9a9a", image: "/products/shapewear-4/灰色白底.png", hoverImage: "/products/shapewear-4/灰色模特正面.png" },
+      { name: "White", hex: "#f5f5f5", image: "/products/shapewear-4/白色白底.png", hoverImage: "/products/shapewear-4/白色模特正面.png" },
+      { name: "Pink", hex: "#e8c4c4", image: "/products/shapewear-4/粉色白底.png", hoverImage: "/products/shapewear-4/粉色模特正面.png" }
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     image: "/products/shapewear-4/黑色白底.png",

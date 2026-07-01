@@ -4,6 +4,8 @@ export type ShapewearSubcategory = "bodysuits" | "tops" | "bottoms";
 export type ProductColor = {
   name: string;
   hex: string;
+  image: string;
+  hoverImage: string;
 };
 
 export type CompressionLevel = "Light" | "Medium" | "Firm";

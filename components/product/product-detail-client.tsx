@@ -26,11 +26,34 @@ export function ProductDetailClient({
   const { addItem } = useCart();
   const { locale, currency, copy } = useLocale();
 
+  // 获取当前选中颜色的图片
+  const currentColorData = useMemo(() => {
+    return product.colors.find(c => c.name === selectedColor) || product.colors[0];
+  }, [selectedColor, product.colors]);
+
+  // 当前颜色的画廊图片
+  const currentGallery = useMemo(() => {
+    const colorData = product.colors.find(c => c.name === selectedColor);
+    if (colorData) {
+      return [colorData.image, colorData.hoverImage];
+    }
+    return product.gallery;
+  }, [selectedColor, product.colors, product.gallery]);
+
   const compressionWidth = useMemo(() => {
     if (product.compressionLevel === "Light") return "w-1/3";
     if (product.compressionLevel === "Medium") return "w-2/3";
     return "w-full";
   }, [product.compressionLevel]);
+
+  // 切换颜色时更新图片
+  const handleColorChange = (colorName: string) => {
+    setSelectedColor(colorName);
+    const colorData = product.colors.find(c => c.name === colorName);
+    if (colorData) {
+      setSelectedImage(colorData.image);
+    }
+  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
@@ -48,10 +71,10 @@ export function ProductDetailClient({
       <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr]">
         <div className="space-y-4">
           <PlaceholderImage src={selectedImage} alt={product.name} className="min-h-[400px] rounded-none md:min-h-[680px]" />
-          <div className="grid grid-cols-3 gap-4">
-            {product.gallery.map((image) => (
-              <button key={image} onClick={() => setSelectedImage(image)} className="text-left">
-                <PlaceholderImage src={image} alt={`${product.name} view`} className="min-h-[100px] rounded-none md:min-h-[170px]" />
+          <div className="grid grid-cols-2 gap-4">
+            {currentGallery.map((image, index) => (
+              <button key={`${selectedColor}-${index}`} onClick={() => setSelectedImage(image)} className="text-left">
+                <PlaceholderImage src={image} alt={`${product.name} ${selectedColor} view`} className="min-h-[150px] rounded-none md:min-h-[200px]" />
               </button>
             ))}
           </div>
@@ -81,14 +104,14 @@ export function ProductDetailClient({
           <p className="mt-6 text-sm leading-7 text-[#8A7F73]">{product.description}</p>
 
           <div className="mt-8">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.color}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.color}: {selectedColor}</p>
             <div className="mt-3 flex flex-wrap gap-3">
               {product.colors.map((color) => (
                 <button
                   key={color.name}
-                  onClick={() => setSelectedColor(color.name)}
-                  className={`flex items-center gap-2 border px-3 py-2 text-sm ${
-                    selectedColor === color.name ? "border-[#5C4E43]" : "border-borderSoft"
+                  onClick={() => handleColorChange(color.name)}
+                  className={`flex items-center gap-2 border px-3 py-2 text-sm transition-all duration-300 ${
+                    selectedColor === color.name ? "border-[#5C4E43] bg-[#5C4E43] text-white" : "border-borderSoft hover:border-[#A89B8C]"
                   }`}
                 >
                   <span className="h-4 w-4 rounded-full border border-black/10" style={{ backgroundColor: color.hex }} />
