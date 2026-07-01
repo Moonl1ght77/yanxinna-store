@@ -109,13 +109,17 @@ export function ProductDetailClient({
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <Image
-              src={selectedImage}
-              alt={product.name}
-              fill
-              className="object-contain p-4 transition-transform duration-300"
-              sizes="(max-width: 768px) 100vw, 55vw"
-            />
+            {/* 图片淡入淡出效果 */}
+            <div className="absolute inset-0 transition-opacity duration-500 ease-in-out">
+              <Image
+                key={selectedImage}
+                src={selectedImage}
+                alt={product.name}
+                fill
+                className="object-contain p-4 animate-fade-in"
+                sizes="(max-width: 768px) 100vw, 55vw"
+              />
+            </div>
 
             {/* 左右箭头 */}
             {currentImageIndex > 0 && (

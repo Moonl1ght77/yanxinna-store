@@ -56,6 +56,22 @@ a {
   box-sizing: border-box;
 }
 
+/* 图片淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;
