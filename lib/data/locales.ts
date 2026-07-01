@@ -466,7 +466,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // Factory Introduction
     factoryHeroTitle: "Global OEM/ODM Shapewear Manufacturer",
-    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R11 years of R&D experienceD experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
+    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R&D experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
     factoryRequestSample: "Request Sample",
     factoryHowWeWork: "How We Work",
 
@@ -766,7 +766,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // Factory Introduction
     factoryHeroTitle: "Global OEM/ODM Shapewear Manufacturer",
-    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R11 years of R&D experienceD experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
+    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R&D experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
     factoryRequestSample: "Request Sample",
     factoryHowWeWork: "How We Work",
 
