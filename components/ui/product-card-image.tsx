@@ -36,7 +36,7 @@ export function ProductCardImage({
     <div className={cn("group/product relative overflow-hidden bg-[#f5f5f5]", className)}>
       {/* 默认模特图 */}
       <Image
-        src={src}
+        src={hoverSrc}
         alt={alt}
         fill
         className="object-cover transition-all duration-700 ease-out group-hover/product:opacity-0 group-hover/product:scale-105"
@@ -44,7 +44,7 @@ export function ProductCardImage({
       />
       {/* 悬停产品图 */}
       <Image
-        src={hoverSrc}
+        src={src}
         alt={alt}
         fill
         className="object-cover opacity-0 transition-all duration-700 ease-out group-hover/product:opacity-100 group-hover/product:scale-100"
