@@ -366,19 +366,19 @@ export function FactoryStrengths() {
               ].map((item) => (
                 <div key={item.num} className="group relative">
                   {/* Circle Marker */}
-                  <div className="absolute -top-3 left-6 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-[#A89B8C] text-[10px] font-bold text-white transition-all duration-500 group-hover:scale-125 group-hover:bg-[#C9B99A] md:left-1/2 md:-translate-x-1/2">
+                  <div className="absolute -top-3 left-6 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-[#A89B8C] text-[10px] font-bold text-white transition-all duration-700 ease-out group-hover:scale-125 group-hover:bg-[#C9B99A] md:left-1/2 md:-translate-x-1/2">
                     {item.num}
                   </div>
 
-                  <BorderGlow backgroundColor="#ffffff" borderRadius={16} glowRadius={30} className="mt-6 md:mt-8 transition-all duration-500 group-hover:bg-[#2C2825]">
+                  <div className="mt-6 overflow-hidden rounded-2xl border border-[#e5e5e5] bg-white shadow-sm transition-all duration-700 ease-out group-hover:-translate-y-2 group-hover:border-[#A89B8C] group-hover:bg-[#2C2825] group-hover:shadow-xl md:mt-8">
                     <div className="p-6">
-                      <h3 className="text-base font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
-                      <p className="mt-3 text-sm leading-6 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
-                      <span className="mt-4 inline-block rounded-full bg-[#F0EBE5] px-3 py-1.5 text-[10px] font-medium text-[#A89B8C] transition-all duration-500 group-hover:bg-[#C9B99A]/20 group-hover:text-[#C9B99A]">
+                      <h3 className="text-base font-semibold text-[#2C2825] transition-colors duration-700 ease-out group-hover:text-white">{item.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#8A7F73] transition-colors duration-700 ease-out group-hover:text-white/70">{item.desc}</p>
+                      <span className="mt-4 inline-block rounded-full bg-[#F0EBE5] px-3 py-1.5 text-[10px] font-medium text-[#A89B8C] transition-all duration-700 ease-out group-hover:bg-[#C9B99A]/20 group-hover:text-[#C9B99A]">
                         {item.tag}
                       </span>
                     </div>
-                  </BorderGlow>
+                  </div>
                 </div>
               ))}
             </div>
