@@ -215,7 +215,7 @@ export function ShopClient({
                 src={product.image}
                 hoverSrc={product.hoverImage}
                 alt={product.name}
-                className="min-h-[180px] sm:min-h-[280px] md:min-h-[360px]"
+                className="aspect-[3/4]"
               />
               <div className="mt-3 sm:mt-4">
                 <div className="flex items-start justify-between gap-2">

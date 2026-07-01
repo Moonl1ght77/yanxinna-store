@@ -39,7 +39,7 @@ export function ProductCardImage({
         src={hoverSrc}
         alt={alt}
         fill
-        className="object-cover transition-all duration-700 ease-out group-hover/product:opacity-0 group-hover/product:scale-105"
+        className="object-contain p-4 transition-all duration-700 ease-out group-hover/product:opacity-0"
         sizes={sizes}
       />
       {/* 悬停产品图 */}
@@ -47,7 +47,7 @@ export function ProductCardImage({
         src={src}
         alt={alt}
         fill
-        className="object-cover opacity-0 transition-all duration-700 ease-out group-hover/product:opacity-100 group-hover/product:scale-100"
+        className="object-contain p-4 opacity-0 transition-all duration-700 ease-out group-hover/product:opacity-100"
         sizes={sizes}
       />
     </div>

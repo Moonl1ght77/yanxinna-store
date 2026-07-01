@@ -305,7 +305,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
                         : ""
                 }`}
               >
-                <ProductCardImage src={product.image} hoverSrc={product.hoverImage} alt={product.name} className="min-h-[180px] bg-white sm:min-h-[250px]" />
+                <ProductCardImage src={product.image} hoverSrc={product.hoverImage} alt={product.name} className="aspect-[3/4] bg-white" />
                 <div className="mt-4 flex items-start justify-between gap-3 sm:mt-6 sm:gap-4">
                   <div>
                     <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#A89B8C] sm:text-[11px]">{product.category}</p>
