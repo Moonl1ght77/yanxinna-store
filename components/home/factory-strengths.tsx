@@ -234,12 +234,12 @@ export function FactoryStrengths() {
                 { title: copy.advItem5, desc: copy.advItem5Desc, icon: "⚡" },
                 { title: copy.advItem6, desc: copy.advItem6Desc, icon: "👤" }
               ].map((item) => (
-                <div key={item.title} className="group rounded-2xl border border-[#e5e5e5] bg-white p-5 transition hover:border-[#A89B8C] hover:shadow-md">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F0EBE5] text-xl transition group-hover:bg-[#A89B8C]/10">
+                <div key={item.title} className="group rounded-2xl border border-[#e5e5e5] bg-white p-5 transition-all duration-500 hover:-translate-y-3 hover:border-[#A89B8C] hover:bg-[#2C2825] hover:shadow-2xl">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F0EBE5] text-xl transition-all duration-500 group-hover:bg-[#C9B99A]/20">
                     {item.icon}
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-[#2C2825]">{item.title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-[#8A7F73]">{item.desc}</p>
+                  <h3 className="mt-4 text-sm font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
+                  <p className="mt-2 text-xs leading-5 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -364,19 +364,24 @@ export function FactoryStrengths() {
                 { num: "02", title: copy.quality02, desc: copy.quality02Desc, tag: copy.quality02Tag },
                 { num: "03", title: copy.quality03, desc: copy.quality03Desc, tag: copy.quality03Tag }
               ].map((item) => (
-                <div key={item.num} className="relative">
+                <div key={item.num} className="group relative">
                   {/* Circle Marker */}
-                  <div className="absolute -top-3 left-6 z-10 flex h-6 w-6 items-center justify-center rounded-full bg-[#A89B8C] text-[10px] font-bold text-white md:left-1/2 md:-translate-x-1/2">
+                  <div className="absolute -top-3 left-6 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-[#A89B8C] text-[10px] font-bold text-white transition-all duration-500 group-hover:scale-125 group-hover:bg-[#C9B99A] md:left-1/2 md:-translate-x-1/2">
                     {item.num}
                   </div>
 
                   <BorderGlow backgroundColor="#ffffff" borderRadius={16} glowRadius={30} className="mt-6 md:mt-8">
-                    <div className="p-6">
-                      <h3 className="text-base font-semibold text-[#2C2825]">{item.title}</h3>
-                      <p className="mt-3 text-sm leading-6 text-[#8A7F73]">{item.desc}</p>
-                      <span className="mt-4 inline-block rounded-full bg-[#F0EBE5] px-3 py-1.5 text-[10px] font-medium text-[#A89B8C]">
-                        {item.tag}
-                      </span>
+                    <div className="relative overflow-hidden p-6 transition-all duration-500">
+                      {/* Hover Background */}
+                      <div className="absolute inset-0 bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                      <div className="relative z-10">
+                        <h3 className="text-base font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
+                        <p className="mt-3 text-sm leading-6 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
+                        <span className="mt-4 inline-block rounded-full bg-[#F0EBE5] px-3 py-1.5 text-[10px] font-medium text-[#A89B8C] transition-all duration-500 group-hover:bg-[#C9B99A]/20 group-hover:text-[#C9B99A]">
+                          {item.tag}
+                        </span>
+                      </div>
                     </div>
                   </BorderGlow>
                 </div>
@@ -474,9 +479,9 @@ export function FactoryStrengths() {
                 { step: "5", title: copy.workflowStep5, desc: copy.workflowStep5Desc },
                 { step: "6", title: copy.workflowStep6, desc: copy.workflowStep6Desc }
               ].map((item, i) => (
-                <div key={item.step} className="relative text-center">
+                <div key={item.step} className="group relative text-center">
                   {/* Step Circle */}
-                  <div className="relative z-10 mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#A89B8C] text-sm font-bold text-white shadow-lg">
+                  <div className="relative z-20 mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#A89B8C] text-sm font-bold text-white shadow-lg transition-all duration-500 group-hover:scale-125 group-hover:bg-[#C9B99A]">
                     {item.step}
                   </div>
 
@@ -485,10 +490,15 @@ export function FactoryStrengths() {
                     <div className="absolute left-1/2 top-6 hidden h-px w-full -translate-x-1/2 bg-[#A89B8C]/20 lg:block" />
                   )}
 
-                  <div className="mt-4 rounded-xl border border-[#e5e5e5] bg-white p-4 transition hover:border-[#A89B8C] hover:shadow-sm">
-                    <div className="mx-auto mb-3 h-16 w-full rounded-lg bg-[#F0EBE5]" />
-                    <h3 className="text-xs font-semibold text-[#2C2825]">{item.title}</h3>
-                    <p className="mt-1 text-[10px] leading-4 text-[#8A7F73]">{item.desc}</p>
+                  <div className="relative mt-4 overflow-hidden rounded-xl border border-[#e5e5e5] bg-white p-4 transition-all duration-500 group-hover:-translate-y-3 group-hover:border-[#A89B8C] group-hover:shadow-2xl">
+                    {/* Hover Background */}
+                    <div className="absolute inset-0 bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                    <div className="relative z-10">
+                      <div className="mx-auto mb-3 h-16 w-full rounded-lg bg-[#F0EBE5] transition-all duration-500 group-hover:bg-[#C9B99A]/20" />
+                      <h3 className="text-xs font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
+                      <p className="mt-1 text-[10px] leading-4 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
+                    </div>
                   </div>
                 </div>
               ))}
