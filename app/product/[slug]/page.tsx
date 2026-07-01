@@ -4,6 +4,7 @@ import { ProductDetailClient } from "@/components/product/product-detail-client"
 import { sortProductsByMerchOrder } from "@/lib/utils";
 
 export function generateStaticParams() {
+  if (products.length === 0) return [{ slug: "__placeholder__" }];
   return products.map((product) => ({ slug: product.slug }));
 }
 
