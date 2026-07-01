@@ -176,9 +176,9 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
         <div className="border-t border-[#e5e5e5] bg-white">
           <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-6 py-8 md:grid-cols-4 md:px-8">
             {[
-              { number: "11+", label: "Years Experience" },
+              { number: "33", label: "Years Experience" },
               { number: "100+", label: "Design Patents" },
-              { number: "1M+", label: "Pieces/Year" },
+              { number: "4-5M", label: "Pieces/Year" },
               { number: "30+", label: "Countries" }
             ].map((stat) => (
               <div key={stat.label} className="text-center">
