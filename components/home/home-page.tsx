@@ -131,7 +131,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <SampleRequestModal isOpen={showSampleModal} onClose={() => setShowSampleModal(false)} />
 
       {/* Hero Section - Factory Introduction */}
-      <section className="w-full bg-[#f8f8f8]">
+      <section className="w-full bg-[#FDFBF8]">
         <div className="mx-auto max-w-7xl px-6 py-12 md:px-8 md:py-20">
           <div className="grid gap-8 md:grid-cols-[1fr,1fr] md:items-center">
             {/* Left - Text */}
@@ -145,7 +145,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
               <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => setShowSampleModal(true)}
-                  className="bg-[#A89B8C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] sm:px-8 sm:py-3.5"
+                  className="bg-[#A89B8C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#4A3D34] sm:px-8 sm:py-3.5"
                 >
                   {copy.factoryRequestSample}
                 </button>
@@ -202,7 +202,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
               {copy.shapewearDescription}
             </p>
             <span className="mt-4 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-xs md:text-sm">
-              <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+              <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#C9B99A" spread={120} direction="left" pauseOnHover />
               <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
           </div>
@@ -219,7 +219,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
             <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.underwearCategory}</GradientText></p>
             <p className="mt-2 max-w-md text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">{copy.underwearDescription}</p>
             <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:text-xs md:mt-6 md:text-sm">
-              <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+              <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#C9B99A" spread={120} direction="left" pauseOnHover />
               <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
           </div>
@@ -233,7 +233,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
             <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.brasCategory}</GradientText></p>
             <p className="mt-2 max-w-md text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">{copy.brasDescription}</p>
             <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:text-xs md:mt-6 md:text-sm">
-              <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+              <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#C9B99A" spread={120} direction="left" pauseOnHover />
               <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
             </span>
           </div>
@@ -273,7 +273,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
           <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.bestSellerTitle}</GradientText></p>
           <p className="mt-2 max-w-2xl text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">{copy.bestsellersDescription}</p>
           <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
-            <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#93C5FD" spread={120} direction="left" pauseOnHover />
+            <ShinyText text={copy.watchCta} speed={2.5} color="#ffffff" shineColor="#C9B99A" spread={120} direction="left" pauseOnHover />
             <ArrowRight className="h-3.5 w-3.5 text-white md:h-4 md:w-4" />
           </span>
         </div>

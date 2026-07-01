@@ -41,7 +41,7 @@ export default function BrandStoryPage() {
             filter: "brightness(0.7) saturate(1.3)"
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#A89B8C]/40 to-[#1e40af]/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#A89B8C]/40 to-[#3D3530]/90" />
         <div className="relative flex min-h-[400px] flex-col items-center justify-center px-6 text-center text-white sm:min-h-[500px] md:min-h-[600px]">
           <h2 className="text-4xl font-bold tracking-[0.02em] sm:text-5xl md:text-6xl lg:text-7xl">
             {copy.brandStoryTitle}

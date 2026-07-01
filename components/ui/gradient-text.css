@@ -15,7 +15,7 @@
   display: inline-block;
   position: relative;
   z-index: 2;
-  background: linear-gradient(135deg, #ffffff 0%, #93C5FD 50%, #ffffff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #C9B99A 50%, #ffffff 100%);
   background-size: 200% 200%;
   animation: gradient-shift 4s ease-in-out infinite;
   -webkit-background-clip: text;

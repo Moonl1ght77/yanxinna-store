@@ -32,7 +32,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[#2563EB] bg-[#A89B8C]">
+    <header className="sticky top-0 z-30 border-b border-[#5C4E43] bg-[#A89B8C]">
       <div className="grid w-full grid-cols-[auto,1fr,auto] items-center gap-4 px-4 py-4 md:px-8">
         {/* Hamburger button - mobile only */}
         <button

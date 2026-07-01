@@ -176,7 +176,7 @@ export function SilkBackground({
   style,
   speed = 5,
   scale = 1,
-  color = "#3B82F6",
+  color = "#A89B8C",
   noiseIntensity = 1.5,
   rotation = 0,
 }: SilkBackgroundProps) {

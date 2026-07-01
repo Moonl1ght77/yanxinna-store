@@ -32,7 +32,7 @@ export function FactoryStrengths() {
         <div className="mt-10 space-y-12">
           {/* 01 Quality */}
           <div className="grid gap-8 md:grid-cols-[1fr,2fr]">
-            <div className="relative min-h-[200px] overflow-hidden bg-[#f5f5f5] md:min-h-[300px]">
+            <div className="relative min-h-[200px] overflow-hidden bg-[#F5F1ED] md:min-h-[300px]">
               <div className="absolute left-4 top-4 z-10 rounded bg-[#A89B8C] px-3 py-1 text-xs font-medium text-white">01</div>
               <Image
                 src="/factory-1.png"
@@ -80,7 +80,7 @@ export function FactoryStrengths() {
                 ))}
               </div>
             </div>
-            <div className="relative min-h-[200px] overflow-hidden bg-[#f5f5f5] md:min-h-[300px]">
+            <div className="relative min-h-[200px] overflow-hidden bg-[#F5F1ED] md:min-h-[300px]">
               <div className="absolute left-4 top-4 z-10 rounded bg-[#A89B8C] px-3 py-1 text-xs font-medium text-white">02</div>
               <Image
                 src="/factory-2.png"
@@ -94,7 +94,7 @@ export function FactoryStrengths() {
 
           {/* 03 Fast Launch */}
           <div className="grid gap-8 md:grid-cols-[1fr,2fr]">
-            <div className="relative min-h-[200px] overflow-hidden bg-[#f5f5f5] md:min-h-[300px]">
+            <div className="relative min-h-[200px] overflow-hidden bg-[#F5F1ED] md:min-h-[300px]">
               <div className="absolute left-4 top-4 z-10 rounded bg-[#A89B8C] px-3 py-1 text-xs font-medium text-white">03</div>
               <Image
                 src="/factory-3.png"
@@ -268,7 +268,7 @@ export function FactoryStrengths() {
           <p className="mt-4 max-w-3xl text-sm leading-7 text-[#8A7F73]">{copy.techSubtitle}</p>
 
           <div className="mt-10 grid gap-8 md:grid-cols-2">
-            <div className="relative min-h-[200px] overflow-hidden bg-[#f5f5f5] md:min-h-[400px]">
+            <div className="relative min-h-[200px] overflow-hidden bg-[#F5F1ED] md:min-h-[400px]">
               <Image
                 src="/tech-1.png"
                 alt="Manufacturing Technology"
@@ -294,7 +294,7 @@ export function FactoryStrengths() {
                   </div>
                 </div>
               ))}
-              <a href="#" className="inline-flex items-center gap-2 bg-[#A89B8C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB]">
+              <a href="#" className="inline-flex items-center gap-2 bg-[#A89B8C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#4A3D34]">
                 {copy.techCta}
               </a>
             </div>
@@ -350,13 +350,13 @@ export function FactoryStrengths() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#93C5FD]">About Us</p>
+              <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#C9B99A]">About Us</p>
               <h2 className="mt-4 text-2xl font-bold leading-tight tracking-[0.01em] text-white sm:text-3xl">
                 {copy.aboutTitle}
               </h2>
               <p className="mt-4 text-sm leading-7 text-white/80">{copy.aboutDesc}</p>
               <div className="mt-6 flex flex-wrap gap-4">
-                <a href="/pages/brand-story" className="inline-flex items-center gap-2 bg-white px-6 py-3 text-sm font-medium text-[#1e40af] transition hover:bg-white/90">
+                <a href="/pages/brand-story" className="inline-flex items-center gap-2 bg-white px-6 py-3 text-sm font-medium text-[#5C4E43] transition hover:bg-white/90">
                   {copy.aboutCta1} →
                 </a>
                 <a href="#" className="inline-flex items-center gap-2 border border-white px-6 py-3 text-sm font-medium text-white transition hover:bg-white/10">
@@ -450,7 +450,7 @@ export function FactoryStrengths() {
                     <p className="text-xs text-[#8A7F73]">8 years experience</p>
                   </div>
                 </div>
-                <div className="mt-4 rounded-lg bg-[#f8f8f8] p-4">
+                <div className="mt-4 rounded-lg bg-[#FDFBF8] p-4">
                   <p className="text-xs leading-5 text-[#8A7F73]">
                     Hello, I&apos;m the YANXINNA sales team. Please submit your requirements through the form — I will personally respond and provide our latest product catalog, fabric specifications, and custom pricing details.
                   </p>
@@ -474,7 +474,7 @@ export function FactoryStrengths() {
                     <textarea rows={4} className="w-full resize-none border border-[#e5e5e5] bg-[#f9f9f9] px-4 py-3 text-sm outline-none focus:border-[#A89B8C]" />
                   </div>
                   <div className="flex gap-4">
-                    <button type="submit" className="flex-1 bg-[#A89B8C] py-3 text-sm font-medium text-white transition hover:bg-[#2563EB]">
+                    <button type="submit" className="flex-1 bg-[#A89B8C] py-3 text-sm font-medium text-white transition hover:bg-[#4A3D34]">
                       Submit
                     </button>
                     <a href="https://wa.me/13719947765" target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-2 bg-[#25D366] py-3 text-sm font-medium text-white transition hover:bg-[#128C7E]">

@@ -213,7 +213,7 @@ export function FaultyTerminal({
   chromaticAberration = 0,
   dither = 0,
   curvature = 0.28,
-  tint = "#3B82F6",
+  tint = "#A89B8C",
   mouseReact = true,
   mouseStrength = 0.5,
   dpr = 1.15,

@@ -106,7 +106,7 @@ export function SampleRequestModal({ isOpen, onClose }: SampleRequestModalProps)
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#A89B8C] py-3.5 text-sm font-medium text-white transition hover:bg-[#2563EB]"
+            className="w-full bg-[#A89B8C] py-3.5 text-sm font-medium text-white transition hover:bg-[#4A3D34]"
           >
             {copy.sampleFormSubmit}
           </button>
