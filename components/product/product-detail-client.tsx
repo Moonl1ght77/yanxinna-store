@@ -34,7 +34,7 @@ export function ProductDetailClient({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
-      <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+      <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
         <Link href="/">{copy.breadcrumbHome}</Link> / <Link href="/shop">{copy.breadcrumbShop}</Link> /{" "}
         <Link href={`/shop?category=${product.category}`}>{titleCase(product.category)}</Link>
         {product.subcategory ? (
@@ -59,36 +59,36 @@ export function ProductDetailClient({
 
         <div className="border border-borderSoft bg-white p-6 md:p-8">
           <div className="flex flex-wrap items-center gap-3">
-            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">{product.category}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">{product.category}</p>
             {product.subcategory ? (
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">/ {product.subcategory}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">/ {product.subcategory}</p>
             ) : null}
             {product.badge ? (
-              <span className="border border-borderSoft px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#524a43]">
+              <span className="border border-borderSoft px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#6B5E52]">
                 {product.badge}
               </span>
             ) : null}
           </div>
-          <h1 className="mt-3 font-display text-5xl leading-tight tracking-[0.04em] text-[#231f1b]">{product.name}</h1>
+          <h1 className="mt-3 font-display text-5xl leading-tight tracking-[0.04em] text-[#2C2825]">{product.name}</h1>
           <div className="mt-5 flex items-center gap-3">
-            <p className="text-xl text-[#231f1b]">{formatPrice(product.price, currency, locale)}</p>
+            <p className="text-xl text-[#2C2825]">{formatPrice(product.price, currency, locale)}</p>
             {product.compareAtPrice ? (
               <p className="text-sm text-[#9b928a] line-through">
                 {formatPrice(product.compareAtPrice, currency, locale)}
               </p>
             ) : null}
           </div>
-          <p className="mt-6 text-sm leading-7 text-[#6b635d]">{product.description}</p>
+          <p className="mt-6 text-sm leading-7 text-[#8A7F73]">{product.description}</p>
 
           <div className="mt-8">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.color}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.color}</p>
             <div className="mt-3 flex flex-wrap gap-3">
               {product.colors.map((color) => (
                 <button
                   key={color.name}
                   onClick={() => setSelectedColor(color.name)}
                   className={`flex items-center gap-2 border px-3 py-2 text-sm ${
-                    selectedColor === color.name ? "border-[#231f1b]" : "border-borderSoft"
+                    selectedColor === color.name ? "border-[#5C4E43]" : "border-borderSoft"
                   }`}
                 >
                   <span className="h-4 w-4 rounded-full border border-black/10" style={{ backgroundColor: color.hex }} />
@@ -99,27 +99,27 @@ export function ProductDetailClient({
           </div>
 
           <div className="mt-8">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.size}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.size}</p>
             <div className="mt-3 flex flex-wrap gap-3">
               {product.sizes.map((size) => (
                 <button
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={`border px-4 py-2 text-sm ${
-                    selectedSize === size ? "border-[#231f1b] bg-[#231f1b] text-white" : "border-borderSoft text-[#231f1b]"
+                    selectedSize === size ? "border-[#5C4E43] bg-[#5C4E43] text-white" : "border-borderSoft text-[#2C2825]"
                   }`}
                 >
                   {size}
                 </button>
               ))}
             </div>
-            <p className="mt-4 text-sm leading-6 text-[#8a8077]">{copy.sizeGuide}</p>
+            <p className="mt-4 text-sm leading-6 text-[#A89B8C]">{copy.sizeGuide}</p>
           </div>
 
-          <div className="mt-8 flex items-center justify-between border border-borderSoft bg-[#faf8f5] p-4">
+          <div className="mt-8 flex items-center justify-between border border-borderSoft bg-[#FDFBF8] p-4">
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.quantityLabel}</p>
-              <p className="mt-1 text-sm text-[#524a43]">{copy.sizeGuide}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.quantityLabel}</p>
+              <p className="mt-1 text-sm text-[#6B5E52]">{copy.sizeGuide}</p>
             </div>
             <div className="flex items-center gap-3">
               <button
@@ -128,7 +128,7 @@ export function ProductDetailClient({
               >
                 <Minus className="h-4 w-4" />
               </button>
-              <span className="min-w-6 text-center text-sm text-[#231f1b]">{quantity}</span>
+              <span className="min-w-6 text-center text-sm text-[#2C2825]">{quantity}</span>
               <button
                 onClick={() => setQuantity((current) => current + 1)}
                 className="border border-borderSoft p-2"
@@ -158,50 +158,50 @@ export function ProductDetailClient({
             </Button>
           </div>
 
-          <div className="mt-10 border border-borderSoft bg-[#f7f6f4] p-5">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.compressionLevel}</p>
+          <div className="mt-10 border border-borderSoft bg-[#F5F1ED] p-5">
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.compressionLevel}</p>
             <div className="mt-4 h-2 bg-white">
-              <div className={`${compressionWidth} h-2 bg-[#231f1b]`} />
+              <div className={`${compressionWidth} h-2 bg-[#5C4E43]`} />
             </div>
-            <p className="mt-3 text-sm text-[#524a43]">{product.compressionLevel}</p>
+            <p className="mt-3 text-sm text-[#6B5E52]">{product.compressionLevel}</p>
           </div>
 
           <div className="mt-8 grid gap-3 border-t border-borderSoft pt-8">
             {product.benefits.map((benefit) => (
-              <div key={benefit} className="flex items-center gap-3 border border-borderSoft bg-[#faf8f5] px-4 py-3 text-sm text-[#524a43]">
-                <span className="h-2 w-2 rounded-full bg-[#231f1b]" />
+              <div key={benefit} className="flex items-center gap-3 border border-borderSoft bg-[#FDFBF8] px-4 py-3 text-sm text-[#6B5E52]">
+                <span className="h-2 w-2 rounded-full bg-[#5C4E43]" />
                 <span>{benefit}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-8 grid gap-4 border-t border-borderSoft pt-8 text-sm leading-7 text-[#6b635d]">
+          <div className="mt-8 grid gap-4 border-t border-borderSoft pt-8 text-sm leading-7 text-[#8A7F73]">
             <div className="flex items-start justify-between gap-4 border-b border-borderSoft pb-4">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.footerShipping}</span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.footerShipping}</span>
               <span className="max-w-[70%] text-right">{copy.footerShipping} {copy.footerReturns}</span>
             </div>
             <div className="flex items-start justify-between gap-4 border-b border-borderSoft pb-4">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.footerReturns}</span>
+              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.footerReturns}</span>
               <span className="max-w-[70%] text-right">{copy.footerReturns}</span>
             </div>
           </div>
 
           <div className="mt-8 grid gap-6 border-t border-borderSoft pt-8">
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.series}</p>
-              <p className="mt-2 text-sm leading-7 text-[#6b635d]">{product.shortDescription}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.series}</p>
+              <p className="mt-2 text-sm leading-7 text-[#8A7F73]">{product.shortDescription}</p>
             </div>
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">{copy.materialCare}</p>
-              <p className="mt-2 text-sm leading-7 text-[#6b635d]">
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.materialCare}</p>
+              <p className="mt-2 text-sm leading-7 text-[#8A7F73]">
                 {product.fabric}
                 <br />
                 {product.care}
               </p>
             </div>
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">Reviews</p>
-              <p className="mt-2 text-sm leading-7 text-[#8a8077]">{copy.reviews}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Reviews</p>
+              <p className="mt-2 text-sm leading-7 text-[#A89B8C]">{copy.reviews}</p>
             </div>
           </div>
         </div>
@@ -209,8 +209,8 @@ export function ProductDetailClient({
 
       <section className="mt-14">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="font-display text-4xl tracking-[0.04em] text-[#231f1b]">{copy.completeLook}</h2>
-          <Link href="/shop" className="text-sm uppercase tracking-[0.12em] text-[#524a43]">
+          <h2 className="font-display text-4xl tracking-[0.04em] text-[#2C2825]">{copy.completeLook}</h2>
+          <Link href="/shop" className="text-sm uppercase tracking-[0.12em] text-[#6B5E52]">
             {copy.continueShopping}
           </Link>
         </div>
@@ -218,11 +218,11 @@ export function ProductDetailClient({
           {completeTheLook.map((item) => (
             <Link key={item.id} href={`/product/${item.slug}`} className="border border-borderSoft bg-white p-4">
               <PlaceholderImage src={item.image} alt={item.name} className="min-h-[320px] rounded-none image-zoom" />
-              <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[#8a8077]">
+              <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">
                 {item.subcategory ? `${item.category} / ${item.subcategory}` : item.category}
               </p>
-              <p className="mt-4 text-lg text-[#231f1b]">{item.name}</p>
-              <p className="mt-2 text-sm text-[#524a43]">{formatPrice(item.price, currency, locale)}</p>
+              <p className="mt-4 text-lg text-[#2C2825]">{item.name}</p>
+              <p className="mt-2 text-sm text-[#6B5E52]">{formatPrice(item.price, currency, locale)}</p>
             </Link>
           ))}
         </div>

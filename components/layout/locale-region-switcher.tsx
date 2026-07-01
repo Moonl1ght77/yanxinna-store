@@ -24,7 +24,7 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
         )}
       >
         {getRegionOptions().map((option) => (
-          <option key={option.region} value={option.region} className="bg-white text-[#231f1b]">
+          <option key={option.region} value={option.region} className="bg-white text-[#2C2825]">
             {option.region}
           </option>
         ))}

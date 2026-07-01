@@ -45,8 +45,8 @@ export default function FaqsPage() {
     <HelpLayout>
       <div className="space-y-8">
         <div>
-          <h1 className="font-display text-4xl tracking-[0.04em] text-[#231f1b]">FAQ</h1>
-          <p className="mt-4 text-sm leading-7 text-[#6b635d]">
+          <h1 className="font-display text-4xl tracking-[0.04em] text-[#2C2825]">FAQ</h1>
+          <p className="mt-4 text-sm leading-7 text-[#8A7F73]">
             Find answers to commonly asked questions.
           </p>
         </div>
@@ -58,14 +58,14 @@ export default function FaqsPage() {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="flex w-full items-center justify-between px-6 py-5 text-left"
               >
-                <span className="text-sm font-medium text-[#231f1b]">{faq.question}</span>
-                <span className="ml-4 shrink-0 text-[#8a8077]">
+                <span className="text-sm font-medium text-[#2C2825]">{faq.question}</span>
+                <span className="ml-4 shrink-0 text-[#A89B8C]">
                   {openIndex === index ? "−" : "+"}
                 </span>
               </button>
               {openIndex === index && (
                 <div className="px-6 pb-5">
-                  <p className="text-sm leading-7 text-[#6b635d]">{faq.answer}</p>
+                  <p className="text-sm leading-7 text-[#8A7F73]">{faq.answer}</p>
                 </div>
               )}
             </div>
@@ -73,10 +73,10 @@ export default function FaqsPage() {
         </section>
 
         <section className="border-t border-borderSoft pt-8">
-          <p className="text-sm leading-7 text-[#6b635d]">
-            <strong className="text-[#231f1b]">Still have questions?</strong>{" "}
+          <p className="text-sm leading-7 text-[#8A7F73]">
+            <strong className="text-[#2C2825]">Still have questions?</strong>{" "}
             Contact our support team at{" "}
-            <a href="mailto:13719947765@139.com" className="underline hover:text-[#231f1b]">
+            <a href="mailto:13719947765@139.com" className="underline hover:text-[#2C2825]">
               13719947765@139.com
             </a>
           </p>

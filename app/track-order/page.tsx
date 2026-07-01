@@ -12,16 +12,16 @@ export default function TrackOrderPage() {
     <HelpLayout>
       <div className="space-y-8">
         <div>
-          <h1 className="font-display text-4xl tracking-[0.04em] text-[#231f1b]">Track Your Order</h1>
-          <p className="mt-4 text-sm leading-7 text-[#6b635d]">
+          <h1 className="font-display text-4xl tracking-[0.04em] text-[#2C2825]">Track Your Order</h1>
+          <p className="mt-4 text-sm leading-7 text-[#8A7F73]">
             Enter your order number and email to track your shipment.
           </p>
         </div>
 
-        <section className="border border-borderSoft bg-[#faf8f5] p-6 md:p-8">
+        <section className="border border-borderSoft bg-[#FDFBF8] p-6 md:p-8">
           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
             <div>
-              <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+              <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
                 Order Number
               </label>
               <input
@@ -29,11 +29,11 @@ export default function TrackOrderPage() {
                 value={orderNumber}
                 onChange={(e) => setOrderNumber(e.target.value)}
                 placeholder="e.g., YX12345"
-                className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#231f1b] outline-none focus:border-[#231f1b]"
+                className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
               />
             </div>
             <div>
-              <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+              <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
                 Email Address
               </label>
               <input
@@ -41,7 +41,7 @@ export default function TrackOrderPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
-                className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#231f1b] outline-none focus:border-[#231f1b]"
+                className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
               />
             </div>
             <Button className="w-full md:w-auto">Track Order</Button>
@@ -49,26 +49,26 @@ export default function TrackOrderPage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Order Status Guide</h2>
-          <div className="space-y-3 text-sm leading-7 text-[#6b635d]">
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Order Status Guide</h2>
+          <div className="space-y-3 text-sm leading-7 text-[#8A7F73]">
             <div className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#231f1b]" />
+              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#5C4E43]" />
               <div>
-                <p className="font-medium text-[#231f1b]">Processing</p>
+                <p className="font-medium text-[#2C2825]">Processing</p>
                 <p>Your order is being prepared for shipment.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#8a8077]" />
+              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#A89B8C]" />
               <div>
-                <p className="font-medium text-[#231f1b]">Shipped</p>
+                <p className="font-medium text-[#2C2825]">Shipped</p>
                 <p>Your order is on its way! You&apos;ll receive tracking details via email.</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#6b635d]" />
+              <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#8A7F73]" />
               <div>
-                <p className="font-medium text-[#231f1b]">Delivered</p>
+                <p className="font-medium text-[#2C2825]">Delivered</p>
                 <p>Your order has arrived.</p>
               </div>
             </div>
@@ -76,8 +76,8 @@ export default function TrackOrderPage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Didn&apos;t receive tracking?</h2>
-          <div className="text-sm leading-7 text-[#6b635d]">
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Didn&apos;t receive tracking?</h2>
+          <div className="text-sm leading-7 text-[#8A7F73]">
             <p>
               Tracking information is sent to your email within 24 hours of shipment. Check your spam folder or contact our support team if you need assistance.
             </p>
@@ -85,10 +85,10 @@ export default function TrackOrderPage() {
         </section>
 
         <section className="border-t border-borderSoft pt-8">
-          <p className="text-sm leading-7 text-[#6b635d]">
-            <strong className="text-[#231f1b]">Need help?</strong>{" "}
+          <p className="text-sm leading-7 text-[#8A7F73]">
+            <strong className="text-[#2C2825]">Need help?</strong>{" "}
             Contact our support team at{" "}
-            <a href="mailto:13719947765@139.com" className="underline hover:text-[#231f1b]">
+            <a href="mailto:13719947765@139.com" className="underline hover:text-[#2C2825]">
               13719947765@139.com
             </a>
           </p>

@@ -23,7 +23,7 @@ export function HelpLayout({ children }: HelpLayoutProps) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
-      <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+      <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
         <Link href="/">{copy.breadcrumbHome}</Link> / {copy.footerHelp}
       </div>
 
@@ -38,8 +38,8 @@ export function HelpLayout({ children }: HelpLayoutProps) {
                 href={link.href}
                 className={`block py-2 text-sm transition ${
                   isActive
-                    ? "font-medium text-[#231f1b]"
-                    : "text-[#6b635d] hover:text-[#231f1b]"
+                    ? "font-medium text-[#2C2825]"
+                    : "text-[#8A7F73] hover:text-[#2C2825]"
                 }`}
               >
                 {copy[link.key as keyof typeof copy]}

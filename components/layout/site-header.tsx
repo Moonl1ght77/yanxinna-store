@@ -32,7 +32,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[#2563EB] bg-[#3B82F6]">
+    <header className="sticky top-0 z-30 border-b border-[#2563EB] bg-[#A89B8C]">
       <div className="grid w-full grid-cols-[auto,1fr,auto] items-center gap-4 px-4 py-4 md:px-8">
         {/* Hamburger button - mobile only */}
         <button
@@ -69,7 +69,7 @@ export function SiteHeader() {
                       <Link
                         key={entry.label}
                         href={entry.href}
-                        className={`block px-4 py-3 text-[11px] uppercase tracking-[0.2em] text-[#231f1b] transition hover:bg-[#f7f6f4] ${
+                        className={`block px-4 py-3 text-[11px] uppercase tracking-[0.2em] text-[#2C2825] transition hover:bg-[#F5F1ED] ${
                           index < shapewearDropdownItems.length - 1 ? "border-b border-borderSoft" : ""
                         }`}
                       >
@@ -102,7 +102,7 @@ export function SiteHeader() {
           >
             <ShoppingBag className="h-4 w-4" />
             {itemCount > 0 ? (
-              <span className="absolute -right-1 -top-1 bg-white px-1.5 py-0.5 text-[10px] text-[#3B82F6]">
+              <span className="absolute -right-1 -top-1 bg-white px-1.5 py-0.5 text-[10px] text-[#A89B8C]">
                 {itemCount}
               </span>
             ) : null}
@@ -125,14 +125,14 @@ export function SiteHeader() {
             <div className="flex items-center justify-between border-b border-borderSoft px-4 py-4">
               <Link
                 href="/"
-                className="font-display text-xl leading-none tracking-[0.08em] text-[#231f1b] sm:text-[26px]"
+                className="font-display text-xl leading-none tracking-[0.08em] text-[#2C2825] sm:text-[26px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 YANXINNA
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex h-10 w-10 items-center justify-center text-[#231f1b]"
+                className="flex h-10 w-10 items-center justify-center text-[#2C2825]"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" strokeWidth={1.7} />
@@ -150,7 +150,7 @@ export function SiteHeader() {
                           mobileExpandedItem === item.label ? null : item.label
                         )
                       }
-                      className="flex w-full items-center justify-between py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#231f1b] sm:py-4 sm:text-[13px]"
+                      className="flex w-full items-center justify-between py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#2C2825] sm:py-4 sm:text-[13px]"
                     >
                       {item.label}
                       <ChevronDown
@@ -167,7 +167,7 @@ export function SiteHeader() {
                             key={entry.label}
                             href={entry.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block py-2.5 text-[11px] uppercase tracking-[0.16em] text-[#5f5852] transition hover:text-[#231f1b] sm:text-[12px]"
+                            className="block py-2.5 text-[11px] uppercase tracking-[0.16em] text-[#5f5852] transition hover:text-[#2C2825] sm:text-[12px]"
                           >
                             {entry.label}
                           </Link>
@@ -180,7 +180,7 @@ export function SiteHeader() {
                     key={item.label}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block border-b border-borderSoft py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#231f1b] transition hover:text-[#5f5852] sm:py-4 sm:text-[13px]"
+                    className="block border-b border-borderSoft py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-[#2C2825] transition hover:text-[#5f5852] sm:py-4 sm:text-[13px]"
                   >
                     {item.label}
                   </Link>
@@ -192,7 +192,7 @@ export function SiteHeader() {
                 <Link
                   href="/cart"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 py-3 text-[12px] font-medium uppercase tracking-[0.18em] text-[#231f1b] sm:text-[13px]"
+                  className="flex items-center gap-2 py-3 text-[12px] font-medium uppercase tracking-[0.18em] text-[#2C2825] sm:text-[13px]"
                 >
                   <ShoppingBag className="h-4 w-4" strokeWidth={1.7} />
                   {copy.cartTitle} {itemCount > 0 ? `(${itemCount})` : ""}

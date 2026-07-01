@@ -103,11 +103,11 @@ export function ShopClient({
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8 md:px-8">
       <div className="border border-borderSoft bg-white px-4 py-6 sm:px-6 sm:py-10 md:px-10">
-        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#8a8077] sm:text-[11px]">{copy.shopTitle}</p>
-        <h1 className="mt-3 font-display text-3xl tracking-[0.04em] text-[#231f1b] sm:mt-4 sm:text-5xl">
+        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#A89B8C] sm:text-[11px]">{copy.shopTitle}</p>
+        <h1 className="mt-3 font-display text-3xl tracking-[0.04em] text-[#2C2825] sm:mt-4 sm:text-5xl">
           {categoryLabels[category] ?? categoryLabels.shapewear}
         </h1>
-        <p className="mt-3 max-w-2xl text-xs leading-6 text-[#6b635d] sm:mt-4 sm:text-sm sm:leading-7">{activeCategoryDescription}</p>
+        <p className="mt-3 max-w-2xl text-xs leading-6 text-[#8A7F73] sm:mt-4 sm:text-sm sm:leading-7">{activeCategoryDescription}</p>
         <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
           {[
             { label: copy.categoryShapewear, value: "shapewear" },
@@ -120,7 +120,7 @@ export function ShopClient({
               onClick={() => setCategory(entry.value)}
               className={`border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:px-4 sm:py-2 sm:text-[11px] ${
                 category === entry.value
-                  ? "border-[#231f1b] bg-[#231f1b] text-white"
+                  ? "border-[#5C4E43] bg-[#5C4E43] text-white"
                   : "border-borderSoft bg-white text-[#6a625c]"
               }`}
             >
@@ -134,7 +134,7 @@ export function ShopClient({
               onClick={() => setSubcategory("all")}
               className={`border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:px-4 sm:py-2 sm:text-[11px] ${
                 subcategory === "all"
-                  ? "border-[#231f1b] bg-[#231f1b] text-white"
+                  ? "border-[#5C4E43] bg-[#5C4E43] text-white"
                   : "border-borderSoft bg-white text-[#6a625c]"
               }`}
             >
@@ -153,7 +153,7 @@ export function ShopClient({
                 }}
                 className={`border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:px-4 sm:py-2 sm:text-[11px] ${
                   subcategory === entry.value
-                    ? "border-[#231f1b] bg-[#231f1b] text-white"
+                    ? "border-[#5C4E43] bg-[#5C4E43] text-white"
                     : "border-borderSoft bg-white text-[#6a625c]"
                 }`}
               >
@@ -165,7 +165,7 @@ export function ShopClient({
       </div>
 
       <div className="mt-6 flex flex-col gap-4 border-b border-borderSoft pb-4 sm:mt-8 sm:gap-5 sm:pb-5 md:flex-row md:items-center md:justify-between">
-        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#8a8077] sm:text-[11px]">
+        <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#A89B8C] sm:text-[11px]">
           {copy.breadcrumbHome} / {copy.breadcrumbShop} / {categoryLabels[category] ?? category}
           {subcategory !== "all" ? ` / ${subcategoryLabels[subcategory] ?? subcategory}` : ""}
         </p>
@@ -173,7 +173,7 @@ export function ShopClient({
           <select
             value={sort}
             onChange={(event) => setSort(event.target.value)}
-            className="w-full border border-borderSoft bg-white px-3 py-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#231f1b] outline-none sm:px-4 sm:py-3 sm:text-[11px] md:w-auto"
+            className="w-full border border-borderSoft bg-white px-3 py-2.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#2C2825] outline-none sm:px-4 sm:py-3 sm:text-[11px] md:w-auto"
           >
             <option value="featured">{copy.sortFeatured}</option>
             <option value="best">{copy.sortBest}</option>
@@ -184,15 +184,15 @@ export function ShopClient({
         </div>
       </div>
 
-      <div className="mt-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-[#8a8077] sm:mt-4 sm:text-[11px]">
+      <div className="mt-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-[#A89B8C] sm:mt-4 sm:text-[11px]">
         <span>{filteredProducts.length} {copy.itemsCount}</span>
         {subcategory !== "all" ? <span>{subcategoryLabels[subcategory]}</span> : <span>{categoryLabels[category]}</span>}
       </div>
 
       {visibleProducts.length === 0 ? (
         <div className="mt-6 border border-borderSoft bg-white p-6 text-center sm:mt-8 sm:p-10">
-          <p className="font-display text-2xl tracking-[0.04em] text-[#231f1b] sm:text-3xl">{copy.noProducts}</p>
-          <p className="mt-2 text-xs leading-6 text-[#6b635d] sm:mt-3 sm:text-sm sm:leading-7">
+          <p className="font-display text-2xl tracking-[0.04em] text-[#2C2825] sm:text-3xl">{copy.noProducts}</p>
+          <p className="mt-2 text-xs leading-6 text-[#8A7F73] sm:mt-3 sm:text-sm sm:leading-7">
             {copy.noProductsHint}
           </p>
           <div className="mt-4 flex justify-center sm:mt-6">
@@ -214,15 +214,15 @@ export function ShopClient({
               <PlaceholderImage src={product.image} alt={product.name} className="min-h-[180px] rounded-none image-zoom sm:min-h-[280px] md:min-h-[360px]" />
               <div className="mt-3 sm:mt-4">
                 <div className="flex items-start justify-between gap-2">
-                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#8a8077] sm:text-[11px]">
+                  <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#A89B8C] sm:text-[11px]">
                     {product.subcategory
                       ? `${categoryLabels[product.category]} / ${subcategoryLabels[product.subcategory]}`
                       : categoryLabels[product.category]}
                   </p>
-                  <p className="text-xs text-[#524a43] sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
+                  <p className="text-xs text-[#6B5E52] sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
                 </div>
-                <p className="mt-1.5 text-sm font-medium text-[#231f1b] sm:mt-2 sm:text-lg">{product.name}</p>
-                <p className="mt-1 text-[11px] leading-5 text-[#6b635d] sm:mt-2 sm:text-sm sm:leading-6">{product.shortDescription}</p>
+                <p className="mt-1.5 text-sm font-medium text-[#2C2825] sm:mt-2 sm:text-lg">{product.name}</p>
+                <p className="mt-1 text-[11px] leading-5 text-[#8A7F73] sm:mt-2 sm:text-sm sm:leading-6">{product.shortDescription}</p>
               </div>
             </Link>
           ))}

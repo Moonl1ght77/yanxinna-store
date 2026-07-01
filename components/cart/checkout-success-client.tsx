@@ -17,12 +17,12 @@ export function CheckoutSuccessClient({ order }: { order: string }) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 text-center md:px-8">
       <div className="border border-borderSoft bg-white px-6 py-14 md:px-10">
-        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#8a8077]">{copy.orderConfirmed}</p>
-        <h1 className="mt-4 font-display text-5xl tracking-[0.04em] text-[#231f1b]">{copy.orderThankYou}</h1>
-        <p className="mt-5 text-base leading-8 text-[#6b635d]">
-          {copy.orderReference}: <span className="font-medium text-[#231f1b]">{order}</span>.
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">{copy.orderConfirmed}</p>
+        <h1 className="mt-4 font-display text-5xl tracking-[0.04em] text-[#2C2825]">{copy.orderThankYou}</h1>
+        <p className="mt-5 text-base leading-8 text-[#8A7F73]">
+          {copy.orderReference}: <span className="font-medium text-[#2C2825]">{order}</span>.
         </p>
-        <div className="mt-8 grid gap-4 border border-borderSoft bg-[#faf8f5] p-5 text-left text-sm leading-7 text-[#6b635d]">
+        <div className="mt-8 grid gap-4 border border-borderSoft bg-[#FDFBF8] p-5 text-left text-sm leading-7 text-[#8A7F73]">
           <p>{copy.orderConfirmationNote}</p>
           <p>{copy.orderMockFlowNote}</p>
         </div>

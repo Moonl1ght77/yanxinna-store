@@ -14,74 +14,74 @@ export default function ContactUsPage() {
     <HelpLayout>
       <div className="space-y-8">
         <div>
-          <h1 className="font-display text-4xl tracking-[0.04em] text-[#231f1b]">Contact Us</h1>
-          <p className="mt-4 text-sm leading-7 text-[#6b635d]">
+          <h1 className="font-display text-4xl tracking-[0.04em] text-[#2C2825]">Contact Us</h1>
+          <p className="mt-4 text-sm leading-7 text-[#8A7F73]">
             We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
           </p>
         </div>
 
         <section className="grid gap-8 md:grid-cols-2">
           <div>
-            <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Get in Touch</h2>
-            <div className="mt-4 space-y-4 text-sm leading-7 text-[#6b635d]">
+            <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Get in Touch</h2>
+            <div className="mt-4 space-y-4 text-sm leading-7 text-[#8A7F73]">
               <div>
-                <p className="font-medium text-[#231f1b]">Email</p>
-                <a href="mailto:13719947765@139.com" className="underline hover:text-[#231f1b]">
+                <p className="font-medium text-[#2C2825]">Email</p>
+                <a href="mailto:13719947765@139.com" className="underline hover:text-[#2C2825]">
                   13719947765@139.com
                 </a>
               </div>
               <div>
-                <p className="font-medium text-[#231f1b]">Phone</p>
+                <p className="font-medium text-[#2C2825]">Phone</p>
                 <p>+7 (495) 123-45-67</p>
               </div>
               <div>
-                <p className="font-medium text-[#231f1b]">Hours</p>
+                <p className="font-medium text-[#2C2825]">Hours</p>
                 <p>Monday - Friday: 10:00 AM - 7:00 PM MSK</p>
               </div>
               <div>
-                <p className="font-medium text-[#231f1b]">Social Media</p>
+                <p className="font-medium text-[#2C2825]">Social Media</p>
                 <div className="mt-2 flex gap-4">
-                  <a href="#" className="underline hover:text-[#231f1b]">Instagram</a>
-                  <a href="#" className="underline hover:text-[#231f1b]">Telegram</a>
-                  <a href="#" className="underline hover:text-[#231f1b]">VK</a>
+                  <a href="#" className="underline hover:text-[#2C2825]">Instagram</a>
+                  <a href="#" className="underline hover:text-[#2C2825]">Telegram</a>
+                  <a href="#" className="underline hover:text-[#2C2825]">VK</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Send a Message</h2>
+            <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Send a Message</h2>
             <form className="mt-4 space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div>
-                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
                   Name
                 </label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#231f1b] outline-none focus:border-[#231f1b]"
+                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
                 />
               </div>
               <div>
-                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
                   Email
                 </label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#231f1b] outline-none focus:border-[#231f1b]"
+                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
                 />
               </div>
               <div>
-                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
                   Subject
                 </label>
                 <select
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#231f1b] outline-none focus:border-[#231f1b]"
+                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
                 >
                   <option value="">Select a topic</option>
                   <option value="order">Order Inquiry</option>
@@ -92,14 +92,14 @@ export default function ContactUsPage() {
                 </select>
               </div>
               <div>
-                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">
+                <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
                   Message
                 </label>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={4}
-                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#231f1b] outline-none focus:border-[#231f1b]"
+                  className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
                 />
               </div>
               <Button className="w-full">Send Message</Button>
@@ -108,8 +108,8 @@ export default function ContactUsPage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Response Time</h2>
-          <div className="text-sm leading-7 text-[#6b635d]">
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Response Time</h2>
+          <div className="text-sm leading-7 text-[#8A7F73]">
             <p>
               We aim to respond to all inquiries within 24 hours during business days. For urgent matters, please call us directly.
             </p>

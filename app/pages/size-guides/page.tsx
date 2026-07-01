@@ -7,41 +7,41 @@ export default function SizeGuidePage() {
     <HelpLayout>
       <div className="space-y-8">
         <div>
-          <h1 className="font-display text-4xl tracking-[0.04em] text-[#231f1b]">Size Guide</h1>
-          <p className="mt-4 text-sm leading-7 text-[#6b635d]">
+          <h1 className="font-display text-4xl tracking-[0.04em] text-[#2C2825]">Size Guide</h1>
+          <p className="mt-4 text-sm leading-7 text-[#8A7F73]">
             Find your perfect fit with our comprehensive size chart.
           </p>
         </div>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">How to Measure</h2>
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">How to Measure</h2>
           <div className="grid gap-6 md:grid-cols-3">
             {[
               { title: "Bust", desc: "Measure around the fullest part of your bust, keeping the tape level." },
               { title: "Waist", desc: "Measure around your natural waistline, the narrowest part of your torso." },
               { title: "Hips", desc: "Measure around the fullest part of your hips and buttocks." }
             ].map((item) => (
-              <div key={item.title} className="border border-borderSoft bg-[#faf8f5] p-4">
-                <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#231f1b]">{item.title}</p>
-                <p className="mt-2 text-sm leading-6 text-[#6b635d]">{item.desc}</p>
+              <div key={item.title} className="border border-borderSoft bg-[#FDFBF8] p-4">
+                <p className="text-sm font-medium uppercase tracking-[0.18em] text-[#2C2825]">{item.title}</p>
+                <p className="mt-2 text-sm leading-6 text-[#8A7F73]">{item.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Shapewear Size Chart</h2>
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Shapewear Size Chart</h2>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-borderSoft">
-                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">Size</th>
-                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">Bust (cm)</th>
-                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">Waist (cm)</th>
-                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">Hips (cm)</th>
+                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">Size</th>
+                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">Bust (cm)</th>
+                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">Waist (cm)</th>
+                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">Hips (cm)</th>
                 </tr>
               </thead>
-              <tbody className="text-sm text-[#6b635d]">
+              <tbody className="text-sm text-[#8A7F73]">
                 {[
                   { size: "XS", bust: "80-84", waist: "60-64", hips: "86-90" },
                   { size: "S", bust: "84-88", waist: "64-68", hips: "90-94" },
@@ -51,7 +51,7 @@ export default function SizeGuidePage() {
                   { size: "XXL", bust: "100-104", waist: "80-84", hips: "106-110" }
                 ].map((row) => (
                   <tr key={row.size} className="border-b border-borderSoft">
-                    <td className="px-4 py-3 font-medium text-[#231f1b]">{row.size}</td>
+                    <td className="px-4 py-3 font-medium text-[#2C2825]">{row.size}</td>
                     <td className="px-4 py-3">{row.bust}</td>
                     <td className="px-4 py-3">{row.waist}</td>
                     <td className="px-4 py-3">{row.hips}</td>
@@ -63,17 +63,17 @@ export default function SizeGuidePage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Bra Size Chart</h2>
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Bra Size Chart</h2>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-borderSoft">
-                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">Size</th>
-                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">Underbust (cm)</th>
-                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#8a8077]">Bust (cm)</th>
+                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">Size</th>
+                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">Underbust (cm)</th>
+                  <th className="px-4 py-3 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">Bust (cm)</th>
                 </tr>
               </thead>
-              <tbody className="text-sm text-[#6b635d]">
+              <tbody className="text-sm text-[#8A7F73]">
                 {[
                   { size: "70A", underbust: "68-72", bust: "80-84" },
                   { size: "75B", underbust: "73-77", bust: "88-92" },
@@ -82,7 +82,7 @@ export default function SizeGuidePage() {
                   { size: "90C", underbust: "88-92", bust: "100-104" }
                 ].map((row) => (
                   <tr key={row.size} className="border-b border-borderSoft">
-                    <td className="px-4 py-3 font-medium text-[#231f1b]">{row.size}</td>
+                    <td className="px-4 py-3 font-medium text-[#2C2825]">{row.size}</td>
                     <td className="px-4 py-3">{row.underbust}</td>
                     <td className="px-4 py-3">{row.bust}</td>
                   </tr>
@@ -93,8 +93,8 @@ export default function SizeGuidePage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="font-display text-2xl tracking-[0.04em] text-[#231f1b]">Sizing Tips</h2>
-          <div className="space-y-3 text-sm leading-7 text-[#6b635d]">
+          <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Sizing Tips</h2>
+          <div className="space-y-3 text-sm leading-7 text-[#8A7F73]">
             <ul className="list-inside list-disc space-y-1">
               <li>If you&apos;re between sizes, we recommend sizing up for a more comfortable fit.</li>
               <li>Shapewear should feel snug but not restrictive.</li>

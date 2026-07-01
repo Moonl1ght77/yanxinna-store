@@ -12,9 +12,9 @@ export function Button({
     <button
       className={cn(
         "inline-flex items-center justify-center border px-5 py-3 text-[11px] font-medium uppercase tracking-[0.22em] transition",
-        variant === "primary" && "border-[#231f1b] bg-[#231f1b] text-white hover:bg-[#342f2a]",
-        variant === "secondary" && "border-borderSoft bg-[#f2f5f9] text-[#231f1b] hover:bg-[#e8edf4]",
-        variant === "ghost" && "border border-borderSoft bg-white text-[#231f1b] hover:bg-[#faf8f5]",
+        variant === "primary" && "border-[#5C4E43] bg-[#5C4E43] text-white hover:bg-[#4A3D34]",
+        variant === "secondary" && "border-borderSoft bg-[#F5F1ED] text-[#2C2825] hover:bg-[#EDE8E2]",
+        variant === "ghost" && "border border-borderSoft bg-white text-[#2C2825] hover:bg-[#FDFBF8]",
         className
       )}
       {...props}

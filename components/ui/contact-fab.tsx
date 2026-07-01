@@ -16,12 +16,12 @@ export function ContactFab() {
           <div className="relative mx-4 w-[300px] rounded-lg bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowWechat(false)}
-              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center text-[#8a8077] transition hover:text-[#231f1b]"
+              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center text-[#A89B8C] transition hover:text-[#2C2825]"
             >
               <X className="h-5 w-5" />
             </button>
             <div className="text-center">
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-[#231f1b]">Scan WeChat QR</p>
+              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-[#2C2825]">Scan WeChat QR</p>
               <div className="relative mx-auto h-[250px] w-[250px]">
                 <Image
                   src="/wechat-qr.jpg"
@@ -30,7 +30,7 @@ export function ContactFab() {
                   className="object-contain"
                 />
               </div>
-              <p className="mt-4 text-xs text-[#8a8077]">Open WeChat and scan to add friend</p>
+              <p className="mt-4 text-xs text-[#A89B8C]">Open WeChat and scan to add friend</p>
             </div>
           </div>
         </div>
@@ -40,10 +40,10 @@ export function ContactFab() {
       {isOpen && (
         <div className="mb-4 w-[280px] rounded-lg border border-borderSoft bg-white p-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] sm:w-[300px]">
           <div className="mb-4 flex items-center justify-between">
-            <p className="text-sm font-medium uppercase tracking-[0.08em] text-[#231f1b]">Contact Us</p>
+            <p className="text-sm font-medium uppercase tracking-[0.08em] text-[#2C2825]">Contact Us</p>
             <button
               onClick={() => setIsOpen(false)}
-              className="flex h-6 w-6 items-center justify-center text-[#8a8077] transition hover:text-[#231f1b]"
+              className="flex h-6 w-6 items-center justify-center text-[#A89B8C] transition hover:text-[#2C2825]"
             >
               <X className="h-4 w-4" />
             </button>
@@ -69,8 +69,8 @@ export function ContactFab() {
                 </svg>
               </div>
               <div className="text-left">
-                <p className="text-xs font-medium text-[#231f1b]">WeChat</p>
-                <p className="text-[11px] text-[#8a8077]">Scan to add</p>
+                <p className="text-xs font-medium text-[#2C2825]">WeChat</p>
+                <p className="text-[11px] text-[#A89B8C]">Scan to add</p>
               </div>
             </button>
 
@@ -85,22 +85,22 @@ export function ContactFab() {
                 <MessageCircle className="h-5 w-5 text-[#25d366]" />
               </div>
               <div>
-                <p className="text-xs font-medium text-[#231f1b]">WhatsApp</p>
-                <p className="text-[11px] text-[#8a8077]">Chat with us</p>
+                <p className="text-xs font-medium text-[#2C2825]">WhatsApp</p>
+                <p className="text-[11px] text-[#A89B8C]">Chat with us</p>
               </div>
             </a>
 
             {/* Email */}
             <a
               href="mailto:13719947765@139.com"
-              className="group flex items-center gap-3 rounded-md border border-borderSoft p-3 transition hover:border-[#231f1b] hover:bg-[#f7f6f4]"
+              className="group flex items-center gap-3 rounded-md border border-borderSoft p-3 transition hover:border-[#5C4E43] hover:bg-[#F5F1ED]"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#231f1b]/10">
-                <Mail className="h-5 w-5 text-[#231f1b]" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#5C4E43]/10">
+                <Mail className="h-5 w-5 text-[#2C2825]" />
               </div>
               <div>
-                <p className="text-xs font-medium text-[#231f1b]">Email</p>
-                <p className="text-[11px] text-[#8a8077]">13719947765@139.com</p>
+                <p className="text-xs font-medium text-[#2C2825]">Email</p>
+                <p className="text-[11px] text-[#A89B8C]">13719947765@139.com</p>
               </div>
             </a>
           </div>
@@ -112,8 +112,8 @@ export function ContactFab() {
         onClick={() => setIsOpen(!isOpen)}
         className={`flex h-14 w-14 items-center justify-center rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.15)] transition-all duration-300 sm:h-16 sm:w-16 ${
           isOpen
-            ? "bg-[#231f1b] text-white rotate-45"
-            : "bg-[#231f1b] text-white hover:bg-[#342f2a] hover:shadow-[0_6px_25px_rgba(0,0,0,0.2)]"
+            ? "bg-[#5C4E43] text-white rotate-45"
+            : "bg-[#5C4E43] text-white hover:bg-[#4A3D34] hover:shadow-[0_6px_25px_rgba(0,0,0,0.2)]"
         }`}
       >
         {isOpen ? (

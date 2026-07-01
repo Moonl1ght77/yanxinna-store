@@ -16,13 +16,13 @@ export function CartPageClient() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8 md:px-8">
-      <div className="mb-4 text-[10px] font-medium uppercase tracking-[0.18em] text-[#8a8077] sm:mb-6 sm:text-[11px]">
+      <div className="mb-4 text-[10px] font-medium uppercase tracking-[0.18em] text-[#A89B8C] sm:mb-6 sm:text-[11px]">
         <Link href="/">{copy.breadcrumbHome}</Link> / <Link href="/shop">{copy.breadcrumbShop}</Link> / {copy.breadcrumbCart}
       </div>
-      <h1 className="font-display text-3xl tracking-[0.04em] text-[#231f1b] sm:text-5xl">{copy.cartTitle}</h1>
+      <h1 className="font-display text-3xl tracking-[0.04em] text-[#2C2825] sm:text-5xl">{copy.cartTitle}</h1>
       {items.length === 0 ? (
         <div className="mt-6 border border-borderSoft bg-white p-6 sm:mt-8 sm:p-10">
-          <p className="text-xs text-[#6b635d] sm:text-sm">{copy.cartEmpty}</p>
+          <p className="text-xs text-[#8A7F73] sm:text-sm">{copy.cartEmpty}</p>
           <Link href="/shop" className="mt-4 inline-block sm:mt-6">
             <Button>{copy.continueShopping}</Button>
           </Link>
@@ -37,16 +37,16 @@ export function CartPageClient() {
                   <div>
                     <div className="flex items-start justify-between gap-3 sm:gap-4">
                       <div>
-                        <p className="text-sm font-medium text-[#231f1b] sm:text-lg">{item.name}</p>
-                        <p className="mt-1 text-xs text-[#8a8077] sm:mt-2 sm:text-sm">
+                        <p className="text-sm font-medium text-[#2C2825] sm:text-lg">{item.name}</p>
+                        <p className="mt-1 text-xs text-[#A89B8C] sm:mt-2 sm:text-sm">
                           {item.color} / {item.size}
                         </p>
                       </div>
-                      <button onClick={() => removeItem(item.cartItemId)} className="text-[#9a9188] hover:text-[#524a43]">
+                      <button onClick={() => removeItem(item.cartItemId)} className="text-[#9a9188] hover:text-[#6B5E52]">
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
-                    <p className="mt-2 text-xs text-[#524a43] sm:mt-4 sm:text-sm">{formatPrice(item.price, currency, locale)}</p>
+                    <p className="mt-2 text-xs text-[#6B5E52] sm:mt-4 sm:text-sm">{formatPrice(item.price, currency, locale)}</p>
                   </div>
                   <div className="mt-3 flex items-center gap-3 sm:mt-6 sm:gap-4">
                     <button
@@ -55,7 +55,7 @@ export function CartPageClient() {
                     >
                       <Minus className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     </button>
-                    <span className="min-w-5 text-center text-xs text-[#524a43] sm:min-w-6 sm:text-sm">{item.quantity}</span>
+                    <span className="min-w-5 text-center text-xs text-[#6B5E52] sm:min-w-6 sm:text-sm">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
                       className="border border-borderSoft p-1.5 sm:p-2"
@@ -67,24 +67,24 @@ export function CartPageClient() {
               </div>
             ))}
           </div>
-          <div className="border border-borderSoft bg-[#f7f6f4] p-4 sm:p-6 md:p-8">
-            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#8a8077] sm:text-[11px]">{copy.orderSummary}</p>
-            <div className="mt-4 flex items-center justify-between text-xs text-[#524a43] sm:mt-6 sm:text-sm">
+          <div className="border border-borderSoft bg-[#F5F1ED] p-4 sm:p-6 md:p-8">
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#A89B8C] sm:text-[11px]">{copy.orderSummary}</p>
+            <div className="mt-4 flex items-center justify-between text-xs text-[#6B5E52] sm:mt-6 sm:text-sm">
               <span>{copy.products}</span>
               <span>{formatPrice(subtotal, currency, locale)}</span>
             </div>
-            <div className="mt-3 flex items-center justify-between text-xs text-[#524a43] sm:mt-4 sm:text-sm">
+            <div className="mt-3 flex items-center justify-between text-xs text-[#6B5E52] sm:mt-4 sm:text-sm">
               <span>{copy.shipping}</span>
               <span>{formatPrice(estimatedShipping, currency, locale)}</span>
             </div>
-            <div className="mt-3 flex items-center justify-between border-t border-[#d8d0c6] pt-3 text-sm text-[#231f1b] sm:mt-4 sm:pt-4 sm:text-base">
+            <div className="mt-3 flex items-center justify-between border-t border-[#d8d0c6] pt-3 text-sm text-[#2C2825] sm:mt-4 sm:pt-4 sm:text-base">
               <span>{copy.total}</span>
               <span>{formatPrice(total, currency, locale)}</span>
             </div>
-            <p className="mt-4 text-xs leading-6 text-[#6b635d] sm:mt-5 sm:text-sm sm:leading-7">
+            <p className="mt-4 text-xs leading-6 text-[#8A7F73] sm:mt-5 sm:text-sm sm:leading-7">
               {copy.cartNote}
             </p>
-            <Link href="/shop" className="mt-4 inline-block text-[10px] font-medium uppercase tracking-[0.18em] text-[#524a43] sm:mt-6 sm:text-[11px]">
+            <Link href="/shop" className="mt-4 inline-block text-[10px] font-medium uppercase tracking-[0.18em] text-[#6B5E52] sm:mt-6 sm:text-[11px]">
               {copy.continueShopping}
             </Link>
             <Link href="/checkout" className="mt-5 block sm:mt-8">

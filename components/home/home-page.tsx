@@ -136,22 +136,22 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
           <div className="grid gap-8 md:grid-cols-[1fr,1fr] md:items-center">
             {/* Left - Text */}
             <div className="space-y-6">
-              <h1 className="text-3xl font-bold leading-[1.2] tracking-[0.01em] text-[#231f1b] sm:text-4xl md:text-5xl lg:text-[56px]">
+              <h1 className="text-3xl font-bold leading-[1.2] tracking-[0.01em] text-[#2C2825] sm:text-4xl md:text-5xl lg:text-[56px]">
                 {copy.factoryHeroTitle}
               </h1>
-              <p className="max-w-[500px] text-sm leading-7 text-[#6b635d] sm:text-base sm:leading-8">
+              <p className="max-w-[500px] text-sm leading-7 text-[#8A7F73] sm:text-base sm:leading-8">
                 {copy.factoryHeroDesc}
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
                   onClick={() => setShowSampleModal(true)}
-                  className="bg-[#3B82F6] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] sm:px-8 sm:py-3.5"
+                  className="bg-[#A89B8C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#2563EB] sm:px-8 sm:py-3.5"
                 >
                   {copy.factoryRequestSample}
                 </button>
                 <Link
                   href="/pages/brand-story"
-                  className="inline-flex items-center gap-2 border border-[#231f1b] px-6 py-3 text-sm font-medium text-[#231f1b] transition hover:bg-[#231f1b] hover:text-white sm:px-8 sm:py-3.5"
+                  className="inline-flex items-center gap-2 border border-[#5C4E43] px-6 py-3 text-sm font-medium text-[#2C2825] transition hover:bg-[#5C4E43] hover:text-white sm:px-8 sm:py-3.5"
                 >
                   {copy.factoryHowWeWork}
                   <ArrowRight className="h-4 w-4" />
@@ -182,8 +182,8 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
               { number: "30+", label: "Countries" }
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-2xl font-bold text-[#3B82F6] sm:text-3xl md:text-4xl">{stat.number}</p>
-                <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-[#6b635d] sm:text-xs">{stat.label}</p>
+                <p className="text-2xl font-bold text-[#A89B8C] sm:text-3xl md:text-4xl">{stat.number}</p>
+                <p className="mt-1 text-[10px] uppercase tracking-[0.15em] text-[#8A7F73] sm:text-xs">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -243,10 +243,10 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <section
         id="best-sellers-feature"
         ref={bestSellersRef}
-        className="relative min-h-[400px] w-full overflow-hidden bg-[#edf3f8] sm:min-h-[500px] md:min-h-[620px]"
+        className="relative min-h-[400px] w-full overflow-hidden bg-[#F0EBE5] sm:min-h-[500px] md:min-h-[620px]"
       >
         <div
-          className={`bestseller-scatter absolute inset-0 bg-[#edf3f8] ${
+          className={`bestseller-scatter absolute inset-0 bg-[#F0EBE5] ${
             bestSellersInView ? "is-visible" : "is-hidden"
           }`}
           aria-label={copy.bestSellerTitle}
@@ -286,8 +286,8 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <section className="w-full bg-white">
         <div className="flex items-center justify-between border-y border-borderSoft px-5 py-6 sm:px-6 sm:py-8 md:px-8">
           <div className="w-16 sm:w-24" />
-          <p className="font-display text-xl tracking-[0.04em] text-[#231f1b] sm:text-[28px]">{copy.trendingTitle}</p>
-          <p className="text-xs uppercase tracking-[0.12em] text-[#8a8077] sm:text-sm">1 / 2</p>
+          <p className="font-display text-xl tracking-[0.04em] text-[#2C2825] sm:text-[28px]">{copy.trendingTitle}</p>
+          <p className="text-xs uppercase tracking-[0.12em] text-[#A89B8C] sm:text-sm">1 / 2</p>
         </div>
         <div className="overflow-x-auto scrollbar-hide">
           <div className="flex min-w-max border-b border-borderSoft">
@@ -308,9 +308,9 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
                 <PlaceholderImage src={product.image} alt={product.name} className="min-h-[180px] rounded-none image-zoom bg-white sm:min-h-[250px]" />
                 <div className="mt-4 flex items-start justify-between gap-3 sm:mt-6 sm:gap-4">
                   <div>
-                    <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#8a8077] sm:text-[11px]">{product.category}</p>
-                    <p className="mt-1.5 text-sm font-medium uppercase leading-5 tracking-[0.04em] text-[#231f1b] sm:mt-2 sm:text-lg sm:leading-6">{product.name}</p>
-                    <p className="mt-1.5 text-xs font-medium text-[#524a43] sm:mt-2 sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
+                    <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#A89B8C] sm:text-[11px]">{product.category}</p>
+                    <p className="mt-1.5 text-sm font-medium uppercase leading-5 tracking-[0.04em] text-[#2C2825] sm:mt-2 sm:text-lg sm:leading-6">{product.name}</p>
+                    <p className="mt-1.5 text-xs font-medium text-[#6B5E52] sm:mt-2 sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
                   </div>
                   <Heart className="mt-0.5 h-4 w-4 text-[#6f665f] sm:mt-1 sm:h-5 sm:w-5" strokeWidth={1.7} />
                 </div>
@@ -324,7 +324,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       <section className="w-full bg-white">
         <div className="w-full border-t border-borderSoft px-5 py-10 sm:px-6 sm:py-16 md:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-base uppercase leading-[1.28] tracking-[0.06em] text-[#231f1b] sm:text-2xl sm:tracking-[0.08em] md:text-[48px] md:leading-[1.2] md:tracking-[0.04em]">
+            <h2 className="text-base uppercase leading-[1.28] tracking-[0.06em] text-[#2C2825] sm:text-2xl sm:tracking-[0.08em] md:text-[48px] md:leading-[1.2] md:tracking-[0.04em]">
               {copy.brandStatement}
             </h2>
           </div>
