@@ -102,30 +102,36 @@ export function ProductDetailClient({
       </div>
       <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr]">
         <div className="space-y-4">
-          {/* 主图 - 支持滑动 */}
+          {/* 主图 - 轮播效果 */}
           <div
             className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f5]"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* 图片淡入淡出效果 */}
-            <div className="absolute inset-0 transition-opacity duration-500 ease-in-out">
-              <Image
-                key={selectedImage}
-                src={selectedImage}
-                alt={product.name}
-                fill
-                className="object-contain p-4 animate-fade-in"
-                sizes="(max-width: 768px) 100vw, 55vw"
-              />
+            {/* 图片轮播容器 */}
+            <div
+              className="flex h-full transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+            >
+              {currentGallery.map((image, index) => (
+                <div key={`${selectedColor}-${index}`} className="relative h-full w-full flex-shrink-0">
+                  <Image
+                    src={image}
+                    alt={`${product.name} ${selectedColor} view ${index + 1}`}
+                    fill
+                    className="object-contain p-4"
+                    sizes="(max-width: 768px) 100vw, 55vw"
+                  />
+                </div>
+              ))}
             </div>
 
             {/* 左右箭头 */}
             {currentImageIndex > 0 && (
               <button
                 onClick={goToPrev}
-                className="absolute left-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md transition hover:bg-white md:left-4"
+                className="absolute left-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md transition hover:bg-white md:left-4 z-10"
               >
                 <ChevronLeft className="h-5 w-5 text-[#2C2825]" />
               </button>
@@ -133,7 +139,7 @@ export function ProductDetailClient({
             {currentImageIndex < currentGallery.length - 1 && (
               <button
                 onClick={goToNext}
-                className="absolute right-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md transition hover:bg-white md:right-4"
+                className="absolute right-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md transition hover:bg-white md:right-4 z-10"
               >
                 <ChevronRight className="h-5 w-5 text-[#2C2825]" />
               </button>
@@ -141,7 +147,7 @@ export function ProductDetailClient({
 
             {/* 指示器 */}
             {currentGallery.length > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {currentGallery.map((_, index) => (
                   <button
                     key={index}
