@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, ChevronLeft, ChevronRight } from "lucide-react";
 import { Product } from "@/types/product";
 import { formatPrice, titleCase } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -23,13 +23,11 @@ export function ProductDetailClient({
   const [selectedColor, setSelectedColor] = useState(product.colors[0].name);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [quantity, setQuantity] = useState(1);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
   const { addItem } = useCart();
   const { locale, currency, copy } = useLocale();
-
-  // 获取当前选中颜色的图片
-  const currentColorData = useMemo(() => {
-    return product.colors.find(c => c.name === selectedColor) || product.colors[0];
-  }, [selectedColor, product.colors]);
 
   // 当前颜色的画廊图片
   const currentGallery = useMemo(() => {
@@ -49,11 +47,45 @@ export function ProductDetailClient({
   // 切换颜色时更新图片
   const handleColorChange = (colorName: string) => {
     setSelectedColor(colorName);
+    setCurrentImageIndex(0);
     const colorData = product.colors.find(c => c.name === colorName);
     if (colorData) {
       setSelectedImage(colorData.image);
     }
   };
+
+  // 滑动切换图片
+  const goToImage = useCallback((index: number) => {
+    const newIndex = Math.max(0, Math.min(index, currentGallery.length - 1));
+    setCurrentImageIndex(newIndex);
+    setSelectedImage(currentGallery[newIndex]);
+  }, [currentGallery]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        // 向左滑 - 下一张
+        goToImage(currentImageIndex + 1);
+      } else {
+        // 向右滑 - 上一张
+        goToImage(currentImageIndex - 1);
+      }
+    }
+  };
+
+  const goToPrev = () => goToImage(currentImageIndex - 1);
+  const goToNext = () => goToImage(currentImageIndex + 1);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
@@ -70,18 +102,63 @@ export function ProductDetailClient({
       </div>
       <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr]">
         <div className="space-y-4">
-          <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f5]">
+          {/* 主图 - 支持滑动 */}
+          <div
+            className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f5]"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <Image
               src={selectedImage}
               alt={product.name}
               fill
-              className="object-contain p-4"
+              className="object-contain p-4 transition-transform duration-300"
               sizes="(max-width: 768px) 100vw, 55vw"
             />
+
+            {/* 左右箭头 */}
+            {currentImageIndex > 0 && (
+              <button
+                onClick={goToPrev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md transition hover:bg-white md:left-4"
+              >
+                <ChevronLeft className="h-5 w-5 text-[#2C2825]" />
+              </button>
+            )}
+            {currentImageIndex < currentGallery.length - 1 && (
+              <button
+                onClick={goToNext}
+                className="absolute right-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md transition hover:bg-white md:right-4"
+              >
+                <ChevronRight className="h-5 w-5 text-[#2C2825]" />
+              </button>
+            )}
+
+            {/* 指示器 */}
+            {currentGallery.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {currentGallery.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToImage(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex ? "w-6 bg-[#2C2825]" : "w-2 bg-[#2C2825]/30"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
           <div className="grid grid-cols-2 gap-4">
             {currentGallery.map((image, index) => (
-              <button key={`${selectedColor}-${index}`} onClick={() => setSelectedImage(image)} className="relative aspect-square overflow-hidden bg-[#f5f5f5]">
+              <button
+                key={`${selectedColor}-${index}`}
+                onClick={() => goToImage(index)}
+                className={`relative aspect-square overflow-hidden bg-[#f5f5f5] border-2 transition-all duration-300 ${
+                  index === currentImageIndex ? "border-[#2C2825]" : "border-transparent"
+                }`}
+              >
                 <Image
                   src={image}
                   alt={`${product.name} ${selectedColor} view`}
