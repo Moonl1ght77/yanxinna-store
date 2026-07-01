@@ -34,7 +34,7 @@ export function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-headerBorder bg-headerBg">
+    <header className="sticky top-0 z-30" style={{ backgroundColor: "var(--header-bg)", borderBottomColor: "var(--header-border)" }}>
       <div className="grid w-full grid-cols-[auto,1fr,auto] items-center gap-4 px-4 py-4 md:px-8">
         {/* Hamburger button - mobile only */}
         <button
