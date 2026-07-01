@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/providers/cart-provider";
 import { LocaleProvider } from "@/providers/locale-provider";
 import { PayPalProvider } from "@/providers/paypal-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -28,19 +29,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body className={`${sans.variable} ${display.variable}`}>
-        <LocaleProvider>
-          <CartProvider>
-            <PayPalProvider>
-              <AnnouncementBar />
-              <SiteHeader />
-              <main>{children}</main>
-              <SiteFooter />
-              <ContactFab />
-            </PayPalProvider>
-          </CartProvider>
-        </LocaleProvider>
+        <ThemeProvider>
+          <LocaleProvider>
+            <CartProvider>
+              <PayPalProvider>
+                <AnnouncementBar />
+                <SiteHeader />
+                <main>{children}</main>
+                <SiteFooter />
+                <ContactFab />
+              </PayPalProvider>
+            </CartProvider>
+          </LocaleProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

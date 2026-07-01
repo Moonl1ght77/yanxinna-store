@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, ShoppingBag, X } from "lucide-react";
+import { ChevronDown, Menu, ShoppingBag, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/hooks/use-cart";
 import { useLocale } from "@/hooks/use-locale";
+import { useTheme } from "@/providers/theme-provider";
 import { LocaleRegionSwitcher } from "@/components/layout/locale-region-switcher";
 
 export function SiteHeader() {
   const { itemCount } = useCart();
   const { copy } = useLocale();
+  const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -96,6 +98,13 @@ export function SiteHeader() {
             className="text-white"
             selectClassName="border-white/30 bg-white/20 text-white"
           />
+          <button
+            onClick={toggleTheme}
+            className="flex h-10 w-10 items-center justify-center border border-white/30 bg-white/20 text-white transition hover:bg-white/30"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+          </button>
           <Link
             href="/cart"
             className="relative rounded-none border border-white/30 bg-white/20 p-3 text-white transition hover:bg-white/30"

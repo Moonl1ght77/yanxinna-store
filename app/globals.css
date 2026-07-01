@@ -11,12 +11,21 @@
   --ink-soft: #8A7F73;
 }
 
+.dark {
+  --background: #1A1816;
+  --foreground: #F5F1ED;
+  --blue-mist: #2C2825;
+  --blue-soft: #3D3530;
+  --border-soft: #4A4035;
+  --ink-soft: #A89B8C;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #fcfcfb;
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
 }
