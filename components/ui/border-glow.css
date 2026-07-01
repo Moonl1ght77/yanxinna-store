@@ -13,7 +13,7 @@
   transform: translate3d(0, 0, 0.01px);
   display: grid;
   border: 1px solid rgb(255 255 255 / 20%);
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--card-bg, rgba(255, 255, 255, 0.85));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   overflow: visible;
@@ -55,7 +55,7 @@
 .border-glow-card::before {
   border: 2px solid transparent;
   background:
-    linear-gradient(rgba(255,255,255,0.85) 0 100%) padding-box,
+    linear-gradient(var(--card-bg, rgba(255,255,255,0.85)) 0 100%) padding-box,
     linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
     var(--gradient-one) border-box,
     var(--gradient-two) border-box,
