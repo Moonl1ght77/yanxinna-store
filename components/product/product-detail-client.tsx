@@ -2,10 +2,10 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import { Product } from "@/types/product";
 import { formatPrice, titleCase } from "@/lib/utils";
-import { PlaceholderImage } from "@/components/ui/placeholder-image";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/use-cart";
 import { useLocale } from "@/hooks/use-locale";
@@ -70,11 +70,25 @@ export function ProductDetailClient({
       </div>
       <div className="grid gap-8 md:grid-cols-[1.1fr,0.9fr]">
         <div className="space-y-4">
-          <PlaceholderImage src={selectedImage} alt={product.name} className="min-h-[400px] rounded-none md:min-h-[680px]" />
+          <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f5]">
+            <Image
+              src={selectedImage}
+              alt={product.name}
+              fill
+              className="object-contain p-4"
+              sizes="(max-width: 768px) 100vw, 55vw"
+            />
+          </div>
           <div className="grid grid-cols-2 gap-4">
             {currentGallery.map((image, index) => (
-              <button key={`${selectedColor}-${index}`} onClick={() => setSelectedImage(image)} className="text-left">
-                <PlaceholderImage src={image} alt={`${product.name} ${selectedColor} view`} className="min-h-[150px] rounded-none md:min-h-[200px]" />
+              <button key={`${selectedColor}-${index}`} onClick={() => setSelectedImage(image)} className="relative aspect-square overflow-hidden bg-[#f5f5f5]">
+                <Image
+                  src={image}
+                  alt={`${product.name} ${selectedColor} view`}
+                  fill
+                  className="object-contain p-2"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
               </button>
             ))}
           </div>
@@ -240,7 +254,9 @@ export function ProductDetailClient({
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {completeTheLook.map((item) => (
             <Link key={item.id} href={`/product/${item.slug}`} className="border border-borderSoft bg-white p-4">
-              <PlaceholderImage src={item.image} alt={item.name} className="min-h-[320px] rounded-none image-zoom" />
+              <div className="relative aspect-[3/4] overflow-hidden bg-[#f5f5f5]">
+                <Image src={item.image} alt={item.name} fill className="object-contain p-4" sizes="(max-width: 768px) 100vw, 33vw" />
+              </div>
               <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">
                 {item.subcategory ? `${item.category} / ${item.subcategory}` : item.category}
               </p>
