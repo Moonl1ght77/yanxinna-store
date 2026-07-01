@@ -166,7 +166,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // 工厂介绍
     factoryHeroTitle: "Глобальный производитель OEM/ODM корректирующего белья",
-    factoryHeroDesc: "Мы — вертикально интегрированное производство с 11-летним опытом разработки. Управляем всем процессом от закупки сырья до готовой продукции для обеспечения эффективного контроля качества.",
+    factoryHeroDesc: "Мы — вертикально интегрированное производство с 33-летним опытом разработки. Управляем всем процессом от закупки сырья до готовой продукции для обеспечения эффективного контроля качества.",
     factoryRequestSample: "Запросить образец",
     factoryHowWeWork: "Как мы работаем",
 
@@ -466,7 +466,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // Factory Introduction
     factoryHeroTitle: "Global OEM/ODM Shapewear Manufacturer",
-    factoryHeroDesc: "We are a vertically integrated factory with 11 years of R&D experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
+    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R11 years of R&D experienceD experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
     factoryRequestSample: "Request Sample",
     factoryHowWeWork: "How We Work",
 
@@ -577,7 +577,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // About Us
     aboutTitle: "Custom Shapewear Manufacturing Since 2015",
-    aboutDesc: "With 11 years of professional expertise, we help global brands create premium shapewear. Our 2,000 sqm modern factory ensures 100% in-house production with full transparency.",
+    aboutDesc: "With 33 years of professional expertise, we help global brands create premium shapewear. Our 2,000 sqm modern factory ensures 100% in-house production with full transparency.",
     aboutCta1: "About Us",
     aboutCta2: "Visit Factory",
 
@@ -766,7 +766,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // Factory Introduction
     factoryHeroTitle: "Global OEM/ODM Shapewear Manufacturer",
-    factoryHeroDesc: "We are a vertically integrated factory with 11 years of R&D experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
+    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R11 years of R&D experienceD experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
     factoryRequestSample: "Request Sample",
     factoryHowWeWork: "How We Work",
 
@@ -865,7 +865,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     qualityPolicy: "Quality Accountability & Remedy Policy",
     qualityPolicyDesc: "Minor defects are compensated with full replacement in subsequent shipments.",
     aboutTitle: "Custom Shapewear Manufacturing Since 2015",
-    aboutDesc: "With 11 years of professional expertise, we help global brands create premium shapewear.",
+    aboutDesc: "With 33 years of professional expertise, we help global brands create premium shapewear.",
     aboutCta1: "About Us",
     aboutCta2: "Visit Factory",
     workflowTitle: "Milestone-Driven Production Workflow",
@@ -1050,7 +1050,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // Factory Introduction
     factoryHeroTitle: "Fabricant mondial OEM/ODM de gainant",
-    factoryHeroDesc: "Nous sommes une usine verticalement intégrée avec 11 ans d'expérience en R&D. Nous gérons le cycle complet de l'approvisionnement en matières premières aux vêtements finis.",
+    factoryHeroDesc: "Nous sommes une usine verticalement intégrée avec 33 ans d'expérience en R&D. Nous gérons le cycle complet de l'approvisionnement en matières premières aux vêtements finis.",
     factoryRequestSample: "Demander un échantillon",
     factoryHowWeWork: "Comment nous travaillons",
 
@@ -1149,7 +1149,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     qualityPolicy: "Politique de responsabilité qualité",
     qualityPolicyDesc: "Les défauts mineurs sont compensés par un remplacement complet.",
     aboutTitle: "Fabrication de gainant sur mesure depuis 2015",
-    aboutDesc: "Avec 11 ans d'expertise, nous aidons les marques mondiales à créer du gainant premium.",
+    aboutDesc: "Avec 33 ans d'expertise, nous aidons les marques mondiales à créer du gainant premium.",
     aboutCta1: "À propos",
     aboutCta2: "Visiter l'usine",
     workflowTitle: "Processus de production piloté par jalons",
@@ -1334,7 +1334,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
     // Factory Introduction
     factoryHeroTitle: "Globaler OEM/ODM Shapewear-Hersteller",
-    factoryHeroDesc: "Wir sind eine vertikal integrierte Fabrik mit 11 Jahren F&E-Erfahrung. Wir verwalten den gesamten Lebenszyklus von der Rohstoffbeschaffung bis zum fertigen Kleidungsstück.",
+    factoryHeroDesc: "Wir sind eine vertikal integrierte Fabrik mit 33 Jahren F&E-Erfahrung. Wir verwalten den gesamten Lebenszyklus von der Rohstoffbeschaffung bis zum fertigen Kleidungsstück.",
     factoryRequestSample: "Muster anfordern",
     factoryHowWeWork: "So arbeiten wir",
 
@@ -1433,7 +1433,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     qualityPolicy: "Qualitätsverantwortung",
     qualityPolicyDesc: "Kleinere Defekte werden durch vollständigen Ersatz kompensiert.",
     aboutTitle: "Maßgeschneiderte Shapewear-Produktion seit 2015",
-    aboutDesc: "Mit 11 Jahren Erfahrung helfen wir globalen Marken bei der Erstellung von Premium-Shapewear.",
+    aboutDesc: "Mit 33 Jahren Erfahrung helfen wir globalen Marken bei der Erstellung von Premium-Shapewear.",
     aboutCta1: "Über uns",
     aboutCta2: "Fabrik besuchen",
     workflowTitle: "Meilensteingetriebener Produktionsablauf",
