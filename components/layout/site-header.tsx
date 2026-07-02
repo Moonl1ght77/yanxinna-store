@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, ShoppingBag, X, Sun, Moon } from "lucide-react";
+import { ChevronDown, Menu, ShoppingBag, X, Sun, Moon, Search } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/hooks/use-cart";
 import { useLocale } from "@/hooks/use-locale";
 import { useTheme } from "@/providers/theme-provider";
 import { LocaleRegionSwitcher } from "@/components/layout/locale-region-switcher";
+import { SearchModal } from "@/components/ui/search-modal";
 
 export function SiteHeader() {
   const { itemCount } = useCart();
@@ -17,6 +18,7 @@ export function SiteHeader() {
   const isHome = pathname === "/";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const navigationItems = [
     { label: copy.navShapewear, href: "/shop?category=shapewear" },
@@ -35,6 +37,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30" style={{ backgroundColor: "var(--header-bg)", borderBottomColor: "var(--header-border)" }}>
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       <div className="grid w-full grid-cols-[auto,1fr,auto] items-center gap-4 px-4 py-4 md:px-8">
         {/* Hamburger button - mobile only */}
         <button
@@ -94,6 +97,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center justify-end gap-2 sm:gap-3">
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="flex h-10 w-10 items-center justify-center border border-white/30 bg-white/20 text-white transition hover:bg-white/30"
+            aria-label="Search"
+          >
+            <Search className="h-4 w-4" />
+          </button>
           <LocaleRegionSwitcher
             className="hidden text-white sm:inline-flex"
             selectClassName="border-white/30 bg-white/20 text-white"
