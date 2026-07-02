@@ -58,7 +58,7 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full z-50 mt-1 w-full min-w-[120px] border border-[#e5e5e5] bg-white shadow-lg">
+        <div className="absolute right-0 top-full z-50 mt-1 w-full min-w-[140px] rounded border border-[#d9d9d9] bg-white shadow-md">
           {options.map((option) => (
             <button
               key={option.region}
@@ -67,16 +67,16 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
                 setIsOpen(false);
               }}
               className={cn(
-                "flex w-full items-center gap-2 px-3 py-2 text-[11px] uppercase tracking-[0.18em] transition hover:bg-[#f5f5f5]",
-                option.region === region && "bg-[#f5f5f5] font-medium"
+                "flex w-full items-center gap-3 px-4 py-2.5 text-[12px] uppercase tracking-[0.1em] text-[#333333] transition hover:bg-[#f0f0f0]",
+                option.region === region && "bg-[#f0f0f0] font-semibold text-[#111111]"
               )}
             >
               <Image
                 src={flagMap[option.region]}
                 alt={option.region}
-                width={20}
-                height={14}
-                className="h-[14px] w-[20px] object-cover"
+                width={24}
+                height={16}
+                className="h-[16px] w-[24px] object-cover rounded-[2px]"
               />
               <span>{option.region}</span>
             </button>
