@@ -4,6 +4,14 @@ import { cn } from "@/lib/utils";
 import { useLocale } from "@/hooks/use-locale";
 import { getRegionOptions } from "@/providers/locale-provider";
 
+const flagMap: Record<string, string> = {
+  RU: "🇷🇺",
+  US: "🇺🇸",
+  GB: "🇬🇧",
+  FR: "🇫🇷",
+  DE: "🇩🇪",
+};
+
 type LocaleRegionSwitcherProps = {
   className?: string;
   selectClassName?: string;
@@ -25,7 +33,7 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
       >
         {getRegionOptions().map((option) => (
           <option key={option.region} value={option.region} className="bg-white text-[#2C2825]">
-            {option.region}
+            {flagMap[option.region] || ""} {option.region}
           </option>
         ))}
       </select>
