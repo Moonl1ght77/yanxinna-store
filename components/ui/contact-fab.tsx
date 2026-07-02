@@ -48,17 +48,18 @@ export function ContactFab() {
     <div className="fixed right-0 top-1/2 z-50 -translate-y-1/2">
       {/* WeChat QR Modal */}
       {showWechat && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4" onClick={() => setShowWechat(false)}>
-          <div className="relative w-full max-w-[340px] rounded-xl bg-white p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[100] bg-black/60" onClick={() => setShowWechat(false)}>
+          {/* Mobile: popup from right side */}
+          <div className="fixed right-0 top-0 h-full w-[85vw] max-w-[340px] bg-white shadow-2xl sm:static sm:mx-auto sm:mt-[20vh] sm:h-auto sm:w-full sm:rounded-xl sm:p-6" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowWechat(false)}
-              className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
+              className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700 sm:right-2 sm:top-2"
             >
               <X className="h-6 w-6" />
             </button>
-            <div className="text-center">
+            <div className="flex h-full flex-col items-center justify-center p-6 sm:h-auto sm:text-center">
               <p className="mb-4 text-base font-semibold uppercase tracking-[0.08em] text-[#2C2825]">Scan WeChat QR</p>
-              <div className="relative mx-auto h-[280px] w-[280px]">
+              <div className="relative h-[250px] w-[250px] sm:h-[280px] sm:w-[280px]">
                 <Image
                   src="/wechat-qr.jpg"
                   alt="WeChat QR Code"
