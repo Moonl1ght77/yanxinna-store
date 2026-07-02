@@ -77,12 +77,6 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       href: "/shop?sort=best",
       label: copy.bestsellersCategory,
       className: "bestseller-card-d"
-    },
-    {
-      src: "/images/hero-bg.png",
-      href: "/shop?sort=new",
-      label: copy["new arrivalsCategory"],
-      className: "bestseller-card-e"
     }
   ];
 
