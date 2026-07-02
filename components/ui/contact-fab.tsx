@@ -48,25 +48,27 @@ export function ContactFab() {
     <div className="fixed right-0 top-1/2 z-50 -translate-y-1/2">
       {/* WeChat QR Modal */}
       {showWechat && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setShowWechat(false)}>
-          <div className="relative mx-4 w-[300px] rounded-lg bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4" onClick={() => setShowWechat(false)}>
+          <div className="relative w-full max-w-[340px] rounded-xl bg-white p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowWechat(false)}
-              className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center text-[#A89B8C] transition hover:text-[#2C2825]"
+              className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-gray-200 hover:text-gray-700"
             >
-              <X className="h-5 w-5" />
+              <X className="h-6 w-6" />
             </button>
             <div className="text-center">
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-[#2C2825]">Scan WeChat QR</p>
-              <div className="relative mx-auto h-[250px] w-[250px]">
+              <p className="mb-4 text-base font-semibold uppercase tracking-[0.08em] text-[#2C2825]">Scan WeChat QR</p>
+              <div className="relative mx-auto h-[280px] w-[280px]">
                 <Image
                   src="/wechat-qr.jpg"
                   alt="WeChat QR Code"
-                  fill
-                  className="object-contain"
+                  width={280}
+                  height={280}
+                  className="h-full w-full object-contain"
+                  priority
                 />
               </div>
-              <p className="mt-4 text-xs text-[#A89B8C]">Open WeChat and scan to add friend</p>
+              <p className="mt-4 text-sm text-[#A89B8C]">Open WeChat and scan to add friend</p>
             </div>
           </div>
         </div>
