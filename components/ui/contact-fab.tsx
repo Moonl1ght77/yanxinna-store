@@ -45,8 +45,8 @@ export function ContactFab() {
   ];
 
   return (
-    <div className="fixed right-0 top-1/2 z-50 -translate-y-1/2">
-      {/* WeChat QR Modal */}
+    <>
+      {/* WeChat QR Modal - Outside of fixed container to ensure centering */}
       {showWechat && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60" onClick={() => setShowWechat(false)}>
           {/* Mobile: popup from right side */}
@@ -76,6 +76,7 @@ export function ContactFab() {
       )}
 
       {/* Always Visible Vertical Menu */}
+      <div className="fixed right-0 top-1/2 z-50 -translate-y-1/2">
       <div className="flex flex-col items-center gap-2">
         {menuItems.map((item) => (
           <div key={item.label}>
@@ -112,6 +113,6 @@ export function ContactFab() {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
