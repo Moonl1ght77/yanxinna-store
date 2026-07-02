@@ -1,17 +1,18 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocale } from "@/hooks/use-locale";
 import { getRegionOptions } from "@/providers/locale-provider";
 
 const flagMap: Record<string, string> = {
-  RU: "🇷🇺",
-  US: "🇺🇸",
-  GB: "🇬🇧",
-  FR: "🇫🇷",
-  DE: "🇩🇪",
+  RU: "/images/flags/ru.png",
+  US: "/images/flags/us.png",
+  GB: "/images/flags/gb.png",
+  FR: "/images/flags/fr.png",
+  DE: "/images/flags/de.png",
 };
 
 type LocaleRegionSwitcherProps = {
@@ -25,7 +26,6 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const options = getRegionOptions();
-  const currentOption = options.find((o) => o.region === region);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -42,11 +42,17 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex items-center gap-2 border px-3 py-2 text-[11px] uppercase tracking-[0.18em] outline-none transition hover:bg-[#f5f5f5]",
+          "flex items-center gap-2 border px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] outline-none transition hover:bg-[#f5f5f5]",
           selectClassName
         )}
       >
-        <span className="text-base leading-none">{flagMap[region]}</span>
+        <Image
+          src={flagMap[region]}
+          alt={region}
+          width={20}
+          height={14}
+          className="h-[14px] w-[20px] object-cover"
+        />
         <span>{region}</span>
         <ChevronDown className={cn("h-3 w-3 transition-transform", isOpen && "rotate-180")} />
       </button>
@@ -65,7 +71,13 @@ export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegio
                 option.region === region && "bg-[#f5f5f5] font-medium"
               )}
             >
-              <span className="text-base leading-none">{flagMap[option.region]}</span>
+              <Image
+                src={flagMap[option.region]}
+                alt={option.region}
+                width={20}
+                height={14}
+                className="h-[14px] w-[20px] object-cover"
+              />
               <span>{option.region}</span>
             </button>
           ))}
