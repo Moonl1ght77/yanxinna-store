@@ -160,13 +160,15 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
             </div>
 
             {/* Right - Image */}
-            <div className="relative min-h-[300px] md:min-h-[400px]">
+            <div className="relative flex items-center justify-center min-h-[300px] md:min-h-[400px]">
               <Image
                 src="/images/hero-bg.png"
                 alt="YANXINNA Shapewear"
-                fill
-                className="object-cover"
+                width={800}
+                height={1000}
+                className="h-auto w-full max-h-[500px] object-contain md:max-h-[600px]"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority
               />
             </div>
           </div>
