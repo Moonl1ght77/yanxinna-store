@@ -73,7 +73,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       className: "bestseller-card-c"
     },
     {
-      src: "/images/hero-bg.webp",
+      src: "/images/hero-bg.png",
       href: "/shop?sort=best",
       label: copy.bestsellersCategory,
       className: "bestseller-card-d"
@@ -162,7 +162,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
             {/* Right - Image */}
             <div className="relative min-h-[300px] md:min-h-[400px]">
               <Image
-                src="/images/hero-bg.webp"
+                src="/images/hero-bg.png"
                 alt="YANXINNA Shapewear"
                 fill
                 className="object-cover"
