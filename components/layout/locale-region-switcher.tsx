@@ -1,5 +1,7 @@
 "use client";
 
+import { useState, useRef, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLocale } from "@/hooks/use-locale";
 import { getRegionOptions } from "@/providers/locale-provider";
@@ -19,24 +21,56 @@ type LocaleRegionSwitcherProps = {
 
 export function LocaleRegionSwitcher({ className, selectClassName }: LocaleRegionSwitcherProps) {
   const { region, setRegion, copy } = useLocale();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const options = getRegionOptions();
+  const currentOption = options.find((o) => o.region === region);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <label className={cn("flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em]", className)}>
-      {copy.footerCountry}
-      <select
-        value={region}
-        onChange={(event) => setRegion(event.target.value)}
+    <div className={cn("relative", className)} ref={dropdownRef}>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "border px-3 py-2 text-[11px] uppercase tracking-[0.18em] outline-none",
+          "flex items-center gap-2 border px-3 py-2 text-[11px] uppercase tracking-[0.18em] outline-none transition hover:bg-[#f5f5f5]",
           selectClassName
         )}
       >
-        {getRegionOptions().map((option) => (
-          <option key={option.region} value={option.region} className="bg-white text-[#2C2825]">
-            {flagMap[option.region] || ""} {option.region}
-          </option>
-        ))}
-      </select>
-    </label>
+        <span className="text-base leading-none">{flagMap[region]}</span>
+        <span>{region}</span>
+        <ChevronDown className={cn("h-3 w-3 transition-transform", isOpen && "rotate-180")} />
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 top-full z-50 mt-1 w-full min-w-[120px] border border-[#e5e5e5] bg-white shadow-lg">
+          {options.map((option) => (
+            <button
+              key={option.region}
+              onClick={() => {
+                setRegion(option.region);
+                setIsOpen(false);
+              }}
+              className={cn(
+                "flex w-full items-center gap-2 px-3 py-2 text-[11px] uppercase tracking-[0.18em] transition hover:bg-[#f5f5f5]",
+                option.region === region && "bg-[#f5f5f5] font-medium"
+              )}
+            >
+              <span className="text-base leading-none">{flagMap[option.region]}</span>
+              <span>{option.region}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
