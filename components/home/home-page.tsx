@@ -79,7 +79,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
       className: "bestseller-card-d"
     },
     {
-      src: "/generated-products/shapewear-top-nude.png",
+      src: "/images/hero-bg.png",
       href: "/shop?sort=new",
       label: copy["new arrivalsCategory"],
       className: "bestseller-card-e"
