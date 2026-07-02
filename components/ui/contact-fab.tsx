@@ -77,7 +77,7 @@ export function ContactFab() {
 
       {/* Always Visible Vertical Menu */}
       <div className="fixed right-0 top-1/2 z-50 -translate-y-1/2">
-      <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2">
         {menuItems.map((item) => (
           <div key={item.label}>
             {item.href ? (
@@ -112,6 +112,7 @@ export function ContactFab() {
             )}
           </div>
         ))}
+        </div>
       </div>
     </>
   );
