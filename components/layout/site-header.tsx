@@ -50,13 +50,13 @@ export function SiteHeader() {
 
         <Link
           href="/"
-          className="font-display text-[30px] leading-none tracking-[0.08em] text-white"
+          className="font-display text-[32px] leading-none tracking-[0.1em] text-white sm:text-[36px]"
         >
           YANXINNA
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center justify-center gap-8 text-[11px] font-medium uppercase tracking-[0.22em] text-white md:flex"
+        <nav className="hidden items-center justify-center gap-8 text-[12px] font-medium uppercase tracking-[0.2em] text-white md:flex lg:gap-10 lg:text-[13px]"
         >
           {navigationItems.map((item) =>
             item.href.includes("category=shapewear") ? (
@@ -99,29 +99,29 @@ export function SiteHeader() {
         <div className="flex items-center justify-end gap-2 sm:gap-3">
           <button
             onClick={() => setSearchOpen(true)}
-            className="flex h-10 w-10 items-center justify-center border border-white/30 bg-white/20 text-white transition hover:bg-white/30"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20 sm:h-11 sm:w-11"
             aria-label="Search"
           >
-            <Search className="h-4 w-4" />
+            <Search className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
           </button>
           <LocaleRegionSwitcher
             className="hidden text-white sm:inline-flex"
-            selectClassName="border-white/30 bg-white/20 text-white"
+            selectClassName="rounded-full border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
           />
           <button
             onClick={toggleTheme}
-            className="flex h-10 w-10 items-center justify-center border border-white/30 bg-white/20 text-white transition hover:bg-white/30"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20 sm:h-11 sm:w-11"
             aria-label="Toggle theme"
           >
-            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            {theme === "light" ? <Moon className="h-[18px] w-[18px] sm:h-5 sm:w-5" /> : <Sun className="h-[18px] w-[18px] sm:h-5 sm:w-5" />}
           </button>
           <Link
             href="/cart"
-            className="relative flex h-10 w-10 items-center justify-center border border-white/30 bg-white/20 text-white transition hover:bg-white/30"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20 sm:h-11 sm:w-11"
           >
-            <ShoppingBag className="h-4 w-4" />
+            <ShoppingBag className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
             {itemCount > 0 ? (
-              <span className="absolute -right-1 -top-1 bg-white px-1.5 py-0.5 text-[10px] text-[#A89B8C]">
+              <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-medium text-[#A89B8C]">
                 {itemCount}
               </span>
             ) : null}
