@@ -165,8 +165,8 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStoryQualityDesc: "Каждая модель проходит строгий контроль качества. Мы гарантируем долговечность и комфорт.",
 
     // 工厂介绍
-    factoryHeroTitle: "Глобальный производитель OEM/ODM корректирующего белья",
-    factoryHeroDesc: "Мы — вертикально интегрированное производство с 33-летним опытом разработки. Управляем всем процессом от закупки сырья до готовой продукции для обеспечения эффективного контроля качества.",
+    factoryHeroTitle: "Глобальный OEM/ODM производитель lingerie и корректирующего белья",
+    factoryHeroDesc: "33 года точного производства бюстгальтеров, нижнего белья и корректирующих изделий. Наше вертикально интегрированное производство объединяет бесшовное вязание, автоматизированный крой и продвинутые технологии склеивания — всё под одной крышей.",
     factoryRequestSample: "Запросить образец",
     factoryHowWeWork: "Как мы работаем",
 
@@ -465,8 +465,8 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStoryQualityDesc: "Every model undergoes strict quality control. We guarantee durability and comfort.",
 
     // Factory Introduction
-    factoryHeroTitle: "Global OEM/ODM Shapewear Manufacturer",
-    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R&D experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
+    factoryHeroTitle: "Global OEM/ODM Lingerie & Shapewear Manufacturer",
+    factoryHeroDesc: "33 years of precision manufacturing for bras, underwear, and shapewear. Our vertically integrated facility combines seamless knitting, precision cutting, and advanced bonding technology — all under one roof.",
     factoryRequestSample: "Request Sample",
     factoryHowWeWork: "How We Work",
 
@@ -765,8 +765,8 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStoryQualityDesc: "Every model undergoes strict quality control. We guarantee durability and comfort.",
 
     // Factory Introduction
-    factoryHeroTitle: "Global OEM/ODM Shapewear Manufacturer",
-    factoryHeroDesc: "We are a vertically integrated factory with 33 years of R&D experience. We manage the entire lifecycle from raw material procurement to finished garments for streamlined quality control.",
+    factoryHeroTitle: "Global OEM/ODM Lingerie & Shapewear Manufacturer",
+    factoryHeroDesc: "33 years of precision manufacturing for bras, underwear, and shapewear. Our vertically integrated facility combines seamless knitting, precision cutting, and advanced bonding technology — all under one roof.",
     factoryRequestSample: "Request Sample",
     factoryHowWeWork: "How We Work",
 
@@ -1049,8 +1049,8 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStoryQualityDesc: "Chaque modèle passe un contrôle qualité strict. Nous garantissons durabilité et confort.",
 
     // Factory Introduction
-    factoryHeroTitle: "Fabricant mondial OEM/ODM de gainant",
-    factoryHeroDesc: "Nous sommes une usine verticalement intégrée avec 33 ans d'expérience en R&D. Nous gérons le cycle complet de l'approvisionnement en matières premières aux vêtements finis.",
+    factoryHeroTitle: "Fabricant mondial OEM/ODM de lingerie et gainant",
+    factoryHeroDesc: "33 ans de fabrication de précision pour soutiens-gorge, sous-vêtements et gainant. Notre installation intégrée verticalement combine tricot sans couture, découpe de précision et technologie de collage avancée — tout sous un même toit.",
     factoryRequestSample: "Demander un échantillon",
     factoryHowWeWork: "Comment nous travaillons",
 
@@ -1333,8 +1333,8 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStoryQualityDesc: "Jedes Modell durchläuft eine strenge Qualitätskontrolle. Wir garantieren Langlebigkeit und Komfort.",
 
     // Factory Introduction
-    factoryHeroTitle: "Globaler OEM/ODM Shapewear-Hersteller",
-    factoryHeroDesc: "Wir sind eine vertikal integrierte Fabrik mit 33 Jahren F&E-Erfahrung. Wir verwalten den gesamten Lebenszyklus von der Rohstoffbeschaffung bis zum fertigen Kleidungsstück.",
+    factoryHeroTitle: "Globaler OEM/ODM Hersteller für Lingerie und Shapewear",
+    factoryHeroDesc: "33 Jahre Präzisionsfertigung für Bh's, Unterwäsche und Shapewear. Our vertikal integrierte Anlage kombiniert nahtloses Stricken, Präzisionsschnitt und fortschrittliche Verklebungstechnologie — alles unter einem Dach.",
     factoryRequestSample: "Muster anfordern",
     factoryHowWeWork: "So arbeiten wir",
 
