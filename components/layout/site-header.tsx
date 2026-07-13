@@ -26,7 +26,7 @@ export function SiteHeader() {
     { label: copy.navBras, href: "/shop?category=bras" },
     { label: copy.navNew, href: "/shop?sort=new" },
     { label: copy.navBestsellers, href: "/shop?sort=best" },
-    { label: copy.navApplications, href: "/pages/applications" }
+    { label: copy.navManufacturing, href: "/pages/manufacturing-capabilities" }
   ];
 
   const shapewearDropdownItems = [

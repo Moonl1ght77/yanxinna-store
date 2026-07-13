@@ -90,8 +90,8 @@ export function SiteFooter() {
             <Link href="/pages/brand-story" className="block transition hover:text-[#2C2825]">
               {copy.footerAbout}
             </Link>
-            <Link href="/pages/applications" className="block transition hover:text-[#2C2825]">
-              {copy.navApplications}
+            <Link href="/pages/manufacturing-capabilities" className="block transition hover:text-[#2C2825]">
+              {copy.navManufacturing}
             </Link>
             <Link href="/shop" className="block transition hover:text-[#2C2825]">
               {copy.breadcrumbShop}
