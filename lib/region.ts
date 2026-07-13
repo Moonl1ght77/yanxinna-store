@@ -36,7 +36,8 @@ export async function detectRegionFromIp(): Promise<{
   }
 
   try {
-    const response = await fetch("http://ip-api.com/json/?fields=countryCode,status", {
+    // ipwho.is 支持 HTTPS 免费调用（ip-api.com 免费版仅 HTTP，会被 HTTPS 页面 mixed content 拦截）
+    const response = await fetch("https://ipwho.is/?fields=country_code,success", {
       signal: AbortSignal.timeout(2000) // 2秒超时
     });
 
@@ -46,11 +47,11 @@ export async function detectRegionFromIp(): Promise<{
 
     const data = await response.json();
 
-    if (data.status !== "success" || !data.countryCode) {
+    if (!data.success || !data.country_code) {
       throw new Error("IP detection failed");
     }
 
-    const countryCode = data.countryCode.toUpperCase();
+    const countryCode = data.country_code.toUpperCase();
     const matchedRegion = regionOptions.find((r) => r.region === countryCode);
 
     if (matchedRegion) {

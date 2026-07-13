@@ -5,12 +5,22 @@ export function cn(...values: Array<string | false | null | undefined>) {
 const categoryOrder = ["shapewear", "underwear", "bras"] as const;
 const shapewearSubcategoryOrder = ["bodysuits", "tops", "bottoms"] as const;
 
+// 商品价格以 USD 为基准，展示时按静态汇率换算
+// ponytail: 静态汇率，价格调整或汇率大幅波动时手动更新
+export const usdDisplayRates: Record<string, number> = {
+  USD: 1,
+  RUB: 90,
+  EUR: 0.92,
+  GBP: 0.79
+};
+
 export function formatPrice(amount: number, currency: string, locale: string) {
+  const converted = amount * (usdDisplayRates[currency] ?? 1);
   return new Intl.NumberFormat(locale, {
     style: "currency",
     currency,
     maximumFractionDigits: 0
-  }).format(amount);
+  }).format(converted);
 }
 
 export function titleCase(value: string) {

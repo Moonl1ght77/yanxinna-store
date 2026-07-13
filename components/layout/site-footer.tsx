@@ -87,26 +87,14 @@ export function SiteFooter() {
         <div>
           <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#8c837b] sm:text-[11px]">{copy.footerMore}</p>
           <div className="mt-4 space-y-2.5 text-xs text-[#524b45] sm:mt-5 sm:space-y-3 sm:text-sm">
-            <Link href="/pages/about" className="block transition hover:text-[#2C2825]">
+            <Link href="/pages/brand-story" className="block transition hover:text-[#2C2825]">
               {copy.footerAbout}
             </Link>
-            <Link href="/pages/rewards" className="block transition hover:text-[#2C2825]">
-              {copy.footerRewards}
+            <Link href="/pages/applications" className="block transition hover:text-[#2C2825]">
+              {copy.navApplications}
             </Link>
-            <Link href="/pages/gift-cards" className="block transition hover:text-[#2C2825]">
-              {copy.footerGiftCards}
-            </Link>
-            <Link href="/pages/stores" className="block transition hover:text-[#2C2825]">
-              {copy.footerStores}
-            </Link>
-            <Link href="/pages/partners" className="block transition hover:text-[#2C2825]">
-              {copy.footerPartners}
-            </Link>
-            <Link href="/pages/careers" className="block transition hover:text-[#2C2825]">
-              {copy.footerCareers}
-            </Link>
-            <Link href="/pages/journal" className="block transition hover:text-[#2C2825]">
-              {copy.footerJournal}
+            <Link href="/shop" className="block transition hover:text-[#2C2825]">
+              {copy.breadcrumbShop}
             </Link>
           </div>
         </div>

@@ -18,10 +18,18 @@ export function SampleRequestModal({ isOpen, onClose }: SampleRequestModalProps)
     details: ""
   });
 
+  // 静态站无后端，询盘通过邮件客户端直达业务邮箱
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! We will contact you soon.");
+    const subject = `Sample Request - ${formData.name}`;
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      "",
+      formData.details
+    ].join("\n");
+    window.location.href = `mailto:13719947765@139.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     onClose();
   };
 

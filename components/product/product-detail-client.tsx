@@ -243,7 +243,6 @@ export function ProductDetailClient({
           <div className="mt-8 flex items-center justify-between border border-borderSoft bg-[#FDFBF8] p-4">
             <div>
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.quantityLabel}</p>
-              <p className="mt-1 text-sm text-[#6B5E52]">{copy.sizeGuide}</p>
             </div>
             <div className="flex items-center gap-3">
               <button
@@ -302,11 +301,11 @@ export function ProductDetailClient({
           <div className="mt-8 grid gap-4 border-t border-borderSoft pt-8 text-sm leading-7 text-[#8A7F73]">
             <div className="flex items-start justify-between gap-4 border-b border-borderSoft pb-4">
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.footerShipping}</span>
-              <span className="max-w-[70%] text-right">{copy.footerShipping} {copy.footerReturns}</span>
+              <span className="max-w-[70%] text-right">{copy.promo}</span>
             </div>
             <div className="flex items-start justify-between gap-4 border-b border-borderSoft pb-4">
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.footerReturns}</span>
-              <span className="max-w-[70%] text-right">{copy.footerReturns}</span>
+              <span className="max-w-[70%] text-right">{copy.cartNote}</span>
             </div>
           </div>
 

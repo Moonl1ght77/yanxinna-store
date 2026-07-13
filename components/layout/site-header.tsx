@@ -25,7 +25,8 @@ export function SiteHeader() {
     { label: copy.navUnderwear, href: "/shop?category=underwear" },
     { label: copy.navBras, href: "/shop?category=bras" },
     { label: copy.navNew, href: "/shop?sort=new" },
-    { label: copy.navBestsellers, href: "/shop?sort=best" }
+    { label: copy.navBestsellers, href: "/shop?sort=best" },
+    { label: copy.navApplications, href: "/pages/applications" }
   ];
 
   const shapewearDropdownItems = [
@@ -42,7 +43,7 @@ export function SiteHeader() {
         {/* Hamburger button - mobile only */}
         <button
           onClick={() => setMobileMenuOpen(true)}
-          className="flex h-10 w-10 items-center justify-center text-white md:hidden"
+          className="flex h-10 w-10 items-center justify-center text-white xl:hidden"
           aria-label="Open menu"
         >
           <Menu className="h-5 w-5" strokeWidth={1.7} />
@@ -56,7 +57,7 @@ export function SiteHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center justify-center gap-8 text-[12px] font-medium uppercase tracking-[0.2em] text-white md:flex lg:gap-10 lg:text-[13px]"
+        <nav className="hidden items-center justify-center gap-5 whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.12em] text-white xl:flex 2xl:gap-8 2xl:text-[13px]"
         >
           {navigationItems.map((item) =>
             item.href.includes("category=shapewear") ? (
@@ -131,7 +132,7 @@ export function SiteHeader() {
 
       {/* Mobile menu overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-50 xl:hidden">
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/40 mobile-menu-backdrop"

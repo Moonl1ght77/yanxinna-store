@@ -80,15 +80,6 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
     }
   ];
 
-  const shapewear = sortProductsByMerchOrder(
-    products.filter((product) => product.category === "shapewear")
-  ).slice(0, 3);
-  const bras = sortProductsByMerchOrder(
-    products.filter((product) => product.category === "bras")
-  ).slice(0, 2);
-  const underwear = sortProductsByMerchOrder(
-    products.filter((product) => product.category === "underwear")
-  ).slice(0, 2);
   const trending = sortProductsByMerchOrder(products);
 
   const serviceItems = [

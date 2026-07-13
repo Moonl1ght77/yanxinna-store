@@ -134,7 +134,7 @@ export function FactoryStrengths() {
       </section>
 
       {/* 2. Partnership Models - Stacked Cards with Visual Hierarchy */}
-      <section className="bg-gradient-to-b from-[#F0EBE5] to-[#FDFBF8] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-28">
+      <section className="overflow-x-clip bg-gradient-to-b from-[#F0EBE5] to-[#FDFBF8] px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-28">
         <div className="mx-auto max-w-7xl">
           {/* Section Header - Centered */}
           <div className="mx-auto max-w-2xl text-center">
