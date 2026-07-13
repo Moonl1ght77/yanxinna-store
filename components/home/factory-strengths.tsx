@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Lock, MessageCircle, PackageCheck, RefreshCw, ShieldCheck, UserRound, Zap } from "lucide-react";
 import { useLocale } from "@/hooks/use-locale";
 import { BorderGlow } from "@/components/ui/border-glow";
 
@@ -61,7 +62,7 @@ export function FactoryStrengths() {
                   ].map((item, i) => (
                     <div key={i} className="group/card rounded-xl border border-[#e5e5e5] bg-white p-4 transition hover:border-[#A89B8C] hover:shadow-sm">
                       <p className="text-sm font-medium text-[#2C2825]">{item.title}</p>
-                      <p className="mt-1.5 text-xs leading-5 text-[#8A7F73]">{item.desc}</p>
+                      <p className="mt-1.5 text-[13px] leading-6 text-[#6B5E52]">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -80,7 +81,7 @@ export function FactoryStrengths() {
                   ].map((item, i) => (
                     <div key={i} className="group/card rounded-xl border border-[#e5e5e5] bg-white p-4 transition hover:border-[#A89B8C] hover:shadow-sm">
                       <p className="text-sm font-medium text-[#2C2825]">{item.title}</p>
-                      <p className="mt-1.5 text-xs leading-5 text-[#8A7F73]">{item.desc}</p>
+                      <p className="mt-1.5 text-[13px] leading-6 text-[#6B5E52]">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -123,7 +124,7 @@ export function FactoryStrengths() {
                   ].map((item, i) => (
                     <div key={i} className="group/card rounded-xl border border-[#e5e5e5] bg-white p-4 transition hover:border-[#A89B8C] hover:shadow-sm">
                       <p className="text-sm font-medium text-[#2C2825]">{item.title}</p>
-                      <p className="mt-1.5 text-xs leading-5 text-[#8A7F73]">{item.desc}</p>
+                      <p className="mt-1.5 text-[13px] leading-6 text-[#6B5E52]">{item.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -227,19 +228,19 @@ export function FactoryStrengths() {
             {/* Right - Cards */}
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                { title: copy.advItem1, desc: copy.advItem1Desc, icon: "🛡️" },
-                { title: copy.advItem2, desc: copy.advItem2Desc, icon: "📦" },
-                { title: copy.advItem3, desc: copy.advItem3Desc, icon: "🔄" },
-                { title: copy.advItem4, desc: copy.advItem4Desc, icon: "🔒" },
-                { title: copy.advItem5, desc: copy.advItem5Desc, icon: "⚡" },
-                { title: copy.advItem6, desc: copy.advItem6Desc, icon: "👤" }
+                { title: copy.advItem1, desc: copy.advItem1Desc, icon: ShieldCheck },
+                { title: copy.advItem2, desc: copy.advItem2Desc, icon: PackageCheck },
+                { title: copy.advItem3, desc: copy.advItem3Desc, icon: RefreshCw },
+                { title: copy.advItem4, desc: copy.advItem4Desc, icon: Lock },
+                { title: copy.advItem5, desc: copy.advItem5Desc, icon: Zap },
+                { title: copy.advItem6, desc: copy.advItem6Desc, icon: UserRound }
               ].map((item) => (
-                <div key={item.title} className="group rounded-2xl border border-[#e5e5e5] bg-white p-5 transition-all duration-500 hover:-translate-y-3 hover:border-[#A89B8C] hover:bg-[#2C2825] hover:shadow-2xl">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F0EBE5] text-xl transition-all duration-500 group-hover:bg-[#C9B99A]/20">
-                    {item.icon}
+                <div key={item.title} className="group rounded-2xl border border-[#e5e5e5] bg-white p-5 transition-all duration-500 hover:-translate-y-3 hover:border-[#A89B8C] hover:bg-[#2C2825] hover:shadow-2xl sm:p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#d8d0c6] bg-white transition-all duration-500 group-hover:border-[#C9B99A]/50 group-hover:bg-transparent">
+                    <item.icon className="h-5 w-5 text-[#6B5E52] transition-colors duration-500 group-hover:text-[#C9B99A]" strokeWidth={1.6} />
                   </div>
-                  <h3 className="mt-4 text-sm font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
+                  <h3 className="mt-5 text-base font-semibold tracking-[0.01em] text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
+                  <p className="mt-2.5 text-sm leading-6 text-[#6B5E52] transition-colors duration-500 group-hover:text-white/80">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -282,7 +283,7 @@ export function FactoryStrengths() {
                 </div>
                 <div className="p-5">
                   <h3 className="text-sm font-semibold text-[#2C2825]">{item.title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-[#8A7F73]">{item.desc}</p>
+                  <p className="mt-2 text-[13px] leading-6 text-[#6B5E52]">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -326,7 +327,7 @@ export function FactoryStrengths() {
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold text-[#2C2825]">{item.title}</h3>
-                      <p className="mt-1 text-xs leading-5 text-[#8A7F73]">{item.desc}</p>
+                      <p className="mt-1 text-[13px] leading-6 text-[#6B5E52]">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -385,14 +386,14 @@ export function FactoryStrengths() {
           </div>
 
           {/* Quality Policy */}
-          <div className="mt-10 rounded-2xl border border-[#e5e5e5] bg-white p-6">
+          <div className="mt-10 rounded-2xl border border-[#e5e5e5] bg-white p-6 sm:p-7">
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#F0EBE5] text-xl">
-                🛡️
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#d8d0c6] bg-white">
+                <ShieldCheck className="h-5 w-5 text-[#6B5E52]" strokeWidth={1.6} />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-[#2C2825]">{copy.qualityPolicy}</h3>
-                <p className="mt-2 text-xs leading-5 text-[#8A7F73]">{copy.qualityPolicyDesc}</p>
+                <h3 className="text-base font-semibold tracking-[0.01em] text-[#2C2825]">{copy.qualityPolicy}</h3>
+                <p className="mt-2.5 text-sm leading-6 text-[#6B5E52]">{copy.qualityPolicyDesc}</p>
               </div>
             </div>
           </div>
@@ -485,14 +486,14 @@ export function FactoryStrengths() {
                     <div className="absolute left-1/2 top-6 hidden h-px w-full -translate-x-1/2 bg-[#A89B8C]/20 lg:block" />
                   )}
 
-                  <div className="relative mt-4 overflow-hidden rounded-xl border border-[#e5e5e5] bg-white p-4 transition-all duration-500 group-hover:-translate-y-3 group-hover:border-[#A89B8C] group-hover:shadow-2xl">
+                  <div className="relative mt-4 flex min-h-[150px] flex-col justify-start overflow-hidden rounded-xl border border-[#e5e5e5] bg-white p-5 transition-all duration-500 group-hover:-translate-y-3 group-hover:border-[#A89B8C] group-hover:shadow-2xl">
                     {/* Hover Background */}
                     <div className="absolute inset-0 rounded-[inherit] bg-[#2C2825] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                     <div className="relative z-10">
-                      <div className="mx-auto mb-3 h-16 w-full rounded-lg bg-[#F0EBE5] transition-all duration-500 group-hover:bg-[#C9B99A]/20" />
-                      <h3 className="text-xs font-semibold text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
-                      <p className="mt-1 text-[10px] leading-4 text-[#8A7F73] transition-colors duration-500 group-hover:text-white/70">{item.desc}</p>
+                      <h3 className="text-sm font-semibold tracking-[0.01em] text-[#2C2825] transition-colors duration-500 group-hover:text-white">{item.title}</h3>
+                      <div className="mx-auto mt-2.5 h-px w-8 bg-[#d8d0c6] transition-colors duration-500 group-hover:bg-[#C9B99A]/50" />
+                      <p className="mt-2.5 text-xs leading-5 text-[#6B5E52] transition-colors duration-500 group-hover:text-white/80">{item.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -526,7 +527,7 @@ export function FactoryStrengths() {
                     </button>
                     {openFaq === i && (
                       <div className="px-5 pb-4">
-                        <p className="text-xs leading-5 text-[#8A7F73]">
+                        <p className="text-[13px] leading-6 text-[#6B5E52]">
                           This is a placeholder answer for the frequently asked question.
                         </p>
                       </div>
@@ -542,12 +543,12 @@ export function FactoryStrengths() {
                 {/* Header */}
                 <div className="bg-[#2C2825] p-6">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white">
-                      👤
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10">
+                      <UserRound className="h-5 w-5 text-[#C9B99A]" strokeWidth={1.6} />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-white">Sales Representative</p>
-                      <p className="text-xs text-white/60">33 years experience</p>
+                      <p className="text-base font-medium tracking-[0.01em] text-white">Sales Representative</p>
+                      <p className="mt-0.5 text-xs text-white/70">33 years experience</p>
                     </div>
                   </div>
                 </div>
@@ -555,30 +556,45 @@ export function FactoryStrengths() {
                 {/* Message */}
                 <div className="border-b border-[#e5e5e5] p-6">
                   <div className="rounded-xl bg-[#FDFBF8] p-4">
-                    <p className="text-xs leading-5 text-[#8A7F73]">
+                    <p className="text-sm leading-6 text-[#6B5E52]">
                       Hello, I&apos;m the YANXINNA sales team. Please submit your requirements through the form — I will personally respond and provide our latest product catalog, fabric specifications, and custom pricing details.
                     </p>
                   </div>
                 </div>
 
-                {/* Form */}
-                <form className="p-6">
+                {/* Form - 静态站无后端，询盘走 mailto 直达业务邮箱 */}
+                <form
+                  className="p-6"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    const data = new FormData(event.currentTarget);
+                    const subject = `OEM Inquiry - ${data.get("name")}`;
+                    const body = [
+                      `Name: ${data.get("name")}`,
+                      `Email: ${data.get("email")}`,
+                      `Phone: ${data.get("phone")}`,
+                      "",
+                      String(data.get("details") ?? "")
+                    ].join("\n");
+                    window.location.href = `mailto:13719947765@139.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  }}
+                >
                   <div className="space-y-4">
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-[#2C2825]">Full Name *</label>
-                      <input type="text" required className="w-full rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
+                      <input name="name" type="text" required className="w-full rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
                     </div>
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-[#2C2825]">Company Email *</label>
-                      <input type="email" required className="w-full rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
+                      <input name="email" type="email" required className="w-full rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
                     </div>
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-[#2C2825]">Phone/WhatsApp *</label>
-                      <input type="tel" required placeholder="+1 (201) 555-0123" className="w-full rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
+                      <input name="phone" type="tel" required placeholder="+1 (201) 555-0123" className="w-full rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
                     </div>
                     <div>
                       <label className="mb-1.5 block text-xs font-medium text-[#2C2825]">Project Details *</label>
-                      <textarea rows={4} className="w-full resize-none rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
+                      <textarea name="details" required rows={4} className="w-full resize-none rounded-lg border border-[#e5e5e5] bg-[#FDFBF8] px-4 py-3 text-sm outline-none transition focus:border-[#A89B8C] focus:ring-1 focus:ring-[#A89B8C]" />
                     </div>
                   </div>
 
@@ -587,7 +603,8 @@ export function FactoryStrengths() {
                       Submit
                     </button>
                     <a href="https://wa.me/13719947765" target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-medium text-white transition hover:bg-[#128C7E]">
-                      💬 WhatsApp
+                      <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
+                      WhatsApp
                     </a>
                   </div>
                 </form>
