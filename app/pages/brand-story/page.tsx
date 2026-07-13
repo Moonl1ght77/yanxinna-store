@@ -12,7 +12,7 @@ export default function BrandStoryPage() {
       <section className="mx-auto grid min-h-[500px] w-full max-w-[1400px] md:grid-cols-[1fr,1fr] md:min-h-[600px]">
         {/* Left - Text */}
         <div className="flex flex-col justify-center px-8 py-12 sm:px-12 md:px-16 md:py-20">
-          <h1 className="max-w-[500px] text-2xl font-bold leading-[1.25] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-[40px] lg:text-[48px]">
+          <h1 className="max-w-[500px] text-2xl/[1.25] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.25] md:text-[40px]/[1.25] lg:text-[48px]/[1.25]">
             <span className="font-bold">YANXINNA</span> {copy.brandStoryPhilosophyTitle}
           </h1>
           <p className="mt-6 max-w-[450px] text-xs leading-6 text-[#8A7F73] sm:text-sm sm:leading-7">
@@ -43,7 +43,7 @@ export default function BrandStoryPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#A89B8C]/40 to-[#3D3530]/90" />
         <div className="relative flex min-h-[400px] flex-col items-center justify-center px-6 text-center text-white sm:min-h-[500px] md:min-h-[600px]">
-          <h2 className="text-4xl font-bold tracking-[0.02em] sm:text-5xl md:text-6xl lg:text-7xl">
+          <h2 className="text-4xl/[1.15] font-bold tracking-[0.02em] sm:text-5xl/[1.15] md:text-6xl/[1.15] lg:text-7xl/[1.15]">
             {copy.brandStoryTitle}
           </h2>
           <p className="mt-4 max-w-2xl text-xs leading-6 text-white/90 sm:mt-6 sm:text-sm sm:leading-7 md:text-base">

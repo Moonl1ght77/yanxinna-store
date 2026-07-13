@@ -19,7 +19,7 @@ export function CartPageClient() {
       <div className="mb-4 text-[10px] font-medium uppercase tracking-[0.18em] text-[#A89B8C] sm:mb-6 sm:text-[11px]">
         <Link href="/">{copy.breadcrumbHome}</Link> / <Link href="/shop">{copy.breadcrumbShop}</Link> / {copy.breadcrumbCart}
       </div>
-      <h1 className="font-display text-3xl tracking-[0.04em] text-[#2C2825] sm:text-5xl">{copy.cartTitle}</h1>
+      <h1 className="font-display text-3xl/[1.15] tracking-[0.04em] text-[#2C2825] sm:text-5xl/[1.15]">{copy.cartTitle}</h1>
       {items.length === 0 ? (
         <div className="mt-6 border border-borderSoft bg-white p-6 sm:mt-8 sm:p-10">
           <p className="text-xs text-[#8A7F73] sm:text-sm">{copy.cartEmpty}</p>

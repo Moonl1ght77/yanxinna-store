@@ -193,7 +193,7 @@ export function ProductDetailClient({
               </span>
             ) : null}
           </div>
-          <h1 className="mt-3 font-display text-3xl leading-tight tracking-[0.04em] text-[#2C2825] sm:text-4xl md:text-5xl">{product.name}</h1>
+          <h1 className="mt-3 font-display text-3xl/[1.15] tracking-[0.04em] text-[#2C2825] sm:text-4xl/[1.15] md:text-5xl/[1.15]">{product.name}</h1>
           <div className="mt-5 flex items-center gap-3">
             <p className="text-xl text-[#2C2825]">{formatPrice(product.price, currency, locale)}</p>
             {product.compareAtPrice ? (

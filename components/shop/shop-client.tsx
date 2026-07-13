@@ -104,7 +104,7 @@ export function ShopClient({
     <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8 md:px-8">
       <div className="border border-borderSoft bg-white px-4 py-6 sm:px-6 sm:py-10 md:px-10">
         <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#A89B8C] sm:text-[11px]">{copy.shopTitle}</p>
-        <h1 className="mt-3 font-display text-3xl tracking-[0.04em] text-[#2C2825] sm:mt-4 sm:text-5xl">
+        <h1 className="mt-3 font-display text-3xl/[1.15] tracking-[0.04em] text-[#2C2825] sm:mt-4 sm:text-5xl/[1.15]">
           {categoryLabels[category] ?? categoryLabels.shapewear}
         </h1>
         <p className="mt-3 max-w-2xl text-xs leading-6 text-[#8A7F73] sm:mt-4 sm:text-sm sm:leading-7">{activeCategoryDescription}</p>

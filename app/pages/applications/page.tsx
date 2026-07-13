@@ -47,7 +47,7 @@ export default function ApplicationsPage() {
       <section className="bg-[#FDFBF8]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-28">
           <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">YANXINNA Product Landing</p>
-          <h1 className="mt-5 max-w-4xl font-display text-3xl leading-[1.15] tracking-[0.02em] text-[#2C2825] sm:text-4xl md:text-[52px]">
+          <h1 className="mt-5 max-w-4xl font-display text-3xl/[1.15] tracking-[0.02em] text-[#2C2825] sm:text-4xl/[1.15] md:text-[52px]/[1.15]">
             {copy.appHeroTitle}
           </h1>
           <p className="mt-6 max-w-2xl text-sm leading-7 text-[#8A7F73] sm:text-base sm:leading-8">{copy.appHeroSubtitle}</p>
@@ -72,7 +72,7 @@ export default function ApplicationsPage() {
       {/* 01 Competency */}
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">01 · Competency</p>
-        <h2 className="mt-4 max-w-2xl text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+        <h2 className="mt-4 max-w-2xl text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
           {copy.appCompetencyTitle}
         </h2>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-[#8A7F73]">{copy.appCompetencySubtitle}</p>
@@ -98,7 +98,7 @@ export default function ApplicationsPage() {
       <section className="bg-[#FDFBF8]">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-24">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">02 · Product Matrix</p>
-          <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
             {copy.appMatrixTitle}
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-[#8A7F73]">{copy.appMatrixSubtitle}</p>
@@ -144,7 +144,7 @@ export default function ApplicationsPage() {
       <section className="bg-[#2C2825] text-white">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-24">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#C9B99A]">03 · Production Capacity</p>
-          <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
             {copy.appCapacityTitle}
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-white/70">{copy.appCapacitySubtitle}</p>
@@ -162,7 +162,7 @@ export default function ApplicationsPage() {
       {/* 04 Quality Standards */}
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-24">
         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">04 · Quality Standards</p>
-        <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+        <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
           {copy.appQualityTitle}
         </h2>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-[#8A7F73]">{copy.appQualitySubtitle}</p>
@@ -185,7 +185,7 @@ export default function ApplicationsPage() {
       <section className="bg-[#FDFBF8]">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 md:px-8 md:py-24">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">05 · B2B Partnership</p>
-          <h2 className="mt-4 max-w-2xl text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 max-w-2xl text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
             {copy.partnershipTitle}
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-[#8A7F73]">{copy.partnershipSubtitle}</p>
@@ -216,7 +216,7 @@ export default function ApplicationsPage() {
       {/* CTA */}
       <section className="bg-[#2C2825] text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20 md:px-8 md:py-24">
-          <h2 className="text-2xl font-bold leading-[1.2] sm:text-3xl md:text-4xl">{copy.appCtaTitle}</h2>
+          <h2 className="text-2xl/[1.2] font-bold sm:text-3xl/[1.2] md:text-4xl/[1.2]">{copy.appCtaTitle}</h2>
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/70">{copy.appCtaBody}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <button

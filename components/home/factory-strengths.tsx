@@ -27,7 +27,7 @@ export function FactoryStrengths() {
           {/* Left - Title Block */}
           <div className="lg:sticky lg:top-24">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Capabilities & Services</p>
-            <h2 className="mt-4 max-w-sm text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 max-w-sm text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
               {copy.capabilitiesTitle}
             </h2>
             <p className="mt-5 max-w-sm text-sm leading-7 text-[#8A7F73]">{copy.capabilitiesSubtitle}</p>
@@ -139,7 +139,7 @@ export function FactoryStrengths() {
           {/* Section Header - Centered */}
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Partnership Models</p>
-            <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
               {copy.partnershipTitle}
             </h2>
             <p className="mt-5 text-sm leading-7 text-[#8A7F73]">{copy.partnershipSubtitle}</p>
@@ -217,7 +217,7 @@ export function FactoryStrengths() {
             {/* Left - Title */}
             <div>
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Partnership Advantages</p>
-              <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+              <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
                 {copy.advantagesTitle}
               </h2>
               <p className="mt-5 max-w-sm text-sm leading-7 text-[#8A7F73]">{copy.advantagesSubtitle}</p>
@@ -253,7 +253,7 @@ export function FactoryStrengths() {
           {/* Header */}
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">High-Performance Fabrics</p>
-            <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
               {copy.fabricsTitle}
             </h2>
             <p className="mt-5 text-sm leading-7 text-[#8A7F73]">{copy.fabricsSubtitle}</p>
@@ -308,7 +308,7 @@ export function FactoryStrengths() {
             {/* Right - Content */}
             <div className="lg:pl-8">
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Manufacturing Technology</p>
-              <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+              <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
                 {copy.technologyTitle}
               </h2>
               <p className="mt-5 text-sm leading-7 text-[#8A7F73]">{copy.techSubtitle}</p>
@@ -347,7 +347,7 @@ export function FactoryStrengths() {
           {/* Header */}
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Quality Assurance</p>
-            <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
               {copy.qualityTitle}
             </h2>
             <p className="mt-5 text-sm leading-7 text-[#8A7F73]">{copy.qualitySubtitle}</p>
@@ -414,7 +414,7 @@ export function FactoryStrengths() {
             {/* Left - Content */}
             <div>
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#C9B99A]">About Us</p>
-              <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-white sm:text-3xl md:text-4xl">
+              <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-white sm:text-3xl/[1.2] md:text-4xl/[1.2]">
                 {copy.aboutTitle}
               </h2>
               <p className="mt-5 max-w-lg text-sm leading-7 text-white/70">{copy.aboutDesc}</p>
@@ -454,7 +454,7 @@ export function FactoryStrengths() {
           {/* Header */}
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Workflow Timeline</p>
-            <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2] md:text-4xl/[1.2]">
               {copy.workflowTitle}
             </h2>
             <p className="mt-5 text-sm leading-7 text-[#8A7F73]">{copy.workflowSubtitle}</p>
@@ -509,7 +509,7 @@ export function FactoryStrengths() {
             {/* FAQ */}
             <div>
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">FAQ</p>
-              <h2 className="mt-4 text-2xl font-bold leading-[1.15] tracking-[0.01em] text-[#2C2825] sm:text-3xl">
+              <h2 className="mt-4 text-2xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-3xl/[1.2]">
                 {copy.faqTitle}
               </h2>
               <p className="mt-5 text-sm leading-7 text-[#8A7F73]">{copy.faqSubtitle}</p>

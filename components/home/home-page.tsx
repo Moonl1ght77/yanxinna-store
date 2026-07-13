@@ -121,7 +121,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
           <div className="grid gap-8 md:grid-cols-[1fr,1fr] md:items-center">
             {/* Left - Text */}
             <div className="space-y-6">
-              <h1 className="text-3xl font-bold leading-[1.2] tracking-[0.01em] text-[#2C2825] sm:text-4xl md:text-5xl lg:text-[56px]">
+              <h1 className="text-3xl/[1.2] font-bold tracking-[0.01em] text-[#2C2825] sm:text-4xl/[1.2] md:text-5xl/[1.2] lg:text-[56px]/[1.2]">
                 {copy.factoryHeroTitle}
               </h1>
               <p className="max-w-[500px] text-sm leading-7 text-[#8A7F73] sm:text-base sm:leading-8">
@@ -184,7 +184,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
             style={{ backgroundImage: "url(/images/shapewear-scene-21-9.webp)" }}
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12">
-            <p className="font-display text-2xl tracking-[0.04em] sm:text-3xl md:text-5xl"><GradientText>{copy.shapewearCategory}</GradientText></p>
+            <p className="font-display text-2xl/[1.15] tracking-[0.04em] sm:text-3xl/[1.15] md:text-5xl/[1.15]"><GradientText>{copy.shapewearCategory}</GradientText></p>
             <p className="mt-2 max-w-xl text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">
               {copy.shapewearDescription}
             </p>
@@ -203,7 +203,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
             style={{ backgroundImage: "url(/images/underwear-scene-bg.webp)" }}
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
-            <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.underwearCategory}</GradientText></p>
+            <p className="font-display text-xl/[1.15] tracking-[0.04em] sm:text-2xl/[1.15] md:text-4xl/[1.15]"><GradientText>{copy.underwearCategory}</GradientText></p>
             <p className="mt-2 max-w-md text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">{copy.underwearDescription}</p>
             <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:text-xs md:mt-6 md:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#E8DFC8" shineColor="#F5EFE0" spread={120} direction="left" pauseOnHover />
@@ -217,7 +217,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
             style={{ backgroundImage: "url(/images/bra-single-bg.webp)" }}
           />
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-5 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
-            <p className="font-display text-xl tracking-[0.04em] sm:text-2xl md:text-4xl"><GradientText>{copy.brasCategory}</GradientText></p>
+            <p className="font-display text-xl/[1.15] tracking-[0.04em] sm:text-2xl/[1.15] md:text-4xl/[1.15]"><GradientText>{copy.brasCategory}</GradientText></p>
             <p className="mt-2 max-w-md text-[11px] leading-5 text-white/90 sm:mt-3 sm:text-xs sm:leading-6 md:text-sm md:leading-7">{copy.brasDescription}</p>
             <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.12em] sm:mt-4 sm:text-xs md:mt-6 md:text-sm">
               <ShinyText text={copy.watchCta} speed={2.5} color="#E8DFC8" shineColor="#F5EFE0" spread={120} direction="left" pauseOnHover />
@@ -257,7 +257,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
           ))}
         </div>
         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent px-5 py-6 sm:px-6 sm:py-10 md:px-8 md:py-12">
-          <p className="font-display text-3xl tracking-[0.04em] sm:text-5xl"><GradientText>{copy.bestSellerTitle}</GradientText></p>
+          <p className="font-display text-3xl/[1.15] tracking-[0.04em] sm:text-5xl/[1.15]"><GradientText>{copy.bestSellerTitle}</GradientText></p>
           <p className="mt-2 max-w-2xl text-xs leading-6 text-white/90 sm:mt-3 sm:text-sm sm:leading-7">{copy.bestsellersDescription}</p>
           <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.12em] sm:mt-6 sm:text-sm">
             <ShinyText text={copy.watchCta} speed={2.5} color="#E8DFC8" shineColor="#F5EFE0" spread={120} direction="left" pauseOnHover />
