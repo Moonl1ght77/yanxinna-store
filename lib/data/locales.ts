@@ -238,7 +238,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     advItem6Desc: "Выделенный специалист обеспечивает ответ в течение 24 часов.",
 
     // 高性能面料
-    fabricsTitle: "Инженерные ткани для高性能 корректирующего белья",
+    fabricsTitle: "Инженерные ткани для высокоэффективного корректирующего белья",
     fabricsSubtitle: "Каждый материал проходит строгие тесты для оптимального сжатия, эластичности и безопасности кожи. Сертификат OEKO-TEX Standard 100.",
     fabric1: "Антибактериальный нейлон",
     fabric1Desc: "Высокоэластичная пряжа с ионами серебра для контроля запаха. Идеален для ежедневного корректирующего белья.",
@@ -309,6 +309,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     faq5: "Сколько времени занимает создание образца?",
     faq6: "Как вы обрабатываете дефекты?",
     faq7: "Есть ли у вас опыт работы с брендами в Северной Америке и Европе?",
+
+    // 悬浮联系框 / 微信弹窗
+    fabInquiry: "Вопрос",
+    fabEmail: "Email",
+    fabWechat: "WeChat",
+    fabTop: "Наверх",
+    wechatScanTitle: "Отсканируйте QR-код WeChat",
+    wechatScanHint: "Откройте WeChat и отсканируйте код, чтобы добавить нас",
 
     // Manufacturing Capabilities / OEM 及服务页
     navManufacturing: "OEM и услуги",
@@ -655,6 +663,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     faq6: "How do you handle quality defects?",
     faq7: "Do you have experience with North American and European brands?",
 
+    // 悬浮联系框 / 微信弹窗
+    fabInquiry: "Inquiry",
+    fabEmail: "Email",
+    fabWechat: "WeChat",
+    fabTop: "Top",
+    wechatScanTitle: "Scan WeChat QR",
+    wechatScanHint: "Open WeChat and scan to add us",
+
     // Manufacturing Capabilities / OEM 及服务页
     navManufacturing: "OEM & Services",
     mfgHeroTitle: "Precision Meets Innovation — World-Class Production & Quality Control",
@@ -983,6 +999,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     faq5: "How long does sampling take?",
     faq6: "How do you handle quality defects?",
     faq7: "Do you have experience with North American and European brands?",
+
+    // 悬浮联系框 / 微信弹窗
+    fabInquiry: "Inquiry",
+    fabEmail: "Email",
+    fabWechat: "WeChat",
+    fabTop: "Top",
+    wechatScanTitle: "Scan WeChat QR",
+    wechatScanHint: "Open WeChat and scan to add us",
 
     // Manufacturing Capabilities / OEM 及服务页
     navManufacturing: "OEM & Services",
@@ -1313,6 +1337,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     faq6: "Comment gérez-vous les défauts de qualité?",
     faq7: "Avez-vous de l'expérience avec les marques nord-américaines et européennes?",
 
+    // 悬浮联系框 / 微信弹窗
+    fabInquiry: "Question",
+    fabEmail: "Email",
+    fabWechat: "WeChat",
+    fabTop: "Haut",
+    wechatScanTitle: "Scannez le QR code WeChat",
+    wechatScanHint: "Ouvrez WeChat et scannez le code pour nous ajouter",
+
     // Manufacturing Capabilities / OEM 及服务页
     navManufacturing: "OEM & Services",
     mfgHeroTitle: "Précision et innovation — production et contrôle qualité de classe mondiale",
@@ -1642,6 +1674,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     faq5: "Wie lange dauert die Musterherstellung?",
     faq6: "Wie gehen Sie mit Qualitätsmängeln um?",
     faq7: "Haben Sie Erfahrung mit nordamerikanischen und europäischen Marken?",
+
+    // 悬浮联系框 / 微信弹窗
+    fabInquiry: "Anfrage",
+    fabEmail: "E-Mail",
+    fabWechat: "WeChat",
+    fabTop: "Nach oben",
+    wechatScanTitle: "WeChat-QR-Code scannen",
+    wechatScanHint: "Öffnen Sie WeChat und scannen Sie den Code, um uns hinzuzufügen",
 
     // Manufacturing Capabilities / OEM 及服务页
     navManufacturing: "OEM & Services",

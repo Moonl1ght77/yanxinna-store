@@ -23,7 +23,7 @@ export function SiteFooter() {
               <X className="h-5 w-5" />
             </button>
             <div className="text-center">
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-fg">Scan WeChat QR</p>
+              <p className="mb-4 text-sm font-medium uppercase tracking-[0.08em] text-fg">{copy.wechatScanTitle}</p>
               <div className="relative mx-auto h-[250px] w-[250px]">
                 <Image
                   src="/wechat-qr.jpg"
@@ -32,7 +32,7 @@ export function SiteFooter() {
                   className="object-contain"
                 />
               </div>
-              <p className="mt-4 text-xs text-[#A89B8C]">Open WeChat and scan to add friend</p>
+              <p className="mt-4 text-xs text-[#A89B8C]">{copy.wechatScanHint}</p>
             </div>
           </div>
         </div>

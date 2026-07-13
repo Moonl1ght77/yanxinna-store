@@ -3,9 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Mail, MessageCircle, ArrowUp, HelpCircle, X } from "lucide-react";
+import { useLocale } from "@/hooks/use-locale";
 
 export function ContactFab() {
   const [showWechat, setShowWechat] = useState(false);
+  const { copy } = useLocale();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -13,13 +15,13 @@ export function ContactFab() {
 
   const menuItems = [
     {
-      label: "询问",
+      label: copy.fabInquiry,
       icon: HelpCircle,
-      href: "#contact",
+      href: "/pages/contact-us",
       color: "text-[#5C4E43]",
     },
     {
-      label: "电子邮件",
+      label: copy.fabEmail,
       icon: Mail,
       href: "mailto:13719947765@139.com",
       color: "text-[#5C4E43]",
@@ -31,13 +33,13 @@ export function ContactFab() {
       color: "text-[#25d366]",
     },
     {
-      label: "微信",
+      label: copy.fabWechat,
       icon: "wechat",
       onClick: () => setShowWechat(true),
       color: "text-[#07c160]",
     },
     {
-      label: "顶部",
+      label: copy.fabTop,
       icon: ArrowUp,
       onClick: scrollToTop,
       color: "text-[#5C4E43]",
@@ -58,7 +60,7 @@ export function ContactFab() {
               <X className="h-6 w-6" />
             </button>
             <div className="flex h-full flex-col items-center justify-center p-6 sm:h-auto">
-              <p className="mb-4 text-base font-semibold uppercase tracking-[0.08em] text-[#2C2825]">Scan WeChat QR</p>
+              <p className="mb-4 text-center text-base font-semibold uppercase tracking-[0.08em] text-[#2C2825]">{copy.wechatScanTitle}</p>
               <div className="relative h-[250px] w-[250px] sm:h-[280px] sm:w-[280px]">
                 <Image
                   src="/wechat-qr.jpg"
@@ -69,7 +71,7 @@ export function ContactFab() {
                   priority
                 />
               </div>
-              <p className="mt-4 text-sm text-[#A89B8C]">Open WeChat and scan to add friend</p>
+              <p className="mt-4 text-center text-sm text-[#A89B8C]">{copy.wechatScanHint}</p>
             </div>
           </div>
         </div>

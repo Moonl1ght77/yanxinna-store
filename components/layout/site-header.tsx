@@ -218,6 +218,14 @@ export function SiteHeader() {
                   {copy.cartTitle} {itemCount > 0 ? `(${itemCount})` : ""}
                 </Link>
               </div>
+
+              {/* Language / region switcher (mobile) */}
+              <div className="mt-3 border-t border-borderSoft pt-4">
+                <LocaleRegionSwitcher
+                  className="inline-flex"
+                  selectClassName="rounded-full border-borderSoft bg-white text-[#2C2825]"
+                />
+              </div>
             </nav>
           </div>
         </div>

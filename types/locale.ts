@@ -37,6 +37,14 @@ export type CopyKeys = {
   sizeGuide: string;
 
 
+  // 悬浮联系框 / 微信弹窗
+  fabInquiry: string;
+  fabEmail: string;
+  fabWechat: string;
+  fabTop: string;
+  wechatScanTitle: string;
+  wechatScanHint: string;
+
   // Manufacturing Capabilities / OEM 及服务页
   navManufacturing: string;
   mfgHeroTitle: string;
