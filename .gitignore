@@ -40,3 +40,8 @@ skims*.json
 
 # isolated feature worktrees
 .worktrees/
+
+# cloudflare workers
+.open-next/
+.wrangler/
+.dev.vars
