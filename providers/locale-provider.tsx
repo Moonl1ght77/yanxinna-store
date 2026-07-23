@@ -17,6 +17,11 @@ export const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 const storageKey = "yanxinna-region";
 const ipDetectedKey = "yanxinna-ip-detected";
+const cookieMaxAge = 60 * 60 * 24 * 365;
+
+function persistRegionCookie(region: string) {
+  document.cookie = `${storageKey}=${encodeURIComponent(region)}; Path=/; Max-Age=${cookieMaxAge}; SameSite=Lax`;
+}
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [region, setRegionState] = useState("RU");
@@ -28,6 +33,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
       const saved = window.localStorage.getItem(storageKey);
       if (saved) {
         setRegionState(saved);
+        persistRegionCookie(saved);
         setIsInitialized(true);
         return;
       }
@@ -36,6 +42,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
       const alreadyDetected = window.localStorage.getItem(ipDetectedKey);
       if (alreadyDetected) {
         setRegionState(alreadyDetected);
+        persistRegionCookie(alreadyDetected);
         setIsInitialized(true);
         return;
       }
@@ -44,6 +51,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
       try {
         const detected = await detectRegionFromIp();
         setRegionState(detected.region);
+        persistRegionCookie(detected.region);
         // 标记已检测过
         window.localStorage.setItem(ipDetectedKey, detected.region);
       } catch {
@@ -58,6 +66,7 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
 
   const setRegion = (nextRegion: string) => {
     setRegionState(nextRegion);
+    persistRegionCookie(nextRegion);
     window.localStorage.setItem(storageKey, nextRegion);
     // 手动选择后也更新 ip-detected 标记，避免下次刷新被覆盖
     window.localStorage.setItem(ipDetectedKey, nextRegion);

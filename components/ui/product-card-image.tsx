@@ -9,6 +9,7 @@ type ProductCardImageProps = {
   alt: string;
   className?: string;
   sizes?: string;
+  priority?: boolean;
 };
 
 export function ProductCardImage({
@@ -16,7 +17,8 @@ export function ProductCardImage({
   hoverSrc,
   alt,
   className,
-  sizes = "(max-width: 768px) 100vw, 50vw"
+  sizes = "(max-width: 768px) 100vw, 50vw",
+  priority = false
 }: ProductCardImageProps) {
   if (!hoverSrc) {
     return (
@@ -27,6 +29,7 @@ export function ProductCardImage({
           fill
           className="object-cover"
           sizes={sizes}
+          priority={priority}
         />
       </div>
     );
@@ -41,6 +44,7 @@ export function ProductCardImage({
         fill
         className="object-cover transition-all duration-700 ease-out group-hover/product:opacity-0"
         sizes={sizes}
+        priority={priority}
       />
       {/* 悬停产品图 */}
       <Image
@@ -49,6 +53,7 @@ export function ProductCardImage({
         fill
         className="object-cover opacity-0 transition-all duration-700 ease-out group-hover/product:opacity-100"
         sizes={sizes}
+        priority={priority}
       />
     </div>
   );

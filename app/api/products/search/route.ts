@@ -18,7 +18,8 @@ export async function GET(request: Request) {
       name: item.names[locale] ?? item.names["ru-RU"],
       category: item.category,
       slug: item.slug,
-      href: `/product/${item.slug}`
+      href: `/product/${item.slug}`,
+      type: "product"
     }))
   );
 }

@@ -3,15 +3,16 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { products } from "@/lib/data/products";
-import { categoryDescriptions } from "@/lib/data/categories";
-import { formatPrice, sortProductsByMerchOrder } from "@/lib/utils";
+import { sortProductsByMerchOrder } from "@/lib/utils";
 import { ProductCardImage } from "@/components/ui/product-card-image";
 import { Button } from "@/components/ui/button";
-import { Category } from "@/types/product";
+import type { ProductCategory, ProductRecord } from "@/types/product";
 import { useLocale } from "@/hooks/use-locale";
+import { localizeProduct } from "@/lib/wordpress/localize";
 
 type ShopClientProps = {
+  products: ProductRecord[];
+  categories: ProductCategory[];
   initialCategory?: string;
   initialSubcategory?: string;
   initialSort?: string;
@@ -20,11 +21,13 @@ type ShopClientProps = {
 const itemsPerPage = 6;
 
 export function ShopClient({
+  products,
+  categories,
   initialCategory,
   initialSubcategory,
   initialSort
 }: ShopClientProps) {
-  const { locale, currency, copy } = useLocale();
+  const { locale, copy } = useLocale();
   const searchParams = useSearchParams();
   const [visibleCount, setVisibleCount] = useState(itemsPerPage);
   const [category, setCategory] = useState(initialCategory ?? "shapewear");
@@ -44,34 +47,74 @@ export function ShopClient({
     else setSort("featured");
   }, [searchParams]);
 
-  const categoryLabels: Record<string, string> = {
+  const localizedProducts = useMemo(
+    () => products.map((product) => localizeProduct(product, locale)),
+    [locale, products]
+  );
+
+  const knownLabels: Record<string, string> = {
     shapewear: copy.categoryShapewear,
     underwear: copy.categoryUnderwear,
     bras: copy.categoryBras,
-    all: copy.categoryAll
-  };
-
-  const subcategoryLabels: Record<string, string> = {
-    all: copy.subcategoryAll,
     bodysuits: copy.subcategoryBodysuits,
     tops: copy.subcategoryTops,
     bottoms: copy.subcategoryBottoms
   };
 
+  const topLevelCategories = useMemo(() => {
+    const entries = categories.filter((entry) => entry.parent === 0);
+    if (entries.length > 0) return entries;
+
+    return Array.from(new Set(products.map((product) => product.category))).map(
+      (slug, index) => ({ id: index + 1, slug, name: slug, parent: 0 })
+    );
+  }, [categories, products]);
+
+  const categoryLabels = useMemo<Record<string, string>>(
+    () => ({
+      all: copy.categoryAll,
+      ...Object.fromEntries(
+        topLevelCategories.map((entry) => [
+          entry.slug,
+          knownLabels[entry.slug] ?? entry.name
+        ])
+      )
+    }),
+    [
+      copy.categoryAll,
+      copy.categoryBras,
+      copy.categoryShapewear,
+      copy.categoryUnderwear,
+      topLevelCategories
+    ]
+  );
+
+  const activeCategoryId = topLevelCategories.find(
+    (entry) => entry.slug === category
+  )?.id;
+  const subcategoryOptions = categories.filter(
+    (entry) =>
+      entry.parent !== 0 &&
+      (category === "all" || entry.parent === activeCategoryId)
+  );
+  const subcategoryLabels: Record<string, string> = {
+    all: copy.subcategoryAll,
+    ...Object.fromEntries(
+      subcategoryOptions.map((entry) => [
+        entry.slug,
+        knownLabels[entry.slug] ?? entry.name
+      ])
+    )
+  };
+
   const filteredProducts = useMemo(() => {
-    const base = products.filter((product) => {
+    const base = localizedProducts.filter((product) => {
       const matchesCategory = category === "all" ? true : product.category === category;
       const matchesSubcategory =
         subcategory === "all" ? true : product.subcategory === subcategory;
       return matchesCategory && matchesSubcategory;
     });
 
-    if (sort === "price-low") {
-      return [...base].sort((a, b) => a.price - b.price);
-    }
-    if (sort === "price-high") {
-      return [...base].sort((a, b) => b.price - a.price);
-    }
     if (sort === "best") {
       return sortProductsByMerchOrder(base).sort(
         (a, b) => Number(b.bestSeller) - Number(a.bestSeller)
@@ -82,23 +125,32 @@ export function ShopClient({
         (a, b) => Number(Boolean(b.badge)) - Number(Boolean(a.badge))
       );
     }
-    return sortProductsByMerchOrder(base);
-  }, [category, sort, subcategory]);
+    return sortProductsByMerchOrder(base).sort(
+      (a, b) => a.sortOrder - b.sortOrder
+    );
+  }, [category, localizedProducts, sort, subcategory]);
 
   useEffect(() => {
     setVisibleCount(itemsPerPage);
   }, [category, subcategory, sort]);
 
   useEffect(() => {
-    if (category !== "shapewear" && subcategory !== "all") {
+    if (
+      subcategory !== "all" &&
+      !subcategoryOptions.some((entry) => entry.slug === subcategory)
+    ) {
       setSubcategory("all");
     }
-  }, [category, subcategory]);
+  }, [subcategory, subcategoryOptions]);
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
   const activeCategoryDescription =
-    categoryDescriptions[category as Category] ?? categoryDescriptions.shapewear;
-  const showShapewearSubcategories = category === "shapewear" || category === "all";
+    {
+      shapewear: copy.shapewearDescription,
+      underwear: copy.underwearDescription,
+      bras: copy.brasDescription
+    }[category] ?? "";
+  const showSubcategories = subcategoryOptions.length > 0;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8 md:px-8">
@@ -110,9 +162,10 @@ export function ShopClient({
         <p className="mt-3 max-w-2xl text-xs leading-6 text-[#8A7F73] sm:mt-4 sm:text-sm sm:leading-7">{activeCategoryDescription}</p>
         <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
           {[
-            { label: copy.categoryShapewear, value: "shapewear" },
-            { label: copy.categoryUnderwear, value: "underwear" },
-            { label: copy.categoryBras, value: "bras" },
+            ...topLevelCategories.map((entry) => ({
+              label: categoryLabels[entry.slug] ?? entry.name,
+              value: entry.slug
+            })),
             { label: copy.categoryAll, value: "all" }
           ].map((entry) => (
             <button
@@ -128,7 +181,7 @@ export function ShopClient({
             </button>
           ))}
         </div>
-        {showShapewearSubcategories ? (
+        {showSubcategories ? (
           <div className="mt-4 flex flex-wrap gap-2 border-t border-borderSoft pt-4 sm:mt-6 sm:gap-3 sm:pt-6">
             <button
               onClick={() => setSubcategory("all")}
@@ -140,24 +193,23 @@ export function ShopClient({
             >
               {copy.subcategoryAll}
             </button>
-            {[
-              { label: copy.subcategoryBodysuits, value: "bodysuits" },
-              { label: copy.subcategoryTops, value: "tops" },
-              { label: copy.subcategoryBottoms, value: "bottoms" }
-            ].map((entry) => (
+            {subcategoryOptions.map((entry) => (
               <button
-                key={entry.value}
+                key={entry.slug}
                 onClick={() => {
-                  setCategory("shapewear");
-                  setSubcategory(entry.value);
+                  const parent = topLevelCategories.find(
+                    (categoryEntry) => categoryEntry.id === entry.parent
+                  );
+                  if (parent) setCategory(parent.slug);
+                  setSubcategory(entry.slug);
                 }}
                 className={`border px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] sm:px-4 sm:py-2 sm:text-[11px] ${
-                  subcategory === entry.value
+                  subcategory === entry.slug
                     ? "border-[#5C4E43] bg-[#5C4E43] text-white"
                     : "border-borderSoft bg-white text-[#6a625c]"
                 }`}
               >
-                {entry.label}
+                {subcategoryLabels[entry.slug] ?? entry.name}
               </button>
             ))}
           </div>
@@ -178,8 +230,6 @@ export function ShopClient({
             <option value="featured">{copy.sortFeatured}</option>
             <option value="best">{copy.sortBest}</option>
             <option value="new">{copy.sortNew}</option>
-            <option value="price-low">{copy.sortPriceLow}</option>
-            <option value="price-high">{copy.sortPriceHigh}</option>
           </select>
         </div>
       </div>
@@ -209,13 +259,14 @@ export function ShopClient({
         </div>
       ) : (
         <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:gap-6 md:grid-cols-3">
-          {visibleProducts.map((product) => (
+          {visibleProducts.map((product, productIndex) => (
             <Link key={product.id} href={`/product/${product.slug}`} className="group border border-borderSoft bg-white transition-all duration-500 hover:-translate-y-1 hover:shadow-lg p-3 sm:p-4">
               <ProductCardImage
                 src={product.image}
                 hoverSrc={product.hoverImage}
                 alt={product.name}
                 className="aspect-[3/4]"
+                priority={productIndex === 0}
               />
               <div className="mt-3 sm:mt-4">
                 <div className="flex items-start justify-between gap-2">
@@ -224,7 +275,6 @@ export function ShopClient({
                       ? `${categoryLabels[product.category]} / ${subcategoryLabels[product.subcategory]}`
                       : categoryLabels[product.category]}
                   </p>
-                  <p className="text-xs text-[#6B5E52] sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
                 </div>
                 <p className="mt-1.5 text-sm font-medium text-[#2C2825] sm:mt-2 sm:text-lg">{product.name}</p>
                 <p className="mt-1 text-[11px] leading-5 text-[#8A7F73] sm:mt-2 sm:text-sm sm:leading-6">{product.shortDescription}</p>

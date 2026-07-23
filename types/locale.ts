@@ -24,14 +24,7 @@ export type CopyKeys = {
   newsletterTitle: string;
   newsletterBody: string;
   newsletterCta: string;
-  cartTitle: string;
-  checkoutTitle: string;
   completeLook: string;
-  addToCart: string;
-  mockPayment: string;
-  stripePlaceholder: string;
-  paymentUsdNote: string;
-  paymentError: string;
   loadMore: string;
   reviews: string;
   sizeGuide: string;
@@ -131,28 +124,16 @@ export type CopyKeys = {
   sortFeatured: string;
   sortBest: string;
   sortNew: string;
-  sortPriceLow: string;
-  sortPriceHigh: string;
   itemsCount: string;
   noProducts: string;
   noProductsHint: string;
   resetFilters: string;
 
   // 购物车
-  breadcrumbCart: string;
-  cartEmpty: string;
-  continueShopping: string;
-  orderSummary: string;
-  products: string;
-  shipping: string;
-  total: string;
-  cartNote: string;
-  checkout: string;
 
   // 页脚
   footerHelp: string;
   footerReturns: string;
-  footerTrackOrder: string;
   footerSizeGuide: string;
   footerShipping: string;
   footerFaq: string;
@@ -173,20 +154,12 @@ export type CopyKeys = {
   footerCountry: string;
 
   // 结账页
-  checkoutShippingLabel: string;
-  checkoutPaymentLabel: string;
 
   // 结账成功页
-  orderConfirmed: string;
-  orderThankYou: string;
-  orderReference: string;
-  orderConfirmationNote: string;
-  orderMockFlowNote: string;
 
   // 商品详情页
   color: string;
   size: string;
-  quantityLabel: string;
   compressionLevel: string;
   series: string;
   materialCare: string;

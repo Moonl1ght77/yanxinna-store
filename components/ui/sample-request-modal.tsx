@@ -7,9 +7,19 @@ import { useLocale } from "@/hooks/use-locale";
 type SampleRequestModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  product?: {
+    name: string;
+    productNumber: string;
+    color: string;
+    size: string;
+  };
 };
 
-export function SampleRequestModal({ isOpen, onClose }: SampleRequestModalProps) {
+export function SampleRequestModal({
+  isOpen,
+  onClose,
+  product
+}: SampleRequestModalProps) {
   const { copy } = useLocale();
   const [formData, setFormData] = useState({
     name: "",
@@ -21,8 +31,19 @@ export function SampleRequestModal({ isOpen, onClose }: SampleRequestModalProps)
   // 静态站无后端，询盘通过邮件客户端直达业务邮箱
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `Sample Request - ${formData.name}`;
+    const subject = product
+      ? `Product Inquiry - ${product.productNumber}`
+      : `Sample Request - ${formData.name}`;
     const body = [
+      ...(product
+        ? [
+            `Product: ${product.name}`,
+            `Product number: ${product.productNumber}`,
+            `Selected color: ${product.color}`,
+            `Selected size: ${product.size}`,
+            ""
+          ]
+        : []),
       `Name: ${formData.name}`,
       `Email: ${formData.email}`,
       `Phone: ${formData.phone}`,

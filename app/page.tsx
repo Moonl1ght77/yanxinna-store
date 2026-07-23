@@ -1,9 +1,10 @@
-"use client";
-
+import { connection } from "next/server";
 import { HomePage } from "@/components/home/home-page";
-import { useLocale } from "@/hooks/use-locale";
+import { getProducts } from "@/lib/wordpress/repository";
 
-export default function Page() {
-  const { locale, currency, copy } = useLocale();
-  return <HomePage locale={locale} currency={currency} copy={copy} />;
+export default async function Page() {
+  await connection();
+  const products = await getProducts({ perPage: 12 });
+
+  return <HomePage products={products} />;
 }

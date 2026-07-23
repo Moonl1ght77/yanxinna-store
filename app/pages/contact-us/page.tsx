@@ -84,10 +84,9 @@ export default function ContactUsPage() {
                   className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
                 >
                   <option value="">Select a topic</option>
-                  <option value="order">Order Inquiry</option>
-                  <option value="returns">Returns & Exchanges</option>
+                  <option value="oem">OEM / ODM Inquiry</option>
                   <option value="product">Product Question</option>
-                  <option value="shipping">Shipping</option>
+                  <option value="sample">Sample Request</option>
                   <option value="other">Other</option>
                 </select>
               </div>

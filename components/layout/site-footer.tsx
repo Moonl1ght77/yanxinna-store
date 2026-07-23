@@ -45,9 +45,6 @@ export function SiteFooter() {
             <Link href="/pages/returns" className="block transition hover:text-[#2C2825]">
               {copy.footerReturns}
             </Link>
-            <Link href="/track-order" className="block transition hover:text-[#2C2825]">
-              {copy.footerTrackOrder}
-            </Link>
             <Link href="/pages/size-guides" className="block transition hover:text-[#2C2825]">
               {copy.footerSizeGuide}
             </Link>

@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Search, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { products } from "@/lib/data/products";
+import { useLocale } from "@/hooks/use-locale";
 
 type SearchModalProps = {
   isOpen: boolean;
@@ -30,12 +29,15 @@ const staticPages = [
   { name: "Brand Story", href: "/pages/brand-story", type: "page" as const },
   { name: "Contact Us", href: "/pages/contact-us", type: "page" as const },
   { name: "FAQs", href: "/pages/faqs", type: "page" as const },
-  { name: "Cart", href: "/cart", type: "page" as const },
 ];
 
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
+  const { locale } = useLocale();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [productIndex, setProductIndex] = useState<SearchResult[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -48,6 +50,32 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   }, [isOpen]);
 
   useEffect(() => {
+    if (!isOpen) return;
+
+    const controller = new AbortController();
+    setIsLoading(true);
+    setApiError(false);
+
+    fetch(`/api/products/search?locale=${encodeURIComponent(locale)}`, {
+      signal: controller.signal,
+      headers: { Accept: "application/json" }
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Search API request failed");
+        return response.json() as Promise<SearchResult[]>;
+      })
+      .then((items) => setProductIndex(items))
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setProductIndex([]);
+        setApiError(true);
+      })
+      .finally(() => setIsLoading(false));
+
+    return () => controller.abort();
+  }, [isOpen, locale]);
+
+  useEffect(() => {
     if (!query.trim()) {
       setResults([]);
       return;
@@ -56,19 +84,12 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
     const searchQuery = query.toLowerCase();
 
     // Search products
-    const productResults: SearchResult[] = products
+    const productResults: SearchResult[] = productIndex
       .filter(
         (p) =>
           p.name.toLowerCase().includes(searchQuery) ||
           p.category.toLowerCase().includes(searchQuery)
-      )
-      .map((p) => ({
-        id: p.id,
-        name: p.name,
-        category: p.category,
-        href: `/product/${p.slug}`,
-        type: "product" as const,
-      }));
+      );
 
     // Search pages
     const pageResults: SearchResult[] = staticPages
@@ -82,7 +103,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
       }));
 
     setResults([...productResults, ...pageResults].slice(0, 10));
-  }, [query]);
+  }, [productIndex, query]);
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -127,7 +148,15 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         <div className="max-h-[400px] overflow-y-auto">
           {query.trim() && results.length === 0 && (
             <div className="px-4 py-8 text-center text-sm text-gray-500">
-              No results found for &quot;{query}&quot;
+              {isLoading
+                ? "Loading products..."
+                : `No results found for "${query}"`}
+            </div>
+          )}
+
+          {apiError && (
+            <div className="border-b border-gray-100 px-4 py-3 text-center text-xs text-[#8A7F73]">
+              Product search is temporarily unavailable.
             </div>
           )}
 

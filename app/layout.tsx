@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "@/providers/cart-provider";
 import { LocaleProvider } from "@/providers/locale-provider";
-import { PayPalProvider } from "@/providers/paypal-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -33,15 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${sans.variable} ${display.variable}`}>
         <ThemeProvider>
           <LocaleProvider>
-            <CartProvider>
-              <PayPalProvider>
-                <AnnouncementBar />
-                <SiteHeader />
-                <main>{children}</main>
-                <SiteFooter />
-                <ContactFab />
-              </PayPalProvider>
-            </CartProvider>
+            <AnnouncementBar />
+            <SiteHeader />
+            <main>{children}</main>
+            <SiteFooter />
+            <ContactFab />
           </LocaleProvider>
         </ThemeProvider>
       </body>

@@ -2,16 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, ShoppingBag, X, Sun, Moon, Search } from "lucide-react";
+import { ChevronDown, Menu, X, Sun, Moon, Search } from "lucide-react";
 import { useState } from "react";
-import { useCart } from "@/hooks/use-cart";
 import { useLocale } from "@/hooks/use-locale";
 import { useTheme } from "@/providers/theme-provider";
 import { LocaleRegionSwitcher } from "@/components/layout/locale-region-switcher";
 import { SearchModal } from "@/components/ui/search-modal";
 
 export function SiteHeader() {
-  const { itemCount } = useCart();
   const { copy } = useLocale();
   const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
@@ -116,17 +114,6 @@ export function SiteHeader() {
           >
             {theme === "light" ? <Moon className="h-[18px] w-[18px] sm:h-5 sm:w-5" /> : <Sun className="h-[18px] w-[18px] sm:h-5 sm:w-5" />}
           </button>
-          <Link
-            href="/cart"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition hover:bg-white/20 sm:h-11 sm:w-11"
-          >
-            <ShoppingBag className="h-[18px] w-[18px] sm:h-5 sm:w-5" />
-            {itemCount > 0 ? (
-              <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-medium text-[#A89B8C]">
-                {itemCount}
-              </span>
-            ) : null}
-          </Link>
         </div>
       </div>
 
@@ -206,18 +193,6 @@ export function SiteHeader() {
                   </Link>
                 )
               )}
-
-              {/* Extra links */}
-              <div className="mt-4 border-t border-borderSoft pt-4 sm:mt-6">
-                <Link
-                  href="/cart"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 py-3 text-[12px] font-medium uppercase tracking-[0.18em] text-[#2C2825] sm:text-[13px]"
-                >
-                  <ShoppingBag className="h-4 w-4" strokeWidth={1.7} />
-                  {copy.cartTitle} {itemCount > 0 ? `(${itemCount})` : ""}
-                </Link>
-              </div>
 
               {/* Language / region switcher (mobile) */}
               <div className="mt-3 border-t border-borderSoft pt-4">

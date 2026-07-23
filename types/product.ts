@@ -114,32 +114,3 @@ export type ProductSearchItem = {
   category: string;
   names: LocalizedValues;
 };
-
-/**
- * Transitional type for the existing local mock. It is deleted together with
- * the commerce-only data source after all pages consume `Product`.
- */
-export type LegacyProduct = {
-  id: string;
-  slug: string;
-  name: string;
-  category: Category;
-  subcategory?: ShapewearSubcategory;
-  badge?: string;
-  price: number;
-  compareAtPrice?: number;
-  colors: ProductColor[];
-  sizes: string[];
-  image: string;
-  hoverImage: string;
-  gallery: string[];
-  shortDescription: string;
-  description: string;
-  fabric: string;
-  care: string;
-  compressionLevel: CompressionLevel;
-  benefits: string[];
-  featured?: boolean;
-  bestSeller?: boolean;
-  completeTheLook: string[];
-};

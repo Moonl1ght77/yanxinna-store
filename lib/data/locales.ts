@@ -11,7 +11,7 @@ export const regionOptions: RegionOption[] = [
 export const copyByLocale: Record<string, CopyKeys> = {
   "ru-RU": {
     // 通用
-    promo: "Бесплатная доставка по России от 12 000 ₽",
+    promo: "Ответ на запросы OEM / ODM в течение 24 часов",
     heroTitle: "Силуэт, в котором спокойно и уверенно.",
     heroBody: "Современное корректирующее белье, бюстгальтеры и трусы для гладкой посадки, поддержки и красивого движения каждый день.",
     heroCta: "К корректирующему белью",
@@ -26,14 +26,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     newsletterTitle: "Подписаться на YANXINNA",
     newsletterBody: "Ранний доступ к новым коллекциям, заметкам о посадке и сезонным дропам.",
     newsletterCta: "Подписаться",
-    cartTitle: "Корзина",
-    checkoutTitle: "Оформление заказа",
     completeLook: "Дополнить образ",
-    addToCart: "В корзину",
-    mockPayment: "Оплатить тестовым платежом",
-    stripePlaceholder: "Интеграция Stripe Checkout зарезервирована",
-    paymentUsdNote: "Оплата обрабатывается в USD по текущему курсу. Итоговая сумма в вашей валюте указана для справки.",
-    paymentError: "Не удалось обработать платеж. Пожалуйста, попробуйте еще раз или свяжитесь с нами.",
     loadMore: "Показать еще",
     reviews: "Отзывы скоро появятся",
     sizeGuide: "Идет в размер. Если вы между размерами, выбирайте больший для более комфортной посадки.",
@@ -66,14 +59,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStatement: "YANXINNA — современный бренд белья, который создает деликатную поддержку для повседневных образов.",
 
     // 服务特色
-    serviceFastDelivery: "Быстрая доставка",
-    serviceFastDeliveryBody: "По России от 12 000 ₽",
+    serviceFastDelivery: "Глобальная логистика",
+    serviceFastDeliveryBody: "Экспортная поддержка для более чем 30 стран",
     serviceEarlyAccess: "Ранний доступ",
     serviceEarlyAccessBody: "Подписка YANXINNA первой узнает о новинках",
     serviceContour: "Уверенный контур",
     serviceContourBody: "Продуманная компрессия в каждой модели",
-    serviceReturns: "Возврат",
-    serviceReturnsBody: "В течение 30 дней",
+    serviceReturns: "Гарантия качества",
+    serviceReturnsBody: "Финальная проверка по стандарту AQL 2.5",
     serviceSoftCorrection: "Мягкая коррекция",
     serviceSoftCorrectionBody: "Деликатная поддержка в каждом слое",
 
@@ -92,28 +85,16 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sortFeatured: "Рекомендуемые",
     sortBest: "Бестселлеры",
     sortNew: "Новинки",
-    sortPriceLow: "Цена: по возрастанию",
-    sortPriceHigh: "Цена: по убыванию",
     itemsCount: "товаров",
     noProducts: "Товары не найдены",
     noProductsHint: "Вернитесь к основной категории или сбросьте фильтр корректирующего белья.",
     resetFilters: "Сбросить фильтры",
 
     // 购物车
-    breadcrumbCart: "Корзина",
-    cartEmpty: "Ваша корзина пуста.",
-    continueShopping: "Продолжить покупки",
-    orderSummary: "Сумма заказа",
-    products: "Товары",
-    shipping: "Доставка",
-    total: "Итого",
-    cartNote: "Налоги и итоговая стоимость доставки уточняются при оформлении. Корзина сохраняется в этом демо-магазине локально.",
-    checkout: "Оформить заказ",
 
     // 页脚
     footerHelp: "Помощь",
     footerReturns: "Возврат",
-    footerTrackOrder: "Отследить заказ",
     footerSizeGuide: "Размерная сетка",
     footerShipping: "Доставка",
     footerFaq: "Вопросы и ответы",
@@ -134,20 +115,12 @@ export const copyByLocale: Record<string, CopyKeys> = {
     footerCountry: "Страна",
 
     // 结账页
-    checkoutShippingLabel: "Доставка",
-    checkoutPaymentLabel: "Оплата",
 
     // 结账成功页
-    orderConfirmed: "Заказ подтвержден",
-    orderThankYou: "Спасибо за ваш заказ.",
-    orderReference: "Номер заказа",
-    orderConfirmationNote: "Письмо с подтверждением будет отправлено после подключения интеграций.",
-    orderMockFlowNote: "Этот демо-процесс очищает корзину и сохраняет номер заказа.",
 
     // 商品详情页
     color: "Цвет",
     size: "Размер",
-    quantityLabel: "Количество",
     compressionLevel: "Уровень компрессии",
     series: "Серия",
     materialCare: "Материал / Уход",
@@ -364,7 +337,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
   "en-US": {
     // Common
-    promo: "Free shipping on orders over $120",
+    promo: "OEM / ODM inquiries answered within 24 hours",
     heroTitle: "Shape your silhouette with calm confidence.",
     heroBody: "Modern shapewear, bras, and underwear designed to smooth, support, and move beautifully through the day.",
     heroCta: "Shop Shapewear",
@@ -379,14 +352,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     newsletterTitle: "Join the YANXINNA list",
     newsletterBody: "Early access to launches, fit notes, and limited seasonal drops.",
     newsletterCta: "Subscribe",
-    cartTitle: "Cart",
-    checkoutTitle: "Zur Kasse",
     completeLook: "Complete the Look",
-    addToCart: "Add to Cart",
-    mockPayment: "Pay with Mock Payment",
-    stripePlaceholder: "Stripe Checkout endpoint reserved",
-    paymentUsdNote: "Payment is processed in USD. The total in your local currency is shown for reference.",
-    paymentError: "Payment could not be processed. Please try again or contact us.",
     loadMore: "Load More",
     reviews: "Reviews coming soon",
     sizeGuide: "Fits true to size. If between sizes, size up for easier entry.",
@@ -419,14 +385,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStatement: "YANXINNA — a modern lingerie brand creating delicate support for everyday looks.",
 
     // Service features
-    serviceFastDelivery: "Fast Shipping",
-    serviceFastDeliveryBody: "Free shipping on orders over $120",
+    serviceFastDelivery: "Global Logistics",
+    serviceFastDeliveryBody: "Export support for more than 30 countries",
     serviceEarlyAccess: "Early Access",
     serviceEarlyAccessBody: "YANXINNA subscribers hear about new arrivals first",
     serviceContour: "Confident Contour",
     serviceContourBody: "Thoughtful compression in every style",
-    serviceReturns: "Returns",
-    serviceReturnsBody: "Within 30 days",
+    serviceReturns: "Quality Assurance",
+    serviceReturnsBody: "Final inspection to AQL 2.5 standards",
     serviceSoftCorrection: "Soft Shaping",
     serviceSoftCorrectionBody: "Gentle support in every layer",
 
@@ -445,28 +411,16 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sortFeatured: "Featured",
     sortBest: "Best Sellers",
     sortNew: "New Arrivals",
-    sortPriceLow: "Price: Low to High",
-    sortPriceHigh: "Price: High to Low",
     itemsCount: "items",
     noProducts: "No products found",
     noProductsHint: "Return to the main category or reset your shapewear filter.",
     resetFilters: "Reset Filters",
 
     // Cart
-    breadcrumbCart: "Cart",
-    cartEmpty: "Your cart is empty.",
-    continueShopping: "Continue Shopping",
-    orderSummary: "Order Summary",
-    products: "Products",
-    shipping: "Shipping",
-    total: "Total",
-    cartNote: "Taxes and final shipping cost are calculated at checkout. Cart is stored locally in this demo store.",
-    checkout: "Proceed to Checkout",
 
     // Footer
     footerHelp: "Help",
     footerReturns: "Returns",
-    footerTrackOrder: "Track Order",
     footerSizeGuide: "Size Guide",
     footerShipping: "Shipping",
     footerFaq: "FAQ",
@@ -486,21 +440,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     footerJournal: "Journal",
     footerCountry: "Country",
 
-    // Checkout
-    checkoutShippingLabel: "Shipping",
-    checkoutPaymentLabel: "Payment",
-
-    // Checkout Success
-    orderConfirmed: "Order Confirmed",
-    orderThankYou: "Thank you for your order.",
-    orderReference: "Order Reference",
-    orderConfirmationNote: "A confirmation email would normally be sent here once integrations are connected.",
-    orderMockFlowNote: "This mock flow clears the cart and preserves the final order reference.",
-
     // Product Detail
     color: "Color",
     size: "Size",
-    quantityLabel: "Quantity",
     compressionLevel: "Compression Level",
     series: "Series",
     materialCare: "Material / Care",
@@ -717,7 +659,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
   "en-GB": {
     // Common
-    promo: "Complimentary shipping on orders over GBP 120",
+    promo: "OEM / ODM enquiries answered within 24 hours",
     heroTitle: "Shape your silhouette with calm confidence.",
     heroBody: "Modern shapewear, bras, and underwear designed to smooth, support, and move beautifully through the day.",
     heroCta: "Shop Shapewear",
@@ -732,14 +674,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     newsletterTitle: "Join the YANXINNA list",
     newsletterBody: "Early access to launches, fit notes, and limited seasonal drops.",
     newsletterCta: "Subscribe",
-    cartTitle: "Bag",
-    checkoutTitle: "Zur Kasse",
     completeLook: "Complete the Look",
-    addToCart: "Add to Bag",
-    mockPayment: "Pay with Mock Payment",
-    stripePlaceholder: "Stripe Checkout endpoint reserved",
-    paymentUsdNote: "Payment is processed in USD. The total in your local currency is shown for reference.",
-    paymentError: "Payment could not be processed. Please try again or contact us.",
     loadMore: "Load More",
     reviews: "Reviews coming soon",
     sizeGuide: "Fits true to size. If between sizes, size up for easier entry.",
@@ -772,14 +707,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStatement: "YANXINNA — a modern lingerie brand creating delicate support for everyday looks.",
 
     // Service features
-    serviceFastDelivery: "Fast Shipping",
-    serviceFastDeliveryBody: "Free shipping on orders over £120",
+    serviceFastDelivery: "Global Logistics",
+    serviceFastDeliveryBody: "Export support for more than 30 countries",
     serviceEarlyAccess: "Early Access",
     serviceEarlyAccessBody: "YANXINNA subscribers hear about new arrivals first",
     serviceContour: "Confident Contour",
     serviceContourBody: "Thoughtful compression in every style",
-    serviceReturns: "Returns",
-    serviceReturnsBody: "Within 30 days",
+    serviceReturns: "Quality Assurance",
+    serviceReturnsBody: "Final inspection to AQL 2.5 standards",
     serviceSoftCorrection: "Soft Shaping",
     serviceSoftCorrectionBody: "Gentle support in every layer",
 
@@ -798,28 +733,16 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sortFeatured: "Featured",
     sortBest: "Best Sellers",
     sortNew: "New Arrivals",
-    sortPriceLow: "Price: Low to High",
-    sortPriceHigh: "Price: High to Low",
     itemsCount: "items",
     noProducts: "No products found",
     noProductsHint: "Return to the main category or reset your shapewear filter.",
     resetFilters: "Reset Filters",
 
     // Cart
-    breadcrumbCart: "Bag",
-    cartEmpty: "Your bag is empty.",
-    continueShopping: "Continue Shopping",
-    orderSummary: "Order Summary",
-    products: "Products",
-    shipping: "Shipping",
-    total: "Total",
-    cartNote: "Taxes and final shipping cost are calculated at checkout. Bag is stored locally in this demo store.",
-    checkout: "Proceed to Checkout",
 
     // Footer
     footerHelp: "Help",
     footerReturns: "Returns",
-    footerTrackOrder: "Track Order",
     footerSizeGuide: "Size Guide",
     footerShipping: "Shipping",
     footerFaq: "FAQ",
@@ -839,21 +762,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     footerJournal: "Journal",
     footerCountry: "Country",
 
-    // Checkout
-    checkoutShippingLabel: "Shipping",
-    checkoutPaymentLabel: "Payment",
-
-    // Checkout Success
-    orderConfirmed: "Order Confirmed",
-    orderThankYou: "Thank you for your order.",
-    orderReference: "Order Reference",
-    orderConfirmationNote: "A confirmation email would normally be sent here once integrations are connected.",
-    orderMockFlowNote: "This mock flow clears the bag and preserves the final order reference.",
-
     // Product Detail
     color: "Colour",
     size: "Size",
-    quantityLabel: "Quantity",
     compressionLevel: "Compression Level",
     series: "Series",
     materialCare: "Material / Care",
@@ -1054,7 +965,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
   "fr-FR": {
     // Common
-    promo: "Livraison offerte des 120 EUR d'achat",
+    promo: "Réponse aux demandes OEM / ODM sous 24 heures",
     heroTitle: "Sculptez votre silhouette avec assurance.",
     heroBody: "Des pièces gainantes, soutiens-gorge et sous-vetements pensés pour lisser, soutenir et accompagner chaque mouvement.",
     heroCta: "Découvrir le shapewear",
@@ -1069,14 +980,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     newsletterTitle: "Rejoignez la liste YANXINNA",
     newsletterBody: "Acces anticipe aux lancements, conseils de taille et capsules saisonnières.",
     newsletterCta: "S'inscrire",
-    cartTitle: "Panier",
-    checkoutTitle: "Paiement",
     completeLook: "Completer le look",
-    addToCart: "Ajouter au panier",
-    mockPayment: "Payer avec Mock Payment",
-    stripePlaceholder: "Point d'entree Stripe Checkout reserve",
-    paymentUsdNote: "Le paiement est traité en USD. Le total dans votre devise est indiqué à titre indicatif.",
-    paymentError: "Le paiement a échoué. Veuillez réessayer ou nous contacter.",
     loadMore: "Voir plus",
     reviews: "Avis a venir",
     sizeGuide: "Taille normalement. Entre deux tailles, prenez la taille au-dessus.",
@@ -1109,14 +1013,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStatement: "YANXINNA — une marque de lingerie moderne qui cree un soutien delicat pour les looks du quotidien.",
 
     // Service features
-    serviceFastDelivery: "Livraison rapide",
-    serviceFastDeliveryBody: "Livraison gratuite dès 120 EUR",
+    serviceFastDelivery: "Logistique mondiale",
+    serviceFastDeliveryBody: "Accompagnement export vers plus de 30 pays",
     serviceEarlyAccess: "Acces anticipe",
     serviceEarlyAccessBody: "Les abonnes YANXINNA decouvrent les nouveautes en premier",
     serviceContour: "Contour assuré",
     serviceContourBody: "Compression intelligente dans chaque modele",
-    serviceReturns: "Retours",
-    serviceReturnsBody: " sous 30 jours",
+    serviceReturns: "Assurance qualité",
+    serviceReturnsBody: "Inspection finale selon la norme AQL 2.5",
     serviceSoftCorrection: "Correction douce",
     serviceSoftCorrectionBody: "Soutien délicat dans chaque couche",
 
@@ -1135,28 +1039,16 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sortFeatured: "En vedette",
     sortBest: "Best-sellers",
     sortNew: "Nouveautés",
-    sortPriceLow: "Prix : croissant",
-    sortPriceHigh: "Prix : décroissant",
     itemsCount: "articles",
     noProducts: "Aucun produit trouve",
     noProductsHint: "Retournez a la categorie principale ou réinitialisez votre filtre.",
     resetFilters: "Réinitialiser les filtres",
 
     // Cart
-    breadcrumbCart: "Panier",
-    cartEmpty: "Votre panier est vide.",
-    continueShopping: "Continuer vos achats",
-    orderSummary: "Recapitulatif",
-    products: "Articles",
-    shipping: "Livraison",
-    total: "Total",
-    cartNote: "Les taxes et le cout final de livraison seront calcules lors du paiement. Le panier est sauvegarde localement.",
-    checkout: "Passer au paiement",
 
     // Footer
     footerHelp: "Aide",
     footerReturns: "Retours",
-    footerTrackOrder: "Suivre la commande",
     footerSizeGuide: "Guide des tailles",
     footerShipping: "Livraison",
     footerFaq: "FAQ",
@@ -1176,21 +1068,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     footerJournal: "Journal",
     footerCountry: "Pays",
 
-    // Checkout
-    checkoutShippingLabel: "Livraison",
-    checkoutPaymentLabel: "Paiement",
-
-    // Checkout Success
-    orderConfirmed: "Commande confirmée",
-    orderThankYou: "Merci pour votre commande.",
-    orderReference: "Numéro de commande",
-    orderConfirmationNote: "Un email de confirmation sera envoyé une fois les intégrations connectées.",
-    orderMockFlowNote: "Ce processus de démo vide le panier et conserve le numéro de commande.",
-
     // Product Detail
     color: "Couleur",
     size: "Taille",
-    quantityLabel: "Quantité",
     compressionLevel: "Niveau de compression",
     series: "Série",
     materialCare: "Matière / Entretien",
@@ -1392,7 +1272,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
 
   "de-DE": {
     // Common
-    promo: "Kostenloser Versand ab 120 EUR",
+    promo: "Antwort auf OEM-/ODM-Anfragen innerhalb von 24 Stunden",
     heroTitle: "Forme deine Silhouette mit ruhiger Sicherheit.",
     heroBody: "Moderne Shapewear, Bras und Underwear, entwickelt fuer sanftes Glaetten, Halt und angenehme Beweglichkeit.",
     heroCta: "Shapewear entdecken",
@@ -1407,14 +1287,7 @@ export const copyByLocale: Record<string, CopyKeys> = {
     newsletterTitle: "Zur YANXINNA Liste anmelden",
     newsletterBody: "Frueher Zugang zu Launches, Fit Notes und limitierten Drops.",
     newsletterCta: "Abonnieren",
-    cartTitle: "Warenkorb",
-    checkoutTitle: "Zur Kasse",
     completeLook: "Look ergaenzen",
-    addToCart: "In den Warenkorb",
-    mockPayment: "Mit Mock Payment bezahlen",
-    stripePlaceholder: "Stripe Checkout Schnittstelle reserviert",
-    paymentUsdNote: "Die Zahlung wird in USD abgewickelt. Der Gesamtbetrag in Ihrer Währung dient nur zur Orientierung.",
-    paymentError: "Die Zahlung ist fehlgeschlagen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns.",
     loadMore: "Mehr laden",
     reviews: "Bewertungen folgen",
     sizeGuide: "Faellt regulaer aus. Zwischen zwei Groessen bitte groesser waehlen.",
@@ -1447,14 +1320,14 @@ export const copyByLocale: Record<string, CopyKeys> = {
     brandStatement: "YANXINNA — eine moderne Unterwaesch-Marke, die zarte Unterstuetzung fuer den Alltag schafft.",
 
     // Service features
-    serviceFastDelivery: "Schneller Versand",
-    serviceFastDeliveryBody: "Kostenloser Versand ab 120 EUR",
+    serviceFastDelivery: "Globale Logistik",
+    serviceFastDeliveryBody: "Exportunterstützung für mehr als 30 Länder",
     serviceEarlyAccess: "Fruehzeitiger Zugang",
     serviceEarlyAccessBody: "YANXINNA Abonnenten erfahren als erste von Neuheiten",
     serviceContour: "Sicherer Kontur",
     serviceContourBody: "Durchdachte Kompression in jedem Modell",
-    serviceReturns: "Rueckgabe",
-    serviceReturnsBody: "Innerhalb von 30 Tagen",
+    serviceReturns: "Qualitätssicherung",
+    serviceReturnsBody: "Endkontrolle nach AQL-2.5-Standard",
     serviceSoftCorrection: "Sanfte Korrektur",
     serviceSoftCorrectionBody: "Zarte Unterstuetzung in jeder Schicht",
 
@@ -1473,28 +1346,16 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sortFeatured: "Empfohlen",
     sortBest: "Best Seller",
     sortNew: "Neuheiten",
-    sortPriceLow: "Preis: aufsteigend",
-    sortPriceHigh: "Preis: absteigend",
     itemsCount: "Artikel",
     noProducts: "Keine Produkte gefunden",
     noProductsHint: "Kehren Sie zur Hauptkategorie zurueck oder setzen Sie den Filter zurueck.",
     resetFilters: "Filter zuruecksetzen",
 
     // Cart
-    breadcrumbCart: "Warenkorb",
-    cartEmpty: "Ihr Warenkorb ist leer.",
-    continueShopping: "Weiter einkaufen",
-    orderSummary: "Bestelluebersicht",
-    products: "Artikel",
-    shipping: "Versand",
-    total: "Gesamt",
-    cartNote: "Steuern und endgueltige Versandkosten werden beim Checkout berechnet. Der Warenkorb wird lokal in diesem Demo-Shop gespeichert.",
-    checkout: "Zur Kasse",
 
     // Footer
     footerHelp: "Hilfe",
     footerReturns: "Rueckgabe",
-    footerTrackOrder: "Bestellung verfolgen",
     footerSizeGuide: "Groessenberater",
     footerShipping: "Versand",
     footerFaq: "FAQ",
@@ -1514,21 +1375,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     footerJournal: "Journal",
     footerCountry: "Land",
 
-    // Checkout
-    checkoutShippingLabel: "Versand",
-    checkoutPaymentLabel: "Zahlung",
-
-    // Checkout Success
-    orderConfirmed: "Bestellung bestätigt",
-    orderThankYou: "Vielen Dank für Ihre Bestellung.",
-    orderReference: "Bestellnummer",
-    orderConfirmationNote: "Eine Bestätigungs-E-Mail wird gesendet, sobald Integrationen verbunden sind.",
-    orderMockFlowNote: "Dieser Demo-Prozess leert den Warenkorb und speichert die Bestellnummer.",
-
     // Product Detail
     color: "Farbe",
     size: "Größe",
-    quantityLabel: "Menge",
     compressionLevel: "Kompressionsstufe",
     series: "Serie",
     materialCare: "Material / Pflege",

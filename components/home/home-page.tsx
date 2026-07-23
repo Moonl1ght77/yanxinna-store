@@ -4,25 +4,24 @@ import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Heart, RotateCcw, Smartphone, Sparkles, Truck } from "lucide-react";
-import { products } from "@/lib/data/products";
-import { formatPrice, sortProductsByMerchOrder } from "@/lib/utils";
+import { ArrowRight, BadgeCheck, RotateCcw, Smartphone, Sparkles, Truck } from "lucide-react";
+import { sortProductsByMerchOrder } from "@/lib/utils";
 import { ProductCardImage } from "@/components/ui/product-card-image";
-import { Button } from "@/components/ui/button";
 import { SilkBackground } from "@/components/ui/silk-background";
 import { ShinyText } from "@/components/ui/shiny-text";
 import { GradientText } from "@/components/ui/gradient-text";
 import { SampleRequestModal } from "@/components/ui/sample-request-modal";
 import { FactoryStrengths } from "@/components/home/factory-strengths";
-import { CopyKeys } from "@/types/locale";
+import { useLocale } from "@/hooks/use-locale";
+import { localizeProduct } from "@/lib/wordpress/localize";
+import type { ProductRecord } from "@/types/product";
 
 type HomePageProps = {
-  locale: string;
-  currency: string;
-  copy: CopyKeys;
+  products: ProductRecord[];
 };
 
-export function HomePage({ locale, currency, copy }: HomePageProps) {
+export function HomePage({ products }: HomePageProps) {
+  const { locale, copy } = useLocale();
   const bestSellersRef = useRef<HTMLElement | null>(null);
   const [bestSellersInView, setBestSellersInView] = useState(false);
   const [showSampleModal, setShowSampleModal] = useState(false);
@@ -80,7 +79,9 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
     }
   ];
 
-  const trending = sortProductsByMerchOrder(products);
+  const trending = sortProductsByMerchOrder(
+    products.map((product) => localizeProduct(product, locale))
+  ).sort((left, right) => left.sortOrder - right.sortOrder);
 
   const serviceItems = [
     {
@@ -252,6 +253,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 768px) 58vw, 24vw"
                 className="object-cover"
+                priority={card.src === "/images/hero-bg.png"}
               />
             </Link>
           ))}
@@ -297,9 +299,7 @@ export function HomePage({ locale, currency, copy }: HomePageProps) {
                   <div>
                     <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[#A89B8C] sm:text-[11px]">{product.category}</p>
                     <p className="mt-1.5 text-sm font-medium uppercase leading-5 tracking-[0.04em] text-[#2C2825] sm:mt-2 sm:text-lg sm:leading-6">{product.name}</p>
-                    <p className="mt-1.5 text-xs font-medium text-[#6B5E52] sm:mt-2 sm:text-sm">{formatPrice(product.price, currency, locale)}</p>
                   </div>
-                  <Heart className="mt-0.5 h-4 w-4 text-[#6f665f] sm:mt-1 sm:h-5 sm:w-5" strokeWidth={1.7} />
                 </div>
               </Link>
             ))}

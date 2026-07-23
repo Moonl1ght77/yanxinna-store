@@ -3,40 +3,44 @@
 import { useMemo, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Minus, Plus, ChevronLeft, ChevronRight } from "lucide-react";
-import { LegacyProduct } from "@/types/product";
-import { formatPrice, titleCase } from "@/lib/utils";
+import { ChevronLeft, ChevronRight, Download } from "lucide-react";
+import type { ProductRecord } from "@/types/product";
+import { titleCase } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/hooks/use-cart";
 import { useLocale } from "@/hooks/use-locale";
+import { localizeProduct } from "@/lib/wordpress/localize";
+import { SampleRequestModal } from "@/components/ui/sample-request-modal";
 
 type ProductDetailClientProps = {
-  product: LegacyProduct;
-  completeTheLook: LegacyProduct[];
+  product: ProductRecord;
+  completeTheLook: ProductRecord[];
 };
 
 export function ProductDetailClient({
-  product,
-  completeTheLook
+  product: productRecord,
+  completeTheLook: completeTheLookRecords
 }: ProductDetailClientProps) {
-  const [selectedImage, setSelectedImage] = useState(product.gallery[0]);
-  const [selectedColor, setSelectedColor] = useState(product.colors[0].name);
+  const { locale, copy } = useLocale();
+  const product = localizeProduct(productRecord, locale);
+  const completeTheLook = completeTheLookRecords.map((item) =>
+    localizeProduct(item, locale)
+  );
+  const [selectedColorIndex, setSelectedColorIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
-  const [quantity, setQuantity] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showInquiryModal, setShowInquiryModal] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
-  const { addItem } = useCart();
-  const { locale, currency, copy } = useLocale();
+  const selectedColor = product.colors[selectedColorIndex] ?? product.colors[0];
 
   // 当前颜色的画廊图片
   const currentGallery = useMemo(() => {
-    const colorData = product.colors.find(c => c.name === selectedColor);
+    const colorData = product.colors[selectedColorIndex];
     if (colorData) {
       return [colorData.image, colorData.hoverImage];
     }
     return product.gallery;
-  }, [selectedColor, product.colors, product.gallery]);
+  }, [selectedColorIndex, product.colors, product.gallery]);
 
   const compressionWidth = useMemo(() => {
     if (product.compressionLevel === "Light") return "w-1/3";
@@ -45,20 +49,15 @@ export function ProductDetailClient({
   }, [product.compressionLevel]);
 
   // 切换颜色时更新图片
-  const handleColorChange = (colorName: string) => {
-    setSelectedColor(colorName);
+  const handleColorChange = (colorIndex: number) => {
+    setSelectedColorIndex(colorIndex);
     setCurrentImageIndex(0);
-    const colorData = product.colors.find(c => c.name === colorName);
-    if (colorData) {
-      setSelectedImage(colorData.image);
-    }
   };
 
   // 滑动切换图片
   const goToImage = useCallback((index: number) => {
     const newIndex = Math.max(0, Math.min(index, currentGallery.length - 1));
     setCurrentImageIndex(newIndex);
-    setSelectedImage(currentGallery[newIndex]);
   }, [currentGallery]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -89,13 +88,23 @@ export function ProductDetailClient({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
+      <SampleRequestModal
+        isOpen={showInquiryModal}
+        onClose={() => setShowInquiryModal(false)}
+        product={{
+          name: product.name,
+          productNumber: product.productNumber,
+          color: selectedColor.name,
+          size: selectedSize
+        }}
+      />
       <div className="mb-6 overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
         <Link href="/">{copy.breadcrumbHome}</Link> / <Link href="/shop">{copy.breadcrumbShop}</Link> /{" "}
         <Link href={`/shop?category=${product.category}`}>{titleCase(product.category)}</Link>
         {product.subcategory ? (
           <>
             {" "}
-            / <Link href={`/shop?category=shapewear&subcategory=${product.subcategory}`}>{titleCase(product.subcategory)}</Link>
+            / <Link href={`/shop?category=${product.category}&subcategory=${product.subcategory}`}>{titleCase(product.subcategory)}</Link>
           </>
         ) : null}{" "}
         / {product.name}
@@ -115,13 +124,14 @@ export function ProductDetailClient({
               style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
             >
               {currentGallery.map((image, index) => (
-                <div key={`${selectedColor}-${index}`} className="relative h-full w-full flex-shrink-0">
+                <div key={`${selectedColor.name}-${index}`} className="relative h-full w-full flex-shrink-0">
                   <Image
                     src={image}
-                    alt={`${product.name} ${selectedColor} view ${index + 1}`}
+                    alt={`${product.name} ${selectedColor.name} view ${index + 1}`}
                     fill
                     className="object-contain p-4"
                     sizes="(max-width: 768px) 100vw, 55vw"
+                    priority={index === 0}
                   />
                 </div>
               ))}
@@ -163,7 +173,7 @@ export function ProductDetailClient({
           <div className="grid grid-cols-2 gap-4">
             {currentGallery.map((image, index) => (
               <button
-                key={`${selectedColor}-${index}`}
+                key={`${selectedColor.name}-${index}`}
                 onClick={() => goToImage(index)}
                 className={`relative aspect-square overflow-hidden bg-[#f5f5f5] border-2 transition-all duration-300 ${
                   index === currentImageIndex ? "border-[#2C2825]" : "border-transparent"
@@ -171,10 +181,11 @@ export function ProductDetailClient({
               >
                 <Image
                   src={image}
-                  alt={`${product.name} ${selectedColor} view`}
+                  alt={`${product.name} ${selectedColor.name} view`}
                   fill
                   className="object-contain p-2"
                   sizes="(max-width: 768px) 50vw, 25vw"
+                  priority={index === 0}
                 />
               </button>
             ))}
@@ -192,27 +203,22 @@ export function ProductDetailClient({
                 {product.badge}
               </span>
             ) : null}
+            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
+              {product.productNumber}
+            </span>
           </div>
           <h1 className="mt-3 font-display text-3xl/[1.15] tracking-[0.04em] text-[#2C2825] sm:text-4xl/[1.15] md:text-5xl/[1.15]">{product.name}</h1>
-          <div className="mt-5 flex items-center gap-3">
-            <p className="text-xl text-[#2C2825]">{formatPrice(product.price, currency, locale)}</p>
-            {product.compareAtPrice ? (
-              <p className="text-sm text-[#9b928a] line-through">
-                {formatPrice(product.compareAtPrice, currency, locale)}
-              </p>
-            ) : null}
-          </div>
           <p className="mt-6 text-sm leading-7 text-[#8A7F73]">{product.description}</p>
 
           <div className="mt-8">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.color}: {selectedColor}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.color}: {selectedColor.name}</p>
             <div className="mt-3 flex flex-wrap gap-3">
-              {product.colors.map((color) => (
+              {product.colors.map((color, colorIndex) => (
                 <button
                   key={color.name}
-                  onClick={() => handleColorChange(color.name)}
+                  onClick={() => handleColorChange(colorIndex)}
                   className={`flex items-center gap-2 border px-3 py-2 text-sm transition-all duration-300 ${
-                    selectedColor === color.name ? "border-[#5C4E43] bg-[#5C4E43] text-white" : "border-borderSoft hover:border-[#A89B8C]"
+                    selectedColorIndex === colorIndex ? "border-[#5C4E43] bg-[#5C4E43] text-white" : "border-borderSoft hover:border-[#A89B8C]"
                   }`}
                 >
                   <span className="h-4 w-4 rounded-full border border-black/10" style={{ backgroundColor: color.hex }} />
@@ -240,54 +246,24 @@ export function ProductDetailClient({
             <p className="mt-4 text-sm leading-6 text-[#A89B8C]">{copy.sizeGuide}</p>
           </div>
 
-          <div className="mt-8 flex items-center justify-between border border-borderSoft bg-[#FDFBF8] p-4">
-            <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.quantityLabel}</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setQuantity((current) => Math.max(1, current - 1))}
-                className="border border-borderSoft p-2"
-              >
-                <Minus className="h-4 w-4" />
-              </button>
-              <span className="min-w-6 text-center text-sm text-[#2C2825]">{quantity}</span>
-              <button
-                onClick={() => setQuantity((current) => current + 1)}
-                className="border border-borderSoft p-2"
-              >
-                <Plus className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-
           <div className="mt-8">
             <Button
               className="w-full"
-              onClick={() =>
-                addItem({
-                  productId: product.id,
-                  slug: product.slug,
-                  name: product.name,
-                  image: product.image,
-                  price: product.price,
-                  color: selectedColor,
-                  size: selectedSize,
-                  quantity
-                })
-              }
+              onClick={() => setShowInquiryModal(true)}
             >
-              {copy.addToCart}
+              {copy.factoryRequestSample}
             </Button>
           </div>
 
-          <div className="mt-10 border border-borderSoft bg-[#F5F1ED] p-5">
-            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.compressionLevel}</p>
-            <div className="mt-4 h-2 bg-white">
-              <div className={`${compressionWidth} h-2 bg-[#5C4E43]`} />
+          {product.compressionLevel ? (
+            <div className="mt-10 border border-borderSoft bg-[#F5F1ED] p-5">
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.compressionLevel}</p>
+              <div className="mt-4 h-2 bg-white">
+                <div className={`${compressionWidth} h-2 bg-[#5C4E43]`} />
+              </div>
+              <p className="mt-3 text-sm text-[#6B5E52]">{product.compressionLevel}</p>
             </div>
-            <p className="mt-3 text-sm text-[#6B5E52]">{product.compressionLevel}</p>
-          </div>
+          ) : null}
 
           <div className="mt-8 grid gap-3 border-t border-borderSoft pt-8">
             {product.benefits.map((benefit) => (
@@ -296,17 +272,6 @@ export function ProductDetailClient({
                 <span>{benefit}</span>
               </div>
             ))}
-          </div>
-
-          <div className="mt-8 grid gap-4 border-t border-borderSoft pt-8 text-sm leading-7 text-[#8A7F73]">
-            <div className="flex items-start justify-between gap-4 border-b border-borderSoft pb-4">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.footerShipping}</span>
-              <span className="max-w-[70%] text-right">{copy.promo}</span>
-            </div>
-            <div className="flex items-start justify-between gap-4 border-b border-borderSoft pb-4">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.footerReturns}</span>
-              <span className="max-w-[70%] text-right">{copy.cartNote}</span>
-            </div>
           </div>
 
           <div className="mt-8 grid gap-6 border-t border-borderSoft pt-8">
@@ -322,10 +287,24 @@ export function ProductDetailClient({
                 {product.care}
               </p>
             </div>
-            <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">Reviews</p>
-              <p className="mt-2 text-sm leading-7 text-[#A89B8C]">{copy.reviews}</p>
-            </div>
+            {product.parameters.map((parameter) => (
+              <div key={`${parameter.label}-${parameter.value}`}>
+                <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{parameter.label}</p>
+                <p className="mt-2 text-sm leading-7 text-[#8A7F73]">{parameter.value}</p>
+              </div>
+            ))}
+            {product.attachments.map((attachment) => (
+              <a
+                key={attachment.url}
+                href={attachment.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 text-sm text-[#6B5E52] underline-offset-4 hover:underline"
+              >
+                <Download className="h-4 w-4" />
+                {attachment.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -334,7 +313,7 @@ export function ProductDetailClient({
         <div className="flex items-center justify-between gap-4">
           <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825] sm:text-3xl md:text-4xl">{copy.completeLook}</h2>
           <Link href="/shop" className="text-sm uppercase tracking-[0.12em] text-[#6B5E52]">
-            {copy.continueShopping}
+            {copy.breadcrumbShop}
           </Link>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -347,7 +326,6 @@ export function ProductDetailClient({
                 {item.subcategory ? `${item.category} / ${item.subcategory}` : item.category}
               </p>
               <p className="mt-4 text-lg text-[#2C2825]">{item.name}</p>
-              <p className="mt-2 text-sm text-[#6B5E52]">{formatPrice(item.price, currency, locale)}</p>
             </Link>
           ))}
         </div>

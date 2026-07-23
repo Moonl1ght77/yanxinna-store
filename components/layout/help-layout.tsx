@@ -10,7 +10,6 @@ type HelpLayoutProps = {
 
 const helpLinks = [
   { key: "footerReturns", href: "/pages/returns" },
-  { key: "footerTrackOrder", href: "/track-order" },
   { key: "footerSizeGuide", href: "/pages/size-guides" },
   { key: "footerShipping", href: "/pages/shipping" },
   { key: "footerFaq", href: "/pages/faqs" },
