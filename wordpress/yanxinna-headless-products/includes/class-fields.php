@@ -45,6 +45,36 @@ final class YANXINNA_Headless_Fields {
 		);
 	}
 
+	public static function validate_product_number( $valid, $value, $field, $input ) {
+		unset( $field, $input );
+
+		if ( true !== $valid || ! $value ) {
+			return $valid;
+		}
+
+		$post_id = isset( $_POST['post_ID'] ) ? absint( wp_unslash( $_POST['post_ID'] ) ) : 0;
+		$matches = get_posts(
+			array(
+				'post_type'      => YANXINNA_Headless_Content::POST_TYPE,
+				'post_status'    => 'any',
+				'posts_per_page' => 1,
+				'post__not_in'   => $post_id ? array( $post_id ) : array(),
+				'meta_query'     => array(
+					array(
+						'key'     => 'product_number',
+						'value'   => sanitize_text_field( $value ),
+						'compare' => '=',
+					),
+				),
+				'fields'         => 'ids',
+			)
+		);
+
+		return $matches
+			? __( 'Product number must be unique.', 'yanxinna-headless-products' )
+			: $valid;
+	}
+
 	private static function fields() {
 		return array(
 			self::text_field( 'product_number', 'Product number', true ),

@@ -1,0 +1,363 @@
+{
+  "version": 1,
+  "status": "draft",
+  "pending_locales": ["ru-RU", "fr-FR", "de-DE"],
+  "products": [
+    {
+      "product_number": "YX-001",
+      "slug": "seamless-coverage-bodysuit",
+      "category": "shapewear",
+      "subcategory": "bodysuits",
+      "main_image": "products/shapewear-1/黑色白底.png",
+      "hover_image": "products/shapewear-1/黑色模特正面.png",
+      "gallery": [
+        "products/shapewear-1/黑色白底.png",
+        "products/shapewear-1/黑色模特正面.png",
+        "products/shapewear-1/肤色白底.png",
+        "products/shapewear-1/肤色模特正面.png"
+      ],
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": [
+        {
+          "hex": "#1a1a1a",
+          "image": "products/shapewear-1/黑色白底.png",
+          "hover_image": "products/shapewear-1/黑色模特正面.png",
+          "names": { "en-US": "Black", "en-GB": "Black" }
+        },
+        {
+          "hex": "#d4b896",
+          "image": "products/shapewear-1/肤色白底.png",
+          "hover_image": "products/shapewear-1/肤色模特正面.png",
+          "names": { "en-US": "Nude", "en-GB": "Nude" }
+        },
+        {
+          "hex": "#8b6f47",
+          "image": "products/shapewear-1/棕色白底.png",
+          "hover_image": "products/shapewear-1/棕色模特正面.png",
+          "names": { "en-US": "Brown", "en-GB": "Brown" }
+        },
+        {
+          "hex": "#9a9a9a",
+          "image": "products/shapewear-1/灰色白底.png",
+          "hover_image": "products/shapewear-1/灰色模特正面.png",
+          "names": { "en-US": "Grey", "en-GB": "Grey" }
+        },
+        {
+          "hex": "#f5f5f5",
+          "image": "products/shapewear-1/白色白底.png",
+          "hover_image": "products/shapewear-1/白色模特正面.png",
+          "names": { "en-US": "White", "en-GB": "White" }
+        },
+        {
+          "hex": "#e8c4c4",
+          "image": "products/shapewear-1/粉色白底.png",
+          "hover_image": "products/shapewear-1/粉色模特正面.png",
+          "names": { "en-US": "Pink", "en-GB": "Pink" }
+        }
+      ],
+      "parameters": [
+        {
+          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "values": {
+            "en-US": "80% nylon, 20% elastane",
+            "en-GB": "80% nylon, 20% elastane"
+          }
+        }
+      ],
+      "attachments": [],
+      "compression_level": "Firm",
+      "featured": true,
+      "best_seller": true,
+      "sort_order": 10,
+      "complete_the_look": ["YX-002", "YX-003"],
+      "translations": {
+        "en-US": {
+          "name": "Seamless Coverage Bodysuit",
+          "short_description": "Full coverage seamless bodysuit with firm compression.",
+          "description": "A premium seamless bodysuit designed for all-day comfort with firm compression. Features a smooth, bonded edge design that eliminates visible panty lines.",
+          "badge": "New",
+          "fabric": "80% nylon, 20% elastane",
+          "care": "Hand wash cold, lay flat to dry.",
+          "benefits": ["Seamless construction", "Full coverage", "Targeted compression", "Bonded edges"],
+          "seo_title": "Seamless Coverage Bodysuit | YANXINNA",
+          "seo_description": "Full coverage seamless bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "en-GB": {
+          "name": "Seamless Coverage Bodysuit",
+          "short_description": "Full coverage seamless bodysuit with firm compression.",
+          "description": "A premium seamless bodysuit designed for all-day comfort with firm compression. Features a smooth, bonded edge design that eliminates visible panty lines.",
+          "badge": "New",
+          "fabric": "80% nylon, 20% elastane",
+          "care": "Hand wash cold, lay flat to dry.",
+          "benefits": ["Seamless construction", "Full coverage", "Targeted compression", "Bonded edges"],
+          "seo_title": "Seamless Coverage Bodysuit | YANXINNA",
+          "seo_description": "Full coverage seamless bodysuit for YANXINNA OEM and ODM enquiries."
+        }
+      }
+    },
+    {
+      "product_number": "YX-002",
+      "slug": "adjustable-strap-bodysuit",
+      "category": "shapewear",
+      "subcategory": "bodysuits",
+      "main_image": "products/shapewear-2/黑色白底.png",
+      "hover_image": "products/shapewear-2/黑色模特正面.png",
+      "gallery": [
+        "products/shapewear-2/黑色白底.png",
+        "products/shapewear-2/黑色模特正面.png",
+        "products/shapewear-2/肤色白底.png",
+        "products/shapewear-2/肤色模特正面.png"
+      ],
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": [
+        {
+          "hex": "#1a1a1a",
+          "image": "products/shapewear-2/黑色白底.png",
+          "hover_image": "products/shapewear-2/黑色模特正面.png",
+          "names": { "en-US": "Black", "en-GB": "Black" }
+        },
+        {
+          "hex": "#d4b896",
+          "image": "products/shapewear-2/肤色白底.png",
+          "hover_image": "products/shapewear-2/肤色模特正面.png",
+          "names": { "en-US": "Nude", "en-GB": "Nude" }
+        },
+        {
+          "hex": "#8b6f47",
+          "image": "products/shapewear-2/棕色白底.png",
+          "hover_image": "products/shapewear-2/棕色模特正面.png",
+          "names": { "en-US": "Brown", "en-GB": "Brown" }
+        },
+        {
+          "hex": "#f5f5f5",
+          "image": "products/shapewear-2/白色白底.png",
+          "hover_image": "products/shapewear-2/白色模特正面.png",
+          "names": { "en-US": "White", "en-GB": "White" }
+        }
+      ],
+      "parameters": [
+        {
+          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "values": {
+            "en-US": "78% nylon, 22% elastane",
+            "en-GB": "78% nylon, 22% elastane"
+          }
+        }
+      ],
+      "attachments": [],
+      "compression_level": "Medium",
+      "featured": true,
+      "best_seller": false,
+      "sort_order": 20,
+      "complete_the_look": ["YX-001", "YX-004"],
+      "translations": {
+        "en-US": {
+          "name": "Adjustable Strap Bodysuit",
+          "short_description": "Adjustable strap bodysuit with medium compression.",
+          "description": "A versatile bodysuit with adjustable straps for a customised fit. Perfect for everyday wear.",
+          "badge": "",
+          "fabric": "78% nylon, 22% elastane",
+          "care": "Machine wash cold, gentle cycle.",
+          "benefits": ["Adjustable straps", "Medium compression", "Seamless design"],
+          "seo_title": "Adjustable Strap Bodysuit | YANXINNA",
+          "seo_description": "Adjustable strap bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "en-GB": {
+          "name": "Adjustable Strap Bodysuit",
+          "short_description": "Adjustable strap bodysuit with medium compression.",
+          "description": "A versatile bodysuit with adjustable straps for a customised fit. Perfect for everyday wear.",
+          "badge": "",
+          "fabric": "78% nylon, 22% elastane",
+          "care": "Machine wash cold, gentle cycle.",
+          "benefits": ["Adjustable straps", "Medium compression", "Seamless design"],
+          "seo_title": "Adjustable Strap Bodysuit | YANXINNA",
+          "seo_description": "Adjustable strap bodysuit for YANXINNA OEM and ODM enquiries."
+        }
+      }
+    },
+    {
+      "product_number": "YX-003",
+      "slug": "high-waist-shaping-bodysuit",
+      "category": "shapewear",
+      "subcategory": "bodysuits",
+      "main_image": "products/shapewear-3/黑色白底.png",
+      "hover_image": "products/shapewear-3/黑色模特正面.png",
+      "gallery": [
+        "products/shapewear-3/黑色白底.png",
+        "products/shapewear-3/黑色模特正面.png",
+        "products/shapewear-3/肤色白底.png",
+        "products/shapewear-3/肤色模特正面.png"
+      ],
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": [
+        {
+          "hex": "#1a1a1a",
+          "image": "products/shapewear-3/黑色白底.png",
+          "hover_image": "products/shapewear-3/黑色模特正面.png",
+          "names": { "en-US": "Black", "en-GB": "Black" }
+        },
+        {
+          "hex": "#d4b896",
+          "image": "products/shapewear-3/肤色白底.png",
+          "hover_image": "products/shapewear-3/肤色模特正面.png",
+          "names": { "en-US": "Nude", "en-GB": "Nude" }
+        },
+        {
+          "hex": "#8b6f47",
+          "image": "products/shapewear-3/棕色白底.png",
+          "hover_image": "products/shapewear-3/棕色模特正面.png",
+          "names": { "en-US": "Brown", "en-GB": "Brown" }
+        },
+        {
+          "hex": "#9a9a9a",
+          "image": "products/shapewear-3/灰色白底.png",
+          "hover_image": "products/shapewear-3/灰色模特正面.png",
+          "names": { "en-US": "Grey", "en-GB": "Grey" }
+        },
+        {
+          "hex": "#f5f5f5",
+          "image": "products/shapewear-3/白色白底.png",
+          "hover_image": "products/shapewear-3/白色模特正面.png",
+          "names": { "en-US": "White", "en-GB": "White" }
+        },
+        {
+          "hex": "#e8c4c4",
+          "image": "products/shapewear-3/粉色白底.png",
+          "hover_image": "products/shapewear-3/粉色模特正面.png",
+          "names": { "en-US": "Pink", "en-GB": "Pink" }
+        }
+      ],
+      "parameters": [
+        {
+          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "values": {
+            "en-US": "82% nylon, 18% elastane",
+            "en-GB": "82% nylon, 18% elastane"
+          }
+        }
+      ],
+      "attachments": [],
+      "compression_level": "Firm",
+      "featured": true,
+      "best_seller": true,
+      "sort_order": 30,
+      "complete_the_look": ["YX-001", "YX-002"],
+      "translations": {
+        "en-US": {
+          "name": "High Waist Shaping Bodysuit",
+          "short_description": "High waist bodysuit with firm compression for body sculpting.",
+          "description": "Our best-selling high waist bodysuit features firm compression technology that smooths and sculpts your silhouette.",
+          "badge": "Best Seller",
+          "fabric": "82% nylon, 18% elastane",
+          "care": "Hand wash cold, lay flat to dry.",
+          "benefits": ["High waist design", "Firm compression", "Body sculpting"],
+          "seo_title": "High Waist Shaping Bodysuit | YANXINNA",
+          "seo_description": "High waist shaping bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "en-GB": {
+          "name": "High Waist Shaping Bodysuit",
+          "short_description": "High waist bodysuit with firm compression for body sculpting.",
+          "description": "Our best-selling high waist bodysuit features firm compression technology that smooths and sculpts your silhouette.",
+          "badge": "Best Seller",
+          "fabric": "82% nylon, 18% elastane",
+          "care": "Hand wash cold, lay flat to dry.",
+          "benefits": ["High waist design", "Firm compression", "Body sculpting"],
+          "seo_title": "High Waist Shaping Bodysuit | YANXINNA",
+          "seo_description": "High waist shaping bodysuit for YANXINNA OEM and ODM enquiries."
+        }
+      }
+    },
+    {
+      "product_number": "YX-004",
+      "slug": "comfort-seamless-bodysuit",
+      "category": "shapewear",
+      "subcategory": "bodysuits",
+      "main_image": "products/shapewear-4/黑色白底.png",
+      "hover_image": "products/shapewear-4/黑色模特正面.png",
+      "gallery": [
+        "products/shapewear-4/黑色白底.png",
+        "products/shapewear-4/黑色模特正面.png",
+        "products/shapewear-4/肤色白底.png",
+        "products/shapewear-4/肤色模特正面.png"
+      ],
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": [
+        {
+          "hex": "#1a1a1a",
+          "image": "products/shapewear-4/黑色白底.png",
+          "hover_image": "products/shapewear-4/黑色模特正面.png",
+          "names": { "en-US": "Black", "en-GB": "Black" }
+        },
+        {
+          "hex": "#d4b896",
+          "image": "products/shapewear-4/肤色白底.png",
+          "hover_image": "products/shapewear-4/肤色模特正面.png",
+          "names": { "en-US": "Nude", "en-GB": "Nude" }
+        },
+        {
+          "hex": "#8b6f47",
+          "image": "products/shapewear-4/棕色白底.png",
+          "hover_image": "products/shapewear-4/棕色模特正面.png",
+          "names": { "en-US": "Brown", "en-GB": "Brown" }
+        },
+        {
+          "hex": "#9a9a9a",
+          "image": "products/shapewear-4/灰色白底.png",
+          "hover_image": "products/shapewear-4/灰色模特正面.png",
+          "names": { "en-US": "Grey", "en-GB": "Grey" }
+        },
+        {
+          "hex": "#f5f5f5",
+          "image": "products/shapewear-4/白色白底.png",
+          "hover_image": "products/shapewear-4/白色模特正面.png",
+          "names": { "en-US": "White", "en-GB": "White" }
+        },
+        {
+          "hex": "#e8c4c4",
+          "image": "products/shapewear-4/粉色白底.png",
+          "hover_image": "products/shapewear-4/粉色模特正面.png",
+          "names": { "en-US": "Pink", "en-GB": "Pink" }
+        }
+      ],
+      "parameters": [
+        {
+          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "values": {
+            "en-US": "75% nylon, 25% elastane",
+            "en-GB": "75% nylon, 25% elastane"
+          }
+        }
+      ],
+      "attachments": [],
+      "compression_level": "Light",
+      "featured": false,
+      "best_seller": false,
+      "sort_order": 40,
+      "complete_the_look": ["YX-002", "YX-003"],
+      "translations": {
+        "en-US": {
+          "name": "Comfort Seamless Bodysuit",
+          "short_description": "Light compression seamless bodysuit for ultimate comfort.",
+          "description": "Designed for comfort without sacrificing style, this light compression bodysuit feels like a second skin.",
+          "badge": "",
+          "fabric": "75% nylon, 25% elastane",
+          "care": "Machine wash cold, gentle cycle.",
+          "benefits": ["Light compression", "Seamless feel", "All-day comfort"],
+          "seo_title": "Comfort Seamless Bodysuit | YANXINNA",
+          "seo_description": "Comfort seamless bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "en-GB": {
+          "name": "Comfort Seamless Bodysuit",
+          "short_description": "Light compression seamless bodysuit for ultimate comfort.",
+          "description": "Designed for comfort without sacrificing style, this light compression bodysuit feels like a second skin.",
+          "badge": "",
+          "fabric": "75% nylon, 25% elastane",
+          "care": "Machine wash cold, gentle cycle.",
+          "benefits": ["Light compression", "Seamless feel", "All-day comfort"],
+          "seo_title": "Comfort Seamless Bodysuit | YANXINNA",
+          "seo_description": "Comfort seamless bodysuit for YANXINNA OEM and ODM enquiries."
+        }
+      }
+    }
+  ]
+}
