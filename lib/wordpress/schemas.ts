@@ -84,3 +84,10 @@ export const wordpressProductSchema = z.object({
     "de-DE": translationSchema
   })
 });
+
+export const wordpressCategorySchema = z.object({
+  id: z.number().int().positive(),
+  slug: z.string().min(1),
+  name: z.string().min(1),
+  parent: z.number().int().nonnegative()
+});

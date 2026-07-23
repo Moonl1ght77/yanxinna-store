@@ -91,6 +91,30 @@ export type Product = ProductShared &
     attachments: ProductAttachment[];
   };
 
+export type ProductCategory = {
+  id: number;
+  slug: string;
+  name: string;
+  parent: number;
+};
+
+export type ProductQuery = {
+  category?: string;
+  subcategory?: string;
+  featured?: boolean;
+  bestSeller?: boolean;
+  search?: string;
+  page?: number;
+  perPage?: number;
+};
+
+export type ProductSearchItem = {
+  id: string;
+  slug: string;
+  category: string;
+  names: LocalizedValues;
+};
+
 /**
  * Transitional type for the existing local mock. It is deleted together with
  * the commerce-only data source after all pages consume `Product`.
