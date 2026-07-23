@@ -37,3 +37,6 @@ next-env.d.ts
 .codex-homepage.png
 .tmp-21st-workspaces.html
 skims*.json
+
+# isolated feature worktrees
+.worktrees/
