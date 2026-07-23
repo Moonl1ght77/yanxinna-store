@@ -1,6 +1,6 @@
-import { Product } from "@/types/product";
+import { LegacyProduct } from "@/types/product";
 
-export const products: Product[] = [
+export const products: LegacyProduct[] = [
   {
     id: "yx-001",
     slug: "seamless-coverage-bodysuit",

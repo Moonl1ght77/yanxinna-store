@@ -4,15 +4,15 @@ import { useMemo, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Minus, Plus, ChevronLeft, ChevronRight } from "lucide-react";
-import { Product } from "@/types/product";
+import { LegacyProduct } from "@/types/product";
 import { formatPrice, titleCase } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/use-cart";
 import { useLocale } from "@/hooks/use-locale";
 
 type ProductDetailClientProps = {
-  product: Product;
-  completeTheLook: Product[];
+  product: LegacyProduct;
+  completeTheLook: LegacyProduct[];
 };
 
 export function ProductDetailClient({
