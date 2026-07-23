@@ -300,11 +300,11 @@ foreach ( $pending_items as $pending ) {
 			);
 		}
 
-		update_field( 'product_number', $sku, $post_id );
-		update_field( 'hover_image', $hover_image_id, $post_id );
-		update_field( 'gallery', array_values( array_filter( $gallery_ids ) ), $post_id );
+		update_field( 'field_yx_v1_product_number', $sku, $post_id );
+		update_field( 'field_yx_v1_hover_image', $hover_image_id, $post_id );
+		update_field( 'field_yx_v1_gallery', array_values( array_filter( $gallery_ids ) ), $post_id );
 		update_field(
-			'sizes',
+			'field_yx_v1_sizes',
 			array_map(
 				function ( $size ) {
 					return array( 'value' => sanitize_text_field( $size ) );
@@ -313,15 +313,15 @@ foreach ( $pending_items as $pending ) {
 			),
 			$post_id
 		);
-		update_field( 'colors', $colors, $post_id );
-		update_field( 'parameters', $parameters, $post_id );
-		update_field( 'attachments', $attachments, $post_id );
-		update_field( 'compression_level', sanitize_text_field( $item['compression_level'] ?? '' ), $post_id );
-		update_field( 'featured', ! empty( $item['featured'] ) ? 1 : 0, $post_id );
-		update_field( 'best_seller', ! empty( $item['best_seller'] ) ? 1 : 0, $post_id );
-		update_field( 'sort_order', (int) ( $item['sort_order'] ?? 0 ), $post_id );
-		update_field( 'complete_the_look', $resolve_related( $item['complete_the_look'] ?? array() ), $post_id );
-		update_field( 'translations', $translations, $post_id );
+		update_field( 'field_yx_v1_colors', $colors, $post_id );
+		update_field( 'field_yx_v1_parameters', $parameters, $post_id );
+		update_field( 'field_yx_v1_attachments', $attachments, $post_id );
+		update_field( 'field_yx_v1_compression_level', sanitize_text_field( $item['compression_level'] ?? '' ), $post_id );
+		update_field( 'field_yx_v1_featured', ! empty( $item['featured'] ) ? 1 : 0, $post_id );
+		update_field( 'field_yx_v1_best_seller', ! empty( $item['best_seller'] ) ? 1 : 0, $post_id );
+		update_field( 'field_yx_v1_sort_order', (int) ( $item['sort_order'] ?? 0 ), $post_id );
+		update_field( 'field_yx_v1_complete_the_look', $resolve_related( $item['complete_the_look'] ?? array() ), $post_id );
+		update_field( 'field_yx_v1_translations', $translations, $post_id );
 
 		wp_update_post(
 			array(

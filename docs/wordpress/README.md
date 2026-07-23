@@ -17,6 +17,7 @@
 ## 代码与文档入口
 
 - WordPress 插件：`wordpress/yanxinna-headless-products/`
+- 可直接安装的插件包：`wordpress/dist/yanxinna-headless-products-1.0.0.zip`
 - 初始产品数据：`wordpress/migration/products.json`
 - WP-CLI 导入器：`wordpress/migration/import-products.php`
 - 前端 WordPress 数据层：`lib/wordpress/`
@@ -43,7 +44,7 @@
 1. 新建独立的 WordPress CMS 站点和数据库，不覆盖现有前端站点。
 2. 完成 HTTPS、管理员账号、备份和更新策略。
 3. 安装并激活 ACF PRO。
-4. 将 `yanxinna-headless-products` 文件夹压缩为 ZIP，在“插件 → 安装插件 → 上传插件”中安装并激活。
+4. 在“插件 → 安装插件 → 上传插件”中上传 `wordpress/dist/yanxinna-headless-products-1.0.0.zip` 并激活。
 5. 打开“设置 → 固定链接”，选择“文章名”并保存一次。
 6. 在服务器的 `wp-config.php` 中加入 [deployment.md](deployment.md) 列出的三个常量。
 7. 新建商家账号，并分配插件自动创建的 **YANXINNA Product Manager** 角色。该角色只能维护产品、分类和媒体，不能管理插件、主题、系统设置或其他用户。
@@ -56,4 +57,3 @@
 代码层面已采用只读公开 API、字段白名单、输出清洗、最小权限角色、来源白名单 CORS、服务端缓存密钥和草稿优先迁移，可安全进入独立测试环境。
 
 仍必须在测试环境验证 WordPress/PHP 运行时、真实媒体、五语内容、Cloudflare Worker Secret、Webhook、WAF/限流和视觉回归。未完成这些测试前，不应切换现有生产域名，也不应发布迁移后的产品。
-

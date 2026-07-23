@@ -7,6 +7,7 @@ import {
   getProductBySlug,
   getProducts
 } from "@/lib/wordpress/repository";
+import { getWordPressConfig } from "@/lib/wordpress/config";
 import { localizeProduct } from "@/lib/wordpress/localize";
 import { getMockRegionByCode } from "@/lib/region";
 
@@ -28,10 +29,24 @@ export async function generateMetadata({
     (await cookies()).get("yanxinna-region")?.value
   );
   const product = localizeProduct(productRecord, region.locale);
+  const { NEXT_PUBLIC_SITE_URL } = getWordPressConfig();
 
   return {
     title: product.seoTitle,
-    description: product.seoDescription
+    description: product.seoDescription,
+    alternates: {
+      canonical: new URL(`/product/${product.slug}`, NEXT_PUBLIC_SITE_URL)
+    },
+    openGraph: {
+      title: product.seoTitle,
+      description: product.seoDescription,
+      images: [
+        {
+          url: product.image,
+          alt: product.name
+        }
+      ]
+    }
   };
 }
 

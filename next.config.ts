@@ -1,8 +1,15 @@
 import type { NextConfig } from "next";
 
 const wordpressApiUrl = process.env.WORDPRESS_API_URL;
-const remotePatterns = wordpressApiUrl
-  ? [{ protocol: "https" as const, hostname: new URL(wordpressApiUrl).hostname }]
+const wordpressOrigin = wordpressApiUrl ? new URL(wordpressApiUrl) : null;
+const remotePatterns = wordpressOrigin
+  ? [
+      {
+        protocol: wordpressOrigin.protocol === "http:" ? ("http" as const) : ("https" as const),
+        hostname: wordpressOrigin.hostname,
+        port: wordpressOrigin.port
+      }
+    ]
   : [];
 
 const nextConfig: NextConfig = {
