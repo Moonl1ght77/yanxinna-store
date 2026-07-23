@@ -3,7 +3,7 @@
  * Import the legacy YANXINNA product catalogue as WordPress drafts.
  *
  * Usage:
- * wp eval-file wp-content/plugins/yanxinna-headless-products/migration/import-products.php \
+ * wp eval-file /secure/path/import-products.php \
  *   -- --media-base-url=https://staging-store.example.com/
  */
 
