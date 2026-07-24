@@ -208,7 +208,11 @@ export function ProductDetailClient({
             </span>
           </div>
           <h1 className="mt-3 font-display text-3xl/[1.15] tracking-[0.04em] text-[#2C2825] sm:text-4xl/[1.15] md:text-5xl/[1.15]">{product.name}</h1>
-          <p className="mt-6 text-sm leading-7 text-[#8A7F73]">{product.description}</p>
+          {/* description 来自 WordPress WYSIWYG，API 侧已过 wp_kses_post 白名单清洗 */}
+          <div
+            className="mt-6 text-sm leading-7 text-[#8A7F73] [&_p+p]:mt-4"
+            dangerouslySetInnerHTML={{ __html: product.description }}
+          />
 
           <div className="mt-8">
             <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">{copy.color}: {selectedColor.name}</p>
