@@ -74,18 +74,54 @@ describe("YANXINNA WordPress plugin delivery", () => {
     expect(webhook).not.toMatch(/[a-f0-9]{32,}/i);
   });
 
-  it("migrates four price-free products as drafts with pending translations", () => {
+  it("migrates four price-free products as drafts with all five locales filled", () => {
     const raw = read("migration/products.json");
     const payload = JSON.parse(raw) as {
       status: string;
       pending_locales: string[];
-      products: Array<Record<string, unknown>>;
+      products: Array<{
+        translations: Record<string, Record<string, unknown>>;
+        colors: Array<{ names: Record<string, string> }>;
+        parameters: Array<{
+          labels: Record<string, string>;
+          values: Record<string, string>;
+        }>;
+      }>;
     };
     const importer = read("migration/import-products.php");
+    const locales = ["ru-RU", "en-US", "en-GB", "fr-FR", "de-DE"];
 
     expect(payload.status).toBe("draft");
     expect(payload.products).toHaveLength(4);
-    expect(payload.pending_locales).toEqual(["ru-RU", "fr-FR", "de-DE"]);
+    expect(payload.pending_locales).toEqual([]);
+
+    for (const product of payload.products) {
+      for (const locale of locales) {
+        const translation = product.translations[locale];
+        expect(translation).toBeDefined();
+        for (const field of [
+          "name",
+          "short_description",
+          "description",
+          "fabric",
+          "care",
+          "seo_title",
+          "seo_description"
+        ]) {
+          expect(translation[field]).toBeTruthy();
+        }
+        expect(translation.benefits).not.toHaveLength(0);
+      }
+      for (const color of product.colors) {
+        for (const locale of locales) expect(color.names[locale]).toBeTruthy();
+      }
+      for (const parameter of product.parameters) {
+        for (const locale of locales) {
+          expect(parameter.labels[locale]).toBeTruthy();
+          expect(parameter.values[locale]).toBeTruthy();
+        }
+      }
+    }
     expect(raw).not.toMatch(/"price"|"compare_at_price"/i);
     expect(importer).toContain("defined( 'WP_CLI' )");
     expect(importer).toContain("'post_status' => 'draft'");

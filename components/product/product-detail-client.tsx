@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
 import type { ProductRecord } from "@/types/product";
-import { titleCase } from "@/lib/utils";
+import { categoryLabel } from "@/lib/category-labels";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "@/hooks/use-locale";
 import { localizeProduct } from "@/lib/wordpress/localize";
@@ -100,11 +100,11 @@ export function ProductDetailClient({
       />
       <div className="mb-6 overflow-hidden text-ellipsis whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
         <Link href="/">{copy.breadcrumbHome}</Link> / <Link href="/shop">{copy.breadcrumbShop}</Link> /{" "}
-        <Link href={`/shop?category=${product.category}`}>{titleCase(product.category)}</Link>
+        <Link href={`/shop?category=${product.category}`}>{categoryLabel(product.category, copy)}</Link>
         {product.subcategory ? (
           <>
             {" "}
-            / <Link href={`/shop?category=${product.category}&subcategory=${product.subcategory}`}>{titleCase(product.subcategory)}</Link>
+            / <Link href={`/shop?category=${product.category}&subcategory=${product.subcategory}`}>{categoryLabel(product.subcategory, copy)}</Link>
           </>
         ) : null}{" "}
         / {product.name}
@@ -194,9 +194,9 @@ export function ProductDetailClient({
 
         <div className="border border-borderSoft bg-white p-6 md:p-8">
           <div className="flex flex-wrap items-center gap-3">
-            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">{product.category}</p>
+            <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">{categoryLabel(product.category, copy)}</p>
             {product.subcategory ? (
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">/ {product.subcategory}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-[#A89B8C]">/ {categoryLabel(product.subcategory, copy)}</p>
             ) : null}
             {product.badge ? (
               <span className="border border-borderSoft px-2 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#6B5E52]">
@@ -265,7 +265,13 @@ export function ProductDetailClient({
               <div className="mt-4 h-2 bg-white">
                 <div className={`${compressionWidth} h-2 bg-[#5C4E43]`} />
               </div>
-              <p className="mt-3 text-sm text-[#6B5E52]">{product.compressionLevel}</p>
+              <p className="mt-3 text-sm text-[#6B5E52]">
+                {{
+                  Light: copy.compressionLight,
+                  Medium: copy.compressionMedium,
+                  Firm: copy.compressionFirm
+                }[product.compressionLevel]}
+              </p>
             </div>
           ) : null}
 
@@ -327,7 +333,9 @@ export function ProductDetailClient({
                 <Image src={item.image} alt={item.name} fill className="object-contain p-4" sizes="(max-width: 768px) 100vw, 33vw" />
               </div>
               <p className="mt-4 text-[11px] font-medium uppercase tracking-[0.2em] text-[#A89B8C]">
-                {item.subcategory ? `${item.category} / ${item.subcategory}` : item.category}
+                {item.subcategory
+                  ? `${categoryLabel(item.category, copy)} / ${categoryLabel(item.subcategory, copy)}`
+                  : categoryLabel(item.category, copy)}
               </p>
               <p className="mt-4 text-lg text-[#2C2825]">{item.name}</p>
             </Link>

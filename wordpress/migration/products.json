@@ -1,7 +1,7 @@
 {
   "version": 1,
   "status": "draft",
-  "pending_locales": ["ru-RU", "fr-FR", "de-DE"],
+  "pending_locales": [],
   "products": [
     {
       "product_number": "YX-001",
@@ -16,51 +16,102 @@
         "products/shapewear-1/肤色白底.png",
         "products/shapewear-1/肤色模特正面.png"
       ],
-      "sizes": ["XS", "S", "M", "L", "XL"],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "colors": [
         {
           "hex": "#1a1a1a",
           "image": "products/shapewear-1/黑色白底.png",
           "hover_image": "products/shapewear-1/黑色模特正面.png",
-          "names": { "en-US": "Black", "en-GB": "Black" }
+          "names": {
+            "en-US": "Black",
+            "en-GB": "Black",
+            "ru-RU": "Чёрный",
+            "fr-FR": "Noir",
+            "de-DE": "Schwarz"
+          }
         },
         {
           "hex": "#d4b896",
           "image": "products/shapewear-1/肤色白底.png",
           "hover_image": "products/shapewear-1/肤色模特正面.png",
-          "names": { "en-US": "Nude", "en-GB": "Nude" }
+          "names": {
+            "en-US": "Nude",
+            "en-GB": "Nude",
+            "ru-RU": "Телесный",
+            "fr-FR": "Nude",
+            "de-DE": "Nude"
+          }
         },
         {
           "hex": "#8b6f47",
           "image": "products/shapewear-1/棕色白底.png",
           "hover_image": "products/shapewear-1/棕色模特正面.png",
-          "names": { "en-US": "Brown", "en-GB": "Brown" }
+          "names": {
+            "en-US": "Brown",
+            "en-GB": "Brown",
+            "ru-RU": "Коричневый",
+            "fr-FR": "Marron",
+            "de-DE": "Braun"
+          }
         },
         {
           "hex": "#9a9a9a",
           "image": "products/shapewear-1/灰色白底.png",
           "hover_image": "products/shapewear-1/灰色模特正面.png",
-          "names": { "en-US": "Grey", "en-GB": "Grey" }
+          "names": {
+            "en-US": "Grey",
+            "en-GB": "Grey",
+            "ru-RU": "Серый",
+            "fr-FR": "Gris",
+            "de-DE": "Grau"
+          }
         },
         {
           "hex": "#f5f5f5",
           "image": "products/shapewear-1/白色白底.png",
           "hover_image": "products/shapewear-1/白色模特正面.png",
-          "names": { "en-US": "White", "en-GB": "White" }
+          "names": {
+            "en-US": "White",
+            "en-GB": "White",
+            "ru-RU": "Белый",
+            "fr-FR": "Blanc",
+            "de-DE": "Weiß"
+          }
         },
         {
           "hex": "#e8c4c4",
           "image": "products/shapewear-1/粉色白底.png",
           "hover_image": "products/shapewear-1/粉色模特正面.png",
-          "names": { "en-US": "Pink", "en-GB": "Pink" }
+          "names": {
+            "en-US": "Pink",
+            "en-GB": "Pink",
+            "ru-RU": "Розовый",
+            "fr-FR": "Rose",
+            "de-DE": "Rosa"
+          }
         }
       ],
       "parameters": [
         {
-          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "labels": {
+            "en-US": "Material",
+            "en-GB": "Material",
+            "ru-RU": "Материал",
+            "fr-FR": "Matière",
+            "de-DE": "Material"
+          },
           "values": {
             "en-US": "80% nylon, 20% elastane",
-            "en-GB": "80% nylon, 20% elastane"
+            "en-GB": "80% nylon, 20% elastane",
+            "ru-RU": "80% нейлон, 20% эластан",
+            "fr-FR": "80 % nylon, 20 % élasthanne",
+            "de-DE": "80 % Nylon, 20 % Elasthan"
           }
         }
       ],
@@ -69,7 +120,10 @@
       "featured": true,
       "best_seller": true,
       "sort_order": 10,
-      "complete_the_look": ["YX-002", "YX-003"],
+      "complete_the_look": [
+        "YX-002",
+        "YX-003"
+      ],
       "translations": {
         "en-US": {
           "name": "Seamless Coverage Bodysuit",
@@ -78,7 +132,12 @@
           "badge": "New",
           "fabric": "80% nylon, 20% elastane",
           "care": "Hand wash cold, lay flat to dry.",
-          "benefits": ["Seamless construction", "Full coverage", "Targeted compression", "Bonded edges"],
+          "benefits": [
+            "Seamless construction",
+            "Full coverage",
+            "Targeted compression",
+            "Bonded edges"
+          ],
           "seo_title": "Seamless Coverage Bodysuit | YANXINNA",
           "seo_description": "Full coverage seamless bodysuit for YANXINNA OEM and ODM enquiries."
         },
@@ -89,9 +148,62 @@
           "badge": "New",
           "fabric": "80% nylon, 20% elastane",
           "care": "Hand wash cold, lay flat to dry.",
-          "benefits": ["Seamless construction", "Full coverage", "Targeted compression", "Bonded edges"],
+          "benefits": [
+            "Seamless construction",
+            "Full coverage",
+            "Targeted compression",
+            "Bonded edges"
+          ],
           "seo_title": "Seamless Coverage Bodysuit | YANXINNA",
           "seo_description": "Full coverage seamless bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "ru-RU": {
+          "name": "Бесшовное боди с полным покрытием",
+          "short_description": "Бесшовное боди с полным покрытием и сильной компрессией.",
+          "description": "Премиальное бесшовное боди для комфорта в течение всего дня с сильной компрессией. Гладкие клееные края исключают видимые линии белья.",
+          "badge": "Новинка",
+          "fabric": "80% нейлон, 20% эластан",
+          "care": "Ручная стирка в холодной воде, сушить в расправленном виде.",
+          "benefits": [
+            "Бесшовная конструкция",
+            "Полное покрытие",
+            "Точечная компрессия",
+            "Клееные края"
+          ],
+          "seo_title": "Бесшовное боди с полным покрытием | YANXINNA",
+          "seo_description": "Бесшовное боди с полным покрытием для OEM- и ODM-запросов YANXINNA."
+        },
+        "fr-FR": {
+          "name": "Body sans couture couvrant",
+          "short_description": "Body sans couture couvrant à compression forte.",
+          "description": "Un body sans couture haut de gamme conçu pour un confort toute la journée avec une compression forte. Ses bords thermocollés lisses éliminent les démarcations de sous-vêtements.",
+          "badge": "Nouveau",
+          "fabric": "80 % nylon, 20 % élasthanne",
+          "care": "Lavage à la main à l'eau froide, séchage à plat.",
+          "benefits": [
+            "Construction sans couture",
+            "Couverture intégrale",
+            "Compression ciblée",
+            "Bords thermocollés"
+          ],
+          "seo_title": "Body sans couture couvrant | YANXINNA",
+          "seo_description": "Body sans couture couvrant pour vos demandes OEM et ODM YANXINNA."
+        },
+        "de-DE": {
+          "name": "Nahtloser Body mit voller Abdeckung",
+          "short_description": "Nahtloser Body mit voller Abdeckung und starker Kompression.",
+          "description": "Ein hochwertiger nahtloser Body für ganztägigen Komfort mit starker Kompression. Die glatt verklebten Kanten verhindern sichtbare Wäscheränder.",
+          "badge": "Neu",
+          "fabric": "80 % Nylon, 20 % Elasthan",
+          "care": "Handwäsche kalt, liegend trocknen.",
+          "benefits": [
+            "Nahtlose Verarbeitung",
+            "Volle Abdeckung",
+            "Gezielte Kompression",
+            "Verklebte Kanten"
+          ],
+          "seo_title": "Nahtloser Body mit voller Abdeckung | YANXINNA",
+          "seo_description": "Nahtloser Body mit voller Abdeckung für OEM- und ODM-Anfragen an YANXINNA."
         }
       }
     },
@@ -108,39 +220,78 @@
         "products/shapewear-2/肤色白底.png",
         "products/shapewear-2/肤色模特正面.png"
       ],
-      "sizes": ["XS", "S", "M", "L", "XL"],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "colors": [
         {
           "hex": "#1a1a1a",
           "image": "products/shapewear-2/黑色白底.png",
           "hover_image": "products/shapewear-2/黑色模特正面.png",
-          "names": { "en-US": "Black", "en-GB": "Black" }
+          "names": {
+            "en-US": "Black",
+            "en-GB": "Black",
+            "ru-RU": "Чёрный",
+            "fr-FR": "Noir",
+            "de-DE": "Schwarz"
+          }
         },
         {
           "hex": "#d4b896",
           "image": "products/shapewear-2/肤色白底.png",
           "hover_image": "products/shapewear-2/肤色模特正面.png",
-          "names": { "en-US": "Nude", "en-GB": "Nude" }
+          "names": {
+            "en-US": "Nude",
+            "en-GB": "Nude",
+            "ru-RU": "Телесный",
+            "fr-FR": "Nude",
+            "de-DE": "Nude"
+          }
         },
         {
           "hex": "#8b6f47",
           "image": "products/shapewear-2/棕色白底.png",
           "hover_image": "products/shapewear-2/棕色模特正面.png",
-          "names": { "en-US": "Brown", "en-GB": "Brown" }
+          "names": {
+            "en-US": "Brown",
+            "en-GB": "Brown",
+            "ru-RU": "Коричневый",
+            "fr-FR": "Marron",
+            "de-DE": "Braun"
+          }
         },
         {
           "hex": "#f5f5f5",
           "image": "products/shapewear-2/白色白底.png",
           "hover_image": "products/shapewear-2/白色模特正面.png",
-          "names": { "en-US": "White", "en-GB": "White" }
+          "names": {
+            "en-US": "White",
+            "en-GB": "White",
+            "ru-RU": "Белый",
+            "fr-FR": "Blanc",
+            "de-DE": "Weiß"
+          }
         }
       ],
       "parameters": [
         {
-          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "labels": {
+            "en-US": "Material",
+            "en-GB": "Material",
+            "ru-RU": "Материал",
+            "fr-FR": "Matière",
+            "de-DE": "Material"
+          },
           "values": {
             "en-US": "78% nylon, 22% elastane",
-            "en-GB": "78% nylon, 22% elastane"
+            "en-GB": "78% nylon, 22% elastane",
+            "ru-RU": "78% нейлон, 22% эластан",
+            "fr-FR": "78 % nylon, 22 % élasthanne",
+            "de-DE": "78 % Nylon, 22 % Elasthan"
           }
         }
       ],
@@ -149,7 +300,10 @@
       "featured": true,
       "best_seller": false,
       "sort_order": 20,
-      "complete_the_look": ["YX-001", "YX-004"],
+      "complete_the_look": [
+        "YX-001",
+        "YX-004"
+      ],
       "translations": {
         "en-US": {
           "name": "Adjustable Strap Bodysuit",
@@ -158,7 +312,11 @@
           "badge": "",
           "fabric": "78% nylon, 22% elastane",
           "care": "Machine wash cold, gentle cycle.",
-          "benefits": ["Adjustable straps", "Medium compression", "Seamless design"],
+          "benefits": [
+            "Adjustable straps",
+            "Medium compression",
+            "Seamless design"
+          ],
           "seo_title": "Adjustable Strap Bodysuit | YANXINNA",
           "seo_description": "Adjustable strap bodysuit for YANXINNA OEM and ODM enquiries."
         },
@@ -169,9 +327,58 @@
           "badge": "",
           "fabric": "78% nylon, 22% elastane",
           "care": "Machine wash cold, gentle cycle.",
-          "benefits": ["Adjustable straps", "Medium compression", "Seamless design"],
+          "benefits": [
+            "Adjustable straps",
+            "Medium compression",
+            "Seamless design"
+          ],
           "seo_title": "Adjustable Strap Bodysuit | YANXINNA",
           "seo_description": "Adjustable strap bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "ru-RU": {
+          "name": "Боди с регулируемыми бретелями",
+          "short_description": "Боди с регулируемыми бретелями и средней компрессией.",
+          "description": "Универсальное боди с регулируемыми бретелями для индивидуальной посадки. Идеально для повседневной носки.",
+          "badge": "",
+          "fabric": "78% нейлон, 22% эластан",
+          "care": "Машинная стирка в холодной воде, деликатный режим.",
+          "benefits": [
+            "Регулируемые бретели",
+            "Средняя компрессия",
+            "Бесшовный дизайн"
+          ],
+          "seo_title": "Боди с регулируемыми бретелями | YANXINNA",
+          "seo_description": "Боди с регулируемыми бретелями для OEM- и ODM-запросов YANXINNA."
+        },
+        "fr-FR": {
+          "name": "Body à bretelles réglables",
+          "short_description": "Body à bretelles réglables à compression moyenne.",
+          "description": "Un body polyvalent à bretelles réglables pour un ajustement personnalisé. Parfait au quotidien.",
+          "badge": "",
+          "fabric": "78 % nylon, 22 % élasthanne",
+          "care": "Lavage en machine à froid, cycle délicat.",
+          "benefits": [
+            "Bretelles réglables",
+            "Compression moyenne",
+            "Design sans couture"
+          ],
+          "seo_title": "Body à bretelles réglables | YANXINNA",
+          "seo_description": "Body à bretelles réglables pour vos demandes OEM et ODM YANXINNA."
+        },
+        "de-DE": {
+          "name": "Body mit verstellbaren Trägern",
+          "short_description": "Body mit verstellbaren Trägern und mittlerer Kompression.",
+          "description": "Ein vielseitiger Body mit verstellbaren Trägern für eine individuelle Passform. Perfekt für jeden Tag.",
+          "badge": "",
+          "fabric": "78 % Nylon, 22 % Elasthan",
+          "care": "Maschinenwäsche kalt, Schonwaschgang.",
+          "benefits": [
+            "Verstellbare Träger",
+            "Mittlere Kompression",
+            "Nahtloses Design"
+          ],
+          "seo_title": "Body mit verstellbaren Trägern | YANXINNA",
+          "seo_description": "Body mit verstellbaren Trägern für OEM- und ODM-Anfragen an YANXINNA."
         }
       }
     },
@@ -188,51 +395,102 @@
         "products/shapewear-3/肤色白底.png",
         "products/shapewear-3/肤色模特正面.png"
       ],
-      "sizes": ["XS", "S", "M", "L", "XL"],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "colors": [
         {
           "hex": "#1a1a1a",
           "image": "products/shapewear-3/黑色白底.png",
           "hover_image": "products/shapewear-3/黑色模特正面.png",
-          "names": { "en-US": "Black", "en-GB": "Black" }
+          "names": {
+            "en-US": "Black",
+            "en-GB": "Black",
+            "ru-RU": "Чёрный",
+            "fr-FR": "Noir",
+            "de-DE": "Schwarz"
+          }
         },
         {
           "hex": "#d4b896",
           "image": "products/shapewear-3/肤色白底.png",
           "hover_image": "products/shapewear-3/肤色模特正面.png",
-          "names": { "en-US": "Nude", "en-GB": "Nude" }
+          "names": {
+            "en-US": "Nude",
+            "en-GB": "Nude",
+            "ru-RU": "Телесный",
+            "fr-FR": "Nude",
+            "de-DE": "Nude"
+          }
         },
         {
           "hex": "#8b6f47",
           "image": "products/shapewear-3/棕色白底.png",
           "hover_image": "products/shapewear-3/棕色模特正面.png",
-          "names": { "en-US": "Brown", "en-GB": "Brown" }
+          "names": {
+            "en-US": "Brown",
+            "en-GB": "Brown",
+            "ru-RU": "Коричневый",
+            "fr-FR": "Marron",
+            "de-DE": "Braun"
+          }
         },
         {
           "hex": "#9a9a9a",
           "image": "products/shapewear-3/灰色白底.png",
           "hover_image": "products/shapewear-3/灰色模特正面.png",
-          "names": { "en-US": "Grey", "en-GB": "Grey" }
+          "names": {
+            "en-US": "Grey",
+            "en-GB": "Grey",
+            "ru-RU": "Серый",
+            "fr-FR": "Gris",
+            "de-DE": "Grau"
+          }
         },
         {
           "hex": "#f5f5f5",
           "image": "products/shapewear-3/白色白底.png",
           "hover_image": "products/shapewear-3/白色模特正面.png",
-          "names": { "en-US": "White", "en-GB": "White" }
+          "names": {
+            "en-US": "White",
+            "en-GB": "White",
+            "ru-RU": "Белый",
+            "fr-FR": "Blanc",
+            "de-DE": "Weiß"
+          }
         },
         {
           "hex": "#e8c4c4",
           "image": "products/shapewear-3/粉色白底.png",
           "hover_image": "products/shapewear-3/粉色模特正面.png",
-          "names": { "en-US": "Pink", "en-GB": "Pink" }
+          "names": {
+            "en-US": "Pink",
+            "en-GB": "Pink",
+            "ru-RU": "Розовый",
+            "fr-FR": "Rose",
+            "de-DE": "Rosa"
+          }
         }
       ],
       "parameters": [
         {
-          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "labels": {
+            "en-US": "Material",
+            "en-GB": "Material",
+            "ru-RU": "Материал",
+            "fr-FR": "Matière",
+            "de-DE": "Material"
+          },
           "values": {
             "en-US": "82% nylon, 18% elastane",
-            "en-GB": "82% nylon, 18% elastane"
+            "en-GB": "82% nylon, 18% elastane",
+            "ru-RU": "82% нейлон, 18% эластан",
+            "fr-FR": "82 % nylon, 18 % élasthanne",
+            "de-DE": "82 % Nylon, 18 % Elasthan"
           }
         }
       ],
@@ -241,7 +499,10 @@
       "featured": true,
       "best_seller": true,
       "sort_order": 30,
-      "complete_the_look": ["YX-001", "YX-002"],
+      "complete_the_look": [
+        "YX-001",
+        "YX-002"
+      ],
       "translations": {
         "en-US": {
           "name": "High Waist Shaping Bodysuit",
@@ -250,7 +511,11 @@
           "badge": "Best Seller",
           "fabric": "82% nylon, 18% elastane",
           "care": "Hand wash cold, lay flat to dry.",
-          "benefits": ["High waist design", "Firm compression", "Body sculpting"],
+          "benefits": [
+            "High waist design",
+            "Firm compression",
+            "Body sculpting"
+          ],
           "seo_title": "High Waist Shaping Bodysuit | YANXINNA",
           "seo_description": "High waist shaping bodysuit for YANXINNA OEM and ODM enquiries."
         },
@@ -261,9 +526,58 @@
           "badge": "Best Seller",
           "fabric": "82% nylon, 18% elastane",
           "care": "Hand wash cold, lay flat to dry.",
-          "benefits": ["High waist design", "Firm compression", "Body sculpting"],
+          "benefits": [
+            "High waist design",
+            "Firm compression",
+            "Body sculpting"
+          ],
           "seo_title": "High Waist Shaping Bodysuit | YANXINNA",
           "seo_description": "High waist shaping bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "ru-RU": {
+          "name": "Моделирующее боди с высокой талией",
+          "short_description": "Боди с высокой талией и сильной компрессией для моделирования фигуры.",
+          "description": "Наш самый продаваемый боди с высокой талией использует технологию сильной компрессии, которая разглаживает и моделирует силуэт.",
+          "badge": "Хит продаж",
+          "fabric": "82% нейлон, 18% эластан",
+          "care": "Ручная стирка в холодной воде, сушить в расправленном виде.",
+          "benefits": [
+            "Дизайн с высокой талией",
+            "Сильная компрессия",
+            "Моделирование фигуры"
+          ],
+          "seo_title": "Моделирующее боди с высокой талией | YANXINNA",
+          "seo_description": "Моделирующее боди с высокой талией для OEM- и ODM-запросов YANXINNA."
+        },
+        "fr-FR": {
+          "name": "Body gainant taille haute",
+          "short_description": "Body taille haute à compression forte pour sculpter la silhouette.",
+          "description": "Notre body taille haute le plus vendu intègre une technologie de compression forte qui lisse et sculpte la silhouette.",
+          "badge": "Best-seller",
+          "fabric": "82 % nylon, 18 % élasthanne",
+          "care": "Lavage à la main à l'eau froide, séchage à plat.",
+          "benefits": [
+            "Coupe taille haute",
+            "Compression forte",
+            "Effet sculptant"
+          ],
+          "seo_title": "Body gainant taille haute | YANXINNA",
+          "seo_description": "Body gainant taille haute pour vos demandes OEM et ODM YANXINNA."
+        },
+        "de-DE": {
+          "name": "Formender Body mit hoher Taille",
+          "short_description": "Body mit hoher Taille und starker Kompression zum Modellieren der Figur.",
+          "description": "Unser meistverkaufter Body mit hoher Taille nutzt eine starke Kompressionstechnologie, die die Silhouette glättet und formt.",
+          "badge": "Bestseller",
+          "fabric": "82 % Nylon, 18 % Elasthan",
+          "care": "Handwäsche kalt, liegend trocknen.",
+          "benefits": [
+            "Schnitt mit hoher Taille",
+            "Starke Kompression",
+            "Figurformend"
+          ],
+          "seo_title": "Formender Body mit hoher Taille | YANXINNA",
+          "seo_description": "Formender Body mit hoher Taille für OEM- und ODM-Anfragen an YANXINNA."
         }
       }
     },
@@ -280,51 +594,102 @@
         "products/shapewear-4/肤色白底.png",
         "products/shapewear-4/肤色模特正面.png"
       ],
-      "sizes": ["XS", "S", "M", "L", "XL"],
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "colors": [
         {
           "hex": "#1a1a1a",
           "image": "products/shapewear-4/黑色白底.png",
           "hover_image": "products/shapewear-4/黑色模特正面.png",
-          "names": { "en-US": "Black", "en-GB": "Black" }
+          "names": {
+            "en-US": "Black",
+            "en-GB": "Black",
+            "ru-RU": "Чёрный",
+            "fr-FR": "Noir",
+            "de-DE": "Schwarz"
+          }
         },
         {
           "hex": "#d4b896",
           "image": "products/shapewear-4/肤色白底.png",
           "hover_image": "products/shapewear-4/肤色模特正面.png",
-          "names": { "en-US": "Nude", "en-GB": "Nude" }
+          "names": {
+            "en-US": "Nude",
+            "en-GB": "Nude",
+            "ru-RU": "Телесный",
+            "fr-FR": "Nude",
+            "de-DE": "Nude"
+          }
         },
         {
           "hex": "#8b6f47",
           "image": "products/shapewear-4/棕色白底.png",
           "hover_image": "products/shapewear-4/棕色模特正面.png",
-          "names": { "en-US": "Brown", "en-GB": "Brown" }
+          "names": {
+            "en-US": "Brown",
+            "en-GB": "Brown",
+            "ru-RU": "Коричневый",
+            "fr-FR": "Marron",
+            "de-DE": "Braun"
+          }
         },
         {
           "hex": "#9a9a9a",
           "image": "products/shapewear-4/灰色白底.png",
           "hover_image": "products/shapewear-4/灰色模特正面.png",
-          "names": { "en-US": "Grey", "en-GB": "Grey" }
+          "names": {
+            "en-US": "Grey",
+            "en-GB": "Grey",
+            "ru-RU": "Серый",
+            "fr-FR": "Gris",
+            "de-DE": "Grau"
+          }
         },
         {
           "hex": "#f5f5f5",
           "image": "products/shapewear-4/白色白底.png",
           "hover_image": "products/shapewear-4/白色模特正面.png",
-          "names": { "en-US": "White", "en-GB": "White" }
+          "names": {
+            "en-US": "White",
+            "en-GB": "White",
+            "ru-RU": "Белый",
+            "fr-FR": "Blanc",
+            "de-DE": "Weiß"
+          }
         },
         {
           "hex": "#e8c4c4",
           "image": "products/shapewear-4/粉色白底.png",
           "hover_image": "products/shapewear-4/粉色模特正面.png",
-          "names": { "en-US": "Pink", "en-GB": "Pink" }
+          "names": {
+            "en-US": "Pink",
+            "en-GB": "Pink",
+            "ru-RU": "Розовый",
+            "fr-FR": "Rose",
+            "de-DE": "Rosa"
+          }
         }
       ],
       "parameters": [
         {
-          "labels": { "en-US": "Material", "en-GB": "Material" },
+          "labels": {
+            "en-US": "Material",
+            "en-GB": "Material",
+            "ru-RU": "Материал",
+            "fr-FR": "Matière",
+            "de-DE": "Material"
+          },
           "values": {
             "en-US": "75% nylon, 25% elastane",
-            "en-GB": "75% nylon, 25% elastane"
+            "en-GB": "75% nylon, 25% elastane",
+            "ru-RU": "75% нейлон, 25% эластан",
+            "fr-FR": "75 % nylon, 25 % élasthanne",
+            "de-DE": "75 % Nylon, 25 % Elasthan"
           }
         }
       ],
@@ -333,7 +698,10 @@
       "featured": false,
       "best_seller": false,
       "sort_order": 40,
-      "complete_the_look": ["YX-002", "YX-003"],
+      "complete_the_look": [
+        "YX-002",
+        "YX-003"
+      ],
       "translations": {
         "en-US": {
           "name": "Comfort Seamless Bodysuit",
@@ -342,7 +710,11 @@
           "badge": "",
           "fabric": "75% nylon, 25% elastane",
           "care": "Machine wash cold, gentle cycle.",
-          "benefits": ["Light compression", "Seamless feel", "All-day comfort"],
+          "benefits": [
+            "Light compression",
+            "Seamless feel",
+            "All-day comfort"
+          ],
           "seo_title": "Comfort Seamless Bodysuit | YANXINNA",
           "seo_description": "Comfort seamless bodysuit for YANXINNA OEM and ODM enquiries."
         },
@@ -353,9 +725,58 @@
           "badge": "",
           "fabric": "75% nylon, 25% elastane",
           "care": "Machine wash cold, gentle cycle.",
-          "benefits": ["Light compression", "Seamless feel", "All-day comfort"],
+          "benefits": [
+            "Light compression",
+            "Seamless feel",
+            "All-day comfort"
+          ],
           "seo_title": "Comfort Seamless Bodysuit | YANXINNA",
           "seo_description": "Comfort seamless bodysuit for YANXINNA OEM and ODM enquiries."
+        },
+        "ru-RU": {
+          "name": "Комфортное бесшовное боди",
+          "short_description": "Бесшовное боди с лёгкой компрессией для максимального комфорта.",
+          "description": "Создано для комфорта без ущерба стилю: боди с лёгкой компрессией ощущается как вторая кожа.",
+          "badge": "",
+          "fabric": "75% нейлон, 25% эластан",
+          "care": "Машинная стирка в холодной воде, деликатный режим.",
+          "benefits": [
+            "Лёгкая компрессия",
+            "Бесшовное ощущение",
+            "Комфорт весь день"
+          ],
+          "seo_title": "Комфортное бесшовное боди | YANXINNA",
+          "seo_description": "Комфортное бесшовное боди для OEM- и ODM-запросов YANXINNA."
+        },
+        "fr-FR": {
+          "name": "Body sans couture confort",
+          "short_description": "Body sans couture à compression légère pour un confort optimal.",
+          "description": "Conçu pour le confort sans renoncer au style, ce body à compression légère se porte comme une seconde peau.",
+          "badge": "",
+          "fabric": "75 % nylon, 25 % élasthanne",
+          "care": "Lavage en machine à froid, cycle délicat.",
+          "benefits": [
+            "Compression légère",
+            "Toucher sans couture",
+            "Confort toute la journée"
+          ],
+          "seo_title": "Body sans couture confort | YANXINNA",
+          "seo_description": "Body sans couture confort pour vos demandes OEM et ODM YANXINNA."
+        },
+        "de-DE": {
+          "name": "Bequemer nahtloser Body",
+          "short_description": "Nahtloser Body mit leichter Kompression für maximalen Komfort.",
+          "description": "Auf Komfort ausgelegt, ohne auf Stil zu verzichten: Dieser Body mit leichter Kompression fühlt sich an wie eine zweite Haut.",
+          "badge": "",
+          "fabric": "75 % Nylon, 25 % Elasthan",
+          "care": "Maschinenwäsche kalt, Schonwaschgang.",
+          "benefits": [
+            "Leichte Kompression",
+            "Nahtloses Tragegefühl",
+            "Ganztägiger Komfort"
+          ],
+          "seo_title": "Bequemer nahtloser Body | YANXINNA",
+          "seo_description": "Bequemer nahtloser Body für OEM- und ODM-Anfragen an YANXINNA."
         }
       }
     }

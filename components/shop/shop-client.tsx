@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { sortProductsByMerchOrder } from "@/lib/utils";
+import { categoryLabel } from "@/lib/category-labels";
 import { ProductCardImage } from "@/components/ui/product-card-image";
 import { Button } from "@/components/ui/button";
 import type { ProductCategory, ProductRecord } from "@/types/product";
@@ -52,14 +53,11 @@ export function ShopClient({
     [locale, products]
   );
 
-  const knownLabels: Record<string, string> = {
-    shapewear: copy.categoryShapewear,
-    underwear: copy.categoryUnderwear,
-    bras: copy.categoryBras,
-    bodysuits: copy.subcategoryBodysuits,
-    tops: copy.subcategoryTops,
-    bottoms: copy.subcategoryBottoms
-  };
+  const knownLabels: Record<string, string> = Object.fromEntries(
+    ["shapewear", "underwear", "bras", "bodysuits", "tops", "bottoms"].map(
+      (slug) => [slug, categoryLabel(slug, copy)]
+    )
+  );
 
   const topLevelCategories = useMemo(() => {
     const entries = categories.filter((entry) => entry.parent === 0);

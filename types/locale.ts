@@ -161,6 +161,9 @@ export type CopyKeys = {
   color: string;
   size: string;
   compressionLevel: string;
+  compressionLight: string;
+  compressionMedium: string;
+  compressionFirm: string;
   series: string;
   materialCare: string;
 

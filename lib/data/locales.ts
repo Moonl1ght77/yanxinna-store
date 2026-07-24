@@ -122,6 +122,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     color: "Цвет",
     size: "Размер",
     compressionLevel: "Уровень компрессии",
+    compressionLight: "Лёгкая",
+    compressionMedium: "Средняя",
+    compressionFirm: "Сильная",
     series: "Серия",
     materialCare: "Материал / Уход",
 
@@ -444,6 +447,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     color: "Color",
     size: "Size",
     compressionLevel: "Compression Level",
+    compressionLight: "Light",
+    compressionMedium: "Medium",
+    compressionFirm: "Firm",
     series: "Series",
     materialCare: "Material / Care",
 
@@ -766,6 +772,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     color: "Colour",
     size: "Size",
     compressionLevel: "Compression Level",
+    compressionLight: "Light",
+    compressionMedium: "Medium",
+    compressionFirm: "Firm",
     series: "Series",
     materialCare: "Material / Care",
 
@@ -1072,6 +1081,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     color: "Couleur",
     size: "Taille",
     compressionLevel: "Niveau de compression",
+    compressionLight: "Légère",
+    compressionMedium: "Moyenne",
+    compressionFirm: "Forte",
     series: "Série",
     materialCare: "Matière / Entretien",
 
@@ -1379,6 +1391,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     color: "Farbe",
     size: "Größe",
     compressionLevel: "Kompressionsstufe",
+    compressionLight: "Leicht",
+    compressionMedium: "Mittel",
+    compressionFirm: "Stark",
     series: "Serie",
     materialCare: "Material / Pflege",
 
