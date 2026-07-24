@@ -10,18 +10,19 @@
   },
   // OpenNext 的缓存后端。没有这两个绑定，Next 的 fetch 缓存和 revalidateTag
   // 在 Cloudflare 上完全不生效，每次请求都会回源打 WordPress。
-  // 本地 `wrangler dev` 用 miniflare 模拟，下面的 id 是占位值即可跑通；
-  // 部署前必须替换成真实 id：
+  // 本地 `wrangler dev` 用 miniflare 模拟，不会碰到真实命名空间。
+  // 下面是 2026-07-24 在账号 d9cd5ff6…（liltrick1015@gmail.com）下创建的真实 id，
+  // 重建命令：
   //   npx wrangler kv namespace create yanxinna-inc-cache
   //   npx wrangler kv namespace create yanxinna-tag-cache
   "kv_namespaces": [
     {
       "binding": "NEXT_INC_CACHE_KV",
-      "id": "REPLACE_WITH_REAL_KV_ID_INC_CACHE"
+      "id": "2eea2823fcc04e3bb6b5384f40157635"
     },
     {
       "binding": "NEXT_TAG_CACHE_KV",
-      "id": "REPLACE_WITH_REAL_KV_ID_TAG_CACHE"
+      "id": "b4ad4925d5ae49199f641725e5dca1d1"
     }
   ]
 }
