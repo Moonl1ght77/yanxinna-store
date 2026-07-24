@@ -39,6 +39,16 @@ describe("YANXINNA WordPress plugin delivery", () => {
     expect(security).toContain("array( 'GET', 'OPTIONS' )");
   });
 
+  it("keeps partially translated products visible by falling back per locale", () => {
+    const rest = read("yanxinna-headless-products/includes/class-rest.php");
+    const fields = read("yanxinna-headless-products/includes/class-fields.php");
+
+    expect(rest).toContain("private static function fill_locale_fallback");
+    expect(rest.match(/self::fill_locale_fallback/g)).toHaveLength(2);
+    expect(fields).toContain("const DEFAULT_LOCALE = 'ru-RU'");
+    expect(fields).toContain("self::DEFAULT_LOCALE === $locale");
+  });
+
   it("keeps refresh secrets in wp-config and sends non-blocking webhooks", () => {
     const webhook = read(
       "yanxinna-headless-products/includes/class-webhook.php"

@@ -92,7 +92,7 @@ final class YANXINNA_Headless_REST {
 		}
 
 		$response = rest_ensure_response( $products );
-		$response->header( 'X-WP-Total', (string) count( $products ) );
+		$response->header( 'X-WP-Total', (string) (int) $query->found_posts );
 		$response->header( 'X-WP-TotalPages', (string) max( 1, (int) $query->max_num_pages ) );
 
 		return $response;
@@ -534,7 +534,33 @@ final class YANXINNA_Headless_REST {
 			);
 		}
 
-		return $translations;
+		return self::fill_locale_fallback( $translations );
+	}
+
+	/**
+	 * 补齐没有内容的语言，避免只翻译了部分语言的产品从公开 API 整条消失。
+	 * 回退优先级：ru-RU（站点默认语言）> en-US > 第一个有内容的语言。
+	 * 传入为空（一种语言都没填）时返回空数组，由 map_product 判定为不完整产品。
+	 */
+	private static function fill_locale_fallback( array $values ) {
+		if ( ! $values ) {
+			return array();
+		}
+
+		$fallback = null;
+		foreach ( array_merge( array( 'ru-RU', 'en-US' ), self::$locales ) as $locale ) {
+			if ( isset( $values[ $locale ] ) ) {
+				$fallback = $values[ $locale ];
+				break;
+			}
+		}
+
+		$filled = array();
+		foreach ( self::$locales as $locale ) {
+			$filled[ $locale ] = isset( $values[ $locale ] ) ? $values[ $locale ] : $fallback;
+		}
+
+		return $filled;
 	}
 
 	private static function benefits( $rows ) {
@@ -555,13 +581,12 @@ final class YANXINNA_Headless_REST {
 
 		foreach ( self::$locales as $locale ) {
 			$value = sanitize_text_field( (string) ( $rows[ $locale ] ?? '' ) );
-			if ( ! $value ) {
-				return array();
+			if ( $value ) {
+				$values[ $locale ] = $value;
 			}
-			$values[ $locale ] = $value;
 		}
 
-		return $values;
+		return self::fill_locale_fallback( $values );
 	}
 
 	private static function related_product_numbers( $rows ) {

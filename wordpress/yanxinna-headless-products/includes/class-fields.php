@@ -7,6 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class YANXINNA_Headless_Fields {
 	const GROUP_KEY = 'group_yanxinna_products_v1';
 
+	/** 站点默认语言，只有这一种语言的文案是必填，其余语言留空时由 API 回退。 */
+	const DEFAULT_LOCALE = 'ru-RU';
+
 	private static $locales = array(
 		'ru-RU' => 'Russian',
 		'en-US' => 'English (United States)',
@@ -216,13 +219,14 @@ final class YANXINNA_Headless_Fields {
 
 		foreach ( self::$locales as $locale => $label ) {
 			$key_suffix      = strtolower( str_replace( '-', '_', $locale ) );
+			$is_default      = self::DEFAULT_LOCALE === $locale;
 			$locale_groups[] = array(
-				'key'        => 'field_yx_v1_translation_' . $key_suffix,
-				'label'      => $label,
-				'name'       => $locale,
-				'type'       => 'group',
-				'layout'     => 'block',
-				'sub_fields' => self::translation_fields( $key_suffix ),
+				'key'          => 'field_yx_v1_translation_' . $key_suffix,
+				'label'        => $is_default ? $label : $label . '（可留空，留空时回退到俄语）',
+				'name'         => $locale,
+				'type'         => 'group',
+				'layout'       => 'block',
+				'sub_fields'   => self::translation_fields( $key_suffix, $is_default ),
 			);
 		}
 
@@ -236,15 +240,15 @@ final class YANXINNA_Headless_Fields {
 		);
 	}
 
-	private static function translation_fields( $key_suffix ) {
+	private static function translation_fields( $key_suffix, $required ) {
 		return array(
-			self::text_field( 'translation_' . $key_suffix . '_name', 'Product name', true, 'name' ),
+			self::text_field( 'translation_' . $key_suffix . '_name', 'Product name', $required, 'name' ),
 			array(
 				'key'       => 'field_yx_v1_translation_' . $key_suffix . '_short_description',
 				'label'     => 'Short description',
 				'name'      => 'short_description',
 				'type'      => 'textarea',
-				'required'  => true,
+				'required'  => $required,
 				'rows'      => 3,
 				'new_lines' => 'br',
 			),
@@ -253,39 +257,39 @@ final class YANXINNA_Headless_Fields {
 				'label'        => 'Full description',
 				'name'         => 'description',
 				'type'         => 'wysiwyg',
-				'required'     => true,
+				'required'     => $required,
 				'tabs'         => 'all',
 				'toolbar'      => 'basic',
 				'media_upload' => false,
 			),
 			self::text_field( 'translation_' . $key_suffix . '_badge', 'Badge', false, 'badge' ),
-			self::text_field( 'translation_' . $key_suffix . '_fabric', 'Fabric', true, 'fabric' ),
-			self::text_field( 'translation_' . $key_suffix . '_care', 'Care', true, 'care' ),
+			self::text_field( 'translation_' . $key_suffix . '_fabric', 'Fabric', $required, 'fabric' ),
+			self::text_field( 'translation_' . $key_suffix . '_care', 'Care', $required, 'care' ),
 			array(
 				'key'          => 'field_yx_v1_translation_' . $key_suffix . '_benefits',
 				'label'        => 'Benefits',
 				'name'         => 'benefits',
 				'type'         => 'repeater',
-				'required'     => true,
-				'min'          => 1,
+				'required'     => $required,
+				'min'          => $required ? 1 : 0,
 				'layout'       => 'table',
 				'button_label' => 'Add benefit',
 				'sub_fields'   => array(
 					self::text_field(
 						'translation_' . $key_suffix . '_benefit_value',
 						'Benefit',
-						true,
+						$required,
 						'value'
 					),
 				),
 			),
-			self::text_field( 'translation_' . $key_suffix . '_seo_title', 'SEO title', true, 'seo_title' ),
+			self::text_field( 'translation_' . $key_suffix . '_seo_title', 'SEO title', $required, 'seo_title' ),
 			array(
 				'key'       => 'field_yx_v1_translation_' . $key_suffix . '_seo_description',
 				'label'     => 'SEO description',
 				'name'      => 'seo_description',
 				'type'      => 'textarea',
-				'required'  => true,
+				'required'  => $required,
 				'rows'      => 3,
 				'maxlength' => 320,
 			),
@@ -300,7 +304,7 @@ final class YANXINNA_Headless_Fields {
 			$sub_fields[] = self::text_field(
 				$key_name . '_' . $key_suffix,
 				$locale_label,
-				$required,
+				$required && self::DEFAULT_LOCALE === $locale,
 				$locale
 			);
 		}
