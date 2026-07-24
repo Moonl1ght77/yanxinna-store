@@ -8,6 +8,46 @@ final class YANXINNA_Headless_Security {
 	public static function register() {
 		add_filter( 'rest_pre_dispatch', array( __CLASS__, 'enforce_read_only' ), 10, 3 );
 		add_filter( 'rest_pre_serve_request', array( __CLASS__, 'send_cors_headers' ), 20, 4 );
+		add_filter( 'rest_endpoints', array( __CLASS__, 'hide_user_endpoints' ) );
+		// 优先级 1：必须早于 redirect_canonical（默认 10），否则 ?author=N 会先 301 出用户名。
+		add_action( 'template_redirect', array( __CLASS__, 'block_author_enumeration' ), 1 );
+	}
+
+	/**
+	 * 未登录时移除核心用户端点。站点是 headless CMS，公开访客不需要读用户列表，
+	 * 而默认开放的 /wp/v2/users 会直接吐出管理员用户名，便于定向爆破。
+	 */
+	public static function hide_user_endpoints( $endpoints ) {
+		if ( is_user_logged_in() ) {
+			return $endpoints;
+		}
+
+		foreach ( array_keys( $endpoints ) as $route ) {
+			if ( 0 === strpos( $route, '/wp/v2/users' ) ) {
+				unset( $endpoints[ $route ] );
+			}
+		}
+
+		return $endpoints;
+	}
+
+	/**
+	 * 作者归档和 ?author=N 泄露的是同一批用户名，只堵 REST 端点等于没堵。
+	 * headless 站不使用 WordPress 前台，直接 404。
+	 */
+	public static function block_author_enumeration() {
+		if ( is_user_logged_in() ) {
+			return;
+		}
+
+		if ( ! is_author() && ! isset( $_GET['author'] ) ) {
+			return;
+		}
+
+		global $wp_query;
+		$wp_query->set_404();
+		status_header( 404 );
+		nocache_headers();
 	}
 
 	public static function enforce_read_only( $result, WP_REST_Server $server, WP_REST_Request $request ) {

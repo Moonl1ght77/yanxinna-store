@@ -39,6 +39,20 @@ describe("YANXINNA WordPress plugin delivery", () => {
     expect(security).toContain("array( 'GET', 'OPTIONS' )");
   });
 
+  it("blocks username enumeration for logged-out visitors on all three surfaces", () => {
+    const security = read(
+      "yanxinna-headless-products/includes/class-security.php"
+    );
+
+    expect(security).toContain("'rest_endpoints'");
+    expect(security).toContain("'/wp/v2/users'");
+    expect(security).toContain("block_author_enumeration");
+    // 必须早于 redirect_canonical（默认 10），否则 ?author=N 先 301 出用户名
+    expect(security).toContain("'template_redirect', array( __CLASS__, 'block_author_enumeration' ), 1");
+    // 两个入口都要放行已登录用户，否则后台区块编辑器会断
+    expect(security.match(/is_user_logged_in\(\)/g)).toHaveLength(2);
+  });
+
   it("keeps partially translated products visible by falling back per locale", () => {
     const rest = read("yanxinna-headless-products/includes/class-rest.php");
     const fields = read("yanxinna-headless-products/includes/class-fields.php");
