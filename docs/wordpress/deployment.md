@@ -29,7 +29,7 @@ YANXINNA_ALLOWED_ORIGINS=https://yanxinna-store-cms-staging.example.workers.dev,
 - 在 Cloudflare/WAF 对 `/wp-login.php` 和 `/wp-admin/` 做登录保护；对 `/wp-json/yanxinna/v1/*` 做合理速率限制，不缓存错误响应。
 - CORS 只列出明确的测试/正式前端 origin，不使用 `*`，不允许 credentials。
 - 确认公开 API 的非 GET/OPTIONS 请求返回 405。
-- ACF PRO 未激活时停止上线；插件会让产品 API 返回 503。
+- 字段插件（ACF PRO 或 Secure Custom Fields）未激活时停止上线；插件会让产品 API 返回 503。本地实测免费的 **Secure Custom Fields 6.9.2** 已含 repeater 和 gallery，可完整替代 ACF PRO；正式站二选一，**不可两个同时装**。
 
 CORS 只约束浏览器跨域访问，不是数据保密机制。产品 API 本身是公开只读数据，真正的写入安全依赖 WordPress 登录、角色权限、HTTPS、WAF 和补丁管理。
 
