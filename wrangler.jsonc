@@ -7,5 +7,21 @@
   "assets": {
     "binding": "ASSETS",
     "directory": ".open-next/assets"
-  }
+  },
+  // OpenNext 的缓存后端。没有这两个绑定，Next 的 fetch 缓存和 revalidateTag
+  // 在 Cloudflare 上完全不生效，每次请求都会回源打 WordPress。
+  // 本地 `wrangler dev` 用 miniflare 模拟，下面的 id 是占位值即可跑通；
+  // 部署前必须替换成真实 id：
+  //   npx wrangler kv namespace create yanxinna-inc-cache
+  //   npx wrangler kv namespace create yanxinna-tag-cache
+  "kv_namespaces": [
+    {
+      "binding": "NEXT_INC_CACHE_KV",
+      "id": "REPLACE_WITH_REAL_KV_ID_INC_CACHE"
+    },
+    {
+      "binding": "NEXT_TAG_CACHE_KV",
+      "id": "REPLACE_WITH_REAL_KV_ID_TAG_CACHE"
+    }
+  ]
 }

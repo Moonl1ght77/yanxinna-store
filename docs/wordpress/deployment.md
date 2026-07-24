@@ -21,6 +21,8 @@ YANXINNA_ALLOWED_ORIGINS=https://yanxinna-store-cms-staging.example.workers.dev,
 
 同一个 `YANXINNA_REVALIDATE_SECRET` 只保存于 WordPress 服务器和 Cloudflare Secret。轮换时先更新 Worker，再更新 WordPress，并立即验证一次产品保存。
 
+`YANXINNA_FRONTEND_URL` 必须是 **HTTPS 公网地址且使用标准端口**。WordPress 的 `wp_http_validate_url()` 会拒绝 loopback、私网 IP，以及 80/443/8080 之外的端口；被拒时 Webhook 直接跳过，唯一痕迹是 PHP 错误日志里的一行 `Cache refresh skipped: invalid frontend URL.`，后台没有任何提示。Cloudflare Worker 的 `*.workers.dev` 地址符合要求。
+
 ## 2. WordPress 安全基线
 
 - CMS、REST API 和媒体全部使用 HTTPS。
@@ -36,6 +38,26 @@ CORS 只约束浏览器跨域访问，不是数据保密机制。产品 API 本�
 ## 3. Cloudflare 测试 Worker
 
 仓库默认 Worker 名为 `yanxinna-store-cms-staging`，不会覆盖现有站点。
+
+### 3.0 先创建两个 KV 命名空间（必做，否则完全没有缓存）
+
+OpenNext 在 Cloudflare 上必须显式配置缓存后端。缺少绑定时 `next: { revalidate, tags }` 会**静默失效**：每个访客的每次访问都直接回源打 WordPress，`/api/revalidate` 也没有任何东西可刷。本地实测确认过这个行为。
+
+```powershell
+npx wrangler kv namespace create yanxinna-inc-cache
+npx wrangler kv namespace create yanxinna-tag-cache
+```
+
+把两条命令输出的 `id` 填进 `wrangler.jsonc` 的 `kv_namespaces`，替换掉 `REPLACE_WITH_REAL_KV_ID_*` 占位值。绑定名不能改：
+
+| 绑定名 | 用途 |
+| --- | --- |
+| `NEXT_INC_CACHE_KV` | 增量/fetch 数据缓存 |
+| `NEXT_TAG_CACHE_KV` | tag 失效记录，`revalidateTag` 依赖它 |
+
+本地 `npm run preview` 用 miniflare 模拟 KV，占位 id 也能跑；只有部署到 Cloudflare 才需要真实 id。
+
+验证方法（本地已验证通过）：先请求一次产品接口建立缓存 → 直接改数据库但**不触发** WordPress 保存 → 再请求应仍返回旧值 → 在后台保存产品触发 Webhook → 再请求应返回新值。
 
 在 Cloudflare Dashboard 的 Worker **Build variables and secrets** 与 **Runtime variables/secrets** 中都配置：
 
