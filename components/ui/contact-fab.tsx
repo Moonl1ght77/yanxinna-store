@@ -29,7 +29,7 @@ export function ContactFab() {
     {
       label: "WhatsApp",
       icon: MessageCircle,
-      href: "https://wa.me/13719947765",
+      href: "https://wa.me/8613719947765",
       color: "text-[#25d366]",
     },
     {

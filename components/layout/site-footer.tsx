@@ -121,7 +121,7 @@ export function SiteFooter() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/13719947765"
+              href="https://wa.me/8613719947765"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2 text-xs text-[#524b45] transition hover:text-[#25d366] sm:text-sm"

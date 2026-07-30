@@ -602,7 +602,7 @@ export function FactoryStrengths() {
                     <button type="submit" className="flex-1 rounded-full bg-[#A89B8C] py-3.5 text-sm font-medium text-white transition hover:bg-[#4A3D34]">
                       Submit
                     </button>
-                    <a href="https://wa.me/13719947765" target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-medium text-white transition hover:bg-[#128C7E]">
+                    <a href="https://wa.me/8613719947765" target="_blank" rel="noopener noreferrer" className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-medium text-white transition hover:bg-[#128C7E]">
                       <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
                       WhatsApp
                     </a>

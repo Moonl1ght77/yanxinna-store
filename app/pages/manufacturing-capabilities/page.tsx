@@ -50,7 +50,7 @@ export default function ManufacturingCapabilitiesPage() {
               {copy.factoryRequestSample}
             </button>
             <a
-              href="https://wa.me/13719947765"
+              href="https://wa.me/8613719947765"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-[#5C4E43] px-6 py-3 text-sm font-medium text-[#2C2825] transition hover:bg-[#5C4E43] hover:text-white sm:px-8 sm:py-3.5"
@@ -160,7 +160,7 @@ export default function ManufacturingCapabilitiesPage() {
               {copy.factoryRequestSample}
             </button>
             <a
-              href="https://wa.me/13719947765"
+              href="https://wa.me/8613719947765"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-white/30 px-8 py-3.5 text-sm font-medium text-white transition hover:bg-white/10"
