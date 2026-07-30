@@ -194,6 +194,9 @@ export type CopyKeys = {
   sampleFormPhone: string;
   sampleFormDetails: string;
   sampleFormSubmit: string;
+  sampleFormSending: string;
+  sampleFormSuccess: string;
+  sampleFormError: string;
 
   // 能力与服务
   capabilitiesTitle: string;

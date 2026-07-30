@@ -20,38 +20,51 @@ export function SampleRequestModal({
   onClose,
   product
 }: SampleRequestModalProps) {
-  const { copy } = useLocale();
+  const { copy, locale } = useLocale();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    details: ""
+    details: "",
+    website: ""
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  // 静态站无后端，询盘通过邮件客户端直达业务邮箱
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = product
-      ? `Product Inquiry - ${product.productNumber}`
-      : `Sample Request - ${formData.name}`;
-    const body = [
-      ...(product
-        ? [
-            `Product: ${product.name}`,
-            `Product number: ${product.productNumber}`,
-            `Selected color: ${product.color}`,
-            `Selected size: ${product.size}`,
-            ""
-          ]
-        : []),
-      `Name: ${formData.name}`,
-      `Email: ${formData.email}`,
-      `Phone: ${formData.phone}`,
-      "",
-      formData.details
-    ].join("\n");
-    window.location.href = `mailto:13719947765@139.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    onClose();
+    if (status === "sending") return;
+    setStatus("sending");
+
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.details,
+          subject: "sample",
+          source: product ? "product" : "contact",
+          locale,
+          website: formData.website,
+          productName: product?.name ?? "",
+          productNumber: product?.productNumber ?? "",
+          productColor: product?.color ?? "",
+          productSize: product?.size ?? ""
+        })
+      });
+
+      if (!response.ok) {
+        setStatus("error");
+        return;
+      }
+
+      setStatus("sent");
+      setFormData({ name: "", email: "", phone: "", details: "", website: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   if (!isOpen) return null;
@@ -132,13 +145,36 @@ export function SampleRequestModal({
             />
           </div>
 
+          {/* 蜜罐：对用户隐藏，脚本才会填 */}
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={formData.website}
+            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+            className="hidden"
+          />
+
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#A89B8C] py-3.5 text-sm font-medium text-white transition hover:bg-[#4A3D34]"
+            disabled={status === "sending"}
+            className="w-full bg-[#A89B8C] py-3.5 text-sm font-medium text-white transition hover:bg-[#4A3D34] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {copy.sampleFormSubmit}
+            {status === "sending" ? copy.sampleFormSending : copy.sampleFormSubmit}
           </button>
+
+          {status === "sent" && (
+            <p role="status" className="text-sm text-[#5C4E43]">
+              {copy.sampleFormSuccess}
+            </p>
+          )}
+          {status === "error" && (
+            <p role="alert" className="text-sm text-[#B4453C]">
+              {copy.sampleFormError}
+            </p>
+          )}
         </form>
       </div>
     </div>

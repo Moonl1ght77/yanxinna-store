@@ -59,6 +59,11 @@ final class YANXINNA_Headless_Security {
 			return $result;
 		}
 
+		// 询盘是这个命名空间里唯一的写入口，鉴权在它自己的 permission_callback 里做。
+		if ( self::is_inquiry_route( $request->get_route() ) ) {
+			return $result;
+		}
+
 		return new WP_Error(
 			'yanxinna_method_not_allowed',
 			__( 'Only read-only product requests are allowed.', 'yanxinna-headless-products' ),
@@ -117,5 +122,11 @@ final class YANXINNA_Headless_Security {
 
 	private static function is_public_route( $route ) {
 		return 0 === strpos( (string) $route, '/' . YANXINNA_Headless_REST::NAMESPACE . '/' );
+	}
+
+	private static function is_inquiry_route( $route ) {
+		$inquiry = '/' . YANXINNA_Headless_REST::NAMESPACE . YANXINNA_Headless_Inquiry::ROUTE;
+
+		return untrailingslashit( (string) $route ) === $inquiry;
 	}
 }

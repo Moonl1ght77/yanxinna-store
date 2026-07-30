@@ -155,6 +155,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sampleFormPhone: "Телефон/WhatsApp",
     sampleFormDetails: "Детали проекта и спецификации",
     sampleFormSubmit: "Отправить",
+    sampleFormSending: "Отправка…",
+    sampleFormSuccess: "Заявка отправлена. Мы свяжемся с вами в ближайшее время.",
+    sampleFormError: "Не удалось отправить. Попробуйте ещё раз или напишите нам на почту.",
 
     // 能力与服务
     capabilitiesTitle: "От прототипа до полного производства — ваш надежный производственный партнер",
@@ -480,6 +483,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sampleFormPhone: "Phone/WhatsApp",
     sampleFormDetails: "Project Details & Specifications",
     sampleFormSubmit: "Submit",
+    sampleFormSending: "Sending…",
+    sampleFormSuccess: "Thanks — your inquiry has been sent. We will get back to you shortly.",
+    sampleFormError: "Could not send. Please try again or email us directly.",
 
     // Capabilities & Services
     capabilitiesTitle: "From Prototype to Full Production — Your Trusted Manufacturing Partner",
@@ -805,6 +811,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sampleFormPhone: "Phone/WhatsApp",
     sampleFormDetails: "Project Details & Specifications",
     sampleFormSubmit: "Submit",
+    sampleFormSending: "Sending…",
+    sampleFormSuccess: "Thanks — your inquiry has been sent. We will get back to you shortly.",
+    sampleFormError: "Could not send. Please try again or email us directly.",
 
     // Capabilities & Services
     capabilitiesTitle: "From Prototype to Full Production — Your Trusted Manufacturing Partner",
@@ -1114,6 +1123,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sampleFormPhone: "Téléphone/WhatsApp",
     sampleFormDetails: "Détails du projet et spécifications",
     sampleFormSubmit: "Soumettre",
+    sampleFormSending: "Envoi…",
+    sampleFormSuccess: "Merci — votre demande a bien été envoyée. Nous vous répondrons rapidement.",
+    sampleFormError: "Échec de l'envoi. Réessayez ou écrivez-nous directement par email.",
 
     // Factory Strengths (French)
     capabilitiesTitle: "Du prototype à la production complète — Votre partenaire de fabrication de confiance",
@@ -1424,6 +1436,9 @@ export const copyByLocale: Record<string, CopyKeys> = {
     sampleFormPhone: "Telefon/WhatsApp",
     sampleFormDetails: "Projektdetails & Spezifikationen",
     sampleFormSubmit: "Absenden",
+    sampleFormSending: "Wird gesendet…",
+    sampleFormSuccess: "Danke — Ihre Anfrage wurde gesendet. Wir melden uns in Kürze.",
+    sampleFormError: "Senden fehlgeschlagen. Bitte erneut versuchen oder schreiben Sie uns direkt per E-Mail.",
 
     // Factory Strengths (German)
     capabilitiesTitle: "Vom Prototyp zur vollständigen Produktion — Ihr vertrauensvoller Fertigungspartner",

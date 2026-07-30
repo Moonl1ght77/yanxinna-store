@@ -3,12 +3,51 @@
 import { useState } from "react";
 import { HelpLayout } from "@/components/layout/help-layout";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/hooks/use-locale";
 
 export default function ContactUsPage() {
+  const { copy, locale } = useLocale();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === "sending") return;
+    setStatus("sending");
+
+    try {
+      const response = await fetch("/api/inquiry", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          subject: subject || "other",
+          source: "contact",
+          locale,
+          website
+        })
+      });
+
+      if (!response.ok) {
+        setStatus("error");
+        return;
+      }
+
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+    }
+  };
 
   return (
     <HelpLayout>
@@ -51,13 +90,14 @@ export default function ContactUsPage() {
 
           <div>
             <h2 className="font-display text-2xl tracking-[0.04em] text-[#2C2825]">Send a Message</h2>
-            <form className="mt-4 space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label className="mb-2 block text-[11px] font-medium uppercase tracking-[0.18em] text-[#A89B8C]">
                   Name
                 </label>
                 <input
                   type="text"
+                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
@@ -69,6 +109,7 @@ export default function ContactUsPage() {
                 </label>
                 <input
                   type="email"
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
@@ -95,13 +136,39 @@ export default function ContactUsPage() {
                   Message
                 </label>
                 <textarea
+                  required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={4}
                   className="w-full border border-borderSoft bg-white px-4 py-3 text-sm text-[#2C2825] outline-none focus:border-[#5C4E43]"
                 />
               </div>
-              <Button className="w-full">Send Message</Button>
+
+              {/* 蜜罐：对用户隐藏，脚本才会填 */}
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                className="hidden"
+              />
+
+              <Button className="w-full" disabled={status === "sending"}>
+                {status === "sending" ? copy.sampleFormSending : "Send Message"}
+              </Button>
+
+              {status === "sent" && (
+                <p role="status" className="text-sm text-[#5C4E43]">
+                  {copy.sampleFormSuccess}
+                </p>
+              )}
+              {status === "error" && (
+                <p role="alert" className="text-sm text-[#B4453C]">
+                  {copy.sampleFormError}
+                </p>
+              )}
             </form>
           </div>
         </section>
