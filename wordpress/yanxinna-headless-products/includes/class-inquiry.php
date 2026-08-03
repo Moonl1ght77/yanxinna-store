@@ -35,11 +35,13 @@ final class YANXINNA_Headless_Inquiry {
 			self::POST_TYPE,
 			array(
 				'labels'              => array(
-					'name'          => __( 'Inquiries', 'yanxinna-headless-products' ),
-					'singular_name' => __( 'Inquiry', 'yanxinna-headless-products' ),
-					'edit_item'     => __( 'Inquiry', 'yanxinna-headless-products' ),
-					'search_items'  => __( 'Search Inquiries', 'yanxinna-headless-products' ),
-					'not_found'     => __( 'No inquiries yet.', 'yanxinna-headless-products' ),
+					'name'          => '询盘',
+					'singular_name' => '询盘',
+					'menu_name'     => '询盘',
+					'all_items'     => '所有询盘',
+					'edit_item'     => '询盘详情',
+					'search_items'  => '搜索询盘',
+					'not_found'     => '还没有收到询盘。',
 				),
 				'public'              => false,
 				'publicly_queryable'  => false,
@@ -213,10 +215,10 @@ final class YANXINNA_Headless_Inquiry {
 		$date = isset( $columns['date'] ) ? $columns['date'] : '';
 		unset( $columns['date'] );
 
-		$columns['yx_email']   = __( 'Email', 'yanxinna-headless-products' );
-		$columns['yx_phone']   = __( 'Phone', 'yanxinna-headless-products' );
-		$columns['yx_subject'] = __( 'Subject', 'yanxinna-headless-products' );
-		$columns['yx_product'] = __( 'Product', 'yanxinna-headless-products' );
+		$columns['yx_email']   = '邮箱';
+		$columns['yx_phone']   = '电话';
+		$columns['yx_subject'] = '主题';
+		$columns['yx_product'] = '关联产品';
 		$columns['date']       = $date;
 
 		return $columns;

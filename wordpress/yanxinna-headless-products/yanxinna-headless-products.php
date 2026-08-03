@@ -26,6 +26,7 @@ require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-inquiry.php';
 add_action( 'init', array( 'YANXINNA_Headless_Content', 'register' ) );
 add_action( 'acf/init', array( 'YANXINNA_Headless_Fields', 'register' ) );
 add_filter( 'acf/validate_value/name=product_number', array( 'YANXINNA_Headless_Fields', 'validate_product_number' ), 10, 4 );
+add_action( 'acf/validate_save_post', array( 'YANXINNA_Headless_Fields', 'validate_required_post_parts' ), 10, 0 );
 add_action( 'rest_api_init', array( 'YANXINNA_Headless_REST', 'register_routes' ) );
 YANXINNA_Headless_Security::register();
 YANXINNA_Headless_Webhook::register();
