@@ -8,14 +8,19 @@
     "binding": "ASSETS",
     "directory": ".open-next/assets"
   },
-  // staging 运行时变量。敏感值不放这里：WORDPRESS_REVALIDATE_SECRET 用
+  // 运行时变量。敏感值不放这里：WORDPRESS_REVALIDATE_SECRET 用
   // `npx wrangler secret put WORDPRESS_REVALIDATE_SECRET` 单独设置。
-  // cms.invalid 是占位：.invalid 是保留域名，DNS 必然失败，用于验证
-  // WordPress 不可达时前端能否降级到 API error 页。公网 CMS 就绪后替换。
+  // 2026-08-03 起指向正式 WordPress 主机（阿里云香港 47.243.151.206），
+  // cloudflared 临时隧道方案已退役。
   "vars": {
-    "WORDPRESS_API_URL": "https://cms.invalid/wp-json/yanxinna/v1",
-    "NEXT_PUBLIC_SITE_URL": "https://yanxinna-store-cms-staging.liltrick1015.workers.dev"
+    "WORDPRESS_API_URL": "https://cms.yanxinna.com/wp-json/yanxinna/v1",
+    "NEXT_PUBLIC_SITE_URL": "https://yanxinna.com"
   },
+  // 2026-08-03 绑定正式域名。custom_domain 会自动在 Cloudflare 区域里建 DNS 记录，
+  // 不要再手工加 yanxinna.com 的 A/CNAME，会冲突。
+  "routes": [
+    { "pattern": "yanxinna.com", "custom_domain": true }
+  ],
   // OpenNext 的缓存后端。没有这两个绑定，Next 的 fetch 缓存和 revalidateTag
   // 在 Cloudflare 上完全不生效，每次请求都会回源打 WordPress。
   // 本地 `wrangler dev` 用 miniflare 模拟，不会碰到真实命名空间。
