@@ -109,6 +109,15 @@ export function ShopClient({
     )
   };
 
+  /**
+   * 分类还没有产品时（导航里的内裤/文胸就是这种），它不在筛选按钮里，
+   * 也就不在 categoryLabels 里。此时必须回退到 categoryLabel() 拿它自己的名字——
+   * 早先是回退到 shapewear，导致点「内裤」落到一个标题写着「塑身衣」的空页，
+   * 标题和面包屑都是错的。
+   */
+  const labelFor = (slug: string) =>
+    categoryLabels[slug] ?? subcategoryLabels[slug] ?? categoryLabel(slug, copy);
+
   const filteredProducts = useMemo(() => {
     const base = localizedProducts.filter((product) => {
       const matchesCategory = category === "all" ? true : product.category === category;
@@ -159,7 +168,7 @@ export function ShopClient({
       <div className="border border-borderSoft bg-white px-4 py-6 sm:px-6 sm:py-10 md:px-10">
         <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#A89B8C] sm:text-[11px]">{copy.shopTitle}</p>
         <h1 className="mt-3 font-display text-3xl/[1.15] tracking-[0.04em] text-[#2C2825] sm:mt-4 sm:text-5xl/[1.15]">
-          {categoryLabels[category] ?? categoryLabels.shapewear}
+          {labelFor(category)}
         </h1>
         <p className="mt-3 max-w-2xl text-xs leading-6 text-[#8A7F73] sm:mt-4 sm:text-sm sm:leading-7">{activeCategoryDescription}</p>
         <div className="mt-5 flex flex-wrap gap-2 sm:mt-8 sm:gap-3">
@@ -220,8 +229,8 @@ export function ShopClient({
 
       <div className="mt-6 flex flex-col gap-4 border-b border-borderSoft pb-4 sm:mt-8 sm:gap-5 sm:pb-5 md:flex-row md:items-center md:justify-between">
         <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#A89B8C] sm:text-[11px]">
-          {copy.breadcrumbHome} / {copy.breadcrumbShop} / {categoryLabels[category] ?? category}
-          {subcategory !== "all" ? ` / ${subcategoryLabels[subcategory] ?? subcategory}` : ""}
+          {copy.breadcrumbHome} / {copy.breadcrumbShop} / {labelFor(category)}
+          {subcategory !== "all" ? ` / ${labelFor(subcategory)}` : ""}
         </p>
         <div className="flex flex-col gap-3 md:flex-row">
           <select
@@ -238,7 +247,7 @@ export function ShopClient({
 
       <div className="mt-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-[#A89B8C] sm:mt-4 sm:text-[11px]">
         <span>{filteredProducts.length} {copy.itemsCount}</span>
-        {subcategory !== "all" ? <span>{subcategoryLabels[subcategory]}</span> : <span>{categoryLabels[category]}</span>}
+        {subcategory !== "all" ? <span>{labelFor(subcategory)}</span> : <span>{labelFor(category)}</span>}
       </div>
 
       {visibleProducts.length === 0 ? (
@@ -274,8 +283,8 @@ export function ShopClient({
                 <div className="flex items-start justify-between gap-2">
                   <p className="text-[9px] font-medium uppercase tracking-[0.2em] text-[#A89B8C] sm:text-[11px]">
                     {product.subcategory
-                      ? `${categoryLabels[product.category]} / ${subcategoryLabels[product.subcategory]}`
-                      : categoryLabels[product.category]}
+                      ? `${labelFor(product.category)} / ${labelFor(product.subcategory)}`
+                      : labelFor(product.category)}
                   </p>
                 </div>
                 <p className="mt-1.5 text-sm font-medium text-[#2C2825] sm:mt-2 sm:text-lg">{product.name}</p>
