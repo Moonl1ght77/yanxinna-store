@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { sortProductsByMerchOrder } from "@/lib/utils";
+import { sortProductsByMerchOrder, visibleCategories } from "@/lib/utils";
 import { categoryLabel } from "@/lib/category-labels";
 import { ProductCardImage } from "@/components/ui/product-card-image";
 import { Button } from "@/components/ui/button";
@@ -59,13 +59,19 @@ export function ShopClient({
     )
   );
 
-  const topLevelCategories = useMemo(() => {
-    const entries = categories.filter((entry) => entry.parent === 0);
-    if (entries.length > 0) return entries;
+  const { topLevelCategories, allSubcategories } = useMemo(() => {
+    const visible = visibleCategories(categories, products);
+    if (visible.top.length > 0) {
+      return { topLevelCategories: visible.top, allSubcategories: visible.sub };
+    }
 
-    return Array.from(new Set(products.map((product) => product.category))).map(
-      (slug, index) => ({ id: index + 1, slug, name: slug, parent: 0 })
-    );
+    // categories 接口不可用时退回从产品自身推导
+    return {
+      topLevelCategories: Array.from(
+        new Set(products.map((product) => product.category))
+      ).map((slug, index) => ({ id: index + 1, slug, name: slug, parent: 0 })),
+      allSubcategories: visible.sub
+    };
   }, [categories, products]);
 
   const categoryLabels = useMemo<Record<string, string>>(
@@ -90,10 +96,8 @@ export function ShopClient({
   const activeCategoryId = topLevelCategories.find(
     (entry) => entry.slug === category
   )?.id;
-  const subcategoryOptions = categories.filter(
-    (entry) =>
-      entry.parent !== 0 &&
-      (category === "all" || entry.parent === activeCategoryId)
+  const subcategoryOptions = allSubcategories.filter(
+    (entry) => category === "all" || entry.parent === activeCategoryId
   );
   const subcategoryLabels: Record<string, string> = {
     all: copy.subcategoryAll,

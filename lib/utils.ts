@@ -24,6 +24,39 @@ export function getShapewearSubcategoryPriority(subcategory?: string) {
   return index === -1 ? shapewearSubcategoryOrder.length : index;
 }
 
+/**
+ * 只保留真的挂着产品的分类，并按固定陈列顺序排。
+ * 两个原因：
+ * 1. WordPress 的 /categories 是 hide_empty => false（后台要能看到完整分类树好归档），
+ *    直接渲染会出现点进去空空如也的死按钮。
+ * 2. 接口按 term name 排序，name 改中文后顺序会跟着变；这里按 slug 定序，与名字无关。
+ * 不在 WordPress 侧改 hide_empty：商家只勾子类时父类 count 为 0，父类会整个消失，子类行跟着塌。
+ */
+export function visibleCategories<T extends { slug: string; parent: number }>(
+  categories: T[],
+  products: Array<{ category: string; subcategory?: string }>
+) {
+  const usedTop = new Set(products.map((product) => product.category));
+  const usedSub = new Set(
+    products
+      .map((product) => product.subcategory)
+      .filter((slug): slug is string => Boolean(slug))
+  );
+
+  return {
+    top: categories
+      .filter((entry) => entry.parent === 0 && usedTop.has(entry.slug))
+      .sort((left, right) => getCategoryPriority(left.slug) - getCategoryPriority(right.slug)),
+    sub: categories
+      .filter((entry) => entry.parent !== 0 && usedSub.has(entry.slug))
+      .sort(
+        (left, right) =>
+          getShapewearSubcategoryPriority(left.slug) -
+          getShapewearSubcategoryPriority(right.slug)
+      )
+  };
+}
+
 export function sortProductsByMerchOrder<T extends { category: string; subcategory?: string }>(
   items: T[]
 ) {
