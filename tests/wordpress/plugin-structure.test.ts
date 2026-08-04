@@ -39,6 +39,18 @@ describe("YANXINNA WordPress plugin delivery", () => {
     expect(security).toContain("array( 'GET', 'OPTIONS' )");
   });
 
+  it("serves list images at large and detail images at full size", () => {
+    const rest = read("yanxinna-headless-products/includes/class-rest.php");
+
+    // 首页一屏 47 张图，列表发原图（单张 1.4MB）会把首屏打满
+    expect(rest).toContain("const LIST_IMAGE_SIZE = 'large'");
+    expect(rest).toContain("wp_get_attachment_image_src");
+    // 详情页图片会被放大看，必须显式要原图
+    expect(rest).toContain("self::map_product( $post, 'full' )");
+    // 尺寸必须一路传到颜色和图集，否则漏图仍发原图
+    expect(rest.match(/\$image_size/g)?.length).toBeGreaterThanOrEqual(8);
+  });
+
   it("blocks username enumeration for logged-out visitors on all three surfaces", () => {
     const security = read(
       "yanxinna-headless-products/includes/class-security.php"

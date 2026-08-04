@@ -8,6 +8,8 @@ https://cms.example.com/wp-json/yanxinna/v1
 
 公开接口只接受 `GET` 和浏览器预检 `OPTIONS`。前端不调用 WordPress 管理写入接口，也不需要管理员密码、Application Password 或 JWT。
 
+**图片尺寸**：`/products`（列表）返回 WordPress 的 `large` 尺寸（长边 1024），`/products/{slug}`（详情）返回原图。字段结构两者一致，只有 `url` 不同。原因是首页一屏要拉几十张图，商家直传的产品图是 1.4MB 级别的 PNG 原件。上传图本身小于 `large` 时自动回退原图，不会断图。
+
 ## 产品列表
 
 ```http

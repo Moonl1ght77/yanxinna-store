@@ -121,7 +121,8 @@ final class YANXINNA_Headless_REST {
 			);
 		}
 
-		$product = self::map_product( $post );
+		// 详情页只有一个产品、图片会被放大看，走原图
+		$product = self::map_product( $post, 'full' );
 		if ( ! $product ) {
 			return new WP_Error(
 				'yanxinna_product_not_found',
@@ -275,14 +276,14 @@ final class YANXINNA_Headless_REST {
 		return in_array( strtolower( (string) $value ), array( 'true', '1' ), true );
 	}
 
-	private static function map_product( WP_Post $post ) {
+	private static function map_product( WP_Post $post, $image_size = self::LIST_IMAGE_SIZE ) {
 		$product_number = sanitize_text_field( (string) get_field( 'product_number', $post->ID ) );
 		$taxonomy       = self::product_taxonomy( $post->ID );
-		$main_image     = self::image_value( get_post_thumbnail_id( $post->ID ) );
-		$hover_image    = self::image_value( get_field( 'hover_image', $post->ID ) );
-		$gallery        = self::image_list( get_field( 'gallery', $post->ID ) );
+		$main_image     = self::image_value( get_post_thumbnail_id( $post->ID ), $image_size );
+		$hover_image    = self::image_value( get_field( 'hover_image', $post->ID ), $image_size );
+		$gallery        = self::image_list( get_field( 'gallery', $post->ID ), $image_size );
 		$sizes          = self::sizes( get_field( 'sizes', $post->ID ) );
-		$colors         = self::colors( get_field( 'colors', $post->ID ) );
+		$colors         = self::colors( get_field( 'colors', $post->ID ), $image_size );
 		$parameters     = self::parameters( get_field( 'parameters', $post->ID ) );
 		$attachments    = self::attachments( get_field( 'attachments', $post->ID ) );
 		$translations   = self::translations( get_field( 'translations', $post->ID ) );
@@ -390,15 +391,37 @@ final class YANXINNA_Headless_REST {
 		);
 	}
 
-	private static function image_value( $value ) {
+	/**
+	 * 列表用 WordPress 自动生成的 large（长边 1024），详情用原图。
+	 * 商家直传的产品图是 1000px 以上的 PNG 原件（单张 1.4MB 级别），
+	 * 首页一屏 47 张，直接发原图会把带宽和首屏时间打满。
+	 * 上传尺寸本来就小于 large 时，wp_get_attachment_image_src() 自动回退原图，不会断图。
+	 */
+	const LIST_IMAGE_SIZE = 'large';
+
+	private static function attachment_url( $attachment_id, $image_size ) {
+		if ( 'full' !== $image_size ) {
+			$sized = wp_get_attachment_image_src( $attachment_id, $image_size );
+			if ( is_array( $sized ) && ! empty( $sized[0] ) ) {
+				return $sized[0];
+			}
+		}
+
+		return wp_get_attachment_url( $attachment_id );
+	}
+
+	private static function image_value( $value, $image_size = self::LIST_IMAGE_SIZE ) {
 		if ( ! $value ) {
 			return null;
 		}
 
 		$attachment_id = is_array( $value ) ? (int) ( $value['ID'] ?? $value['id'] ?? 0 ) : (int) $value;
-		$url           = is_array( $value ) && ! empty( $value['url'] )
-			? $value['url']
-			: wp_get_attachment_url( $attachment_id );
+		$url           = $attachment_id ? self::attachment_url( $attachment_id, $image_size ) : '';
+
+		// 附件查不到时才退回 ACF 自带的原图地址
+		if ( ! $url && is_array( $value ) && ! empty( $value['url'] ) ) {
+			$url = $value['url'];
+		}
 
 		if ( ! $attachment_id || ! $url ) {
 			return null;
@@ -415,10 +438,10 @@ final class YANXINNA_Headless_REST {
 		);
 	}
 
-	private static function image_list( $rows ) {
+	private static function image_list( $rows, $image_size = self::LIST_IMAGE_SIZE ) {
 		$images = array();
 		foreach ( is_array( $rows ) ? $rows : array() as $row ) {
-			$image = self::image_value( $row );
+			$image = self::image_value( $row, $image_size );
 			if ( $image ) {
 				$images[] = $image;
 			}
@@ -437,12 +460,12 @@ final class YANXINNA_Headless_REST {
 		return $sizes;
 	}
 
-	private static function colors( $rows ) {
+	private static function colors( $rows, $image_size = self::LIST_IMAGE_SIZE ) {
 		$colors = array();
 		foreach ( is_array( $rows ) ? $rows : array() as $row ) {
 			$names       = self::localized_values( $row['names'] ?? array() );
-			$image       = self::image_value( $row['image'] ?? null );
-			$hover_image = self::image_value( $row['hover_image'] ?? null );
+			$image       = self::image_value( $row['image'] ?? null, $image_size );
+			$hover_image = self::image_value( $row['hover_image'] ?? null, $image_size );
 			$hex         = sanitize_hex_color( $row['hex'] ?? '' );
 
 			if ( ! $names || ! $image || ! $hover_image || ! $hex ) {
