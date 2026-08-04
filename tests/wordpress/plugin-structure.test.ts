@@ -75,6 +75,29 @@ describe("YANXINNA WordPress plugin delivery", () => {
     expect(fields).toContain("self::DEFAULT_LOCALE === $locale");
   });
 
+  it("configures SMTP from wp-config constants and never hardcodes credentials", () => {
+    const mail = read("yanxinna-headless-products/includes/class-mail.php");
+    const inquiry = read("yanxinna-headless-products/includes/class-inquiry.php");
+    const bootstrap = read("yanxinna-headless-products/yanxinna-headless-products.php");
+
+    // 凭据只能来自 wp-config 常量，和 YANXINNA_REVALIDATE_SECRET 同一套做法
+    expect(mail).toContain("YANXINNA_SMTP_USER");
+    expect(mail).toContain("YANXINNA_SMTP_PASS");
+    expect(mail).not.toMatch(/(Password|Username)\s*=\s*['"][^'"]+['"]/);
+    // 常量没配齐必须原样退回 mail()，不能把站点搞挂
+    expect(mail).toContain("if ( ! self::is_configured() ) {");
+    // 阿里云封 25/587，465 是隐式 TLS
+    expect(mail).toContain("const DEFAULT_PORT = 465");
+    expect(mail).toContain("465 === $port ? 'ssl' : 'tls'");
+    // 139 要求信封发件人 == 认证账号
+    expect(mail).toContain("wp_mail_from");
+
+    expect(bootstrap).toContain("YANXINNA_Headless_Mail::register()");
+    // 发信失败不能影响询盘落库结果
+    expect(inquiry).toContain("private static function notify(");
+    expect(inquiry).toContain("error_log(");
+  });
+
   it("keeps refresh secrets in wp-config and sends non-blocking webhooks", () => {
     const webhook = read(
       "yanxinna-headless-products/includes/class-webhook.php"

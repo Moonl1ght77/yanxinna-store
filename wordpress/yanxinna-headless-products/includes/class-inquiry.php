@@ -176,7 +176,82 @@ final class YANXINNA_Headless_Inquiry {
 			}
 		}
 
+		self::notify(
+			$post_id,
+			array(
+				'name'    => $name,
+				'email'   => $email,
+				'phone'   => $phone,
+				'subject' => $subject,
+				'source'  => $source,
+				'locale'  => $locale,
+				'message' => $message,
+				'product' => $product,
+			)
+		);
+
 		return new WP_REST_Response( array( 'ok' => true ), 201 );
+	}
+
+	/**
+	 * 新询盘邮件提醒。没有这封信，商家不主动登后台就永远不知道有客户来问。
+	 *
+	 * 发信失败绝不能影响客户那边的提交结果——询盘已经落库了，
+	 * 提醒发不出去是运营问题，不是数据问题。所以只写日志、不改返回值。
+	 *
+	 * ponytail: 同步发信，会给提交请求加 1-3 秒（SMTP 握手）。
+	 * 慢到影响体验再改成挂 shutdown 或进队列。
+	 */
+	private static function notify( $post_id, array $fields ) {
+		$to = sanitize_email( (string) get_option( 'admin_email' ) );
+		if ( ! $to || ! is_email( $to ) ) {
+			return;
+		}
+
+		$labels = array(
+			'name'    => '姓名',
+			'email'   => '邮箱',
+			'phone'   => '电话',
+			'subject' => '主题',
+			'source'  => '来源',
+			'locale'  => '语言',
+		);
+
+		$lines = array();
+		foreach ( $labels as $key => $label ) {
+			if ( '' !== (string) $fields[ $key ] ) {
+				$lines[] = sprintf( '%s：%s', $label, $fields[ $key ] );
+			}
+		}
+
+		foreach ( array( 'number' => '产品编号', 'name' => '产品名称', 'color' => '颜色', 'size' => '尺码' ) as $key => $label ) {
+			if ( '' !== (string) $fields['product'][ $key ] ) {
+				$lines[] = sprintf( '%s：%s', $label, $fields['product'][ $key ] );
+			}
+		}
+
+		$lines[] = '';
+		$lines[] = '留言：';
+		$lines[] = $fields['message'];
+		$lines[] = '';
+		$lines[] = '后台查看：' . admin_url( 'post.php?post=' . (int) $post_id . '&action=edit' );
+
+		$sent = wp_mail(
+			$to,
+			sprintf( '[YANXINNA] 新询盘 — %s', $fields['name'] ),
+			implode( "\n", $lines ),
+			array( 'Content-Type: text/plain; charset=UTF-8' )
+		);
+
+		if ( ! $sent ) {
+			error_log(
+				sprintf(
+					'YANXINNA: inquiry %d saved but notification email failed (SMTP configured: %s).',
+					(int) $post_id,
+					YANXINNA_Headless_Mail::is_configured() ? 'yes' : 'no'
+				)
+			);
+		}
 	}
 
 	private static function check_rate_limit( WP_REST_Request $request ) {

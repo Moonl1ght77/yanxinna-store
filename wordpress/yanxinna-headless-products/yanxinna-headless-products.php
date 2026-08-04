@@ -22,6 +22,7 @@ require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-rest.php';
 require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-security.php';
 require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-webhook.php';
 require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-inquiry.php';
+require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-mail.php';
 
 add_action( 'init', array( 'YANXINNA_Headless_Content', 'register' ) );
 add_action( 'acf/init', array( 'YANXINNA_Headless_Fields', 'register' ) );
@@ -31,6 +32,7 @@ add_action( 'rest_api_init', array( 'YANXINNA_Headless_REST', 'register_routes' 
 YANXINNA_Headless_Security::register();
 YANXINNA_Headless_Webhook::register();
 YANXINNA_Headless_Inquiry::register();
+YANXINNA_Headless_Mail::register();
 
 register_activation_hook(
 	__FILE__,
