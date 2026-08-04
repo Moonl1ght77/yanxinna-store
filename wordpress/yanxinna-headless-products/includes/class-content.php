@@ -76,7 +76,12 @@ final class YANXINNA_Headless_Content {
 	}
 
 	public static function install_roles() {
-		$capabilities = self::product_capabilities();
+		// 询盘权限和产品权限一起装。管理员也必须拿到——询盘换成独立权限类型后，
+		// 光靠 administrator 自带的 edit_posts 已经看不到询盘了。
+		$capabilities = array_merge(
+			self::product_capabilities(),
+			class_exists( 'YANXINNA_Headless_Inquiry' ) ? YANXINNA_Headless_Inquiry::capabilities() : array()
+		);
 		$role         = get_role( self::ROLE );
 
 		if ( ! $role ) {

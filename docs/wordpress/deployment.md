@@ -9,6 +9,33 @@ define('YANXINNA_FRONTEND_URL', getenv('YANXINNA_FRONTEND_URL'));
 define('YANXINNA_REVALIDATE_SECRET', getenv('YANXINNA_REVALIDATE_SECRET'));
 define('YANXINNA_ALLOWED_ORIGINS', getenv('YANXINNA_ALLOWED_ORIGINS'));
 define('DISALLOW_FILE_EDIT', true);
+
+// 发信（可选，不配则退回 PHP 的 mail()）。托管机常常没装 MTA，mail() 会静默失败。
+define('YANXINNA_SMTP_HOST', getenv('YANXINNA_SMTP_HOST'));
+define('YANXINNA_SMTP_PORT', 465);
+define('YANXINNA_SMTP_USER', getenv('YANXINNA_SMTP_USER'));
+define('YANXINNA_SMTP_PASS', getenv('YANXINNA_SMTP_PASS'));
+```
+
+发信注意两条：
+
+- 云主机普遍封出站 **25 / 587**，先验端口再定方案：
+  `for p in 465 587 25; do timeout 8 bash -c "echo > /dev/tcp/<SMTP主机>/$p" && echo "$p OPEN"; done`
+  465 是隐式 TLS，插件按端口自动选 `ssl`/`tls`。
+- 多数邮箱服务商要求**信封发件人等于认证账号**，插件已强制改写 `wp_mail_from`，所以发件人始终是 `YANXINNA_SMTP_USER`。
+
+## 1b. 升级插件后必须重装角色权限
+
+角色权限只在 `register_activation_hook` 里安装。**覆盖插件文件不会触发它**，所以凡是改动过权限（新增 CPT、改 `capability_type`、加 capability）的版本，升级后要手动跑一次，否则新权限不生效——连管理员都可能看不到新内容类型：
+
+```bash
+wp eval 'YANXINNA_Headless_Content::install_roles();'
+```
+
+复查（`yx_product_manager` 和 `administrator` 都要能看到询盘）：
+
+```bash
+wp eval '$pt=get_post_type_object("yx_inquiry"); foreach(["yx_product_manager","administrator"] as $r){ printf("%s: %s\n", $r, get_role($r)->has_cap($pt->cap->edit_posts)?"有":"没有"); }'
 ```
 
 示例值：

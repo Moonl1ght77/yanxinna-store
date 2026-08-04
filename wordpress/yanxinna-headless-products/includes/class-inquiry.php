@@ -52,10 +52,39 @@ final class YANXINNA_Headless_Inquiry {
 				'has_archive'         => false,
 				'rewrite'             => false,
 				'exclude_from_search' => true,
+				/*
+				 * 必须给询盘独立的权限类型。不写这行会退回默认的 'post'，
+				 * 于是「看询盘」需要通用的 edit_posts —— 而产品经理角色没有它，
+				 * 商家登进去根本看不到询盘菜单（2026-08-04 实测确认）。
+				 * 反过来给角色加 edit_posts 更糟：等于顺带开放整个 WordPress 的文章和页面。
+				 */
+				'capability_type'     => array( 'yx_inquiry', 'yx_inquiries' ),
 				// 询盘是收到的记录，不允许在后台手工新建，避免和真实线索混淆。
 				'capabilities'        => array( 'create_posts' => 'do_not_allow' ),
 				'map_meta_cap'        => true,
 			)
+		);
+	}
+
+	/**
+	 * 询盘相关权限，由 YANXINNA_Headless_Content::install_roles() 一起装。
+	 * 放在这里是为了和上面的 capability_type 待在同一个文件，改一处不会漏另一处。
+	 *
+	 * 没有 publish_ 权限：询盘由前端 REST 写入（wp_insert_post 不校验权限），
+	 * 后台建新询盘本来就被 create_posts => do_not_allow 挡着。
+	 */
+	public static function capabilities() {
+		return array(
+			'edit_yx_inquiry',
+			'read_yx_inquiry',
+			'delete_yx_inquiry',
+			'edit_yx_inquiries',
+			'edit_others_yx_inquiries',
+			'edit_published_yx_inquiries',
+			'read_private_yx_inquiries',
+			'delete_yx_inquiries',
+			'delete_others_yx_inquiries',
+			'delete_published_yx_inquiries',
 		);
 	}
 

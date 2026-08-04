@@ -25,6 +25,22 @@ describe("YANXINNA WordPress plugin delivery", () => {
     }
   });
 
+  it("gives inquiries their own capability type so the product manager can read them", () => {
+    const inquiry = read("yanxinna-headless-products/includes/class-inquiry.php");
+    const content = read("yanxinna-headless-products/includes/class-content.php");
+
+    // 缺这行会退回默认的 'post'，看询盘就需要通用 edit_posts，产品经理角色看不到菜单
+    expect(inquiry).toContain("'capability_type'     => array( 'yx_inquiry', 'yx_inquiries' )");
+    // 手工新建仍然要挡住
+    expect(inquiry).toContain("'create_posts' => 'do_not_allow'");
+    // 绝不能靠给角色开通用文章权限来解决
+    expect(content).not.toContain("'edit_posts'");
+    expect(content).not.toContain("'edit_others_posts'");
+    // 角色和管理员都要装上，否则管理员自己也看不到询盘
+    expect(content).toContain("YANXINNA_Headless_Inquiry::capabilities()");
+    expect(inquiry).toContain("public static function capabilities()");
+  });
+
   it("exposes only published, read-only public routes", () => {
     const rest = read("yanxinna-headless-products/includes/class-rest.php");
     const security = read(
