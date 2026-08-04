@@ -236,22 +236,31 @@ final class YANXINNA_Headless_Inquiry {
 		$lines[] = '';
 		$lines[] = '后台查看：' . admin_url( 'post.php?post=' . (int) $post_id . '&action=edit' );
 
-		$sent = wp_mail(
-			$to,
-			sprintf( '[YANXINNA] 新询盘 — %s', $fields['name'] ),
-			implode( "\n", $lines ),
-			array( 'Content-Type: text/plain; charset=UTF-8' )
-		);
+		$subject = sprintf( '[YANXINNA] 新询盘 — %s', $fields['name'] );
+		$body    = implode( "\n", $lines );
+		$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
 
-		if ( ! $sent ) {
-			error_log(
-				sprintf(
-					'YANXINNA: inquiry %d saved but notification email failed (SMTP configured: %s).',
-					(int) $post_id,
-					YANXINNA_Headless_Mail::is_configured() ? 'yes' : 'no'
-				)
-			);
+		if ( wp_mail( $to, $subject, $body, $headers ) ) {
+			return;
 		}
+
+		/*
+		 * 2026-08-04 实测出现过一次瞬时失败（同一天另外 4 次全成功，原因没复现）。
+		 * 询盘本身已经落库，丢的只是提醒——但商家不主动登后台就发现不了，值得重试一次。
+		 * 真实原因下次靠 class-mail.php 的 wp_mail_failed 日志抓。
+		 * ponytail: 只重试一次、同步等待；如果日志显示还在丢，再上队列或外部投递服务。
+		 */
+		sleep( 1 );
+		$retried = wp_mail( $to, $subject, $body, $headers );
+
+		error_log(
+			sprintf(
+				'YANXINNA: inquiry %d notification failed on first attempt, retry %s (SMTP configured: %s).',
+				(int) $post_id,
+				$retried ? 'succeeded' : 'FAILED',
+				YANXINNA_Headless_Mail::is_configured() ? 'yes' : 'no'
+			)
+		);
 	}
 
 	private static function check_rate_limit( WP_REST_Request $request ) {

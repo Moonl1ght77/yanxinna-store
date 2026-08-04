@@ -93,8 +93,11 @@ describe("YANXINNA WordPress plugin delivery", () => {
     expect(mail).toContain("wp_mail_from");
 
     expect(bootstrap).toContain("YANXINNA_Headless_Mail::register()");
-    // 发信失败不能影响询盘落库结果
+    // 失败原因必须落日志，否则交接后"没收到提醒"无从查起
+    expect(mail).toContain("'wp_mail_failed'");
+    // 发信失败不能影响询盘落库结果，且失败要重试一次（实测有瞬时失败）
     expect(inquiry).toContain("private static function notify(");
+    expect(inquiry.match(/wp_mail\(/g)).toHaveLength(2);
     expect(inquiry).toContain("error_log(");
   });
 

@@ -33,6 +33,15 @@ class YANXINNA_Headless_Mail {
 		add_action( 'phpmailer_init', array( __CLASS__, 'configure' ) );
 		add_filter( 'wp_mail_from', array( __CLASS__, 'from_address' ) );
 		add_filter( 'wp_mail_from_name', array( __CLASS__, 'from_name' ) );
+		add_action( 'wp_mail_failed', array( __CLASS__, 'log_failure' ) );
+	}
+
+	/**
+	 * 发信失败只有一个 false，不记下来就无从查起。
+	 * 交接后商家发现"没收到询盘提醒"时，这行日志是唯一线索。
+	 */
+	public static function log_failure( $error ) {
+		error_log( 'YANXINNA: wp_mail failed — ' . $error->get_error_message() );
 	}
 
 	public static function is_configured() {
