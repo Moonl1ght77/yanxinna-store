@@ -2,7 +2,7 @@
 /**
  * Plugin Name: YANXINNA Headless Products
  * Description: Product content model and public read-only API for the YANXINNA headless storefront.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: YANXINNA
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'YANXINNA_HEADLESS_PRODUCTS_VERSION', '1.0.0' );
+define( 'YANXINNA_HEADLESS_PRODUCTS_VERSION', '1.1.0' );
 define( 'YANXINNA_HEADLESS_PRODUCTS_PATH', plugin_dir_path( __FILE__ ) );
 
 require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-content.php';
@@ -23,6 +23,9 @@ require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-security.php';
 require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-webhook.php';
 require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-inquiry.php';
 require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-mail.php';
+require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-importer.php';
+require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-ai.php';
+require_once YANXINNA_HEADLESS_PRODUCTS_PATH . 'includes/class-admin-import.php';
 
 add_action( 'init', array( 'YANXINNA_Headless_Content', 'register' ) );
 add_action( 'acf/init', array( 'YANXINNA_Headless_Fields', 'register' ) );
@@ -33,6 +36,16 @@ YANXINNA_Headless_Security::register();
 YANXINNA_Headless_Webhook::register();
 YANXINNA_Headless_Inquiry::register();
 YANXINNA_Headless_Mail::register();
+YANXINNA_Headless_AI::register();
+YANXINNA_Headless_Admin_Import::register();
+
+// 商家直接传原图时，长边超过 1600 的自动缩小；前台用的是 large 和缩小后的图，不再原图直出。
+add_filter(
+	'big_image_size_threshold',
+	function () {
+		return 1600;
+	}
+);
 
 register_activation_hook(
 	__FILE__,

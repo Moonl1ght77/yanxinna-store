@@ -119,6 +119,75 @@ final class YANXINNA_Headless_Fields {
 	}
 
 	private static function fields() {
+		return array_merge( self::zh_source_fields(), self::product_fields() );
+	}
+
+	/**
+	 * 商家只填中文，点按钮由 AI 填满五种语言（见 class-ai.php）。
+	 * 这组字段只给后台用，公开 API 不输出。
+	 */
+	private static function zh_source_fields() {
+		if ( YANXINNA_Headless_AI::is_available() ) {
+			$button = '<input type="hidden" name="' . YANXINNA_Headless_AI::GENERATE_FLAG . '" value="0">'
+				. '<button type="button" class="button button-primary" onclick="var f=this.form;f.' . YANXINNA_Headless_AI::GENERATE_FLAG . '.value=\'1\';(document.getElementById(\'save-post\')||document.getElementById(\'publish\')).click();">用中文生成五种语言文案</button>'
+				. '<p class="description">会先保存，再把上面的中文和各颜色的「中文色名」翻成俄/英/法/德，填进下面的「多语言文案」和颜色名称（约 30–60 秒）。生成后检查一遍，再点「发布」。</p>';
+		} else {
+			$button = '<p class="description" style="color:#b32d2e">还没有配置 AI 供应商，暂时不能自动生成：管理员到「设置 → Connectors」装一个供应商并填 API key。</p>';
+		}
+
+		return array(
+			array(
+				'key'          => 'field_yx_v1_zh_start',
+				'label'        => '中文原文（填好后点下面的按钮，自动生成五种语言）',
+				'type'         => 'accordion',
+				'open'         => true,
+				'multi_expand' => true,
+				'endpoint'     => false,
+			),
+			self::text_field( 'zh_name', '中文名称', false, null, '例如「高腰塑身裤」。' ),
+			array(
+				'key'   => 'field_yx_v1_zh_short',
+				'label' => '一句话简介（中文）',
+				'name'  => 'zh_short',
+				'type'  => 'textarea',
+				'rows'  => 2,
+			),
+			array(
+				'key'          => 'field_yx_v1_zh_description',
+				'label'        => '详细描述（中文）',
+				'name'         => 'zh_description',
+				'type'         => 'textarea',
+				'instructions' => '写面料手感、塑形效果、适合场合，两三句即可。留空由 AI 按品类写。',
+				'rows'         => 4,
+			),
+			self::text_field( 'zh_fabric', '面料成分（中文）', false, null, '例如「85% 尼龙, 15% 氨纶」，要写真实成分。' ),
+			self::text_field( 'zh_care', '洗涤保养（中文）', false, null, '留空按「冷水手洗 平铺晾干」。' ),
+			array(
+				'key'          => 'field_yx_v1_zh_benefits',
+				'label'        => '卖点（中文，一行一条）',
+				'name'         => 'zh_benefits',
+				'type'         => 'textarea',
+				'instructions' => '3–5 条，例如「高腰收腹」。留空由 AI 按品类写。',
+				'rows'         => 4,
+			),
+			self::text_field( 'zh_badge', '角标（中文，可留空）', false, null, '例如「新品」。' ),
+			array(
+				'key'      => 'field_yx_v1_zh_generate',
+				'label'    => '',
+				'type'     => 'message',
+				'message'  => $button,
+				'esc_html' => 0,
+			),
+			array(
+				'key'      => 'field_yx_v1_zh_end',
+				'label'    => '',
+				'type'     => 'accordion',
+				'endpoint' => true,
+			),
+		);
+	}
+
+	private static function product_fields() {
 		return array(
 			self::text_field( 'product_number', '产品编号', true, null, '全站唯一，例如 YX-006。重复会保存失败。' ),
 			self::image_field( 'hover_image', '悬停图', false, null, '鼠标放到产品上时切换显示的图，一般用模特上身图。' ),
@@ -204,7 +273,7 @@ final class YANXINNA_Headless_Fields {
 			),
 			self::image_field( 'color_image', '该颜色的白底图', true, 'image' ),
 			self::image_field( 'color_hover_image', '该颜色的模特图', true, 'hover_image' ),
-			self::localized_group( 'color_names', '颜色名称', 'names', true ),
+			self::localized_group( 'color_names', '颜色名称', 'names', true, true ),
 		);
 
 		return array(
@@ -369,8 +438,13 @@ final class YANXINNA_Headless_Fields {
 		);
 	}
 
-	private static function localized_group( $key_name, $label, $name, $required ) {
+	private static function localized_group( $key_name, $label, $name, $required, $with_zh = false ) {
 		$sub_fields = array();
+
+		if ( $with_zh ) {
+			// 中文只给「生成五语」按钮当原文用，公开 API 不输出。
+			$sub_fields[] = self::text_field( $key_name . '_zh', '中文色名（用于生成）', false, 'zh', '例如「黑色」，点「生成」会翻成五种语言。' );
+		}
 
 		foreach ( self::$locales as $locale => $locale_label ) {
 			$key_suffix   = strtolower( str_replace( '-', '_', $locale ) );

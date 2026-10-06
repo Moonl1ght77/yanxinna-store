@@ -15,7 +15,8 @@ import { z } from "zod";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const IMPORTER = path.resolve(HERE, "../wordpress/migration/import-products.php");
-const SYSTEM_PROMPT = path.resolve(HERE, "import-products.prompt.txt");
+// 和 WordPress 插件里的「生成五语」按钮共用同一份文案规范
+const SYSTEM_PROMPT = path.resolve(HERE, "../wordpress/yanxinna-headless-products/prompts/translate-zh-to-five.txt");
 const LOCALES = ["ru-RU", "en-US", "en-GB", "fr-FR", "de-DE"];
 const SSH = {
   host: "admin@47.243.151.206",
