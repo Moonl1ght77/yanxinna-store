@@ -17,6 +17,7 @@ final class YANXINNA_Headless_Admin_Import {
 	const NONCE     = 'yx_batch_import';
 	const UPLOAD    = 'yx_batch_import_upload';
 	const STEP      = 'yx_batch_import_step';
+	const SETTINGS  = 'yx_ai_settings';
 	const COLUMNS   = array(
 		'产品编号'  => 'product_number',
 		'中文名'   => 'name_zh',
@@ -38,6 +39,7 @@ final class YANXINNA_Headless_Admin_Import {
 	public static function register() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ) );
 		add_action( 'admin_post_' . self::UPLOAD, array( __CLASS__, 'handle_upload' ) );
+		add_action( 'admin_post_' . self::SETTINGS, array( __CLASS__, 'handle_settings' ) );
 		add_action( 'wp_ajax_' . self::STEP, array( __CLASS__, 'ajax_step' ) );
 	}
 
@@ -87,9 +89,13 @@ final class YANXINNA_Headless_Admin_Import {
 		if ( isset( $_GET['error'] ) ) {
 			printf( '<div class="notice notice-error"><p>%s</p></div>', esc_html( sanitize_text_field( wp_unslash( $_GET['error'] ) ) ) );
 		}
-		if ( ! YANXINNA_Headless_AI::is_available() ) {
-			echo '<div class="notice notice-warning"><p>还没有配置 AI 供应商：管理员到「设置 → Connectors」装一个供应商并填 API key，之后才能生成文案。</p></div>';
+		if ( isset( $_GET['saved'] ) ) {
+			echo '<div class="notice notice-success is-dismissible"><p>AI 接口设置已保存。</p></div>';
 		}
+		if ( ! YANXINNA_Headless_AI::is_available() ) {
+			echo '<div class="notice notice-warning"><p>还没有配置 AI 接口：管理员在下面填一个 OpenAI 兼容接口，或到「设置 → Connectors」配官方供应商，之后才能生成文案。</p></div>';
+		}
+		self::render_settings();
 		?>
 		<p>一张 CSV 一行一个产品，只填中文；图片按产品分文件夹打成一个 ZIP。导入时会自动写五种语言的文案、压缩图片并入库。</p>
 		<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
@@ -118,6 +124,61 @@ final class YANXINNA_Headless_Admin_Import {
 			<p class="submit"><button type="submit" class="button button-primary">开始导入</button></p>
 		</form>
 		<?php
+	}
+
+	/** 第三方（OpenAI 兼容）接口设置，只有管理员看得到；key 存在数据库选项里，页面上不回显。 */
+	private static function render_settings() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+		$has_key = '' !== trim( (string) get_option( YANXINNA_Headless_AI::OPTION_API_KEY ) );
+		?>
+		<h2>AI 接口设置</h2>
+		<p>当前：<?php echo esc_html( YANXINNA_Headless_AI::backend_label() ); ?>。</p>
+		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+			<input type="hidden" name="action" value="<?php echo esc_attr( self::SETTINGS ); ?>">
+			<?php wp_nonce_field( self::SETTINGS ); ?>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><label for="yx-ai-base">接口地址</label></th>
+					<td>
+						<input type="url" id="yx-ai-base" name="base_url" class="regular-text" value="<?php echo esc_attr( get_option( YANXINNA_Headless_AI::OPTION_BASE_URL ) ); ?>" placeholder="https://api.deepseek.com/v1">
+						<p class="description">OpenAI 兼容接口，填到 /v1 这一级（中转站、DeepSeek、智谱等）。留空则改走「设置 → Connectors」。</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="yx-ai-key">API key</label></th>
+					<td>
+						<input type="password" id="yx-ai-key" name="api_key" class="regular-text" autocomplete="new-password" placeholder="<?php echo $has_key ? '已保存，留空表示不改' : 'sk-…'; ?>">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="yx-ai-model">模型名</label></th>
+					<td>
+						<input type="text" id="yx-ai-model" name="model" class="regular-text" value="<?php echo esc_attr( get_option( YANXINNA_Headless_AI::OPTION_MODEL ) ); ?>" placeholder="deepseek-chat">
+						<p class="description">按接口商给的模型名填。俄语是主市场，建议先导一个产品看看俄语文案再定。</p>
+					</td>
+				</tr>
+			</table>
+			<p class="submit"><button type="submit" class="button">保存接口设置</button></p>
+		</form>
+		<hr>
+		<?php
+	}
+
+	public static function handle_settings() {
+		check_admin_referer( self::SETTINGS );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( '没有权限。' );
+		}
+		update_option( YANXINNA_Headless_AI::OPTION_BASE_URL, esc_url_raw( trim( (string) wp_unslash( $_POST['base_url'] ?? '' ) ) ), false );
+		update_option( YANXINNA_Headless_AI::OPTION_MODEL, sanitize_text_field( wp_unslash( $_POST['model'] ?? '' ) ), false );
+		$key = trim( (string) wp_unslash( $_POST['api_key'] ?? '' ) );
+		if ( '' !== $key ) {
+			update_option( YANXINNA_Headless_AI::OPTION_API_KEY, sanitize_text_field( $key ), false );
+		}
+		wp_safe_redirect( self::page_url( array( 'saved' => 1 ) ) );
+		exit;
 	}
 
 	private static function render_job( array $job ) {

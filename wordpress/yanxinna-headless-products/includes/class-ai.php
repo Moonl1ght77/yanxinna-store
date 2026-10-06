@@ -7,7 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * 用 WordPress 7 自带的 AI Client 把中文产品信息写成五语文案。
  *
- * 供应商（Anthropic / OpenAI / Google）和 API key 在「设置 → Connectors」配，这里不碰 key。
+ * 两条接口路，二选一，优先第一条：
+ *  1. 后台「批量导入」页里填的 OpenAI 兼容接口（中转站、DeepSeek、智谱等都是这种），直接 wp_remote_post；
+ *  2. WordPress 7 的「设置 → Connectors」里配的官方供应商（Anthropic / OpenAI / Google），走 AI Client。
  * 两个入口共用 generate()：产品编辑页的「用中文生成五种语言文案」按钮，和后台「批量导入」页。
  * 文案规范在 prompts/translate-zh-to-five.txt，改口吻改那个文件。
  */
@@ -16,6 +18,9 @@ final class YANXINNA_Headless_AI {
 	const MODEL_PREFERENCE = array( 'claude-opus-5-5', 'claude-sonnet-5-5' );
 	const GENERATE_FLAG    = 'yx_generate';
 	const NOTICE_KEY       = 'yx_generate_notice_';
+	const OPTION_BASE_URL  = 'yx_ai_base_url';
+	const OPTION_API_KEY   = 'yx_ai_api_key';
+	const OPTION_MODEL     = 'yx_ai_model';
 
 	/** 编辑页点按钮生成出来的文案，在保存流程里从 wp_insert_post_data 带到 acf/save_post。 */
 	private static $pending_copy = null;
@@ -27,8 +32,36 @@ final class YANXINNA_Headless_AI {
 		add_action( 'admin_notices', array( __CLASS__, 'print_notice' ) );
 	}
 
-	/** 站点有没有配好能生成文本的 AI 供应商。 */
+	/** 后台填的第三方接口；地址或 key 有一个没填就当没配。 */
+	public static function custom_endpoint() {
+		$base = rtrim( trim( (string) get_option( self::OPTION_BASE_URL ) ), '/' );
+		$base = preg_replace( '#/chat/completions$#', '', $base );
+		$key  = trim( (string) get_option( self::OPTION_API_KEY ) );
+		if ( ! $base || ! $key ) {
+			return null;
+		}
+		return array(
+			'base'  => $base,
+			'key'   => $key,
+			'model' => trim( (string) get_option( self::OPTION_MODEL ) ),
+		);
+	}
+
+	/** 一句话说明当前走哪条路，给后台页面显示。 */
+	public static function backend_label() {
+		$endpoint = self::custom_endpoint();
+		if ( $endpoint ) {
+			return '第三方接口 ' . $endpoint['base'] . '，模型 ' . ( $endpoint['model'] ?: '（未填）' );
+		}
+		return self::connectors_available() ? 'WordPress「设置 → Connectors」里配的供应商' : '未配置';
+	}
+
+	/** 站点有没有配好能生成文本的 AI 接口。 */
 	public static function is_available() {
+		return (bool) self::custom_endpoint() || self::connectors_available();
+	}
+
+	private static function connectors_available() {
 		if ( ! function_exists( 'wp_ai_client_prompt' ) ) {
 			return false;
 		}
@@ -45,8 +78,9 @@ final class YANXINNA_Headless_AI {
 	 * @return array|WP_Error array( 'translations' => { locale => {...} }, 'colors' => [ { locale => 色名 } ] )
 	 */
 	public static function generate( array $source ) {
-		if ( ! function_exists( 'wp_ai_client_prompt' ) ) {
-			return new WP_Error( 'yx_ai_missing', '这个 WordPress 没有 AI Client，需要 7.0 以上。' );
+		$endpoint = self::custom_endpoint();
+		if ( ! $endpoint && ! function_exists( 'wp_ai_client_prompt' ) ) {
+			return new WP_Error( 'yx_ai_missing', '没有可用的 AI 接口：在「批量导入」页填第三方接口，或升级 WordPress 7 配 Connectors。' );
 		}
 		$system = self::system_prompt();
 		if ( is_wp_error( $system ) ) {
@@ -58,12 +92,14 @@ final class YANXINNA_Headless_AI {
 		$last_error  = null;
 
 		for ( $attempt = 1; $attempt <= 2; $attempt++ ) {
-			$json = wp_ai_client_prompt( $prompt )
-				->using_system_instruction( $system )
-				->using_model_preference( ...self::MODEL_PREFERENCE )
-				->using_max_tokens( 8000 )
-				->as_json_response( self::schema() )
-				->generate_text();
+			$json = $endpoint
+				? self::call_openai_compatible( $endpoint, $system, $prompt, 1 === $attempt )
+				: wp_ai_client_prompt( $prompt )
+					->using_system_instruction( $system )
+					->using_model_preference( ...self::MODEL_PREFERENCE )
+					->using_max_tokens( 8000 )
+					->as_json_response( self::schema() )
+					->generate_text();
 
 			if ( is_wp_error( $json ) ) {
 				$last_error = $json;
@@ -80,6 +116,66 @@ final class YANXINNA_Headless_AI {
 		}
 
 		return $last_error ? $last_error : new WP_Error( 'yx_ai_failed', '生成失败。' );
+	}
+
+	/**
+	 * OpenAI 兼容的 /chat/completions。第一次带 response_format=json_object（OpenAI、DeepSeek 等支持，
+	 * 回得更稳）；有的中转站不认这个参数会报 400，第二次就不带，靠提示词 + 校验兜底。
+	 */
+	private static function call_openai_compatible( array $endpoint, $system, $prompt, $strict_json ) {
+		if ( ! $endpoint['model'] ) {
+			return new WP_Error( 'yx_ai_model', '第三方接口还没填模型名，到「批量导入」页的接口设置里补上。' );
+		}
+		$body = array(
+			'model'       => $endpoint['model'],
+			'temperature' => 0.3,
+			'max_tokens'  => 8000,
+			'messages'    => array(
+				array(
+					'role'    => 'system',
+					'content' => $system,
+				),
+				array(
+					'role'    => 'user',
+					'content' => $prompt . "\n\n只输出一个 JSON 对象，结构必须是：\n" . wp_json_encode( self::schema(), JSON_UNESCAPED_UNICODE ),
+				),
+			),
+		);
+		if ( $strict_json ) {
+			$body['response_format'] = array( 'type' => 'json_object' );
+		}
+
+		$response = wp_remote_post(
+			$endpoint['base'] . '/chat/completions',
+			array(
+				'timeout' => 180,
+				'headers' => array(
+					'Authorization' => 'Bearer ' . $endpoint['key'],
+					'Content-Type'  => 'application/json',
+				),
+				'body'    => wp_json_encode( $body, JSON_UNESCAPED_UNICODE ),
+			)
+		);
+		if ( is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		$code = (int) wp_remote_retrieve_response_code( $response );
+		$raw  = (string) wp_remote_retrieve_body( $response );
+		if ( 200 !== $code ) {
+			return new WP_Error( 'yx_ai_http', sprintf( '接口返回 %d：%s', $code, mb_substr( $raw, 0, 300 ) ) );
+		}
+		$data    = json_decode( $raw, true );
+		$content = trim( (string) ( $data['choices'][0]['message']['content'] ?? '' ) );
+		if ( '' === $content ) {
+			return new WP_Error( 'yx_ai_empty', '接口没有返回内容：' . mb_substr( $raw, 0, 300 ) );
+		}
+
+		// 去掉 ```json 围栏；有的模型会在 JSON 前后加说明，只取第一个 { 到最后一个 }。
+		$content = preg_replace( '/^```(?:json)?\s*|\s*```$/i', '', $content );
+		$start   = strpos( $content, '{' );
+		$end     = strrpos( $content, '}' );
+		return ( false !== $start && false !== $end && $end > $start ) ? substr( $content, $start, $end - $start + 1 ) : $content;
 	}
 
 	private static function system_prompt() {

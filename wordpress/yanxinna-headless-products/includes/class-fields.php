@@ -132,7 +132,7 @@ final class YANXINNA_Headless_Fields {
 				. '<button type="button" class="button button-primary" onclick="var f=this.form;f.' . YANXINNA_Headless_AI::GENERATE_FLAG . '.value=\'1\';(document.getElementById(\'save-post\')||document.getElementById(\'publish\')).click();">用中文生成五种语言文案</button>'
 				. '<p class="description">会先保存，再把上面的中文和各颜色的「中文色名」翻成俄/英/法/德，填进下面的「多语言文案」和颜色名称（约 30–60 秒）。生成后检查一遍，再点「发布」。</p>';
 		} else {
-			$button = '<p class="description" style="color:#b32d2e">还没有配置 AI 供应商，暂时不能自动生成：管理员到「设置 → Connectors」装一个供应商并填 API key。</p>';
+			$button = '<p class="description" style="color:#b32d2e">还没有配置 AI 接口，暂时不能自动生成：管理员到「产品 → 批量导入」页填接口地址和 key（或「设置 → Connectors」配官方供应商）。</p>';
 		}
 
 		return array(
