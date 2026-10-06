@@ -178,7 +178,9 @@ describe("YANXINNA WordPress plugin delivery", () => {
     }
     expect(raw).not.toMatch(/"price"|"compare_at_price"/i);
     expect(importer).toContain("defined( 'WP_CLI' )");
-    expect(importer).toContain("'post_status' => 'draft'");
+    // 默认仍是草稿；只有壳脚本显式传 --status=publish 才直接发布（批量上品脚本走这条）
+    expect(importer).toContain("$post_status   = 'draft';");
+    expect(importer).toContain("'--status='");
     expect(importer).not.toContain("'post_status' => 'publish'");
   });
 });

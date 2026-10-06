@@ -2,9 +2,10 @@
 /**
  * Import the legacy YANXINNA product catalogue as WordPress drafts.
  *
- * Usage:
- * wp eval-file /secure/path/import-products.php \
- *   -- --media-base-url=https://staging-store.example.com/
+ * Usage (WP-CLI swallows --flags after eval-file, so set $args in a wrapper file):
+ *   <?php $args = array( '--media-dir=' . __DIR__ . '/media', '--status=publish' ); require __DIR__ . '/import-products.php';
+ * Media source: --media-dir=<local directory> or --media-base-url=https://…
+ * Post status:  --status=draft (default) or --status=publish
  */
 
 if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {
@@ -22,6 +23,8 @@ require_once ABSPATH . 'wp-admin/includes/image.php';
 
 $locales       = array( 'ru-RU', 'en-US', 'en-GB', 'fr-FR', 'de-DE' );
 $media_base    = '';
+$media_dir     = '';
+$post_status   = 'draft';
 $script_args   = isset( $args ) && is_array( $args ) ? $args : array();
 $payload_path  = __DIR__ . '/products.json';
 $created       = 0;
@@ -34,12 +37,26 @@ $media_cache   = array();
 foreach ( $script_args as $argument ) {
 	if ( 0 === strpos( $argument, '--media-base-url=' ) ) {
 		$media_base = substr( $argument, strlen( '--media-base-url=' ) );
+	} elseif ( 0 === strpos( $argument, '--media-dir=' ) ) {
+		$media_dir = rtrim( substr( $argument, strlen( '--media-dir=' ) ), '/\\' );
+	} elseif ( 0 === strpos( $argument, '--status=' ) ) {
+		$post_status = substr( $argument, strlen( '--status=' ) );
 	}
 }
 
-$media_base = esc_url_raw( $media_base );
-if ( ! $media_base || ! wp_http_validate_url( $media_base ) ) {
-	WP_CLI::error( 'Pass a valid HTTPS --media-base-url that serves the files referenced by products.json.' );
+if ( ! in_array( $post_status, array( 'draft', 'publish' ), true ) ) {
+	WP_CLI::error( '--status must be draft or publish.' );
+}
+
+if ( $media_dir ) {
+	if ( ! is_dir( $media_dir ) ) {
+		WP_CLI::error( '--media-dir does not exist: ' . $media_dir );
+	}
+} else {
+	$media_base = esc_url_raw( $media_base );
+	if ( ! $media_base || ! wp_http_validate_url( $media_base ) ) {
+		WP_CLI::error( 'Pass --media-dir=<local directory> or a valid HTTPS --media-base-url that serves the files referenced by products.json.' );
+	}
 }
 
 $raw_payload = file_get_contents( $payload_path );
@@ -85,7 +102,7 @@ foreach ( $payload['products'] as $item ) {
 	$existing_id = $find_product( $product_number );
 	$post_data   = array(
 		'post_type'   => 'yx_product',
-		'post_status' => 'draft',
+		'post_status' => $post_status,
 		'post_title'  => $title,
 		'post_name'   => sanitize_title( $item['slug'] ?? $product_number ),
 	);
@@ -148,13 +165,22 @@ $ensure_term = function ( $slug, $parent = 0 ) {
 	return (int) $created_term['term_id'];
 };
 
-$sideload_media = function ( $relative_path, $post_id, $description = '' ) use ( $media_base, &$media_cache ) {
+$sideload_media = function ( $relative_path, $post_id, $description = '' ) use ( $media_base, $media_dir, &$media_cache ) {
 	$relative_path = ltrim( (string) $relative_path, '/' );
 	if ( ! $relative_path ) {
 		return 0;
 	}
 
-	$source_url = esc_url_raw( trailingslashit( $media_base ) . $relative_path );
+	if ( $media_dir ) {
+		$source_path = $media_dir . '/' . $relative_path;
+		if ( ! is_file( $source_path ) ) {
+			throw new RuntimeException( 'Media file not found: ' . $relative_path );
+		}
+		// Same path + same content is reused; a changed file becomes a new attachment.
+		$source_url = 'media-dir:' . $relative_path . '#' . md5_file( $source_path );
+	} else {
+		$source_url = esc_url_raw( trailingslashit( $media_base ) . $relative_path );
+	}
 	if ( isset( $media_cache[ $source_url ] ) ) {
 		return $media_cache[ $source_url ];
 	}
@@ -180,14 +206,23 @@ $sideload_media = function ( $relative_path, $post_id, $description = '' ) use (
 		return (int) $existing[0];
 	}
 
-	$temp_file = download_url( $source_url, 30 );
-	if ( is_wp_error( $temp_file ) ) {
-		throw new RuntimeException( $temp_file->get_error_message() );
+	if ( $media_dir ) {
+		$temp_file = wp_tempnam( wp_basename( $source_path ) );
+		if ( ! $temp_file || ! copy( $source_path, $temp_file ) ) {
+			throw new RuntimeException( 'Could not copy media file: ' . $relative_path );
+		}
+		$file_name = sanitize_file_name( wp_basename( $source_path ) );
+	} else {
+		$temp_file = download_url( $source_url, 30 );
+		if ( is_wp_error( $temp_file ) ) {
+			throw new RuntimeException( $temp_file->get_error_message() );
+		}
+		$url_path  = wp_parse_url( $source_url, PHP_URL_PATH );
+		$file_name = sanitize_file_name( rawurldecode( wp_basename( $url_path ) ) );
 	}
 
-	$url_path   = wp_parse_url( $source_url, PHP_URL_PATH );
 	$file_array = array(
-		'name'     => sanitize_file_name( rawurldecode( wp_basename( $url_path ) ) ),
+		'name'     => $file_name,
 		'tmp_name' => $temp_file,
 	);
 	$attachment_id = media_handle_sideload(
@@ -326,7 +361,7 @@ foreach ( $pending_items as $pending ) {
 		wp_update_post(
 			array(
 				'ID'          => $post_id,
-				'post_status' => 'draft',
+				'post_status' => $post_status,
 			)
 		);
 
@@ -336,7 +371,7 @@ foreach ( $pending_items as $pending ) {
 			++$updated;
 		}
 
-		WP_CLI::log( sprintf( '%s %s as draft (post %d).', ucfirst( $pending['action'] ), $sku, $post_id ) );
+		WP_CLI::log( sprintf( '%s %s as %s (post %d).', ucfirst( $pending['action'] ), $sku, $post_status, $post_id ) );
 	} catch ( Throwable $error ) {
 		++$failed;
 		WP_CLI::warning( sprintf( '%s failed: %s', $sku, $error->getMessage() ) );
@@ -345,9 +380,10 @@ foreach ( $pending_items as $pending ) {
 
 WP_CLI::success(
 	sprintf(
-		'Import finished. Created: %d, updated: %d, failed: %d. All imported products remain drafts.',
+		'Import finished. Created: %d, updated: %d, failed: %d. Imported products are now %s.',
 		$created,
 		$updated,
-		$failed
+		$failed,
+		$post_status
 	)
 );
